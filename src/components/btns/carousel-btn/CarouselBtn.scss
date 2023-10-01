@@ -1,0 +1,25 @@
+.carousel-btn-container {
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    transition: 0.2s;
+    width: 50px;
+
+    img {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.carousel-btn-container:hover {
+    background-color: rgba(255,255,255,0.25);
+    transform: scale(1.1);
+    transition: 0.2s;
+
+    img {
+        filter: invert(1);
+    }
+}

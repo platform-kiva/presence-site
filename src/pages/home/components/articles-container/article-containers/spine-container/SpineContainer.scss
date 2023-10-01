@@ -1,0 +1,35 @@
+.spine-collage {
+    cursor: pointer;
+    position: relative;
+    transition: 0.8s ease-in;
+    width: 400px;
+
+    // .buoy-1 {
+    //     bottom: 0px;
+    //     left: 30px;
+    //     position: absolute;
+    //     transition: 0.8s ease-in;
+    //     transform: rotate(5deg);
+    //     width: 135px;
+    //     z-index: 2;
+    // }
+
+    .article-img-container {
+        height: 400px;
+        transition: 0.8s ease-in;
+        z-index: 1;
+    }
+}
+
+.spine-collage:hover {
+
+    .article-img-container {
+        transform: translateY(-10px) scale(1.1);
+        transition: 3s ease-out;
+    }
+
+    // .buoy-1 {
+    //     transform: translateX(-20px) translateY(-10px) scale(1.1) rotate(5deg);
+    //     transition: 3s ease-out;
+    // }
+}

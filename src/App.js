@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// assets
+import cursorIcon from './assets/icons/cursor.png'
+
+// components
+import Home from "./pages/home/Home";
+import PreLoader from "./pages/pre-loader/PreLoader";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ cursor: `url(${cursorIcon}) 15 15, auto`}}>
+      <Home />
+      {/* <PreLoader /> */}
     </div>
+
   );
 }
 

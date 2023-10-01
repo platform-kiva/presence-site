@@ -1,0 +1,43 @@
+.articles-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+
+    .article-gradient-bg {
+        height: 100vh;
+        position: fixed;
+        width: 100vw;
+    }
+
+    .article-container-top {
+        align-items: center;
+        display: flex;
+        gap: 60px;
+        height: 100vh;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .scroll-down-btn-container {
+        bottom: 50px;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, 0%);
+        transition: 0.8s;
+        z-index: 10;
+    }
+    .scroll-down-btn-container-active {
+        bottom: -100px;
+        transition: 0.8s;
+
+        img {
+            transform: rotate(180deg);
+            transition: 0.8s;
+        }
+    }
+
+    .article-container-bot {
+        height: 100vh;
+        z-index: 5;
+    }
+}
