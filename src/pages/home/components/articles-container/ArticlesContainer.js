@@ -85,15 +85,21 @@ export default function ArticlesContainer() {
                 </div>
 
                 {articleIndex === 0 && 
-                    <MatiContainer articleData={articleData} articleIndex={articleIndex} />
+                    <div onClick={() => onScrollDown()}>
+                        <MatiContainer articleData={articleData} articleIndex={articleIndex} />
+                    </div>
                 }
 
                 {articleIndex === 1 &&
-                    <SpineContainer articleData={articleData} articleIndex={articleIndex} />
+                    <div onClick={() => onScrollDown()}>
+                        <SpineContainer articleData={articleData} articleIndex={articleIndex} />
+                    </div>
                 }
 
                 {articleIndex === 2 &&
-                    <SeaLevelContainer articleData={articleData} articleIndex={articleIndex} />
+                    <div onClick={() => onScrollDown()}>
+                        <SeaLevelContainer articleData={articleData} articleIndex={articleIndex} />
+                    </div>
                 }
 
                 <div onClick={() => handleClick(1)} >
@@ -106,7 +112,34 @@ export default function ArticlesContainer() {
             </div>
 
             <div id='a-c-b' className='article-container-bot'>
-                <h1>BOTTOM</h1>
+                <div className='article-container-bot-left-col'>
+                    <img className='article-container-bot-detail-img' src={articleData[articleIndex].img} alt=''/>
+
+                </div>
+                <div className='article-container-bot-right-col'>
+                    <h1 className='article-container-bot-price'>$USD</h1>
+                    <h3 className='article-container-bot-supply '>88 of 100 sold</h3>
+                    <div className='article-container-bot-size-btns-container'>
+                        <div className='article-container-bot-size-btn' style={{ opacity: '33%' }}>
+                            <h4 className='article-container-bot-size-btn-text'>S</h4>
+                        </div>
+                        <div className='article-container-bot-size-btn' style={{ opacity: '33%' }}>
+                            <h4 className='article-container-bot-size-btn-text'>M</h4>
+                        </div>
+                        <div className='article-container-bot-size-btn'>
+                            <h4 className='article-container-bot-size-btn-text'>L</h4>
+                        </div>
+                    </div>
+                    <div className='article-container-bot-add-to-cart-btn'>
+                        <h4 className='article-container-bot-size-btn-text'>ADD TO CART</h4>
+                    </div>
+                    <div className='article-container-bot-description'>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget purus a est varius viverra. Aenean tempus vestibulum diam non porttitor. Praesent pretium vitae leo sit amet elementum.<br/><br/> 
+                            Proin luctus elit erat, et elementum nibh sollicitudin et. Nullam eros ex, viverra et ultricies quis, finibus eget justo. Mauris porttitor tincidunt.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     )
