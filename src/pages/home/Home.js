@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 // assets
 import shirt1 from '../../assets/clothing/mati_ALPHA.png'
 import shirt2 from '../../assets/clothing/spine_ALPHA.png'
@@ -12,6 +14,12 @@ import Cart from '../cart/Cart.js'
 import Header from '../../components/header/Header'
 
 export default function Home() {
+
+    useEffect(() => {
+     console.log("USE EFFECT RAN")
+     const centerElement = document.getElementById('centerElem')
+     centerElement.scrollIntoView({ behavior: 'instant' });
+    }, [])
 
     const articleData = [
       {
@@ -42,8 +50,11 @@ export default function Home() {
         />
 
         <Cart articleData={articleData} />
-        <Header />
-        <ArticlesContainer articleData={articleData}/>
+        <div id='centerElem' className='center-elem'>
+          <Header />
+          <ArticlesContainer articleData={articleData}/>
+        </div>
+
       </div>
     )
 }

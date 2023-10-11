@@ -13,12 +13,11 @@ function App() {
     <div style={{ cursor: `url(${cursorIcon}) 15 15, auto`}}>
       <BrowserRouter>
         <Routes>
+          <Route path="/loading" element={<PreLoader />} />
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
-      
-      {/* <PreLoader /> */}
     </div>
 
   );
