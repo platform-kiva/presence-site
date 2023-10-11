@@ -31,7 +31,8 @@ export default function Header() {
             </div>
 
             <div className='header-middle-col'>
-                <span>mind &nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;body</span>
+                {/* <span>mind &nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;body</span> */}
+                <h1>presence</h1>
                 <div className='header-date'>
                     <h2 className='header-date-month'>{months[date.getMonth()]}</h2>
                     <h2 className='header-date-day'>{date.getDate()}</h2>
@@ -44,7 +45,7 @@ export default function Header() {
             </div>
 
             <div className='header-right-col'>
-                {/* <img src={bagIcon} alt="cart" style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}} /> */}
+                <img src={bagIcon} alt="cart" style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}} />
             </div>
         </div>
     )

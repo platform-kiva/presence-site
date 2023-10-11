@@ -3,13 +3,7 @@
     flex-direction: column;
     width: 100vw;
 
-    .article-gradient-bg {
-        height: 100vh;
-        position: fixed;
-        width: 100vw;
-    }
-
-    .article-container-top {
+    .article-container-main {
         align-items: center;
         display: flex;
         gap: 60px;

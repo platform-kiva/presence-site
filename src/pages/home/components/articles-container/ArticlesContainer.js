@@ -7,9 +7,6 @@ import './ArticlesContainer.scss'
 import arrowDown from '../../../../assets/icons/arrow-down.png'
 import arrowLeft from '../../../../assets/icons/arrow-left.png'
 import arrowRight from '../../../../assets/icons/arrow-right.png'
-import shirt1 from '../../../../assets/clothing/shirt1_ALPHA.png'
-import shirt2 from '../../../../assets/clothing/shirt3_ALPHA.png'
-import shirt3 from '../../../../assets/clothing/shirt3_ALPHA.png'
 
 
 // components
@@ -18,7 +15,7 @@ import MatiContainer from './article-containers/mati-container/MatiContainer'
 import SeaLevelContainer from './article-containers/sea-level-container/SeaLevelContainer'
 import SpineContainer from './article-containers/spine-container/SpineContainer'
 
-export default function ArticlesContainer() {
+export default function ArticlesContainer({ articleData }) {
     const [articleIndex, setArticleIndex] = useState(0)
     const [isScrolled, setIsScrolled] = useState(false)
 
@@ -41,24 +38,6 @@ export default function ArticlesContainer() {
 
     }
 
-    const articleData = [
-        {
-            img: shirt1,
-            topGradient: [32, 172, 232],
-            botGradient: [219, 120, 212]
-        },
-        {
-            img: shirt2,
-            topGradient: [208, 84, 18],
-            botGradient: [252, 232, 52]
-        },
-        {
-            img: shirt3,
-            topGradient: [230, 169, 89],
-            botGradient: [47, 117, 180]
-        }
-    ]
-
     const handleClick = (inc) => {
         const newIndex = articleIndex + inc
         if (newIndex === 3) {
@@ -73,13 +52,8 @@ export default function ArticlesContainer() {
 
     return (
         <div className='articles-container'>
-            <div
-                className='article-gradient-bg'
-                style={{
-                    background: `linear-gradient(0deg, rgba(${articleData[articleIndex].botGradient[0]}, ${articleData[articleIndex].botGradient[1]}, ${articleData[articleIndex].botGradient[2]}, 0.8) 0%, rgba(${articleData[articleIndex].topGradient[0]}, ${articleData[articleIndex].topGradient[1]}, ${articleData[articleIndex].topGradient[2]}, 0.8) 88%)`
-                }}
-            />
-            <div id='a-c-t' className='article-container-top'>
+
+            <div id='a-c-t' className='article-container-main'>
                 <div onClick={() => handleClick(-1)}>
                     <CarouselBtn icon={arrowLeft} />  
                 </div>
