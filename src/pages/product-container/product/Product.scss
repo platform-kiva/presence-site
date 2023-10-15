@@ -1,0 +1,85 @@
+.product-container {
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+    position: relative;
+
+    .product-container-top-fold {
+        height: 100vh;
+        position: relative;
+
+        .product-img-container {
+            height: 420px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .product-container-bot-fold {
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        position: relative;
+
+        .product-container-bot-fold-col {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            width: 50%;
+
+            .product-container-price-action {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                justify-content: center;
+
+                .product-container-price {
+                    font-size: 81px;
+                }
+
+                .product-container-action {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .product-container-action-sizes {
+                        display: flex;
+                        gap: 20px;
+                    }
+
+                    .product-add-to-cart-btn {
+                        align-items: center;
+                        border: 2px solid #FFFFFF;
+                        border-radius: 50px;
+                        display: flex;
+                        height: 50px;
+                        justify-content: center;
+                        width: 100%;
+
+                        h2 {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .product-img-carousel {
+            height: 600px;
+            width: 600px;
+
+            .product-carousel-img-container {
+                height: 600px;
+                width: 600px;
+
+                img {
+                    height: 600px;
+                    width: 600px;
+                }
+            }
+        }
+    }
+}

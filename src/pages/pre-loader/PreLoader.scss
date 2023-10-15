@@ -1,12 +1,8 @@
 .pre-loader-container {
-    background-color: red;
-    height: 100vh;
-    width: 100vw;
-
-    .pre-loader-banner-container {
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
+    height: fit-content;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
 }

@@ -2,13 +2,16 @@
     height: 100vh;
     width: 100vw;
 
-    .article-gradient-bg {
-        height: 100vh;
-        position: fixed;
-        width: 100vw;
-        z-index: -100;
+    .outlet-container {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 100;
     }
-
-    .center-elem {
+    .article-gradient-bg {
+        height: 100%;
+        position: fixed;
+        width: 100%;
+        z-index: -100;
     }
 }

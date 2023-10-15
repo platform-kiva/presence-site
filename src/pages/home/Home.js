@@ -1,27 +1,19 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+
+// styles
+import './Home.scss'
 
 // assets
 import shirt1 from '../../assets/clothing/mati_ALPHA.png'
 import shirt2 from '../../assets/clothing/spine_ALPHA.png'
 import shirt3 from '../../assets/clothing/water_ALPHA.png'
 
-// styles
-import './Home.scss'
-
-// components
-import ArticlesContainer from './components/articles-container/ArticlesContainer'
-import Cart from '../cart/Cart.js'
-import Header from '../../components/header/Header'
-
 export default function Home() {
+    const [productInd, setProductInd] = useState(0)
 
-    useEffect(() => {
-     console.log("USE EFFECT RAN")
-     const centerElement = document.getElementById('centerElem')
-     centerElement.scrollIntoView({ behavior: 'instant' });
-    }, [])
-
-    const articleData = [
+    const productData =
+    [
       {
           img: shirt1,
           topGradient: [32, 172, 232],
@@ -41,20 +33,16 @@ export default function Home() {
 
     return (
       <div className='home-container'>
+        <div className='outlet-container'>
+          <Outlet context={[productInd, setProductInd]} />
+        </div>
         <div
           className='article-gradient-bg'
           style=
             {{
-              background: `linear-gradient(0deg, rgba(${articleData[0].botGradient[0]}, ${articleData[0].botGradient[1]}, ${articleData[0].botGradient[2]}, 0.8) 0%, rgba(${articleData[0].topGradient[0]}, ${articleData[0].topGradient[1]}, ${articleData[0].topGradient[2]}, 0.8) 88%)`
+              background: `linear-gradient(45deg, rgba(${productData[productInd].botGradient[0]}, ${productData[productInd].botGradient[1]}, ${productData[productInd].botGradient[2]}, 0.8) 0%, rgba(${productData[productInd].topGradient[0]}, ${productData[productInd].topGradient[1]}, ${productData[productInd].topGradient[2]}, 0.8) 88%)`
             }}
         />
-
-        <Cart articleData={articleData} />
-        <div id='centerElem' className='center-elem'>
-          <Header />
-          <ArticlesContainer articleData={articleData}/>
-        </div>
-
       </div>
     )
 }

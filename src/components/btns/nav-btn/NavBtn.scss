@@ -1,0 +1,24 @@
+.nav-btn-container {
+    align-items: center;  
+    display: flex;
+    justify-content: space-between;
+    transition: 0.8s ease-in-out;
+    width: 324px;
+    z-index: 500;
+
+    .side-icons {
+        opacity: 0.4;
+        transition: 0.8s ease-in-out;
+        width: 16px;
+    }
+}
+
+.nav-btn-container:hover {
+    width: 424px;
+
+
+    .side-icons {
+        transition: 0.8s ease-in-out;
+        opacity: 1.0;
+    }
+}

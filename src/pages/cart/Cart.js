@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+// import { useState } from 'react'
 
 // assets
 import hanger from './assets/hanger_ALPHA.png'
@@ -12,7 +12,7 @@ import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import './Cart.scss'
 
 export default function Cart() {
-  const [currItemInd, setCurrItemInd] = useState(0)
+  const currItemInd = 0
 
   const cartData = [
     {
