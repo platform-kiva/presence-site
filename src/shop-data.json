@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "mati",
+        "img": "./assets/clothing/mati_ALPHA.png",
+        "price": 41
+
+    },
+    {
+        "id": 2,
+        "name": "spine",
+        "img": "./assets/clothing/spine_ALPHA.png",
+        "price": 42
+
+    },
+    {
+        "id": 3,
+        "name": "water",
+        "img": "./assets/clothing/water_ALPHA.png",
+        "price": 43
+    }
+]

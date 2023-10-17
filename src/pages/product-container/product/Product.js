@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 // styles
 import './Product.scss'
 
@@ -8,7 +10,12 @@ import matiProductImg from '../../../assets/clothing/mati_ALPHA.png'
 // components
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js'
 
+// context
+import { ProductsContext } from '../../../contexts/products-context/ProductsContext'
+
 export default function Product() {
+  const { products } = useContext(ProductsContext)
+
   return (
     <div className='product-container' >
       <div id="productTopFold" className='product-container-top-fold'>
@@ -32,6 +39,11 @@ export default function Product() {
               </div>
               <div className='product-add-to-cart-btn'>
                 <h2>ADD TO CART</h2>
+              </div>
+              <div>
+                {products.map(product => (
+                  <h1>{product.name}</h1>
+                ))}
               </div>
             </div>
           </div>

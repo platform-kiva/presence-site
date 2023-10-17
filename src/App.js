@@ -9,6 +9,7 @@ import Home from './pages/home/Home';
 import Product from './pages/product-container/product/Product'
 import ProductContainer from './pages/product-container/ProductContainer'
 import PreLoader from "./pages/pre-loader/PreLoader";
+import OrderComplete from './pages/order-complete/OrderComplete';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="" element={<Product />} />
             </Route>
             <Route path="cart" element={<Cart />} />
+            <Route path="complete" element={<OrderComplete />} />
           </Route>
         </Routes>
       </BrowserRouter>

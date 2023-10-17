@@ -1,8 +1,16 @@
 .pre-loader-container {
-    height: fit-content;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+
+    .pre-loader-banner-container {
+        transition: 1s ease-in;
+    }
+
+    .pre-loader-banner-container:hover {
+        transform: scale(1.2);
+        transition: 3s ease-out;
+    }
 }
