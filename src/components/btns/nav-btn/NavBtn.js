@@ -9,7 +9,7 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 // components
 import CarouselBtn from '../carousel-btn/CarouselBtn'
 
-export default function NavBtn({ direction }) {
+export default function NavBtn({ direction, btnIcon }) {
   return (
     <div className='nav-btn-container' style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>
         {direction === 'down' &&
@@ -17,7 +17,7 @@ export default function NavBtn({ direction }) {
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
-                <CarouselBtn icon="down" />
+                <CarouselBtn icon={btnIcon} />
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
                 <img className='side-icons' src={chevronDown} alt="chevron icon" />
@@ -28,7 +28,7 @@ export default function NavBtn({ direction }) {
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />
-                <CarouselBtn icon="up" />
+                <CarouselBtn icon={btnIcon} />
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />
                 <img className='side-icons' src={chevronUp} alt="chevron icon" />

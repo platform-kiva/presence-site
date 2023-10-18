@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Outlet, useOutletContext } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 // styles
 import './ProductContainer.scss'
@@ -9,9 +9,15 @@ import Header from '../../components/header/Header'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 
+// context
+import { ProductsContext } from '../../contexts/products-context/ProductsContext'
+import Product from './product/Product'
+
 export default function ProductContainer() {
     const [isScrolled, setIsScrolled] = useState(false)
     const [productInd, setProductInd] = useOutletContext();
+
+    const { products } = useContext(ProductsContext)
 
     const handleScroll = () => {
         if (!isScrolled) {
@@ -34,7 +40,6 @@ export default function ProductContainer() {
             currInd += val
         }
         setProductInd(currInd)
-        console.log(currInd)
     }
 
     return (
@@ -48,9 +53,13 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </div>
             </div>
-            <Outlet />
+            <div className='products-container'>
+                {products.map(product => (
+                    <Product product={product} productInd={productInd} />
+                ))}
+            </div>
             <div className={`${isScrolled ? 'product-nav-btn-container-scrolled': 'product-nav-btn-container'}`} onClick={() => handleScroll()}>
-                <NavBtn direction={isScrolled ? "up" : "down"} />
+                <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
             </div>
         </div>
     )

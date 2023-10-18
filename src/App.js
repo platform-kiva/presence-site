@@ -6,7 +6,6 @@ import cursorIcon from './assets/icons/cursor.png'
 // components
 import Cart from './pages/cart/Cart';
 import Home from './pages/home/Home';
-import Product from './pages/product-container/product/Product'
 import ProductContainer from './pages/product-container/ProductContainer'
 import PreLoader from "./pages/pre-loader/PreLoader";
 import OrderComplete from './pages/order-complete/OrderComplete';
@@ -18,16 +17,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}>
             <Route path="loading" element={<PreLoader />} />
-            <Route path="" element={<ProductContainer /> }>
-              <Route path="" element={<Product />} />
-            </Route>
+            <Route path="" element={<ProductContainer />} />
             <Route path="cart" element={<Cart />} />
             <Route path="complete" element={<OrderComplete />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </div>
-
   );
 }
 

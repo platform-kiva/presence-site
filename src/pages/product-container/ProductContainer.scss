@@ -18,8 +18,9 @@
         }
     }
 
-    .product-title-container {
-        position: absolute;
+    .products-container {
+        display: flex;
+        overflow-x: hidden;
     }
 
     .product-nav-btn-container {

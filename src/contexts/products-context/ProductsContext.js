@@ -8,7 +8,7 @@ export const ProductsContext = createContext({
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState(PRODUCT_DATA)
-    const value = {products}
+    const value = { products }
 
     return (
         <ProductsContext.Provider value={value}>{ children }</ProductsContext.Provider>

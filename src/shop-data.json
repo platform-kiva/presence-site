@@ -1,22 +1,24 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "name": "mati",
-        "img": "./assets/clothing/mati_ALPHA.png",
-        "price": 41
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/mati_ALPHA.png?alt=media&token=80f18bfb-c85f-42d2-9374-c3def3184271&_gl=1*180fhzz*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTA0OC4yMy4wLjA.",
+        "price": 41,
+        "size": [".S", ".M", ".L"]
 
+    },
+    {
+        "id": 1,
+        "name": "spine",
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/spine_ALPHA.png?alt=media&token=b29d3a7c-784b-4b80-a1b1-590c5689924b&_gl=1*14k68zp*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTA4MC42MC4wLjA.",
+        "price": 42,
+        "size": [",S", ",M", ",L"]
     },
     {
         "id": 2,
-        "name": "spine",
-        "img": "./assets/clothing/spine_ALPHA.png",
-        "price": 42
-
-    },
-    {
-        "id": 3,
         "name": "water",
-        "img": "./assets/clothing/water_ALPHA.png",
-        "price": 43
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/water_ALPHA.png?alt=media&token=ab59f83f-7056-49d6-99d7-c1973fec5f13&_gl=1*1hcrhc2*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTExNS4yNS4wLjA.",
+        "price": 43,
+        "size": ["'S", "'M", "'L"]
     }
 ]

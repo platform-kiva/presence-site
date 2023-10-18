@@ -1,8 +1,10 @@
 .product-container {
+    border: 1px solid green;
     display: flex;
     flex-direction: column;
     height: 200vh;
-    position: relative;
+    min-width: 100vw;
+    position: absolute;
 
     .product-container-top-fold {
         height: 100vh;
