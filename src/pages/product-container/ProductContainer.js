@@ -8,10 +8,10 @@ import './ProductContainer.scss'
 import Header from '../../components/header/Header'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
+import Product from './product/Product'
 
 // context
 import { ProductsContext } from '../../contexts/products-context/ProductsContext'
-import Product from './product/Product'
 
 export default function ProductContainer() {
     const [isScrolled, setIsScrolled] = useState(false)

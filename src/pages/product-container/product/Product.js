@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 // styles
 import './Product.scss'
 
@@ -7,7 +9,14 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 // components
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js'
 
+// context
+import { CartContext } from '../../../contexts/cart-context/CartContext'
+import Cart from '../../cart/Cart'
+
 export default function Product({ product, productInd }) {
+  const { addItemToCart } = useContext(CartContext)
+
+  const addProductToCart = () => addItemToCart(product)
 
   return (
     <>
@@ -33,12 +42,13 @@ export default function Product({ product, productInd }) {
                     <SizeBtn size={"M"} />
                     <SizeBtn size={"L"} />
                   </div>
-                  <div className='product-add-to-cart-btn'>
+                  <div className='product-add-to-cart-btn' onClick={addProductToCart}>
                     <h2>ADD TO CART</h2>
                   </div>
                 </div>
               </div>
             </div>
+            <Cart />
           </div>
         </div>
       }

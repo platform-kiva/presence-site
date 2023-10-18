@@ -7,7 +7,6 @@
     width: 100vw;
 
     .cart-display-container {
-        // background-color: red;
         height: 627px;
         position: relative;
         width: 926px;
@@ -24,7 +23,8 @@
 
         .hanger-img-container {
             position: absolute;
-            left: 220px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 196px;
 
             img {
@@ -32,26 +32,23 @@
             }
         }
 
-        .clothing-img-carousel-container {
-            height: 615px;
-            position: absolute;
-            width: 615px;
+        .cart-items {
 
-            img {
-                width: 100%;
-            }
         }
 
-        .cart-carousel-btn-container {
-            // background-color: green;
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            right: 36px;
-            top: 120px;
-            width: 300px;
-        }
+
+
+    
+
+        // .cart-carousel-btn-container {
+        //     align-items: center;
+        //     display: flex;
+        //     justify-content: space-between;
+        //     position: absolute;
+        //     right: 36px;
+        //     top: 120px;
+        //     width: 300px;
+        // }
 
     }
 }
