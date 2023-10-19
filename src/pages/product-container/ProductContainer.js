@@ -14,10 +14,10 @@ import Product from './product/Product'
 import { ProductsContext } from '../../contexts/products-context/ProductsContext'
 
 export default function ProductContainer() {
+    const { products } = useContext(ProductsContext)
+    
     const [isScrolled, setIsScrolled] = useState(false)
     const [productInd, setProductInd] = useOutletContext();
-
-    const { products } = useContext(ProductsContext)
 
     const handleScroll = () => {
         if (!isScrolled) {

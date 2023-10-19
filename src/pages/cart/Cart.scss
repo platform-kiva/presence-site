@@ -7,48 +7,23 @@
     width: 100vw;
 
     .cart-display-container {
+        background-color: aquamarine;
         height: 627px;
         position: relative;
         width: 926px;
 
-        .cart-pole {
-            background-color: #FFFFFF;
-            border-radius: 16px;
-            height: 8px;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-            width: 775px;
-        }
-
-        .hanger-img-container {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 196px;
-
-            img {
-                width: 100%;
-            }
-        }
-
         .cart-items {
-
+            background-color: pink;
         }
 
-
-
-    
-
-        // .cart-carousel-btn-container {
-        //     align-items: center;
-        //     display: flex;
-        //     justify-content: space-between;
-        //     position: absolute;
-        //     right: 36px;
-        //     top: 120px;
-        //     width: 300px;
-        // }
+        .cart-carousel-btn-container {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            right: 36px;
+            top: 120px;
+            width: 300px;
+        }
 
     }
 }

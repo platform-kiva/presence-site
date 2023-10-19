@@ -7,11 +7,11 @@ import './Product.scss'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 
 // components
+import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn'
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js'
 
 // context
 import { CartContext } from '../../../contexts/cart-context/CartContext'
-import Cart from '../../cart/Cart'
 
 export default function Product({ product, productInd }) {
   const { addItemToCart } = useContext(CartContext)
@@ -32,23 +32,20 @@ export default function Product({ product, productInd }) {
                 <img className='product-carousel-img-container' src={product.img} alt='product img enlarged'/>
               </div>
             </div>
-
+            
             <div className='product-container-bot-fold-col'>
               <div className='product-container-price-action'>
-                <h1 className='product-container-price'>${product.price}</h1>
+                <h1 className='product-container-price' style={{ textShadow: `3px 3px 1px rgba(${product.botGradient}, 0.67)` }}>${product.price}</h1>
                 <div className='product-container-action'>
                   <div className='product-container-action-sizes'>
-                    <SizeBtn size={"S"} />
-                    <SizeBtn size={"M"} />
-                    <SizeBtn size={"L"} />
+                    {product.availSizes.map(size => (
+                      <SizeBtn size={size} hoverCol={product.botGradient}/>
+                    ))}
                   </div>
-                  <div className='product-add-to-cart-btn' onClick={addProductToCart}>
-                    <h2>ADD TO CART</h2>
-                  </div>
+                      <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient}/>
                 </div>
               </div>
             </div>
-            <Cart />
           </div>
         </div>
       }
