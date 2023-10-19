@@ -2,11 +2,10 @@
 import './CartItem.scss'
 
 export default function CartItem({ cartItem }) {
-    const {name, quantity } = cartItem
+    const { img } = cartItem
     return (
         <div className='cart-item-container'>
-            <h2>{name}</h2>
-            <span>{quantity}</span>
+            <img src={img} alt='product img' className='cart-item-img'/>
         </div>
     )
 }

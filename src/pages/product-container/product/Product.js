@@ -42,7 +42,9 @@ export default function Product({ product, productInd }) {
                       <SizeBtn size={size} hoverCol={product.botGradient}/>
                     ))}
                   </div>
-                      <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient}/>
+                    <div onClick={() => addProductToCart(product)}>
+                      <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient} />
+                    </div>
                 </div>
               </div>
             </div>
