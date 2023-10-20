@@ -18,9 +18,10 @@ function App() {
           <Route path="/" element={<Home />}>
             <Route path="loading" element={<PreLoader />} />
             <Route path="" element={<ProductContainer />} />
-            <Route path="cart" element={<Cart />} />
             <Route path="complete" element={<OrderComplete />} />
+            <Route path="cart" element={<Cart />} />
           </Route>
+          
         </Routes>
       </BrowserRouter>
     </div>

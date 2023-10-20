@@ -1,8 +1,7 @@
 [
     {
         "id": 0,
-        "name": "mati",
-        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/mati_ALPHA.png?alt=media&token=80f18bfb-c85f-42d2-9374-c3def3184271&_gl=1*180fhzz*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTA0OC4yMy4wLjA.",
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/Mati_Sized_ALPHA.png?alt=media&token=6f889d39-c35e-45bd-9bc7-64987cc5908b&_gl=1*1o4fvuv*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5Nzc0NTYyNC4zLjEuMTY5Nzc0NTY1Ni4yOC4wLjA.",
         "price": 41,
         "availSizes": ["S", "M", "L"],
         "topGradient": [32, 172, 232],
@@ -11,8 +10,7 @@
     },
     {
         "id": 1,
-        "name": "spine",
-        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/spine_ALPHA.png?alt=media&token=b29d3a7c-784b-4b80-a1b1-590c5689924b&_gl=1*14k68zp*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTA4MC42MC4wLjA.",
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/Spine_Sized_ALPHA.png?alt=media&token=b72e0f95-d477-48e7-8469-23b21bf65eb2&_gl=1*15kvfd6*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5Nzc0NTYyNC4zLjEuMTY5Nzc0NTY3Mi4xMi4wLjA.",
         "price": 42,
         "availSizes": ["S", "M", "L"],
         "topGradient": [208, 84, 18],
@@ -20,8 +18,7 @@
     },
     {
         "id": 2,
-        "name": "water",
-        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/water_ALPHA.png?alt=media&token=ab59f83f-7056-49d6-99d7-c1973fec5f13&_gl=1*1hcrhc2*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5NzUxNDc4My4xLjEuMTY5NzUxNTExNS4yNS4wLjA.",
+        "img": "https://firebasestorage.googleapis.com/v0/b/presence-c795d.appspot.com/o/Water_Sized_ALPHA.png?alt=media&token=e216e921-ec63-4710-abf8-35fa18f008eb&_gl=1*1wr16n*_ga*MTg4NjU4OTE3Mi4xNjk3NTE0Nzgz*_ga_CW55HF8NVT*MTY5Nzc0NTYyNC4zLjEuMTY5Nzc0NTY5NC42MC4wLjA.",
         "price": 43,
         "availSizes": ["S", "M", "L"],
         "topGradient": [230, 169, 89],

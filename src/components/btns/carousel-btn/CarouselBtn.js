@@ -1,4 +1,5 @@
 // assets
+import cardIcon from '../../../assets/icons/card-icon.png'
 import cartIcon from '../../../assets/icons/bag-icon.svg'
 import chevronUp from '../../../assets/icons/chevron-icon-up.png'
 import chevronDown from '../../../assets/icons/chevron-icon-down.png'
@@ -23,6 +24,9 @@ export default function CarouselBtn({ icon, filled=true }) {
         }
         {icon === "right" &&
           <img src={chevronRight} alt='right arrow icon' />
+        }
+        {icon === "card" &&
+          <img src={cardIcon} alt='card icon' />
         }
         {icon === "cart" &&
           <img src={cartIcon} alt='cart icon' style={{ filter: 'invert(1)' }}/>

@@ -6,7 +6,6 @@ import './Home.scss'
 
 // context
 import { ProductsContext } from '../../contexts/products-context/ProductsContext'
-import Cart from '../cart/Cart'
 
 export default function Home() {
   const { products } = useContext(ProductsContext)
@@ -14,10 +13,6 @@ export default function Home() {
 
   return (
     <div className='home-container'>
-      <div className='cart-component-container'>
-        <Cart />
-      </div>
-
       <div className='outlet-container'>
         <Outlet context={[productInd, setProductInd]} />
       </div>
