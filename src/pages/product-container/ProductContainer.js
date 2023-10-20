@@ -53,7 +53,7 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </div>
             </div>
-            <div className='products-container'>
+            <div className='products-container' onClick={() =>handleScroll()}>
                 {products.map(product => (
                     <Product product={product} productInd={productInd} />
                 ))}
