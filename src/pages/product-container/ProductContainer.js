@@ -53,9 +53,9 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </div>
             </div>
-            <div className='products-container' onClick={() =>handleScroll()}>
+            <div className='products-container'>
                 {products.map(product => (
-                    <Product product={product} productInd={productInd} />
+                    <Product key={product.id} product={product} productInd={productInd} />
                 ))}
             </div>
             <div className={`${isScrolled ? 'product-nav-btn-container-scrolled': 'product-nav-btn-container'}`} onClick={() => handleScroll()}>

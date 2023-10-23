@@ -10,9 +10,9 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 // styles
 import './CarouselBtn.scss'
 
-export default function CarouselBtn({ icon, filled=true }) {
+export default function CarouselBtn({ icon, filled=true, active=true }) {
   return (
-    <div className={`carousel-btn-container ${filled ? "carousel-btn-container-filled" : ""}`} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>
+    <div className={`carousel-btn-container ${active ? "" : "carousel-btn-inactive" } ${filled ? "carousel-btn-container-filled" : ""}`} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>
         {icon === "up" &&
           <img src={chevronUp} alt='up arrow icon' />
         }

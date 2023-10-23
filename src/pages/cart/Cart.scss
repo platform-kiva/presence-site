@@ -9,19 +9,28 @@
     .nav-btn-container-top {
         position: absolute;
         top: 50px;
+        z-index: 500;
     }
 
     .cart-display-container {
-        position: relative;
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        overflow-x: hidden;
+        position: absolute;
+        width: 100vw;
     }
 
     .cart-carousel-btn-container {
         align-items: center;
         display: flex;
         justify-content: space-between;
+        margin-top: 300px;
         right: 36px;
         top: 120px;
         width: 300px;
+        z-index: 500;
 
         h2 {
             font-size: 21px;

@@ -1,5 +1,5 @@
 import { motion as m, useAnimation } from 'framer-motion'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 // styles
 import './Product.scss'
@@ -16,10 +16,20 @@ import { CartContext } from '../../../contexts/cart-context/CartContext'
 
 export default function Product({ product, productInd }) {
   const { addItemToCart } = useContext(CartContext)
-  const addProductToCart = () => addItemToCart(product)
+  const addProductToCart = () => {
+    if (activeSize !== null) {
+      addItemToCart(product, activeSize)
+    }
+  }
+
+  const [activeSize, setActiveSize] = useState(null)
 
   const controlDiv1 = useAnimation()
   const controlDiv2 = useAnimation()
+
+  const handleSizeSelection = (size) => {
+    setActiveSize(size)
+  }
 
   const handleMouseEnter = () => {
     controlDiv1.start({ translateY: -10, scale: 1.05, transition: {duration: 0.8 } })
@@ -65,11 +75,13 @@ export default function Product({ product, productInd }) {
                 <div className='product-container-action'>
                   <div className='product-container-action-sizes'>
                     {product.availSizes.map(size => (
-                      <SizeBtn key={size} size={size} hoverCol={product.botGradient}/>
+                      <div key={size} onClick={() => handleSizeSelection(size)}>
+                        <SizeBtn size={size} hoverCol={product.botGradient} selectedSize={activeSize} />
+                      </div>
                     ))}
                   </div>
-                  <div onClick={() => addProductToCart(product)}>
-                    <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient} />
+                  <div onClick={() => addProductToCart(product, activeSize)}>
+                    <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient} isActive={activeSize !== null}/>
                   </div>
                 </div>
               </div>
@@ -79,11 +91,9 @@ export default function Product({ product, productInd }) {
                     <li className='product-container-description-text' key={description}>{description}</li>
                   ))}
                 </ul>
-
               </div>
             </div>
           </div>
-      
         </div>
       }
     </>

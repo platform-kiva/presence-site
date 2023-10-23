@@ -11,15 +11,14 @@ import NavBtn from '../btns/nav-btn/NavBtn'
 import { CartContext } from '../../contexts/cart-context/CartContext'
 
 export default function Header() {
-    const { isCartEmpty } = useContext(CartContext)
+    const { cartCount } = useContext(CartContext)
     
     return (
         <div className='header-container'>
-            {isCartEmpty &&
+            {cartCount === 0 ? 
                 <Banner />
-            }
-            {!isCartEmpty &&
-                <NavBtn direction={"up"} btnIcon={"cart"}/>
+            :
+                <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} />      
             }
         </div>
     )
