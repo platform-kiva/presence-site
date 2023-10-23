@@ -17,12 +17,28 @@ import { CartContext } from '../../../contexts/cart-context/CartContext'
 export default function Product({ product, productInd }) {
   const { addItemToCart } = useContext(CartContext)
   const addProductToCart = () => {
-    if (activeSize !== null) {
-      addItemToCart(product, activeSize)
+    try {
+      if (timerRunning) {
+        return;
+      }
+      if (activeSize !== null) {
+        addItemToCart(product, activeSize)
+        setPrimaryBtnLabel('ADDED TO CART!')
+        setTimerRunning(true);
+        setTimeout(() => {
+          setPrimaryBtnLabel('ADD TO CART');
+          setTimerRunning(false);
+        }, 2000);
+
+      }
+    } catch (error) {
+      console.log("Item was not added to cart.")
     }
   }
 
   const [activeSize, setActiveSize] = useState(null)
+  const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART')
+  const [timerRunning, setTimerRunning] = useState(false);
 
   const controlDiv1 = useAnimation()
   const controlDiv2 = useAnimation()
@@ -81,7 +97,7 @@ export default function Product({ product, productInd }) {
                     ))}
                   </div>
                   <div onClick={() => addProductToCart(product, activeSize)}>
-                    <PrimaryBtn label={"ADD TO CART"} hoverCol={product.botGradient} isActive={activeSize !== null}/>
+                    <PrimaryBtn label={primaryBtnLabel} hoverCol={product.botGradient} isActive={activeSize !== null}/>
                   </div>
                 </div>
               </div>

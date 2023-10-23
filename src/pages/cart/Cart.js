@@ -4,6 +4,9 @@ import { useOutletContext } from 'react-router-dom'
 // styles
 import './Cart.scss'
 
+// assets
+import cursorIconFilled from '../../assets/icons/cursor_filled.png'
+
 // components
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import CartItem from './cart-item/CartItem'
@@ -11,18 +14,20 @@ import NavBtn from '../../components/btns/nav-btn/NavBtn'
 
 // context
 import { CartContext } from '../../contexts/cart-context/CartContext'
+import { ProductsContext } from '../../contexts/products-context/ProductsContext'
 
 export default function Cart() {
-  const { cartCount, cartItems } = useContext(CartContext)
+  const { cartCount, cartItems, addItemToCart, removeItemFromCart } = useContext(CartContext)
+  const { products } = useContext(ProductsContext)
   const [productInd, setProductInd] = useOutletContext();
   const [cartInd, setCartInd] = useState(0)
 
   const handleIndChange = (val) => {
     let currInd = cartInd
-    if (currInd === (cartCount - 1) && val === 1) {
+    if (currInd === (cartItems.length - 1) && val === 1) {
         currInd = 0
     } else if (currInd === 0 && val === -1) {
-        currInd = cartCount - 1
+        currInd = cartItems.length - 1
     } else {
         currInd += val
     }
@@ -30,15 +35,27 @@ export default function Cart() {
     console.log(productInd) // find way to delete later
   }
 
+  // const handleCartItemRemoval = () => {
+  //   let currInd = cartInd
+  //   if (currInd === (cartCount - 1)) {
+  //     currInd -= 0
+  //   } else {
+  //       currInd += 1
+  //   }
+  //   setCartInd(currInd)
+  //   removeItemFromCart(cartInd)
+    
+  // }
+
   useEffect(() => {
-    if (cartCount !== 0) {
+    if (cartItems.length !== 0) {
       setProductInd(cartItems[cartInd].id)
     }
   }, [cartCount, cartInd, cartItems, setProductInd])
 
   return (
     <div className='cart-container'>
-      {cartCount !== 0 &&
+      {cartItems.length !== 0 &&
         <>
           <div className='nav-btn-container-top'>
             <NavBtn direction={"up"} btnIcon="card"/>
@@ -55,23 +72,29 @@ export default function Cart() {
 
           <div className='cart-carousel-btn-container'>
             <div onClick={() => handleIndChange(-1)}>
-              <CarouselBtn icon="left" active={cartCount === 1 ? false : true} />
+              <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
             </div>
-            <div>
-              <h2>SIZE: {cartItems[cartInd].size}</h2>
-              <h3>REMOVE</h3>
+            <div className='cart-carousel-item-label-container'>
+              <div className='cart-item-details-container'>
+                <h2>SIZE: {cartItems[cartInd].size}</h2>
+                <h2>QUANTITY: {cartItems[cartInd].quantity}</h2>
+              </div>
             </div>
-
+            
             <div onClick={() => handleIndChange(1)}>
-              <CarouselBtn icon="right" active={cartCount === 1 ? false : true} />
+              <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
             </div> 
           </div>
+          <div className='cart-item-inc-dec-container'>
+            <h3 onClick={() => removeItemFromCart(cartItems[cartInd])} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>REMOVE</h3>
+            <h3 onClick={() => addItemToCart(products[productInd], cartItems[cartInd].size)} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>ADD</h3>
+          </div>
 
-          <h1 className='cart-quantity'>CART ({cartInd + 1}/{cartCount})</h1>
+          <h1 className='cart-quantity'>CART: {cartCount}</h1>
           <div className='cart-item-shadow' />
         </>
       }
-      {cartCount === 0 &&
+      {cartItems.length === 0 &&
         <>
           <h1>CART IS EMPTY</h1>
         </>   

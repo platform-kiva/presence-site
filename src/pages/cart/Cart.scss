@@ -32,14 +32,36 @@
         width: 300px;
         z-index: 500;
 
-        h2 {
-            font-size: 21px;
+        .cart-carousel-item-label-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .cart-item-details-container {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+
+                h2 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .cart-item-inc-dec-container {
+        display: flex;
+        gap: 20px;
+        z-index: 500;
+
+        h3 {
+            font-size: 16px;
+            text-decoration: underline;
         }
     }
 
     .cart-quantity {
         color: rgba($color: #000000, $alpha: 0.1);
-        font-size: 48px;
+        font-size: 36px;
         margin-top: 20px;
         margin-bottom: 6px;
     }

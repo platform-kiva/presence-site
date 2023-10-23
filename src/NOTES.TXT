@@ -1,10 +1,6 @@
 Checklist
-- When returning back to Product page from Cart, make sure the last item viewed before going to Cart is displayed
-    - Some mix-up with using setProductInd sets the last viewed cart item as the first view Product item
-- Fix clicking on TopFold product image to scroll, it's currently being triggered by any mouse click
+- Add clicking on TopFold product image to scroll
 - Responsive design
-- Implement persistantancy so refresh doesn't reset Product/gradient
-- Implement product size into CartContext data (Add to cart adds size, not so much the need for quantity except adding for total Cart quantity, perhaps stored separately)
 
 Considerations
 - More microinteractions
