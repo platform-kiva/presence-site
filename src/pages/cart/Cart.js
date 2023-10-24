@@ -32,30 +32,33 @@ export default function Cart() {
         currInd += val
     }
     setCartInd(currInd)
-    console.log(productInd) // find way to delete later
+    setProductInd(currInd)
   }
 
-  // const handleCartItemRemoval = () => {
-  //   let currInd = cartInd
-  //   if (currInd === (cartCount - 1)) {
-  //     currInd -= 0
-  //   } else {
-  //       currInd += 1
-  //   }
-  //   setCartInd(currInd)
-  //   removeItemFromCart(cartInd)
-    
-  // }
+  const handleCartItemRemoval = () => {
+    if (cartInd === cartItems.length - 1 && cartItems[cartInd].quantity === 1) {
+      const indToRemove = cartInd
+      const newCartInd = cartInd - 1
+      setCartInd(newCartInd)
+      removeItemFromCart(cartItems[indToRemove])
+    } else {
+      removeItemFromCart(cartItems[cartInd])
+    }
+  }
+
+  const handleCartItemAdd = () => {
+    addItemToCart(products[productInd], cartItems[cartInd].size)
+  }
 
   useEffect(() => {
-    if (cartItems.length !== 0) {
+    if (cartItems.length !== 0 && cartItems[cartInd]) {
       setProductInd(cartItems[cartInd].id)
     }
-  }, [cartCount, cartInd, cartItems, setProductInd])
+  }, [cartInd, cartItems, setProductInd])
 
   return (
     <div className='cart-container'>
-      {cartItems.length !== 0 &&
+      {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
           <div className='nav-btn-container-top'>
             <NavBtn direction={"up"} btnIcon="card"/>
@@ -86,8 +89,8 @@ export default function Cart() {
             </div> 
           </div>
           <div className='cart-item-inc-dec-container'>
-            <h3 onClick={() => removeItemFromCart(cartItems[cartInd])} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>REMOVE</h3>
-            <h3 onClick={() => addItemToCart(products[productInd], cartItems[cartInd].size)} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>ADD</h3>
+            <h3 onClick={() => handleCartItemRemoval()} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>REMOVE</h3>
+            <h3 onClick={() => handleCartItemAdd()} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>ADD</h3>
           </div>
 
           <h1 className='cart-quantity'>CART: {cartCount}</h1>

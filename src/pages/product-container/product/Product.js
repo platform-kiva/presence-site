@@ -22,7 +22,9 @@ export default function Product({ product, productInd }) {
         return;
       }
       if (activeSize !== null) {
+        console.log("productInd before item added: " + productInd)
         addItemToCart(product, activeSize)
+        console.log("productInd after item added: " + productInd)
         setPrimaryBtnLabel('ADDED TO CART!')
         setTimerRunning(true);
         setTimeout(() => {
