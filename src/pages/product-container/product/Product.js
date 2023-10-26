@@ -2,10 +2,22 @@ import { motion as m, useAnimation } from 'framer-motion'
 import { useContext, useState } from 'react'
 
 // styles
-import './Product.scss'
+import {
+  ProductContainer,
+  ProductContainerTopFold,
+  ProductImgContainer,
+  ProductShadow,
+  ProductContainerBotFold,
+  BotFoldCol,
+  ProductImgCarousel,
+  ProductCarouselImgContainer,
+  PriceAction,
+  Price,
+  ActionContainer,
+  SizesContainer,
+  DescriptionContainer
+} from './Product.styles.js'
 
-// assets
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 
 // components
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn'
@@ -62,57 +74,54 @@ export default function Product({ product, productInd }) {
   return (
     <>
       {product.id === productInd &&
-        <div className='product-container'>
-          <div id="productTopFold" className='product-container-top-fold'>
-            <m.img
+        <ProductContainer>
+          <ProductContainerTopFold id="productTopFold">
+            <ProductImgContainer
               animate={controlDiv1}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className='product-img-container'
-              src={product.img}
+              src={product.imgURL}
               alt='product img'
-              style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}
             />
-            <m.div
+            <ProductShadow
               animate={controlDiv2}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className='product-shadow'
             />
-          </div>
-          <div id="productBotFold" className='product-container-bot-fold'>
-            <div className='product-container-bot-fold-col'>  
-              <div className='product-img-carousel'>
-                <img className='product-carousel-img-container' src={product.img} alt='product img enlarged'/>
-              </div>
-            </div>
+          </ProductContainerTopFold>
+          <ProductContainerBotFold id="productBotFold">
+            <BotFoldCol>  
+              <ProductImgCarousel>
+                <ProductCarouselImgContainer src={product.imgURL} alt='product img enlarged'/>
+              </ProductImgCarousel>
+            </BotFoldCol>
             
-            <div className='product-container-bot-fold-col'>  
-              <div className='product-container-price-action'>
-                <h1 className='product-container-price' style={{ textShadow: `3px 3px 1px rgba(${product.botGradient}, 0.67)` }}>${product.price}</h1>
-                <div className='product-container-action'>
-                  <div className='product-container-action-sizes'>
+            <BotFoldCol>  
+              <PriceAction>
+                <Price accentCol={product.botGradient}>${product.price}</Price>
+                <ActionContainer>
+                  <SizesContainer>
                     {product.availSizes.map(size => (
                       <div key={size} onClick={() => handleSizeSelection(size)}>
-                        <SizeBtn size={size} hoverCol={product.botGradient} selectedSize={activeSize} />
+                        <SizeBtn size={size} accentCol={product.botGradient} selectedSize={activeSize} />
                       </div>
                     ))}
-                  </div>
+                  </SizesContainer>
                   <div onClick={() => addProductToCart(product, activeSize)}>
-                    <PrimaryBtn label={primaryBtnLabel} hoverCol={product.botGradient} isActive={activeSize !== null}/>
+                    <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
                   </div>
-                </div>
-              </div>
-              <div className='product-container-description'>
+                </ActionContainer>
+              </PriceAction>
+              <DescriptionContainer>
                 <ul>
                   {product.description.map(description => (
-                    <li className='product-container-description-text' key={description}>{description}</li>
+                    <li key={description}>{description}</li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+              </DescriptionContainer>
+            </BotFoldCol>
+          </ProductContainerBotFold>
+        </ProductContainer>
       }
     </>
   )

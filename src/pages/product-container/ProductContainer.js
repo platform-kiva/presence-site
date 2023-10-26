@@ -2,12 +2,18 @@ import { useContext, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 // styles
-import './ProductContainer.scss'
+import {
+    ProductsContainer,
+    CarouselBtnsContainer,
+    CarouselBtnContainer,
+    ProductViewContainer,
+    NavBtnContainer
+} from './ProductContainer.styles.js'
 
 // components
+import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import Header from '../../components/header/Header'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
-import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import Product from './product/Product'
 
 // context
@@ -15,7 +21,6 @@ import { ProductsContext } from '../../contexts/products-context/ProductsContext
 
 export default function ProductContainer() {
     const { products } = useContext(ProductsContext)
-    
     const [isScrolled, setIsScrolled] = useState(false)
     const [productInd, setProductInd] = useOutletContext();
 
@@ -43,24 +48,24 @@ export default function ProductContainer() {
     }
 
     return (
-        <div className='product-container-container'>
+        <ProductsContainer>
             <Header />
-            <div className='product-carousel-btns-container'>
-                <div className='product-carousel-btn-container' onClick={() => handleIndChange(-1)}>
+            <CarouselBtnsContainer>
+                <CarouselBtnContainer onClick={() => handleIndChange(-1)}>
                     <CarouselBtn icon={"left"} filled={false} />
-                </div>
-                <div className='product-carousel-btn-container' onClick={() => handleIndChange(1)}>
+                </CarouselBtnContainer>
+                <CarouselBtnContainer onClick={() => handleIndChange(1)}>
                     <CarouselBtn icon={"right"} filled={false} />
-                </div>
-            </div>
-            <div className='products-container'>
+                </CarouselBtnContainer>
+            </CarouselBtnsContainer>
+            <ProductViewContainer>                
                 {products.map(product => (
                     <Product key={product.id} product={product} productInd={productInd} />
                 ))}
-            </div>
-            <div className={`${isScrolled ? 'product-nav-btn-container-scrolled': 'product-nav-btn-container'}`} onClick={() => handleScroll()}>
+            </ProductViewContainer>
+            <NavBtnContainer isScrolled={isScrolled} onClick={() => handleScroll()}>
                 <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
-            </div>
-        </div>
+            </NavBtnContainer>
+        </ProductsContainer>
     )
 }

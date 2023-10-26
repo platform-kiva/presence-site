@@ -1,14 +1,14 @@
 // styles
-import './CartItem.scss'
+import { CartItemContainer, CartItemImg } from "./CartItem.styles"
 
 export default function CartItem({ cartItem }) {
-    const { img } = cartItem
+    const { imgURL } = cartItem
 
     return (
         <>
-            <div className='cart-item-container'>
-                <img src={img} alt='product img' className='cart-item-img'/>
-            </div>
+            <CartItemContainer>
+                <CartItemImg src={imgURL} alt='product img'/>
+            </CartItemContainer>
         </>
     )
 }

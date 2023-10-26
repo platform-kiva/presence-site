@@ -1,13 +1,27 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-import PRODUCT_DATA from '../../data/shop-data.json'
+import { getProductsAndDocuments } from "../../utils/firebase/FirebaseUtils";
 
 export const ProductsContext = createContext({
     products: [],
 })
 
 export const ProductsProvider = ({ children }) => {
-    const [products, setProducts] = useState(PRODUCT_DATA)
+    const [products, setProducts] = useState([])
+
+    // useEffect(() => {
+    //     addCollectionAndDocuments('categories', SHOP_DATA)
+    // }, [])
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const products = await getProductsAndDocuments()
+            console.log(products)
+            setProducts(products)
+        }
+        getProducts()
+    }, [])
+
     const value = { products }
 
     return (

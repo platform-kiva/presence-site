@@ -1,11 +1,7 @@
-import { motion as m } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
-// assets
-import cursorIconFilled from '../../assets/icons/cursor_filled.png'
-
 // styles
-import './PreLoader.scss'
+import { PreLoaderContainer, PreLoaderBannerContainer } from './PreLoader.styles.js'
 
 // components
 import Banner from '../../components/banner/Banner'
@@ -14,8 +10,8 @@ export default function PreLoader() {
     const navigate = useNavigate()
 
     return (
-        <div className='pre-loader-container' onClick={() => navigate("/")}>
-            <m.div
+        <PreLoaderContainer onClick={() => navigate("/")}>
+            <PreLoaderBannerContainer
                 initial={{ opacity: 0.0, translateX: -20 }}
                 animate={{ opacity: [0.0, 1.0], translateX: [-20, 0] }}
                 transition={{
@@ -28,9 +24,9 @@ export default function PreLoader() {
                     transition: { duration: 0.8 }
                 }}
                 className='pre-loader-banner-container'
-                style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>
+            >
                 <Banner />
-            </m.div>
-        </div>
+            </PreLoaderBannerContainer>
+        </PreLoaderContainer>
     )
 }

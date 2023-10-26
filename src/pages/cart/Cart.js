@@ -2,10 +2,20 @@ import { useContext, useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 // styles
-import './Cart.scss'
-
-// assets
-import cursorIconFilled from '../../assets/icons/cursor_filled.png'
+import {
+  CartContainer,
+  TopNavBtnContainer,
+  CartItemDisplayContainer,
+  CarouselBtnContainer,
+  CartItemLabelContainer,
+  CartItemDetailsContainer,
+  DetailsLabel,
+  CartItemIncDecContainer,
+  IndDecLabel,
+  CartQuantity,
+  CartItemShadow,
+  BotNavBtnContainer
+} from './Cart.styles.js'
 
 // components
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
@@ -14,11 +24,9 @@ import NavBtn from '../../components/btns/nav-btn/NavBtn'
 
 // context
 import { CartContext } from '../../contexts/cart-context/CartContext'
-import { ProductsContext } from '../../contexts/products-context/ProductsContext'
 
 export default function Cart() {
   const { cartCount, cartItems, addItemToCart, removeItemFromCart } = useContext(CartContext)
-  const { products } = useContext(ProductsContext)
   const [productInd, setProductInd] = useOutletContext();
   const [cartInd, setCartInd] = useState(0)
 
@@ -35,7 +43,11 @@ export default function Cart() {
     setProductInd(currInd)
   }
 
-  const handleCartItemRemoval = () => {
+  const handleAddItemFromCart = () => {
+    addItemToCart(cartItems[productInd], cartItems[cartInd].size)
+  }
+
+  const handleRemoveItemFromCart = () => {
     if (cartInd === cartItems.length - 1 && cartItems[cartInd].quantity === 1) {
       const indToRemove = cartInd
       const newCartInd = cartInd - 1
@@ -46,10 +58,6 @@ export default function Cart() {
     }
   }
 
-  const handleCartItemAdd = () => {
-    addItemToCart(products[productInd], cartItems[cartInd].size)
-  }
-
   useEffect(() => {
     if (cartItems.length !== 0 && cartItems[cartInd]) {
       setProductInd(cartItems[cartInd].id)
@@ -57,44 +65,44 @@ export default function Cart() {
   }, [cartInd, cartItems, setProductInd])
 
   return (
-    <div className='cart-container'>
+    <CartContainer>
       {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
-          <div className='nav-btn-container-top'>
+          <TopNavBtnContainer>
             <NavBtn direction={"up"} btnIcon="card"/>
-          </div>
+          </TopNavBtnContainer>
 
-          <div className='cart-display-container'>
+          <CartItemDisplayContainer>
             {cartItems.map((item, index) => {
               if (index === cartInd) {
                 return  <CartItem key={item.id} cartItem={item} cartInd={cartInd}/>
               }
               return null
             })}
-          </div>    
+          </CartItemDisplayContainer>    
 
-          <div className='cart-carousel-btn-container'>
+          <CarouselBtnContainer>
             <div onClick={() => handleIndChange(-1)}>
               <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
             </div>
-            <div className='cart-carousel-item-label-container'>
-              <div className='cart-item-details-container'>
-                <h2>SIZE: {cartItems[cartInd].size}</h2>
-                <h2>QUANTITY: {cartItems[cartInd].quantity}</h2>
-              </div>
-            </div>
+            <CartItemLabelContainer>
+              <CartItemDetailsContainer>
+                <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
+                <DetailsLabel>QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
+              </CartItemDetailsContainer>
+            </CartItemLabelContainer>
             
             <div onClick={() => handleIndChange(1)}>
               <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
             </div> 
-          </div>
-          <div className='cart-item-inc-dec-container'>
-            <h3 onClick={() => handleCartItemRemoval()} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>REMOVE</h3>
-            <h3 onClick={() => handleCartItemAdd()} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>ADD</h3>
-          </div>
+          </CarouselBtnContainer>
+          <CartItemIncDecContainer>
+            <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
+            <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
+          </CartItemIncDecContainer>
 
-          <h1 className='cart-quantity'>CART: {cartCount}</h1>
-          <div className='cart-item-shadow' />
+          <CartQuantity>CART: {cartCount}</CartQuantity>
+          <CartItemShadow></CartItemShadow>
         </>
       }
       {cartItems.length === 0 &&
@@ -102,9 +110,9 @@ export default function Cart() {
           <h1>CART IS EMPTY</h1>
         </>   
       }
-      <div className='nav-btn-container-bot'>
+      <BotNavBtnContainer>
         <NavBtn direction={"down"} btnIcon="down" link={'/'}/>
-      </div>
-    </div>
+      </BotNavBtnContainer>
+    </CartContainer>
   )
 }

@@ -1,4 +1,5 @@
 Checklist
+- NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)
 - Add clicking on TopFold product image to scroll
 - Responsive design
 
@@ -7,3 +8,7 @@ Considerations
 - Need to create ColorsContext/ProductContext?
     - Because of themed UI, is it better to separate Product data from Product colors?
     - Maybe not, as the data being pulled is used in multiple places (Product, Cart), it may make more sense to keep bundled
+
+
+TOPICS COVERED
+- styled components
