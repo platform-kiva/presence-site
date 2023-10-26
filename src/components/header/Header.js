@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 // styles
-import './Header.scss'
+import { HeaderContainer } from './Header.styles.js'
 
 // components
 import Banner from '../banner/Banner'
@@ -14,12 +14,12 @@ export default function Header() {
     const { cartCount } = useContext(CartContext)
     
     return (
-        <div className='header-container'>
+        <HeaderContainer>
             {cartCount === 0 ? 
                 <Banner />
             :
                 <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} />      
             }
-        </div>
+        </HeaderContainer>
     )
 }

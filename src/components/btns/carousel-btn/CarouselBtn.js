@@ -35,4 +35,4 @@ export default function CarouselBtn({ icon, filled=true, active=true }) {
         }
     </CarouselBtnContainer>
   )
-}
+};

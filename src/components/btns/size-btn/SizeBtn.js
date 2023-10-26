@@ -1,14 +1,14 @@
 // styles
-import './SizeBtn.scss'
-
-// assets
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
+import {
+  SizeBtnContainer,
+  BtnLabel
+} from './SizeBtn.styles.js'
 
 export default function SizeBtn({ size, accentCol, selectedSize=null }) {
 
   return (
-    <div className={`size-btn-container ${selectedSize === size ? 'size-btn-container-active' : ''}`} style={{ cursor: `url(${cursorIconFilled}) 15 15, auto`}}>
-        <h3 style={{ textShadow: `2px 2px 1px rgba(${accentCol}, 0.67)` }}>{size}</h3>
-    </div>
+    <SizeBtnContainer size={size} selectedSize={selectedSize}>
+        <BtnLabel accentCol={accentCol}>{size}</BtnLabel>
+    </SizeBtnContainer>
   )
 }

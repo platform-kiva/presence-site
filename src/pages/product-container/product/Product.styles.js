@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 
 export const ProductContainer = styled.div`
