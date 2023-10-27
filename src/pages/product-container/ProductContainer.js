@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useOutletContext } from 'react-router-dom'
 
 // styles
@@ -16,11 +17,10 @@ import Header from '../../components/header/Header'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
 import Product from './product/Product'
 
-// context
-import { ProductsContext } from '../../contexts/products-context/ProductsContext'
+import { selectProducts } from '../../store/products/products.selector.js'
 
 export default function ProductContainer() {
-    const { products } = useContext(ProductsContext)
+    const products = useSelector(selectProducts);
     const [isScrolled, setIsScrolled] = useState(false)
     const [productInd, setProductInd] = useOutletContext();
 

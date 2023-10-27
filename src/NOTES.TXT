@@ -12,3 +12,4 @@ Considerations
 
 TOPICS COVERED
 - styled components
+- Reducers

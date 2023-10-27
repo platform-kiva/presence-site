@@ -8,11 +8,7 @@ import {
     getFirestore,
     writeBatch,
     } from  "firebase/firestore"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBz3XCNguxg_XlgtcGOf34Tschy3pGomEI",
     authDomain: "presence-9cced.firebaseapp.com",
@@ -23,10 +19,9 @@ const firebaseConfig = {
     measurementId: "G-PGG77M53RW"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const db = getFirestore()
+// console.log(app)
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey);

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext, useReducer } from "react";
 
 const addCartItem = (cartItems, productToAdd, size) => {
@@ -37,6 +38,10 @@ export const CartContext = createContext({
     removeItemFromCart: () => {}
 })
 
+const CART_ACTION_TYPES = {
+    SET_CART_ITEMS: 'SET_CART_ITEMS'
+}
+
 const INITIAL_STATE = {
     cartItems: [],
     cartCount: 0,
@@ -47,7 +52,7 @@ const cartReducer = (state, action) => {
     const { type, payload } = action;
 
     switch (type) {
-        case 'SET_CART_ITEMS':
+        case CART_ACTION_TYPES.SET_CART_ITEMS:
             return {
                 ...state,
                 ...payload
@@ -72,7 +77,7 @@ export const CartProvider = ({ children }) => {
         );
     
         dispatch({
-            type: 'SET_CART_ITEMS',
+            type: CART_ACTION_TYPES.SET_CART_ITEMS,
             payload: {
                 cartItems: newCartItems,
                 cartCount: newCartCount,
@@ -80,6 +85,10 @@ export const CartProvider = ({ children }) => {
             }
         });
     };
+
+    useEffect(() => {
+        console.log(cartItems)
+    },[cartItems])
 
     const addItemToCart = (productToAdd, size) => {
         const newCartItems = addCartItem(cartItems, productToAdd, size);
