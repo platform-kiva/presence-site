@@ -1,4 +1,4 @@
-import { motion as m, useAnimation } from 'framer-motion'
+import { useAnimation } from 'framer-motion'
 import { useContext, useState } from 'react'
 
 // styles

@@ -20,8 +20,7 @@ function App() {
             <Route path="" element={<ProductContainer />} />
             <Route path="complete" element={<OrderComplete />} />
             <Route path="cart" element={<Cart />} />
-          </Route>
-          
+          </Route> 
         </Routes>
       </BrowserRouter>
     </div>
