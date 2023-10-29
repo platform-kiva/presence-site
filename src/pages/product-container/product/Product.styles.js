@@ -66,7 +66,7 @@ export const PriceAction = styled.div`
 export const Price = styled.h1`
     font-size: 81px;
     text-shadow: ${props => 
-        `3px 3px 1px rgba(${props.accentCol}, 0.67)`
+        `3px 3px 1px rgba(${props.$accentCol}, 0.67)`
     };
 `
 export const ActionContainer = styled.div`

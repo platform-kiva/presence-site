@@ -98,7 +98,7 @@ export default function Product({ product, productInd }) {
             
             <BotFoldCol>  
               <PriceAction>
-                <Price accentCol={product.botGradient}>${product.price}</Price>
+                <Price $accentCol={product.botGradient}>${product.price}</Price>
                 <ActionContainer>
                   <SizesContainer>
                     {product.availSizes.map(size => (

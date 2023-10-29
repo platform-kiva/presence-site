@@ -63,7 +63,7 @@ export default function ProductContainer() {
                     <Product key={product.id} product={product} productInd={productInd} />
                 ))}
             </ProductViewContainer>
-            <NavBtnContainer isScrolled={isScrolled} onClick={() => handleScroll()}>
+            <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
                 <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
             </NavBtnContainer>
         </ProductsContainer>

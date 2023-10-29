@@ -4,7 +4,7 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 export const SizeBtnContainer = styled.div`
     align-items: center;
     background-color: ${props =>
-        props.selectedSize === props.size ? "rgba(255,255,255,0.2)" : ""
+        props.$selectedSize === props.$size ? "rgba(255,255,255,0.2)" : ""
     };
     border: 2px solid #FFFFFF;
     border-radius: 50px;
@@ -13,7 +13,7 @@ export const SizeBtnContainer = styled.div`
     height: 50px;
     justify-content: center;
     opacity: ${props =>
-        props.selectedSize === props.size ? "1.0" : "0.5"
+        props.$selectedSize === props.$size ? "1.0" : "0.5"
     };
     transition: 0.4s ease-in-out;
     width: 50px;
@@ -26,6 +26,6 @@ export const SizeBtnContainer = styled.div`
 `
 export const BtnLabel = styled.h3`
     font-size: 20px;
-    text-shadow: ${props => `2px 2px 1px rgba(${props.accentCol}, 0.67)`
+    text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`
     };
 `

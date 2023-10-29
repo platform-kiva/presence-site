@@ -14,7 +14,7 @@ import {
 
 export default function CarouselBtn({ icon, filled=true, active=true }) {
   return (
-    <CarouselBtnContainer filled={filled} active={active}>
+    <CarouselBtnContainer $filled={filled} $active={active}>
         {icon === "up" &&
           <CarouselBtnIcon src={chevronUp} alt='up arrow icon' />
         }

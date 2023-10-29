@@ -24,7 +24,7 @@ export const ProductViewContainer = styled.div`
 `
 export const NavBtnContainer = styled.div`
     bottom: ${props =>
-        props.isScrolled ? "-102.5px" : "50px"
+        props.$isScrolled ? "-102.5px" : "50px"
     };
     left: 50%;
     position: absolute;
