@@ -26,7 +26,7 @@ import NavBtn from '../../components/btns/nav-btn/NavBtn'
 import { CartContext } from '../../contexts/cart-context/CartContext'
 
 export default function Cart() {
-  const { cartCount, cartItems, addItemToCart, removeItemFromCart } = useContext(CartContext)
+  const { cartCount, cartItems, cartTotal, addItemToCart, removeItemFromCart } = useContext(CartContext)
   const [productInd, setProductInd] = useOutletContext();
   const [cartInd, setCartInd] = useState(0)
 
@@ -101,7 +101,7 @@ export default function Cart() {
             <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
           </CartItemIncDecContainer>
 
-          <CartQuantity>CART: {cartCount}</CartQuantity>
+          <CartQuantity>CART: {cartCount} / ${cartTotal}</CartQuantity>
           <CartItemShadow></CartItemShadow>
         </>
       }

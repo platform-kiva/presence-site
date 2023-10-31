@@ -23,7 +23,7 @@ export const ProductImgContainer = styled(motion.img)`
     cursor: url(${cursorIconFilled}) 15 15, auto;
     height: 300px;
 `
-export const ProductShadow = styled.div`
+export const ProductShadow = styled(motion.div)`
     background-color: rgba(0,0,0,0.15);
     border-radius: 50%;
     filter: blur(7px);

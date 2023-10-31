@@ -1,7 +1,7 @@
 import { PRODUCTS_ACTION_TYPES } from "./products.types";
 
 export const PRODUCTS_INITIAL_STATE = {
-    productsArray: []
+    products: []
 };
 
 export const productsReducer = (state = PRODUCTS_INITIAL_STATE, action = {}) => {
@@ -9,7 +9,7 @@ export const productsReducer = (state = PRODUCTS_INITIAL_STATE, action = {}) => 
 
     switch(type) {
         case PRODUCTS_ACTION_TYPES.SET_PRODUCTS:
-            return {...state, productsArray: payload};
+            return {...state, products: payload};
         default:
             return state;
     }
