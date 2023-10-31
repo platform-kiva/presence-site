@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getProductsAndDocuments } from '../../utils/firebase/FirebaseUtils.js'
-import { setProductsArray } from '../../store/products/products.action.js'
+import { fetchProductsAsync } from '../../store/products/products.action.js'
 import { selectProducts } from '../../store/products/products.selector.js'
 
 // styles
@@ -16,12 +15,8 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProducts = async () => {
-        const products = await getProductsAndDocuments();
-        dispatch(setProductsArray(products));
-    }
-    getProducts()
-}, []);
+    dispatch(fetchProductsAsync());
+  }, []);
 
   return (
     <>
