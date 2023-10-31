@@ -11,5 +11,10 @@ Considerations
 
 
 TOPICS COVERED
+- Hooks
 - styled components
 - Reducers
+- Redux
+- Redux-Thunk
+- Memoization
+- Local storage persistance

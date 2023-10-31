@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"
 
 // sub-reducers
 import { cartReducer } from "./cart/cart.reducer";
