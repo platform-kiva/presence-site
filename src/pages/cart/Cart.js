@@ -45,11 +45,11 @@ export default function Cart() {
         currInd += val
     }
     setCartInd(currInd)
-    setProductInd(currInd)
+    setProductInd(cartItems[currInd].id)
   }
 
   const handleAddItemFromCart = () => {
-    dispatch(addItemToCart(cartItems, cartItems[productInd], cartItems[cartInd].size))
+    dispatch(addItemToCart(cartItems, cartItems[cartInd], cartItems[cartInd].size))
   }
 
   const handleRemoveItemFromCart = () => {
