@@ -1,5 +1,9 @@
 import { useAnimation } from 'framer-motion'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { addItemToCart } from '../../../store/cart/cart.action.js'
+import { selectCartItems } from '../../../store/cart/cart.selector.js'
 
 // styles
 import {
@@ -23,11 +27,10 @@ import {
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn'
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js'
 
-// context
-import { CartContext } from '../../../contexts/cart-context/CartContext'
-
 export default function Product({ product, productInd }) {
-  const { addItemToCart } = useContext(CartContext)
+  const dispatch = useDispatch()
+  const cartItems = useSelector(selectCartItems)
+
   const addProductToCart = () => {
     try {
       if (timerRunning) {
@@ -35,7 +38,7 @@ export default function Product({ product, productInd }) {
       }
       if (activeSize !== null) {
         console.log("productInd before item added: " + productInd)
-        addItemToCart(product, activeSize)
+        dispatch(addItemToCart(cartItems, product, activeSize))
         console.log("productInd after item added: " + productInd)
         setPrimaryBtnLabel('ADDED TO CART!')
         setTimerRunning(true);

@@ -1,5 +1,9 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js'
+import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js'
 
 // styles
 import {
@@ -22,11 +26,12 @@ import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import CartItem from './cart-item/CartItem'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
 
-// context
-import { CartContext } from '../../contexts/cart-context/CartContext'
-
 export default function Cart() {
-  const { cartCount, cartItems, cartTotal, addItemToCart, removeItemFromCart } = useContext(CartContext)
+  const dispatch = useDispatch()
+  const cartCount = useSelector(selectCartCount)
+  const cartTotal = useSelector(selectCartTotal)
+  const cartItems = useSelector(selectCartItems)
+  
   const [productInd, setProductInd] = useOutletContext();
   const [cartInd, setCartInd] = useState(0)
 
@@ -44,7 +49,7 @@ export default function Cart() {
   }
 
   const handleAddItemFromCart = () => {
-    addItemToCart(cartItems[productInd], cartItems[cartInd].size)
+    dispatch(addItemToCart(cartItems, cartItems[productInd], cartItems[cartInd].size))
   }
 
   const handleRemoveItemFromCart = () => {
@@ -52,9 +57,9 @@ export default function Cart() {
       const indToRemove = cartInd
       const newCartInd = cartInd - 1
       setCartInd(newCartInd)
-      removeItemFromCart(cartItems[indToRemove])
+      dispatch(removeItemFromCart(cartItems, cartItems[indToRemove]))
     } else {
-      removeItemFromCart(cartItems[cartInd])
+      dispatch(removeItemFromCart(cartItems, cartItems[cartInd]))
     }
   }
 

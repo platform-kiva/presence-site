@@ -1,4 +1,5 @@
-import { useContext } from 'react'
+import { useSelector } from 'react-redux'
+import { selectCartCount } from '../../store/cart/cart.selector.js'
 
 // styles
 import { HeaderContainer } from './Header.styles.js'
@@ -7,11 +8,8 @@ import { HeaderContainer } from './Header.styles.js'
 import Banner from '../banner/Banner'
 import NavBtn from '../btns/nav-btn/NavBtn'
 
-// context
-import { CartContext } from '../../contexts/cart-context/CartContext'
-
 export default function Header() {
-    const { cartCount } = useContext(CartContext)
+    const cartCount = useSelector(selectCartCount)
     
     return (
         <HeaderContainer>
