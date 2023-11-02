@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js'
 import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js'
+import { selectProducts } from '../../store/products/products.selector.js'
 
 // styles
 import {
@@ -18,7 +18,8 @@ import {
   IndDecLabel,
   CartQuantity,
   CartItemShadow,
-  BotNavBtnContainer
+  BotNavBtnContainer,
+  GradientBG
 } from './Cart.styles.js'
 
 // components
@@ -31,8 +32,9 @@ export default function Cart() {
   const cartCount = useSelector(selectCartCount)
   const cartTotal = useSelector(selectCartTotal)
   const cartItems = useSelector(selectCartItems)
+  const products = useSelector(selectProducts)
   
-  const [productInd, setProductInd] = useOutletContext();
+  const [productInd, setProductInd] = useState(0);
   const [cartInd, setCartInd] = useState(0)
 
   const handleIndChange = (val) => {
@@ -74,7 +76,7 @@ export default function Cart() {
       {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
           <TopNavBtnContainer>
-            <NavBtn direction={"up"} btnIcon="card"/>
+            <NavBtn direction={"up"} btnIcon="card" link={"/checkout/payment-method"}/>
           </TopNavBtnContainer>
 
           <CartItemDisplayContainer>
@@ -116,8 +118,9 @@ export default function Cart() {
         </>   
       }
       <BotNavBtnContainer>
-        <NavBtn direction={"down"} btnIcon="down" link={'/'}/>
+        <NavBtn direction={"down"} btnIcon="down" link={'/home'}/>
       </BotNavBtnContainer>
+      <GradientBG $products={products} $productInd={productInd} />
     </CartContainer>
   )
 }

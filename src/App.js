@@ -18,16 +18,16 @@ function App() {
     <div style={{ cursor: `url(${cursorIcon}) 15 15, auto`}}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route path="loading" element={<PreLoader />} />
+          <Route path="" element={<PreLoader />} />
+          <Route path="/home" element={<Home />}>
             <Route path="" element={<ProductContainer />} />
-            <Route path="complete" element={<OrderComplete />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="checkout" element={<Checkout />}>
+          </Route> 
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/complete" element={<OrderComplete />} />
+          <Route path="/checkout" element={<Checkout />}>
               <Route path="payment-method" element={<PaymentMethod />} />
               <Route path="order-form" element={<OrderForm />} />
             </Route>
-          </Route> 
         </Routes>
       </BrowserRouter>
     </div>

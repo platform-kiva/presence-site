@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { selectProductsIsLoading } from '../../store/products/products.selector.js'
+import { selectProducts, selectProductsIsLoading } from '../../store/products/products.selector.js'
 import { fetchProductsAsync } from '../../store/products/products.action.js'
 
 // styles
-import { PreLoaderContainer, PreLoaderBannerContainer } from './PreLoader.styles.js'
+import { GradientBG, PreLoaderContainer, PreLoaderBannerContainer } from './PreLoader.styles.js'
 
 // components
 import Banner from '../../components/banner/Banner'
@@ -15,6 +15,7 @@ import LoadingIcon from '../../components/loading-icon/LoadingIcon.js'
 export default function PreLoader() {
     const navigate = useNavigate();
     const isLoading = useSelector(selectProductsIsLoading);
+    const products = useSelector(selectProducts)
 
     const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ export default function PreLoader() {
             {isLoading ?
                 <LoadingIcon />
                 :
-                <PreLoaderContainer onClick={() => navigate("/")}>
+                <PreLoaderContainer onClick={() => navigate("/home")}>
                     <PreLoaderBannerContainer
                         initial={{ opacity: 0.0, translateX: -20 }}
                         animate={{ opacity: [0.0, 1.0], translateX: [-20, 0] }}
@@ -44,6 +45,7 @@ export default function PreLoader() {
                     >
                         <Banner />
                     </PreLoaderBannerContainer>
+                    <GradientBG $products={products} $productInd={0} />
                 </PreLoaderContainer>
             }
         </>
