@@ -29,12 +29,13 @@ export default function Home() {
             </OutletContainer>
             <AnimatePresence>
               <GradientBG
+                key={productInd}
                 $products={products}
                 $productInd={productInd}
                 initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1.0 }}
+                transition={{ duration: 0.8 }}
               />
             </AnimatePresence>
           </HomeContainer>

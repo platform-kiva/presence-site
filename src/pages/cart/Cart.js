@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { AnimatePresence } from 'framer-motion'
 import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js'
 import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js'
 import { selectProducts } from '../../store/products/products.selector.js'
@@ -37,6 +37,11 @@ export default function Cart() {
   
   const [productInd, setProductInd] = useState(0);
   const [cartInd, setCartInd] = useState(0)
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
+  useEffect(() => {
+    setInitialLoadComplete(true);
+  }, []);
 
   const handleIndChange = (val) => {
     let currInd = cartInd
@@ -125,7 +130,18 @@ export default function Cart() {
       <BotNavBtnContainer>
         <NavBtn direction={"down"} btnIcon="down" link={'/home'}/>
       </BotNavBtnContainer>
-      <GradientBG $products={products} $productInd={productInd} />
+
+      <AnimatePresence>
+        <GradientBG
+          key={productInd}
+          $products={products}
+          $productInd={productInd}
+          initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+        />
+      </AnimatePresence>
     </CartContainer>
   )
 }
