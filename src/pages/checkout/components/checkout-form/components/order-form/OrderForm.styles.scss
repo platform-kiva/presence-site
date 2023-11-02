@@ -1,0 +1,12 @@
+.order-form-container {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 50px;
+    width: 512px;
+
+    .form-container {
+        display: flex;
+    }
+}

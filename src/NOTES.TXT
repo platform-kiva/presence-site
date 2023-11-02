@@ -1,7 +1,8 @@
 Checklist
 - NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)
-- Add clicking on TopFold product image to scroll
+- Add clicking on TopFold product image to scroll, (OR DISPLAY ADDTOCARTBUTTON)
 - Responsive design
+- Make productInd persistant to keep currently viewed product on refresh
 
 Considerations
 - More microinteractions

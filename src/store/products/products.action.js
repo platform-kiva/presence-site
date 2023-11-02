@@ -1,5 +1,5 @@
 import { PRODUCTS_ACTION_TYPES } from "./products.types"
-import { getProductsAndDocuments } from "../../utils/firebase/FirebaseUtils";
+import { getProductsAndDocuments } from "../../utils/firebase/firebase.utils"
 
 export const fetchProductsStart = () => (
     { type: PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_START }

@@ -1,0 +1,51 @@
+.payment-method-container {
+    display: flex;
+    gap: 72px;
+    justify-content: center;
+    margin: 100px;
+
+    .payment-method-col {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 226px;
+
+        h1 {
+            font-size: 18px;
+        }
+
+        h3 {
+            font-size: 12px;
+        }
+
+        .payment-method-options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 220px;
+
+            .express-payment-option-container {
+                align-items: center;
+                background-color: rgba(255,255,255,0.2);
+                border-radius: 8px;
+                display: flex;
+                height: 32px;
+                justify-content: center;
+                width: 100px;
+            }
+
+            .card-payment-option-container {
+                align-items: center;
+                background-color: rgba(255,255,255,0.2);
+                border-radius: 8px;
+                display: flex;
+                height: 70px;
+                justify-content: center;
+                width: 100%;
+            }
+
+        }
+
+
+    }
+}
