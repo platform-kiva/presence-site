@@ -23,6 +23,10 @@ export const CartItemDisplayContainer = styled.div`
     position: absolute;
     width: 100vw;
 `
+export const CartItemContainer = styled.div`
+    position: absolute;
+    margin-bottom: 200px;
+`
 export const CarouselBtnContainer = styled.div`
     align-items: center;
     display: flex;

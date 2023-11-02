@@ -7,11 +7,11 @@ import cursorIcon from './assets/icons/cursor.png';
 import Cart from './pages/cart/Cart';
 import Checkout from './pages/checkout/Checkout';
 import Home from './pages/home/Home';
-import PaymentMethod from './pages/checkout/components/checkout-form/components/payment-method/PaymentMethod';
+import PaymentMethod from './pages/checkout/components/payment-method/PaymentMethod';
 import PreLoader from "./pages/pre-loader/PreLoader";
 import ProductContainer from './pages/product-container/ProductContainer';
 import OrderComplete from './pages/order-complete/OrderComplete';
-import OrderForm from './pages/checkout/components/checkout-form/components/order-form/OrderForm';
+import OrderForm from './pages/checkout/components/order-form/OrderForm';
 
 function App() {
   return (

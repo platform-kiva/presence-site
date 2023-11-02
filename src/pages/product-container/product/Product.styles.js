@@ -46,7 +46,8 @@ export const BotFoldCol = styled.div`
     gap: 24px;
     height: 100vh;
     justify-content: center;
-    width: 50vw;
+    margin-top: 60px;
+    width: 40vw;
 `
 export const ProductImgCarousel = styled.div`
     height: 500px;

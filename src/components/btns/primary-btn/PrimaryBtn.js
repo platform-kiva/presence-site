@@ -10,4 +10,4 @@ export default function PrimaryBtn({ label, accentCol, isActive=true }) {
         <BtnLabel $accentCol={accentCol}>{label}</BtnLabel>
     </PrimaryBtnContainer>
   )
-}
+};

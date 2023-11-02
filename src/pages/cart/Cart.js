@@ -11,6 +11,7 @@ import {
   TopNavBtnContainer,
   CartItemDisplayContainer,
   CarouselBtnContainer,
+  CartItemContainer,
   CartItemLabelContainer,
   CartItemDetailsContainer,
   DetailsLabel,
@@ -82,7 +83,11 @@ export default function Cart() {
           <CartItemDisplayContainer>
             {cartItems.map((item, index) => {
               if (index === cartInd) {
-                return  <CartItem key={item.id} cartItem={item} cartInd={cartInd}/>
+                return  (
+                  <CartItemContainer>
+                    <CartItem key={item.id} cartItem={item} cartInd={cartInd}/>
+                  </CartItemContainer>
+                )
               }
               return null
             })}

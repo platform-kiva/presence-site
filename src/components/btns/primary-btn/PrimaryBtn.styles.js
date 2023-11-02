@@ -4,6 +4,7 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
+    background-color: transparent;
     border: 2px solid #FFFFFF;
     border-radius: 50px;
     cursor: ${props =>
@@ -30,7 +31,6 @@ export const PrimaryBtnContainer = styled.button`
     };
 `
 export const BtnLabel = styled.h3`
-    font-size: 20px;
     text-shadow: ${props =>
         `2px 2px 1px rgba(${props.$accentCol}, 0.67)`
     };

@@ -4,7 +4,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import './OrderForm.styles.scss'
 
 // components
-import PrimaryBtn from '../../../../../../components/btns/primary-btn/PrimaryBtn'
+import PrimaryBtn from '../../../../components/btns/primary-btn/PrimaryBtn';
 
 export default function OrderForm() {
 
