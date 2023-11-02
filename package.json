@@ -2,7 +2,7 @@
   "name": "presence-site",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies": {    
     "@reduxjs/toolkit": "^1.9.7",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
@@ -50,8 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
