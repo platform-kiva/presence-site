@@ -23,10 +23,10 @@ export default function OrderForm() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ amount: 10000 })
+      body: JSON.stringify({ amount: 173800 })
     }).then((res) => res.json())
 
-    const clientSecret = response.paymentIntent.client_secret;
+    const clientSecret = `${response.paymentIntent.client_secret}`;
   
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
