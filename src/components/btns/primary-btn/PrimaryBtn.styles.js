@@ -2,7 +2,7 @@ import styled from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 
-export const PrimaryBtnContainer = styled.div`
+export const PrimaryBtnContainer = styled.button`
     align-items: center;
     border: 2px solid #FFFFFF;
     border-radius: 50px;

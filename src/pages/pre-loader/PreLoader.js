@@ -25,7 +25,7 @@ export default function PreLoader() {
 
     return (
         <>
-            {isLoading ?
+            {isLoading && !products ?
                 <LoadingIcon />
                 :
                 <PreLoaderContainer onClick={() => navigate("/home")}>
@@ -45,7 +45,7 @@ export default function PreLoader() {
                     >
                         <Banner />
                     </PreLoaderBannerContainer>
-                    <GradientBG $products={products} $productInd={0} />
+                    <GradientBG />
                 </PreLoaderContainer>
             }
         </>
