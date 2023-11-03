@@ -2,7 +2,8 @@
     display: flex;
     gap: 150px;
     justify-content: center;
-    margin: 60px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 
     .payment-method-col {
         display: flex;
@@ -14,7 +15,7 @@
         }
 
         h3 {
-            font-size: 24px;
+            font-size: 18px;
         }
 
         .payment-method-options-container {
@@ -28,20 +29,31 @@
                 background-color: rgba(255,255,255,0.2);
                 border-radius: 8px;
                 display: flex;
-                height: 64px;
+                height: 60px;
                 justify-content: center;
-                width: 200px;
+                width: 180px;
             }
-
             .card-payment-option-container {
                 align-items: center;
                 background-color: rgba(255,255,255,0.2);
                 border-radius: 8px;
                 display: flex;
-                height: 148px;
+                height: 140px;
                 justify-content: center;
-                width: 100%;
+                width: 380px;
             }
+            .express-payment-option-container, .card-payment-option-container{
+                transition: 0.4s ease;
+            }
+            .express-payment-option-container:hover {
+                transform: scale(1.05);
+                transition: 0.4s ease;
+            }
+            .card-payment-option-container:hover {
+                transform: scale(1.025);
+                transition: 0.4s ease;
+            }
+
 
         }
 

@@ -14,8 +14,8 @@ export default function GridProductsView({ items }) {
           <div className='grid-item-container'>
             <CartItem key={item.sizeID} cartItem={item} />
             <div className='grid-item-details'>
-              <h1>SIZE: {item.sizeID}</h1>
-              <h2>QUANTITY: {item.quantity}</h2>
+              <h3>SIZE: {item.sizeID}</h3>
+              <h4>QUANTITY: {item.quantity}</h4>
             </div>
           </div>
         ))}

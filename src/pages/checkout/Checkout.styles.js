@@ -4,11 +4,22 @@ export const CheckoutContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
 `
-export const BotNavBtnContainer = styled.div`
+export const TopNavBtnContainer = styled.div`
+    backdrop-filter: blur(10px);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 0, 0, 0.25) 100% );
+    bottom: 0;
+    display: flex;
+    height: 150px;
+    justify-content: center;
     position: fixed;
-    bottom: 50px;
+    width: 100vw;
+`
+export const GridContainer = styled.div`
+    margin-bottom: 150px;
 `
 export const GradientBG = styled.div`
     background: ${props =>

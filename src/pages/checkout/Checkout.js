@@ -5,14 +5,15 @@ import { selectProducts } from '../../store/products/products.selector';
 
 // styles
 import {
-  BotNavBtnContainer,
+  TopNavBtnContainer,
   GradientBG,
-  CheckoutContainer
+  CheckoutContainer,
+  GridContainer
 } from './Checkout.styles.js';
 
 // components
 import GridProductsView from '../../components/grid-products-view/GridProductsView.js';
-import NavBtn from '../../components/btns/nav-btn/NavBtn.js'
+import NavBtn from '../../components/btns/nav-btn/NavBtn.js';
 
 export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
@@ -20,12 +21,17 @@ export default function Checkout() {
 
   return (
     <CheckoutContainer>
-        <Outlet />
+      <Outlet />
+      <GridContainer>
         <GridProductsView items={cartItems} />
-        <BotNavBtnContainer>
-          <NavBtn direction={"down"} btnIcon="card" link={'/cart'}/>
-        </BotNavBtnContainer>
-        <GradientBG $products={products} $productInd={cartItems[0].id} />
+      </GridContainer>
+      
+
+      <TopNavBtnContainer>
+        <NavBtn direction={"down"} btnIcon="cart" link={'/cart'}/>
+      </TopNavBtnContainer>
+
+      <GradientBG $products={products} $productInd={cartItems[0].id} />
     </CheckoutContainer>
   )
 };

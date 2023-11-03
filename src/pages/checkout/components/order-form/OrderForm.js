@@ -1,4 +1,4 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 // styles
 import './OrderForm.styles.scss'
@@ -30,7 +30,7 @@ export default function OrderForm() {
   
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: elements.getElement(PaymentElement),
         billing_details: {
           name: "Kivie K"
         }
@@ -49,8 +49,9 @@ export default function OrderForm() {
   return (
     <div className='order-form-container'>
       
-      <form onSubmit={paymentHandler}>
-        <CardElement />
+      <form className='order-form' onSubmit={paymentHandler}>
+        {/* <AddressElement options={{mode: 'shipping'}} /> */}
+        {/* <PaymentElement options={{}}/> */}
         <PrimaryBtn label={"PLACE ORDER"}/>
       </form>
     </div>
