@@ -23,3 +23,22 @@ export const Instructions = styled.h2`
     font-size: 20px;
     font-weight: 400;
 `
+export const GradientBG = styled.div`
+    background:
+        linear-gradient(45deg,
+            rgba(
+                219,
+                120,
+                212,
+                0.8) 0%,
+            rgba(
+                32,
+                172,
+                232,
+                0.8) 88%)
+    ;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: -100;
+`

@@ -89,8 +89,8 @@ export default function Cart() {
             {cartItems.map((item, index) => {
               if (index === cartInd) {
                 return  (
-                  <CartItemContainer>
-                    <CartItem key={item.id} cartItem={item} cartInd={cartInd}/>
+                  <CartItemContainer key={item.sizeID}>
+                    <CartItem cartItem={item} cartInd={cartInd}/>
                   </CartItemContainer>
                 )
               }

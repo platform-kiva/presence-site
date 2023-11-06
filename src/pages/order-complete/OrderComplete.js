@@ -5,7 +5,8 @@ import {
     OrderCompleteContainer,
     OrderCompleteContent,
     HeaderText,
-    Instructions
+    Instructions,
+    GradientBG
 } from './OrderComplete.styles.js'
 
 // components
@@ -19,10 +20,11 @@ export default function OrderComplete() {
             <OrderCompleteContent>
                 <HeaderText>order complete</HeaderText>
                 <Instructions>check your email for further details</Instructions>
-                <div onClick={() => navigate("/")} style={{ width: "200px" }}>
+                <div onClick={() => navigate("/home")} style={{ width: "200px" }}>
                     <PrimaryBtn label={"BACK TO SHOP"}/>
                 </div>
             </OrderCompleteContent>
+            <GradientBG />
         </OrderCompleteContainer>
     )
 }
