@@ -1,14 +1,19 @@
-import { useElements, useStripe, PaymentElement } from "@stripe/react-stripe-js";
-import { clearCart } from '../../../../../store/cart/cart.action'
+import { useState } from "react";
+import { useElements, useStripe, PaymentElement, AddressElement } from "@stripe/react-stripe-js";
+import { clearCart } from '../../../../store/cart/cart.action'
 import { useDispatch } from "react-redux";
 
+// styles
+import './OrderForm.styles.scss';
+
 // components
-import PrimaryBtn from "../../../../../components/btns/primary-btn/PrimaryBtn";
+import PrimaryBtn from "../../../../components/btns/primary-btn/PrimaryBtn";
 
 export default function OrderForm({ clientSecret }) {
     const stripe = useStripe();
     const elements = useElements();
     const dispatch = useDispatch();
+    const [email, setEmail] = useState('');
 
     const clearCartItems = () => {
       dispatch(clearCart())
@@ -38,8 +43,7 @@ export default function OrderForm({ clientSecret }) {
             return_url: 'http://localhost:8888/complete',
             payment_method_data: {
                 billing_details: {
-                    name: 'Jenny Rosen',
-                    email: 'jenny.rosen@example.com',
+                    email: email,
                 }
             },
           },
@@ -52,11 +56,22 @@ export default function OrderForm({ clientSecret }) {
         }
     }
 
-
     return (
+      <div className='order-form-container'>
+        <h1>ORDER FORM</h1>
         <form className='order-form' onSubmit={paymentHandler}>
-            <PaymentElement />
-            <PrimaryBtn label={"PLACE ORDER"}/>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email here"
+            required
+          />
+          <AddressElement options={{mode: 'shipping'}} />
+          <PaymentElement />
+          <PrimaryBtn label={"PLACE ORDER"}/>
         </form>
+      </div>
     )
 }

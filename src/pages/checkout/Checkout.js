@@ -25,7 +25,6 @@ export default function Checkout() {
       <GridContainer>
         <GridProductsView items={cartItems} />
       </GridContainer>
-      
 
       <TopNavBtnContainer>
         <NavBtn direction={"down"} btnIcon="cart" link={'/cart'}/>

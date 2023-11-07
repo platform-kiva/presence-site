@@ -82,7 +82,7 @@ export default function Cart() {
       {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
           <TopNavBtnContainer>
-            <NavBtn direction={"up"} btnIcon="card" link={"/checkout/payment-method"}/>
+            <NavBtn direction={"up"} btnIcon="card" link={"/checkout"}/>
           </TopNavBtnContainer>
 
           <CartItemDisplayContainer>

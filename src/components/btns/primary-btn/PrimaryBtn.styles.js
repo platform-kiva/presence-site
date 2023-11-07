@@ -22,9 +22,6 @@ export const PrimaryBtnContainer = styled.button`
         background-color: ${props =>
             props.$isActive ? "rgba(255,255,255,0.2)" : ""
         };
-        transform: ${props =>
-            props.$isActive ? "scale(1.1)" : ""
-        };
         transition: ${props =>
             props.$isActive ? "transition: 0.2s ease-in-out;" : ""
         };

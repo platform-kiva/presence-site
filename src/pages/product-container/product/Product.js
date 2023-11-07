@@ -118,7 +118,7 @@ export default function Product({ product }) {
             </ProductImgCarousel>
           </BotFoldCol>
           
-          <BotFoldCol>  
+          <BotFoldCol>
             <PriceAction>
               <Price $accentCol={product.botGradient}>${product.price}</Price>
               <ActionContainer>
@@ -133,14 +133,14 @@ export default function Product({ product }) {
                   <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
                 </div>
               </ActionContainer>
+              <DescriptionContainer>
+                <ul>
+                  {product.description.map(description => (
+                    <li key={description}>{description}</li>
+                  ))}
+                </ul>
+              </DescriptionContainer>
             </PriceAction>
-            <DescriptionContainer>
-              <ul>
-                {product.description.map(description => (
-                  <li key={description}>{description}</li>
-                ))}
-              </ul>
-            </DescriptionContainer>
           </BotFoldCol>
         </ProductContainerBotFold>
       </ProductContainer>

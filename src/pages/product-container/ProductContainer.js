@@ -8,7 +8,6 @@ import {
     ProductsContainer,
     CarouselBtnsContainer,
     CarouselBtnContainer,
-    ProductViewContainer,
     NavBtnContainer
 } from './ProductContainer.styles.js';
 
@@ -57,9 +56,7 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </CarouselBtnContainer>
             </CarouselBtnsContainer>
-            <ProductViewContainer>               
-                <Product product={products[productInd]} />
-            </ProductViewContainer>
+            <Product product={products[productInd]} />
             <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
                 <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
             </NavBtnContainer>

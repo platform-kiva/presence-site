@@ -11,7 +11,6 @@ import PaymentMethod from './pages/checkout/components/payment-method/PaymentMet
 import PreLoader from "./pages/pre-loader/PreLoader";
 import ProductContainer from './pages/product-container/ProductContainer';
 import OrderComplete from './pages/order-complete/OrderComplete';
-import OrderFormContainer from './pages/checkout/components/order-form-container/OrderFormContainer';
 
 function App() {
   return (
@@ -25,8 +24,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/complete" element={<OrderComplete />} />
           <Route path="/checkout" element={<Checkout />}>
-              <Route path="payment-method" element={<PaymentMethod />} />
-              <Route path="order-form" element={<OrderFormContainer />} />
+              <Route path="" element={<PaymentMethod />} />
             </Route>
         </Routes>
       </BrowserRouter>

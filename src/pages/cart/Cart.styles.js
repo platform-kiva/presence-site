@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import { device } from "../../media-breakpoints";
 
 export const CartContainer = styled.div`
     align-items: center;
@@ -27,6 +28,9 @@ export const CartItemDisplayContainer = styled.div`
 export const CartItemContainer = styled.div`
     position: absolute;
     margin-bottom: 200px;
+    @media ${device.laptopL} {
+        margin-bottom: 300px;
+    }
 `
 export const CarouselBtnContainer = styled.div`
     align-items: center;

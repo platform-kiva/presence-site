@@ -1,26 +1,39 @@
 import styled from "styled-components";
-
+import { device } from '../../media-breakpoints'
+  
 export const ProductsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 200vh;
     width: 100vw;
 `
 export const CarouselBtnsContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    left: 50%;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     z-index: 500;
+    
+    @media ${device.laptopL} {
+        max-width: 1440px;
+    }
+    
 `
 export const CarouselBtnContainer = styled.div`
-    padding: 0px 108px;
-`
-export const ProductViewContainer = styled.div`
-    display: flex;
-    overflow-x: hidden;
+
+    @media ${device.mobileS} {
+        padding: 0px 30px;
+    }
+
+    @media ${device.tablet} {
+        padding: 0px 50px;
+    }
+
+    @media ${device.laptop} {
+        padding: 0px 100px;
+    }
 `
 export const NavBtnContainer = styled.div`
     bottom: ${props =>
