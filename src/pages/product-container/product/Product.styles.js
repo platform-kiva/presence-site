@@ -6,7 +6,6 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 200vh;
     min-width: 100vw;
 `
 export const ProductContainerTopFold = styled.div`

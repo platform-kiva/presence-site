@@ -25,13 +25,18 @@ import {
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js';
 
-export default function Product({ product }) {
+export default function Product({ product, customizationID=null }) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const [activeSize, setActiveSize] = useState(null);
   const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
   const [timerRunning, setTimerRunning] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleScroll = () => {
+      const customizationElement = document.getElementById(customizationID);
+      customizationElement.scrollIntoView({ behavior: "smooth" });
+};
   
   const handleSizeSelection = (size) => {
     setActiveSize(size);
@@ -132,6 +137,11 @@ export default function Product({ product }) {
                 <div onClick={() => addProductToCart(product, activeSize)}>
                   <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
                 </div>
+                {customizationID &&
+                  <div onClick={() => handleScroll()}>
+                    <PrimaryBtn label={"CREATE CUSTOM"} accentCol={product.botGradient} />
+                  </div>
+                }
               </ActionContainer>
               <DescriptionContainer>
                 <ul>

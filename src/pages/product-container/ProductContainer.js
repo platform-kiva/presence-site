@@ -16,6 +16,7 @@ import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
 import Header from '../../components/header/Header';
 import NavBtn from '../../components/btns/nav-btn/NavBtn';
 import Product from './product/Product';
+import GradientProduct from './product-customs/gradient-product/GradientProduct.js';
 
 export default function ProductContainer() {
     const products = useSelector(selectProducts);
@@ -56,7 +57,12 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </CarouselBtnContainer>
             </CarouselBtnsContainer>
-            <Product product={products[productInd]} />
+            {productInd !== 0 &&
+                <Product product={products[productInd]} />
+            }
+            {productInd === 0 &&
+                <GradientProduct product={products[productInd]} />
+            }
             <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
                 <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
             </NavBtnContainer>
