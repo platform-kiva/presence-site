@@ -1,8 +1,39 @@
-// styles
-import './ImgLoader.styles.js'
+import { useEffect, useState } from 'react';
+import { useAnimation } from 'framer-motion';
 
-export default function ImgLoader({ src, alt }) {
+// styles
+import { ImgLoaderContainer } from './ImgLoader.styles.js'
+
+export default function ImgLoader({ src, alt, updateParent=null }) {
+  const controlDiv = useAnimation();
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [src]);
+
+  useEffect(() => {
+    if (updateParent) {
+      updateParent(true)
+    }
+    controlDiv.set({ scale: 0.9, opacity: 0, zIndex: -1 });
+    if (isImageLoaded) {
+      controlDiv.start({
+        scale: 1,
+        opacity: 1,
+        zIndex: 1,
+        transition: { duration: 1.0, type: 'spring' },
+      });
+    }
+  }, [isImageLoaded, controlDiv, updateParent]);
+
   return (
-    <ImgLoaderContainer src={src} alt={alt} />
+    <ImgLoaderContainer
+      initial={{ scale: 0.75, z: -100, opacity: 0 }}
+      animate={controlDiv}
+      onLoad={() => setIsImageLoaded(true)}
+      src={src}
+      alt={alt}
+    />
   )
 }

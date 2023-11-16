@@ -22,7 +22,7 @@ export const ProductContainerTopFold = styled.div`
         gap: 80px;
     }
 `
-export const ProductImgContainer = styled(motion.img)`
+export const ProductImgContainer = styled(motion.div)`
     cursor: url(${cursorIconFilled}) 15 15, auto;
     height: 280px;
 
@@ -86,11 +86,6 @@ export const ProductImgCarousel = styled.div`
         height: 667px;
         width: 667px;
     }
-`
-export const ProductCarouselImgContainer = styled.img`
-    height: 100%;
-    position: relative;
-    width: 100%;
 `
 export const PriceAction = styled.div`
     align-items: center;
@@ -201,6 +196,6 @@ export const GradientBox = styled.div`
     width: 220px;
     z-index: 50px;
 `
-export const ShirtMockup = styled.img`
+export const ShirtMockupContainer = styled.div`
     height: 675px;
 `

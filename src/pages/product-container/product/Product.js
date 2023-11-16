@@ -13,7 +13,6 @@ import {
   ProductContainerBotFold,
   BotFoldCol,
   ProductImgCarousel,
-  ProductCarouselImgContainer,
   PriceAction,
   Price,
   ActionContainer,
@@ -30,15 +29,14 @@ import {
   CustomMockupContainer,
   DesignOverlay,
   GradientBox,
-  ShirtMockup
+  ShirtMockupContainer
 } from './Product.styles.js';
 
 // assets
-import blank_shirt from './assets/shirt-mockup-blank-resized.png';
 import design_ALPHA from './assets/mati-eye-placement-ALPHA.png';
 
-
 // components
+import ImgLoader from '../../../components/img-loader/ImgLoader.js';
 import NavBtn from '../../../components/btns/nav-btn/NavBtn.js';
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js';
@@ -55,7 +53,6 @@ export default function Product({ product }) {
   const [activeSize, setActiveSize] = useState(null);
   const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
   const [timerRunning, setTimerRunning] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const alphaStart = 0.49;
   const alphaEnd = 0.56;
   const [startColor, setStartColor] = useState(null);
@@ -66,8 +63,8 @@ export default function Product({ product }) {
   const [gradientWasSelected, setGradientWasSelected] = useState(null)
   const [gradientWasChosen,setGradientWasChosen] = useState(false)
   const [initialLoadComplete, setInitialLoadComplete] = useState(false)
+  const [isImgLoaded, setIsImgLoaded] = useState(false)
   
-
   const handleScroll = (view) => {
       if (view === "custom") {
         const customizationElement = document.getElementById("customizationID");
@@ -85,7 +82,6 @@ export default function Product({ product }) {
 
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
-  const controlDiv3 = useAnimation();
 
   const handleMouseEnter = () => {
     controlDiv1.start({ translateY: -10, scale: 1.05, transition: {duration: 0.8 } });
@@ -96,30 +92,6 @@ export default function Product({ product }) {
     controlDiv1.start({ translateY: 0, scale: 1.0, transition: {duration: 0.8 } });
     controlDiv2.start({ scale: 1.0, transition: {duration: 0.8 } });
   };
-  
-  useEffect(() => {
-    setIsImageLoaded(false);
-  }, [product.imgURL]);
-
-  useEffect(() => {
-    controlDiv1.set({ scale: 0.9, opacity: 0, zIndex: -1 });
-    controlDiv2.set({ scale: 0.9, opacity: 0, zIndex: -1 });
-    if (isImageLoaded) {
-      controlDiv1.start({
-        scale: 1,
-        opacity: 1,
-        zIndex: 1,
-        transition: { duration: 0.5, type: 'spring' },
-      });
-      controlDiv2.start({
-        scale: 1,
-        opacity: 1,
-        zIndex: 1,
-        transition: { duration: 0.5, type: 'spring' },
-      });
-    }
-  }, [isImageLoaded, controlDiv1, controlDiv2]);
-
 
   const addProductToCart = () => {
     try {
@@ -148,61 +120,67 @@ export default function Product({ product }) {
         }, 2000);
         return () => clearInterval(interval);
     }
-}, [isFrozen]);
+  }, [isFrozen]);
 
-function rgbaToRgb(rgbaString) {
-    const rgbaRegex = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d*\.?\d+)\)$/;
-    const rgbString = rgbaString.replace(rgbaRegex, 'rgb($1, $2, $3)');
-    return rgbString;
-}
+  useEffect(() => {
+    setIsImgLoaded(false)
+    console.log("product.URL changed")
+  }, [product.imgURL])
 
-useEffect(() => {
-  setInitialLoadComplete(true);
-}, []);
+  useEffect(() => {
+    controlDiv2.set({ opacity: 0 });
+    controlDiv2.start({ 
+        opacity: 1, 
+        transition: { duration: 0.8, delay: 0.4 } 
+      });
+  }, [isImgLoaded, controlDiv2]);
 
-const handleAction = (actionTaken) => {
-    if (actionTaken === "left") {
-        if (gradientWasSelected === true) {
-            setRightBtnLabel('STOP')
-            setGradientWasSelected(null)
-        }
-        setIsFrozen(false)
-    } else if (actionTaken === "right") {
-        if (!gradientWasSelected) {
-            setGradientWasSelected(true)
-            setLeftBtnLabel('START OVER')
-            setRightBtnLabel('NEXT')
-        } else {
-            console.log('proceed with sizeselection')
-            setGradientWasChosen(true)
-        }
-        setIsFrozen(true)
-    }
-}
+  function rgbaToRgb(rgbaString) {
+      const rgbaRegex = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d*\.?\d+)\)$/;
+      const rgbString = rgbaString.replace(rgbaRegex, 'rgb($1, $2, $3)');
+      return rgbString;
+  }
 
-const handleImageLoad = () => {
-    setIsImageLoaded(true);
-    controlDiv3.start({
-      scale: 1,
-      opacity: 1,
-      zIndex: 1,
-      transition: { duration: 0.5, type: 'spring' },
-    });
-  };
+  useEffect(() => {
+    setInitialLoadComplete(true);
+  }, []);
+
+  const handleAction = (actionTaken) => {
+      if (actionTaken === "left") {
+          if (gradientWasSelected === true) {
+              setRightBtnLabel('STOP')
+              setGradientWasSelected(null)
+          }
+          setIsFrozen(false)
+      } else if (actionTaken === "right") {
+          if (!gradientWasSelected) {
+              setGradientWasSelected(true)
+              setLeftBtnLabel('START OVER')
+              setRightBtnLabel('NEXT')
+          } else {
+              console.log('proceed with sizeselection')
+              setGradientWasChosen(true)
+          }
+          setIsFrozen(true)
+      }
+  }
 
   return (
       <ProductContainer>
         <ProductContainerTopFold id="productTopFold">
           <ProductImgContainer
-            initial={{ scale: 0.75, z: -100, opacity: 0 }}
             animate={controlDiv1}
-            src={product.imgURL}
-            alt={`product image`}
-            onLoad={() => setIsImageLoaded(true)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          />
+          >
+            <ImgLoader
+              src={product.imgURL}
+              alt={'product img'}
+              updateParent={setIsImgLoaded}
+            />
+          </ProductImgContainer>
           <ProductShadow
+            initial={{ opacity: 0 }}
             animate={controlDiv2}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -211,7 +189,7 @@ const handleImageLoad = () => {
         <ProductContainerBotFold id="productBotFold">
           <BotFoldCol>  
             <ProductImgCarousel>
-              <ProductCarouselImgContainer src={product.imgURL} alt='product img enlarged'/>
+              <ImgLoader src={product.imgURL} alt='product img enlarged' />
             </ProductImgCarousel>
           </BotFoldCol>
           
@@ -284,13 +262,9 @@ const handleImageLoad = () => {
                         background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaStart})` : endColor} 100%)`
                     }}
                 />
-                <ShirtMockup
-                    src={blank_shirt}
-                    alt='blank shirt'
-                    onLoad={handleImageLoad}
-                    initial={{ scale: 0.75, z: -100, opacity: 0 }}
-                    animate={controlDiv3}
-                />
+                <ShirtMockupContainer>
+                    <ImgLoader src={product.blankProductURL} alt={"blank custom"} />
+                </ShirtMockupContainer>         
             </CustomMockupContainer>
               <AnimatePresence>
                   <GradientBG
