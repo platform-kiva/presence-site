@@ -19,7 +19,7 @@ export const GradientBG = styled(motion.div)`
     rgba(32,172,232,0.8) 100%
   );
   background: ${(props) =>
-    props.$products && props.$products[props.$productInd]
+    props.$products && props.$products[props.$productInd] 
       ? `linear-gradient(45deg,
           rgba(
               ${props.$products[props.$productInd].botGradient[0]},

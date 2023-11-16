@@ -45,6 +45,7 @@ export const getProductsAndDocuments = async () => {
     // } else {
     // console.log("No such document!");
     // }
+    console.log(docSnap.data().products)
 
     return docSnap.data().products;
 }

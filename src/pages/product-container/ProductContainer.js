@@ -5,6 +5,7 @@ import { selectProducts } from '../../store/products/products.selector.js';
 
 // styles
 import {
+    HeaderContainer,
     ProductsContainer,
     CarouselBtnsContainer,
     CarouselBtnContainer,
@@ -16,7 +17,6 @@ import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
 import Header from '../../components/header/Header';
 import NavBtn from '../../components/btns/nav-btn/NavBtn';
 import Product from './product/Product';
-import GradientProduct from './product-customs/gradient-product/GradientProduct.js';
 
 export default function ProductContainer() {
     const products = useSelector(selectProducts);
@@ -36,10 +36,10 @@ export default function ProductContainer() {
 
     const handleIndChange = (val) => {
         let currInd = productInd;
-        if (currInd === 2 && val === 1) {
+        if (currInd === 3 && val === 1) {
             currInd = 0;
         } else if (currInd === 0 && val === -1) {
-            currInd = 2;
+            currInd = 3;
         } else {
             currInd += val;
         }
@@ -48,7 +48,18 @@ export default function ProductContainer() {
 
     return (
         <ProductsContainer>
-            <Header />
+            <HeaderContainer
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                    duration: 1,
+                    ease: "easeOut",
+                    times: [0, 1]
+                }}
+            >
+                <Header />
+            </HeaderContainer>
+            
             <CarouselBtnsContainer>
                 <CarouselBtnContainer onClick={() => handleIndChange(-1)}>
                     <CarouselBtn icon={"left"} filled={false} />
@@ -57,12 +68,9 @@ export default function ProductContainer() {
                     <CarouselBtn icon={"right"} filled={false} />
                 </CarouselBtnContainer>
             </CarouselBtnsContainer>
-            {productInd !== 0 &&
-                <Product product={products[productInd]} />
-            }
-            {productInd === 0 &&
-                <GradientProduct product={products[productInd]} />
-            }
+            
+            <Product product={products[productInd]} />
+            
             <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
                 <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
             </NavBtnContainer>

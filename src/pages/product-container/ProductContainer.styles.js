@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { device } from '../../media-breakpoints'
   
 export const ProductsContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
+`
+export const HeaderContainer = styled(motion.div)`
+    position: relative;
 `
 export const CarouselBtnsContainer = styled.div`
     display: flex;
@@ -21,7 +25,7 @@ export const CarouselBtnsContainer = styled.div`
     }
     
 `
-export const CarouselBtnContainer = styled.div`
+export const CarouselBtnContainer = styled(motion.div)`
 
     @media ${device.mobileS} {
         padding: 0px 30px;

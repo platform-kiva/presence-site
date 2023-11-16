@@ -24,7 +24,15 @@ export default function Header() {
     
     return (
         <HeaderContainer>
-            <HeaderBtnContainer>
+            <HeaderBtnContainer
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ 
+                    delay: 1,
+                    ease: "easeOut",
+                    times: [0, 1]
+                }}
+            >
                 <img src={menuIcon} alt="menu icon" />
             </HeaderBtnContainer>
             
@@ -33,7 +41,15 @@ export default function Header() {
             :
                 <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} />      
             }
-            <HeaderBtnContainer onClick={() => handleGridView()}>
+            <HeaderBtnContainer onClick={() => handleGridView()}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ 
+                    delay: 1,
+                    ease: "easeOut",
+                    times: [0, 1]
+                }}
+            >
                 <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
             </HeaderBtnContainer>
         </HeaderContainer>

@@ -24,22 +24,22 @@ export const ProductContainerTopFold = styled.div`
 `
 export const ProductImgContainer = styled(motion.img)`
     cursor: url(${cursorIconFilled}) 15 15, auto;
-    height: 300px;
+    height: 280px;
 
     @media ${device.laptopL} {
-        height: 400px;
+        height: 360px;
     }
 `
 export const ProductShadow = styled(motion.div)`
     background-color: rgba(0,0,0,0.15);
     border-radius: 50%;
     filter: blur(7px);
-    height: 30px;
-    width: 225px;
+    height: 27px;
+    width: 210px;
 
     @media ${device.laptopL} {
-        height: 40px;
-        width: 300px;
+        height: 36px;
+        width: 280px;
     }
 `
 export const ProductContainerBotFold = styled.div`
@@ -126,4 +126,81 @@ export const DescriptionContainer = styled.div`
         font-size: 24px;
         width: 400px;
     }
+`
+
+export const CustomGradientContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+`
+export const GradientBG = styled(motion.div)`
+    background: ${(props) =>
+        props.$startColor && props.$endColor
+        ? `linear-gradient(45deg, ${props.$startColor} 0%, ${props.$endColor} 100%)`
+        : undefined};
+    height: 100%;
+    position: absolute;
+    transition: background-color 1s ease;
+    width: 100%;
+    z-index: -100; // Added semicolon here
+`
+export const TopNavBtnContainer = styled.div`
+    position: absolute;
+    top: 50px;
+    z-index: 500;
+`
+export const CustomControlsContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 150px;
+`
+export const RgbDisplayContainer = styled.div`
+    align-items: center;
+    display: flex;
+    gap: 10px;
+`
+export const RgbSquare = styled.div`
+    height: 20px;
+    width: 20px;
+    background-color: red;
+`
+export const CustomizeBtnsContainer = styled.div`
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    width: 404px;
+`
+export const CustomizeBtnContainer = styled.div`
+    width: 190px;
+`
+export const CustomMockupContainer = styled.div`
+    overflow: hidden;
+    position: relative;
+`
+export const DesignOverlay = styled.img`
+    height: 210px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    top: 120px;
+    z-index: 100;
+`
+export const GradientBox = styled.div`
+    background-color: orange;
+    height: 60px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    top: 190px;
+    width: 220px;
+    z-index: 50px;
+`
+export const ShirtMockup = styled.img`
+    height: 675px;
 `

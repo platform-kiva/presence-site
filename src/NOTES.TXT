@@ -1,4 +1,5 @@
 Checklist
+- create component for loading images: img tag, pass in src, add framer-motion animation on load
 - NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)
 - Add clicking on TopFold product image to scroll, (OR DISPLAY ADDTOCARTBUTTON)
 - Responsive design
