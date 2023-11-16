@@ -141,7 +141,7 @@ export const GradientBG = styled(motion.div)`
     position: absolute;
     transition: background-color 1s ease;
     width: 100%;
-    z-index: -100; // Added semicolon here
+    z-index: -100;
 `
 export const TopNavBtnContainer = styled.div`
     position: absolute;
@@ -178,24 +178,25 @@ export const CustomMockupContainer = styled.div`
     overflow: hidden;
     position: relative;
 `
-export const DesignOverlay = styled.img`
+export const DesignOverlay = styled(motion.img)`
     height: 210px;
     left: 50%;
     position: absolute;
     transform: translate(-50%);
-    top: 120px;
+    top: 99px;
     z-index: 100;
 `
-export const GradientBox = styled.div`
+export const GradientBox = styled(motion.div)`
     background-color: orange;
     height: 60px;
     left: 50%;
     position: absolute;
     transform: translate(-50%);
-    top: 190px;
+    top: 170px;
     width: 220px;
-    z-index: 50px;
+    z-index: 99;
 `
-export const ShirtMockupContainer = styled.div`
+export const ShirtMockupContainer = styled(motion.div)`
     height: 675px;
+    width: 675px;
 `

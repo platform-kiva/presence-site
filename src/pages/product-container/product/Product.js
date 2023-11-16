@@ -1,4 +1,4 @@
-import { useAnimation, AnimatePresence } from 'framer-motion';
+import { useAnimation, AnimatePresence, easeIn } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../../store/cart/cart.action.js';
@@ -63,7 +63,8 @@ export default function Product({ product }) {
   const [gradientWasSelected, setGradientWasSelected] = useState(null)
   const [gradientWasChosen,setGradientWasChosen] = useState(false)
   const [initialLoadComplete, setInitialLoadComplete] = useState(false)
-  const [isImgLoaded, setIsImgLoaded] = useState(false)
+  const [isMainProductImgLoaded, setIsMainProductImgLoaded] = useState(false)
+  const [isCustomProductImgLoaded, setIsCustomProductImgLoaded] = useState(false)
   
   const handleScroll = (view) => {
       if (view === "custom") {
@@ -82,6 +83,8 @@ export default function Product({ product }) {
 
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
+  const controlDiv3 = useAnimation();
+  const controlDiv4 = useAnimation();
 
   const handleMouseEnter = () => {
     controlDiv1.start({ translateY: -10, scale: 1.05, transition: {duration: 0.8 } });
@@ -123,17 +126,30 @@ export default function Product({ product }) {
   }, [isFrozen]);
 
   useEffect(() => {
-    setIsImgLoaded(false)
-    console.log("product.URL changed")
+    setIsMainProductImgLoaded(false)
+    setIsCustomProductImgLoaded(false)
   }, [product.imgURL])
 
   useEffect(() => {
     controlDiv2.set({ opacity: 0 });
     controlDiv2.start({ 
         opacity: 1, 
-        transition: { duration: 0.8, delay: 0.4 } 
+        transition: { duration: 0.8, delay: 0.4, ease: easeIn } 
       });
-  }, [isImgLoaded, controlDiv2]);
+  }, [isMainProductImgLoaded, controlDiv2]);
+
+  useEffect(() => {
+    controlDiv3.set({ opacity: 0 });
+    controlDiv4.set({ opacity: 0 });
+    controlDiv3.start({ 
+        opacity: 1, 
+        transition: { duration: 0.8, delay: 0.2, ease: easeIn } 
+    });
+    controlDiv4.start({ 
+      opacity: 1, 
+      transition: { duration: 0.8, delay: 0.2 } 
+    });
+  }, [isCustomProductImgLoaded, controlDiv3, controlDiv4]);
 
   function rgbaToRgb(rgbaString) {
       const rgbaRegex = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d*\.?\d+)\)$/;
@@ -168,23 +184,10 @@ export default function Product({ product }) {
   return (
       <ProductContainer>
         <ProductContainerTopFold id="productTopFold">
-          <ProductImgContainer
-            animate={controlDiv1}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <ImgLoader
-              src={product.imgURL}
-              alt={'product img'}
-              updateParent={setIsImgLoaded}
-            />
+          <ProductImgContainer animate={controlDiv1} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+            <ImgLoader src={product.imgURL} alt={'product img'} updateParent={setIsMainProductImgLoaded} />
           </ProductImgContainer>
-          <ProductShadow
-            initial={{ opacity: 0 }}
-            animate={controlDiv2}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          />
+          <ProductShadow animate={controlDiv2} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
         </ProductContainerTopFold>
         <ProductContainerBotFold id="productBotFold">
           <BotFoldCol>  
@@ -256,14 +259,15 @@ export default function Product({ product }) {
                 }
             </CustomControlsContainer>
             <CustomMockupContainer>
-                <DesignOverlay src={design_ALPHA} alt='alpha design' />
+                <DesignOverlay animate={controlDiv3} src={design_ALPHA} alt='alpha design' />
                 <GradientBox
+                    animate={controlDiv4}
                     style={{
                         background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaStart})` : endColor} 100%)`
                     }}
                 />
                 <ShirtMockupContainer>
-                    <ImgLoader src={product.blankProductURL} alt={"blank custom"} />
+                    <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
                 </ShirtMockupContainer>         
             </CustomMockupContainer>
               <AnimatePresence>
