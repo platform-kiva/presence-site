@@ -1,10 +1,16 @@
+// library imports
 import { useAnimation, AnimatePresence, easeIn } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { generateRgbaString, rgbaToRgb } from '../../../utils/general/general.utils.js';
+
+// reducer actions
 import { addItemToCart } from '../../../store/cart/cart.action.js';
+
+// reducer selectors
 import { selectCartItems } from '../../../store/cart/cart.selector.js';
 
-// styles
+// styled components
 import {
   ProductContainer,
   ProductContainerTopFold,
@@ -42,49 +48,34 @@ import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeBtn from '../../../components/btns/size-btn/SizeBtn.js';
 import SizeSelection from './components/size-selection/SizeSelection.js';
 
-const getRandomRgbValue = () => Math.floor(Math.random() * 256);
-const generateRgbaString = (alpha) => {
-    return `rgba(${getRandomRgbValue()}, ${getRandomRgbValue()}, ${getRandomRgbValue()}, ${alpha})`
-};
-
 export default function Product({ product }) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const [activeSize, setActiveSize] = useState(null);
-  const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
-  const [timerRunning, setTimerRunning] = useState(false);
-  const alphaStart = 0.49;
-  const alphaEnd = 0.56;
-  const [startColor, setStartColor] = useState(null);
-  const [endColor, setEndColor] = useState(null);
-  const [isFrozen, setIsFrozen] = useState(true);
-  const [leftBtnLabel, setLeftBtnLabel] = useState('START');
-  const [rightBtnLabel, setRightBtnLabel] = useState('STOP');
-  const [gradientWasSelected, setGradientWasSelected] = useState(null)
-  const [gradientWasChosen,setGradientWasChosen] = useState(false)
-  const [initialLoadComplete, setInitialLoadComplete] = useState(false)
-  const [isMainProductImgLoaded, setIsMainProductImgLoaded] = useState(false)
-  const [isCustomProductImgLoaded, setIsCustomProductImgLoaded] = useState(false)
-  
-  const handleScroll = (view) => {
-      if (view === "custom") {
-        const customizationElement = document.getElementById("customizationID");
-        customizationElement.scrollIntoView({ behavior: "smooth" });
-      } else if (view === "botFold") {
-        const productBotFoldElement = document.getElementById("productBotFold");
-        productBotFoldElement.scrollIntoView({ behavior: "smooth" });
-      }
-
-  };
-  
-  const handleSizeSelection = (size) => {
-    setActiveSize(size);
-  };
 
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
   const controlDiv3 = useAnimation();
   const controlDiv4 = useAnimation();
+
+  const alphaEnd = 0.56;
+  const alphaStart = 0.49;
+
+  const [activeSize, setActiveSize] = useState(null);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+  const [timerRunning, setTimerRunning] = useState(false);
+  const [isMainProductImgLoaded, setIsMainProductImgLoaded] = useState(false);
+  const [isCustomProductImgLoaded, setIsCustomProductImgLoaded] = useState(false);
+
+  const [startColor, setStartColor] = useState(null);
+  const [endColor, setEndColor] = useState(null);
+  const [isFrozen, setIsFrozen] = useState(true);
+
+  const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
+  const [leftBtnLabel, setLeftBtnLabel] = useState('START');
+  const [rightBtnLabel, setRightBtnLabel] = useState('STOP');
+
+  const [gradientWasSelected, setGradientWasSelected] = useState(null);
+  const [gradientWasChosen,setGradientWasChosen] = useState(false);
 
   const handleMouseEnter = () => {
     controlDiv1.start({ translateY: -10, scale: 1.05, transition: {duration: 0.8 } });
@@ -94,6 +85,40 @@ export default function Product({ product }) {
   const handleMouseLeave = () => {
     controlDiv1.start({ translateY: 0, scale: 1.0, transition: {duration: 0.8 } });
     controlDiv2.start({ scale: 1.0, transition: {duration: 0.8 } });
+  };
+
+  const handleScroll = (view) => {
+      if (view === "custom") {
+        document.getElementById("customizationID").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      if (view === "botFold") {
+        document.getElementById("productBotFold").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+  };
+  
+  const handleSizeSelection = (size) => {
+    setActiveSize(size);
+  };
+
+  const handleCustomizationAction = (actionTaken) => {
+    if (actionTaken === "left") {
+      if (gradientWasSelected === true) {
+        setRightBtnLabel('STOP');
+        setGradientWasSelected(null);
+      };
+      setIsFrozen(false)
+    } else if (actionTaken === "right") {
+      if (!gradientWasSelected) {
+        setGradientWasSelected(true);
+        setLeftBtnLabel('START OVER');
+        setRightBtnLabel('NEXT');
+      } else {
+        setGradientWasChosen(true);
+      };
+      setIsFrozen(true);
+    };
   };
 
   const addProductToCart = () => {
@@ -111,7 +136,7 @@ export default function Product({ product }) {
         }, 2000);
       };
     } catch (error) {
-      console.log("Item was not added to cart.");
+      alert("Error: Item not added to cart");
     };
   };
 
@@ -126,9 +151,10 @@ export default function Product({ product }) {
   }, [isFrozen]);
 
   useEffect(() => {
-    setIsMainProductImgLoaded(false)
-    setIsCustomProductImgLoaded(false)
-  }, [product.imgURL])
+    setIsMainProductImgLoaded(false);
+    setIsCustomProductImgLoaded(false);
+    setActiveSize(null);
+  }, [product.imgURL]);
 
   useEffect(() => {
     controlDiv2.set({ opacity: 0 });
@@ -151,35 +177,9 @@ export default function Product({ product }) {
     });
   }, [isCustomProductImgLoaded, controlDiv3, controlDiv4]);
 
-  function rgbaToRgb(rgbaString) {
-      const rgbaRegex = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(\d*\.?\d+)\)$/;
-      const rgbString = rgbaString.replace(rgbaRegex, 'rgb($1, $2, $3)');
-      return rgbString;
-  }
-
   useEffect(() => {
     setInitialLoadComplete(true);
   }, []);
-
-  const handleAction = (actionTaken) => {
-      if (actionTaken === "left") {
-          if (gradientWasSelected === true) {
-              setRightBtnLabel('STOP')
-              setGradientWasSelected(null)
-          }
-          setIsFrozen(false)
-      } else if (actionTaken === "right") {
-          if (!gradientWasSelected) {
-              setGradientWasSelected(true)
-              setLeftBtnLabel('START OVER')
-              setRightBtnLabel('NEXT')
-          } else {
-              console.log('proceed with sizeselection')
-              setGradientWasChosen(true)
-          }
-          setIsFrozen(true)
-      }
-  }
 
   return (
       <ProductContainer>
@@ -233,10 +233,10 @@ export default function Product({ product }) {
                 {!gradientWasChosen ? 
                     <>   
                         <CustomizeBtnsContainer>
-                            <CustomizeBtnContainer onClick={() => handleAction("left")}>
+                            <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
                                 <PrimaryBtn label={leftBtnLabel} isActive={isFrozen}/>
                             </CustomizeBtnContainer>
-                            <CustomizeBtnContainer onClick={() => handleAction("right")}>
+                            <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
                                 <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
                             </CustomizeBtnContainer>
                         </CustomizeBtnsContainer>
@@ -250,7 +250,7 @@ export default function Product({ product }) {
                         </RgbDisplayContainer>
                         }
                         {!startColor &&
-                          <h3 style={{ fontSize: "20px"}}>281,474,976,710,656 possible combinations, choose one that speaks to you.</h3>
+                          <h3 style={{ fontSize: "20px"}}>281,474,976,710,656 possibilities...find one that feels right.</h3>
                         }
 
                     </>

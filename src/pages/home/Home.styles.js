@@ -6,12 +6,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-`
-export const OutletContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  z-index: 100;
-`
+  `
 export const GradientBG = styled(motion.div)`
   background: linear-gradient(
     45deg,
@@ -20,7 +15,8 @@ export const GradientBG = styled(motion.div)`
   );
   background: ${(props) =>
     props.$products && props.$products[props.$productInd] 
-      ? `linear-gradient(45deg,
+      ? `linear-gradient(
+          45deg,
           rgba(
               ${props.$products[props.$productInd].botGradient[0]},
               ${props.$products[props.$productInd].botGradient[1]},
@@ -34,6 +30,6 @@ export const GradientBG = styled(motion.div)`
       : undefined};
   height: 100%;
   position: fixed;
-  transition: background-color 1s ease;
   width: 100%;
+  z-index: -100;
 `

@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { selectProducts } from '../../store/products/products.selector.js';
 
 // styles
-import {
-  HomeContainer,
-  OutletContainer,
-  GradientBG
-} from './Home.styles.js';
+import { GradientBG, HomeContainer } from './Home.styles.js';
 
 export default function Home() {
   const products = useSelector(selectProducts);
@@ -24,9 +20,7 @@ export default function Home() {
     <>
       {products.length !== 0 && 
           <HomeContainer>
-            <OutletContainer>
-              <Outlet context={[productInd, setProductInd]} />
-            </OutletContainer>
+            <Outlet context={[productInd, setProductInd]} />
             <AnimatePresence>
               <GradientBG
                 key={productInd}

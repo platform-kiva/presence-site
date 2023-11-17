@@ -1,21 +1,26 @@
 import styled from "styled-components";
 
-export const LoadingIconOverlay = styled.div`
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+export const LoadingIconContainer = styled.div`
   align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  background: linear-gradient(
+    45deg,
+      rgba(219, 120, 212, 0.8) 0%,
+      rgba(32, 172, 232, 0.8) 100%)
+  ;
+  width: 100vw;
 `;
 
-export const LoadingIconContainer = styled.div`
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(195, 195, 195, 0.6);
-  border-radius: 50%;
-  border-top-color: #636767;
+export const Icon = styled.div`
   animation: spin 1s ease-in-out infinite;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #FFFFFF;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
   -webkit-animation: spin 1s ease-in-out infinite;
   @keyframes spin {
     to {
