@@ -2,22 +2,15 @@
 import './GridProductsView.styles.scss'
 
 // components
-import CartItem from '../../pages/cart/cart-item/CartItem';
+import ProductDisplay from '../product-display/ProductDisplay'
 
-export default function GridProductsView({ items }) {
+export default function GridProductsView({ items, indSetter, gridViewSetter }) {
 
   return (
     <div className='grid-products-view-container'>
-      <h1>CART OVERVIEW</h1>
       <div className='grid-items-container'>
         {items && items.map(item => (
-          <div key={item.sizeID} className='grid-item-container'>
-            <CartItem key={item.sizeID} cartItem={item} />
-            <div className='grid-item-details'>
-              <h3>SIZE: {item.sizeID}</h3>
-              <h4>QUANTITY: {item.quantity}</h4>
-            </div>
-          </div>
+          <ProductDisplay key={item.id} product={item} indSetter={indSetter} gridViewSetter={gridViewSetter} />
         ))}
       </div>
     </div>

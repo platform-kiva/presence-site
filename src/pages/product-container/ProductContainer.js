@@ -5,23 +5,26 @@ import { selectProducts } from '../../store/products/products.selector.js';
 
 // styles
 import {
-    HeaderContainer,
-    ProductsContainer,
-    CarouselBtnsContainer,
     CarouselBtnContainer,
-    NavBtnContainer
+    CarouselBtnsContainer,
+    HeaderContainer,
+    NavBtnContainer,
+    ProductsContainer
 } from './ProductContainer.styles.js';
 
 // components
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
+import GridItemsView from '../../components/grid-products-view/GridProductsView.js';
 import Header from '../../components/header/Header';
 import NavBtn from '../../components/btns/nav-btn/NavBtn';
 import Product from './product/Product';
+import { useEffect } from 'react';
 
 export default function ProductContainer() {
     const products = useSelector(selectProducts);
     const [isScrolled, setIsScrolled] = useState(false);
     const [productInd, setProductInd] = useOutletContext();
+    const [gridViewIsDisplayed, setGridViewIsDisplayed] = useState(false)
 
     const handleScroll = () => {
         if (!isScrolled) {
@@ -33,6 +36,10 @@ export default function ProductContainer() {
         };
         setIsScrolled(!isScrolled);
     };
+
+    useEffect(() => {
+        console.log(gridViewIsDisplayed)
+    }, [gridViewIsDisplayed])
 
     const handleIndChange = (val) => {
         let currInd = productInd;
@@ -57,23 +64,29 @@ export default function ProductContainer() {
                     times: [0, 1]
                 }}
             >
-                <Header />
+                <Header gridViewSetter={setGridViewIsDisplayed} gridViewStatus={gridViewIsDisplayed}/>
             </HeaderContainer>
-            
-            <CarouselBtnsContainer>
-                <CarouselBtnContainer onClick={() => handleIndChange(-1)}>
-                    <CarouselBtn icon={"left"} filled={false} />
-                </CarouselBtnContainer>
-                <CarouselBtnContainer onClick={() => handleIndChange(1)}>
-                    <CarouselBtn icon={"right"} filled={false} />
-                </CarouselBtnContainer>
-            </CarouselBtnsContainer>
-            
-            <Product product={products[productInd]} />
-            
-            <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
-                <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
-            </NavBtnContainer>
+            {gridViewIsDisplayed ?
+                <GridItemsView items={products} indSetter={setProductInd} gridViewSetter={setGridViewIsDisplayed} />
+                :
+                <>
+                    <CarouselBtnsContainer>
+                        <CarouselBtnContainer onClick={() => handleIndChange(-1)}>
+                            <CarouselBtn icon={"left"} filled={false} />
+                        </CarouselBtnContainer>
+                        <CarouselBtnContainer onClick={() => handleIndChange(1)}>
+                            <CarouselBtn icon={"right"} filled={false} />
+                        </CarouselBtnContainer>
+                    </CarouselBtnsContainer>
+                    <Product product={products[productInd]} />
+                </>
+            }
+            {!gridViewIsDisplayed &&
+                <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
+                    <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
+                </NavBtnContainer>
+            }
+
         </ProductsContainer>
     );
 };

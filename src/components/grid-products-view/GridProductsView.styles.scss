@@ -1,33 +1,17 @@
 .grid-products-view-container {
-    height: fit-content;
-    width: 990px;
-
-    h1 {
-        font-size: 36px;
-    }
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    width: 100vw;
     
     .grid-items-container {
         align-items: center;
         display: flex;
-        flex-flow: wrap;
-        gap: 100px;
+        gap: 48px;
         justify-content: center;
-        margin-top: 24px;
-
-        .grid-item-container {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            padding: 10px;
-            position: relative;
-    
-            .grid-item-details {
-                align-items: center;
-                display: flex;
-                flex-direction: column;
-                gap: 8px;  
-            }
-        }
+        position: relative;
+        margin-top: 80px;
     }
 }

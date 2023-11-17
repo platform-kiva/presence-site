@@ -1,0 +1,33 @@
+.cart-products-view-container {
+    height: fit-content;
+    width: 990px;
+
+    h1 {
+        font-size: 36px;
+    }
+    
+    .cart-items-container {
+        align-items: center;
+        display: flex;
+        flex-flow: wrap;
+        gap: 100px;
+        justify-content: center;
+        margin-top: 24px;
+
+        .cart-item-container {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 10px;
+            position: relative;
+    
+            .cart-item-details {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;  
+            }
+        }
+    }
+}

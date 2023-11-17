@@ -15,8 +15,8 @@ export default function PreLoader() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isLoading = useSelector(selectProductsIsLoading);
-    const [loadingIsDisplayed, setLoadingIsDisplayed] = useState(true)
-    const [animateOut, setAnimateOut] = useState(false)
+    const [loadingIsDisplayed, setLoadingIsDisplayed] = useState(true);
+    const [animateOut, setAnimateOut] = useState(false);
     
     useEffect(() => {
       dispatch(fetchProductsAsync());
@@ -42,7 +42,7 @@ export default function PreLoader() {
         let timer;
         if (animateOut) {
             timer = setTimeout(() => {
-                navigate('/home')
+                navigate('/home');
             }, 1000);
         };
         return () => {

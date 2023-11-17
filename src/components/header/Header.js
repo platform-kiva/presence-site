@@ -19,14 +19,20 @@ import menuIcon from '../../assets/icons/menu-icon.svg';
 // components
 import Banner from '../banner/Banner'
 import NavBtn from '../btns/nav-btn/NavBtn'
+import { useEffect } from 'react';
 
-export default function Header() {
+export default function Header({ gridViewSetter, gridViewStatus }) {
     const cartCount = useSelector(selectCartCount);
     const [gridViewIsActive, setGridViewIsActive] = useState(false);
 
     const handleGridView = () => {
         setGridViewIsActive(!gridViewIsActive);
+        gridViewSetter(!gridViewIsActive)
     };
+
+    useEffect(() => {
+        setGridViewIsActive(gridViewStatus)
+    }, [gridViewStatus])
     
     return (
         <HeaderContainer>

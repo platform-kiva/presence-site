@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { device } from '../../../media-breakpoints';
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 
 export const ProductContainer = styled.div`
     display: flex;
@@ -20,26 +19,6 @@ export const ProductContainerTopFold = styled.div`
 
     @media ${device.laptopL} {
         gap: 80px;
-    }
-`
-export const ProductImgContainer = styled(motion.div)`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
-    height: 280px;
-
-    @media ${device.laptopL} {
-        height: 360px;
-    }
-`
-export const ProductShadow = styled(motion.div)`
-    background-color: rgba(0,0,0,0.15);
-    border-radius: 50%;
-    filter: blur(7px);
-    height: 27px;
-    width: 210px;
-
-    @media ${device.laptopL} {
-        height: 36px;
-        width: 280px;
     }
 `
 export const ProductContainerBotFold = styled.div`
@@ -103,15 +82,6 @@ export const Price = styled.h1`
         font-size: 108px;
     }
 `
-export const ActionContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-`
-export const SizesContainer = styled.div`
-    display: flex;
-    gap: 20px;
-`
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
     font-size: 18px;
@@ -122,7 +92,6 @@ export const DescriptionContainer = styled.div`
         width: 400px;
     }
 `
-
 export const CustomGradientContainer = styled.div`
     align-items: center;
     display: flex;
@@ -178,7 +147,7 @@ export const CustomMockupContainer = styled.div`
     overflow: hidden;
     position: relative;
 `
-export const DesignOverlay = styled(motion.img)`
+export const DesignOverlayContainer = styled.div`
     height: 210px;
     left: 50%;
     position: absolute;

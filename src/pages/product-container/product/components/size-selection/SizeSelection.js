@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addItemToCart } from '../../../../../store/cart/cart.action.js';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector.js';
@@ -14,7 +14,7 @@ import {
 import PrimaryBtn from '../../../../../components/btns/primary-btn/PrimaryBtn.js';
 import SizeBtn from '../../../../../components/btns/size-btn/SizeBtn.js';
 
-export default function SizeSelection({ product }) {
+export default function SizeSelection({ product, custom=false, scrollToElement=null }) {
     const dispatch = useDispatch();
     const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
     const [activeSize, setActiveSize] = useState(null);
@@ -44,6 +44,17 @@ export default function SizeSelection({ product }) {
         };
     };
 
+    const handleScroll = () => {
+        if (scrollToElement) {
+            scrollToElement('custom')
+        }
+        return;
+    };
+
+    useEffect(() => {
+        setActiveSize(null)
+    }, [product])
+    
     return (
         <ActionContainer>
             <SizesContainer>
@@ -56,6 +67,12 @@ export default function SizeSelection({ product }) {
                 <div onClick={() => addProductToCart(product, activeSize)}>
                     <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
                 </div>
+                {custom === true &&
+                    <div onClick={() => handleScroll()}>
+                        <PrimaryBtn label={"CREATE CUSTOM"} accentCol={product.botGradient} />
+                    </div>
+                }
+
         </ActionContainer>
     )
 }
