@@ -90,19 +90,20 @@ export const GradientBG = styled(motion.div)`
     rgba(32,172,232,0.8) 100%
   );
   background: ${(props) =>
-    props.$products && props.$products[props.$productInd]
-      ? `linear-gradient(45deg,
-          rgba(
-              ${props.$products[props.$productInd].botGradient[0]},
-              ${props.$products[props.$productInd].botGradient[1]},
-              ${props.$products[props.$productInd].botGradient[2]},
-              0.8) 0%,
-          rgba(
-              ${props.$products[props.$productInd].topGradient[0]},
-              ${props.$products[props.$productInd].topGradient[1]},
-              ${props.$products[props.$productInd].topGradient[2]},
-              0.8) 100%)`
-      : undefined};
+    props.$cartItems && props.$cartItems[props.$cartInd] 
+    ? `linear-gradient(
+        45deg,
+        rgba(
+            ${props.$cartItems[props.$cartInd].botGradient[0]},
+            ${props.$cartItems[props.$cartInd].botGradient[1]},
+            ${props.$cartItems[props.$cartInd].botGradient[2]},
+            0.8) 0%,
+        rgba(
+            ${props.$cartItems[props.$cartInd].topGradient[0]},
+            ${props.$cartItems[props.$cartInd].topGradient[1]},
+            ${props.$cartItems[props.$cartInd].topGradient[2]},
+            0.8) 100%)`
+    : undefined};
   height: 100%;
   position: fixed;
   transition: background-color 1s ease;

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
 import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js'
 import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js'
-import { selectProducts } from '../../store/products/products.selector.js'
 
 // styles
 import {
@@ -27,13 +26,13 @@ import {
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
 import CartItem from './cart-item/CartItem'
 import NavBtn from '../../components/btns/nav-btn/NavBtn'
+import CustomShirtDisplay from '../../components/custom-shirt-display/CustomShirtDisplay.js'
 
 export default function Cart() {
   const dispatch = useDispatch()
   const cartCount = useSelector(selectCartCount)
   const cartTotal = useSelector(selectCartTotal)
   const cartItems = useSelector(selectCartItems)
-  const products = useSelector(selectProducts)
   
   const [productInd, setProductInd] = useState(0);
   const [cartInd, setCartInd] = useState(0)
@@ -77,6 +76,10 @@ export default function Cart() {
     }
   }, [cartInd, cartItems, setProductInd])
 
+  useEffect(() => {
+    console.log(cartItems)
+  }, [cartItems])
+
   return (
     <CartContainer>
       {cartItems.length !== 0 && cartItems[cartInd] &&
@@ -87,15 +90,22 @@ export default function Cart() {
 
           <CartItemDisplayContainer>
             {cartItems.map((item, index) => {
-              if (index === cartInd) {
-                return  (
-                  <CartItemContainer key={item.sizeID}>
-                    <CartItem cartItem={item} cartInd={cartInd}/>
-                  </CartItemContainer>
-                )
-              }
-              return null
-            })}
+                if (index === cartInd) {
+                  if (item.imgURL === null) {
+                    return (
+                      <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} />
+                    );
+                  } else {
+                    return (
+                      <CartItemContainer key={item.sizeID}>
+                        <CartItem cartItem={item} cartInd={cartInd}/>
+                      </CartItemContainer>
+                    );
+                  }
+                }
+                return null
+              })
+            }
           </CartItemDisplayContainer>    
 
           <CarouselBtnContainer>
@@ -133,9 +143,9 @@ export default function Cart() {
 
       <AnimatePresence>
         <GradientBG
-          key={productInd}
-          $products={products}
-          $productInd={productInd}
+          key={cartInd}
+          $cartItems={cartItems}
+          $cartInd={cartInd}
           initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

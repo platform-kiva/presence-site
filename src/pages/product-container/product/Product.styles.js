@@ -103,14 +103,25 @@ export const CustomGradientContainer = styled.div`
 `
 export const GradientBG = styled(motion.div)`
     background: ${(props) =>
-        props.$startColor && props.$endColor
-        ? `linear-gradient(45deg, ${props.$startColor} 0%, ${props.$endColor} 100%)`
+        props.$startColor && props.$endColor 
+        ? `linear-gradient(
+            45deg,
+            rgba(
+                ${props.$startColor[0]},
+                ${props.$startColor[1]},
+                ${props.$startColor[2]},
+                0.8) 0%,
+            rgba(
+                ${props.$endColor[0]},
+                ${props.$endColor[1]},
+                ${props.$endColor[2]},
+                0.8) 100%)`
         : undefined};
     height: 100%;
     position: absolute;
     transition: background-color 1s ease;
     width: 100%;
-    z-index: -100;
+    z-index: -99;
 `
 export const TopNavBtnContainer = styled.div`
     position: absolute;

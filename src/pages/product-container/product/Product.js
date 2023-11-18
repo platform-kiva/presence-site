@@ -1,7 +1,7 @@
 // library imports
 import { useAnimation, AnimatePresence, easeIn } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { generateRgbaString, rgbaToRgb } from '../../../utils/general/general.utils.js';
+import { extractRGBValues, generateRgbaString, rgbaToRgb } from '../../../utils/general/general.utils.js';
 
 // styled components
 import {
@@ -31,7 +31,7 @@ import {
 import ImgLoader from '../../../components/img-loader/ImgLoader.js';
 import NavBtn from '../../../components/btns/nav-btn/NavBtn.js';
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
-import SizeSelection from './components/size-selection/SizeSelection.js';
+import SizeSelection from '../../../components/size-selection/SizeSelection.js';
 import ProductDisplay from '../../../components/product-display/ProductDisplay.js';
 
 export default function Product({ product }) {
@@ -55,6 +55,30 @@ export default function Product({ product }) {
 
   const [gradientWasSelected, setGradientWasSelected] = useState(null);
   const [gradientWasChosen,setGradientWasChosen] = useState(false);
+
+  const [customProduct, setCustomProduct] = useState(null)
+
+  useEffect(() => {
+    if (!startColor || !endColor) {
+      return;
+    }
+    const extractedStartColor = extractRGBValues(rgbaToRgb(startColor));
+    const extractedEndColor = extractRGBValues(rgbaToRgb(endColor));
+
+    setCustomProduct(
+      {
+        availSizes: ['S', 'M', 'L'],
+        botGradient: extractedStartColor,
+        imgURL: null,
+        id: `${startColor}, ${endColor}`,
+        price: 400,
+        quantity: 1,
+        size: "TEST",
+        isCustom: true,
+        topGradient: extractedEndColor
+      }
+    )
+  }, [startColor, endColor])
 
   const handleScroll = (view) => {
       if (view === "custom") {
@@ -150,64 +174,64 @@ export default function Product({ product }) {
           </BotFoldCol>
         </ProductContainerBotFold>
         <CustomGradientContainer id='customizationID'>
-            <TopNavBtnContainer onClick={() => handleScroll("botFold")}>
-                <NavBtn direction={"up"} btnIcon="up" />
-            </TopNavBtnContainer>
+          <TopNavBtnContainer onClick={() => handleScroll("botFold")}>
+              <NavBtn direction={"up"} btnIcon="up" />
+          </TopNavBtnContainer>
 
-            <CustomControlsContainer>
-                {!gradientWasChosen ? 
-                    <>   
-                        <CustomizeBtnsContainer>
-                            <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
-                                <PrimaryBtn label={leftBtnLabel} isActive={isFrozen}/>
-                            </CustomizeBtnContainer>
-                            <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
-                                <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
-                            </CustomizeBtnContainer>
-                        </CustomizeBtnsContainer>
-                    
-                        {startColor &&
-                        <RgbDisplayContainer>
-                          <h3>{rgbaToRgb(endColor)}</h3>
-                          <RgbSquare style={{ backgroundColor: `${endColor}`, border: '1px solid #FFFFFF'}} />
-                          <h3>{rgbaToRgb(startColor)}</h3>
-                          <RgbSquare style={{ backgroundColor: `${startColor}`, border: '1px solid #FFFFFF'}} />
-                        </RgbDisplayContainer>
-                        }
-                        {!startColor &&
-                          <h3 style={{ fontSize: "20px"}}>281,474,976,710,656 possibilities...find one that feels right.</h3>
-                        }
+          <CustomControlsContainer>
+              {!gradientWasChosen ? 
+                  <>   
+                      <CustomizeBtnsContainer>
+                          <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
+                              <PrimaryBtn label={leftBtnLabel} isActive={isFrozen}/>
+                          </CustomizeBtnContainer>
+                          <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
+                              <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
+                          </CustomizeBtnContainer>
+                      </CustomizeBtnsContainer>
+                  
+                      {startColor &&
+                      <RgbDisplayContainer>
+                        <h3>{rgbaToRgb(endColor)}</h3>
+                        <RgbSquare style={{ backgroundColor: `${endColor}`, border: '1px solid #FFFFFF'}} />
+                        <h3>{rgbaToRgb(startColor)}</h3>
+                        <RgbSquare style={{ backgroundColor: `${startColor}`, border: '1px solid #FFFFFF'}} />
+                      </RgbDisplayContainer>
+                      }
+                      {!startColor &&
+                        <h3 style={{ fontSize: "20px"}}>281,474,976,710,656 possibilities...find one that feels right.</h3>
+                      }
 
-                    </>
-                    :
-                    <SizeSelection product={product}/>
-                }
-            </CustomControlsContainer>
-            <CustomMockupContainer>
-                <DesignOverlayContainer>
-                    <ImgLoader src={product.designAlpha} alt={'design'} />
-                  </DesignOverlayContainer>
-                <GradientBox
-                    animate={controlDiv3}
-                    style={{
-                        background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaStart})` : endColor} 100%)`
-                    }}
-                />
-                <ShirtMockupContainer>
-                    <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
-                </ShirtMockupContainer>         
-            </CustomMockupContainer>
-              <AnimatePresence>
-                  <GradientBG
-                    key={1}
-                    $startColor={startColor}
-                    $endColor={endColor}
-                    initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                  />
-              </AnimatePresence>
+                  </>
+                  :
+                  <SizeSelection product={customProduct}/>
+              }
+          </CustomControlsContainer>
+          <CustomMockupContainer>
+              <DesignOverlayContainer>
+                  <ImgLoader src={product.designAlpha} alt={'design'} />
+                </DesignOverlayContainer>
+              <GradientBox
+                  animate={controlDiv3}
+                  style={{
+                      background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaStart})` : endColor} 100%)`
+                  }}
+              />
+              <ShirtMockupContainer>
+                  <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
+              </ShirtMockupContainer>         
+          </CustomMockupContainer>
+          <AnimatePresence>
+              <GradientBG
+                key={1}
+                $startColor={startColor ? extractRGBValues(rgbaToRgb(startColor)) : null}
+                $endColor={endColor ? extractRGBValues(rgbaToRgb(endColor)) : null}
+                initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              />
+          </AnimatePresence>
         </CustomGradientContainer>
       </ProductContainer>
   );
