@@ -9,6 +9,7 @@ import {
   CartContainer,
   TopNavBtnContainer,
   CartItemDisplayContainer,
+  CustomProductHolder,
   CarouselBtnContainer,
   CartItemContainer,
   CartItemLabelContainer,
@@ -34,7 +35,6 @@ export default function Cart() {
   const cartTotal = useSelector(selectCartTotal)
   const cartItems = useSelector(selectCartItems)
   
-  const [productInd, setProductInd] = useState(0);
   const [cartInd, setCartInd] = useState(0)
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
@@ -52,7 +52,6 @@ export default function Cart() {
         currInd += val
     }
     setCartInd(currInd)
-    setProductInd(cartItems[currInd].id)
   }
 
   const handleAddItemFromCart = () => {
@@ -72,9 +71,8 @@ export default function Cart() {
 
   useEffect(() => {
     if (cartItems.length !== 0 && cartItems[cartInd]) {
-      setProductInd(cartItems[cartInd].id)
     }
-  }, [cartInd, cartItems, setProductInd])
+  }, [cartInd, cartItems])
 
   useEffect(() => {
     console.log(cartItems)
@@ -93,7 +91,9 @@ export default function Cart() {
                 if (index === cartInd) {
                   if (item.imgURL === null) {
                     return (
-                      <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} />
+                      <CustomProductHolder>
+                        <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} />
+                      </CustomProductHolder>
                     );
                   } else {
                     return (

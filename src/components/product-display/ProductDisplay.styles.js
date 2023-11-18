@@ -20,7 +20,7 @@ export const ProductImgContainer = styled(motion.div)`
     height: 280px;
 
     @media ${device.laptopL} {
-        height: 360px;
+        height: 40px;
     }
 `
 export const ProductShadow = styled(motion.div)`

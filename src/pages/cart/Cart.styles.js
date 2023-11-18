@@ -25,6 +25,12 @@ export const CartItemDisplayContainer = styled.div`
     position: absolute;
     width: 100vw;
 `
+export const CustomProductHolder = styled.div`
+    margin-bottom: 200px;
+    @media ${device.laptopL} {
+        margin-bottom: 300px;
+    }
+`
 export const CartItemContainer = styled.div`
     position: absolute;
     margin-bottom: 200px;

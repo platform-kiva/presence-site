@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from '../../../media-breakpoints'
 
-export const CartItemImg = styled.img`
+export const CartItemImgContainer = styled.div`
     width: 250px; 
 
     @media ${device.laptopL} {

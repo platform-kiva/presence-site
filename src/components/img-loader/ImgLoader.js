@@ -13,7 +13,7 @@ export default function ImgLoader({ src, alt, updateParent=null }) {
   }, [src]);
 
   useEffect(() => {
-    if (updateParent) {
+    if (isImageLoaded && updateParent) {
       updateParent(true)
     }
     controlDiv.set({ scale: 0.9, opacity: 0, zIndex: -1 });
@@ -21,7 +21,7 @@ export default function ImgLoader({ src, alt, updateParent=null }) {
       controlDiv.start({
         scale: 1,
         opacity: 1,
-        zIndex: 1,
+        translateZ:-50,
         transition: { duration: 1.0, type: 'spring' },
       });
     }
@@ -29,7 +29,7 @@ export default function ImgLoader({ src, alt, updateParent=null }) {
 
   return (
     <ImgLoaderContainer
-      initial={{ scale: 0.75, z: -100, opacity: 0 }}
+      initial={{ scale: 0.50, translateZ: 100, opacity: 0 }}
       animate={controlDiv}
       onLoad={() => setIsImageLoaded(true)}
       src={src}

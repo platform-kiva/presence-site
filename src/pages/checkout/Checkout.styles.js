@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.div`
-    align-items: center;
     display: flex;
     flex-direction: column;
 `
-export const TopNavBtnContainer = styled.div`
+export const BotNavBtnContainer = styled.div`
     backdrop-filter: blur(10px);
     background: linear-gradient(
         to bottom,
@@ -18,8 +17,7 @@ export const TopNavBtnContainer = styled.div`
     position: fixed;
     width: 100vw;
 `
-export const GridContainer = styled.div`
-    margin-bottom: 150px;
+export const CartOverviewContainer = styled.div`
 `
 export const GradientBG = styled.div`
     background: ${props =>

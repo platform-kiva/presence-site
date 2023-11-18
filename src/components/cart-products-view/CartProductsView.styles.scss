@@ -1,9 +1,11 @@
 .cart-products-view-container {
     height: fit-content;
-    width: 990px;
+    text-align: center;
+    width: 100vw;
 
     h1 {
         font-size: 36px;
+        padding: 50px 0px;
     }
     
     .cart-items-container {
@@ -12,7 +14,21 @@
         flex-flow: wrap;
         gap: 100px;
         justify-content: center;
-        margin-top: 24px;
+        padding: 50px 0px;
+
+        .product-holder {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+
+            .cart-item-details {
+                display: flex;
+                flex-direction: column;
+                font-size: 12px;
+                gap: 8px;
+            }
+        }
 
         .cart-item-container {
             align-items: center;

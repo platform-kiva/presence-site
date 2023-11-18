@@ -9,6 +9,7 @@ import './PaymentMethod.styles.scss'
 
 // components
 import OrderForm from '../order-form/OrderForm';
+import PrimaryBtn from '../../../../components/btns/primary-btn/PrimaryBtn';
 
 export default function PaymentMethod() {
     const [clientSecret, setClientSecret] = useState(null);
@@ -36,44 +37,16 @@ export default function PaymentMethod() {
     };
 
     return (
-        <>
+        <div className='payment-method-container'>
             {clientSecret ?
                 <Elements stripe={stripePromise} options={options}>
                     <OrderForm clientSecret={clientSecret} />
                 </Elements>
                 :
-                <div className='payment-method-container'>
-                    
-                    <div className='payment-method-col'>
-                        <h1>EXPRESS PAYMENT</h1>
-                        <div className='payment-method-options-container'>
-                            <div className='express-payment-option-container'>
-                                <h3>APPLE PAY</h3>
-                            </div>
-                            <div className='express-payment-option-container'>
-                                <h3>GOOGLE PAY</h3>
-                            </div>
-                            <div className='express-payment-option-container'>
-                                <h3>PAYPAL</h3>
-                            </div>
-                            <div className='express-payment-option-container'>
-                                <h3>VENMO</h3>
-                            </div>
-                            <div className='express-payment-option-container'>
-                                <h3>CASHAPP</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='payment-method-col'>
-                        <h1>CARD PAYMENT</h1>
-                        <div className='payment-method-options-container' onClick={() => fetchClientSecret()}>
-                            <div className='card-payment-option-container'>
-                                <h3>CARD</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div className='checkout-btn-container' onClick={() => fetchClientSecret()}>
+                    <PrimaryBtn label={"GO TO CHECKOUT"}/>
+                </div> 
             }
-        </>
+        </div>
     )
 }
