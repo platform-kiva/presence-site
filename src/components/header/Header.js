@@ -5,10 +5,7 @@ import { selectCartCount } from '../../store/cart/cart.selector.js';
 // styles
 import { 
     HeaderBtnContainer,
-    HeaderContainer,
-    LeftHeaderBtnWrapper,
-    MiddleHeaderComponentWrapper,
-    RightHeaderBtnWrapper
+    HeaderContainer
  } from './Header.styles.js';
 
 // assets
@@ -36,39 +33,33 @@ export default function Header({ gridViewSetter, gridViewStatus }) {
     
     return (
         <HeaderContainer>
-            <LeftHeaderBtnWrapper>
-                <HeaderBtnContainer
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ 
-                        delay: 1,
-                        ease: "easeOut",
-                        times: [0, 1]
-                    }}
-                >
-                    <img src={menuIcon} alt="menu icon" />
-                </HeaderBtnContainer>
-            </LeftHeaderBtnWrapper>
-            <MiddleHeaderComponentWrapper>
-                {cartCount === 0 ? 
-                    <Banner />
-                :
-                    <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} />      
-                }
-            </MiddleHeaderComponentWrapper>
-            <RightHeaderBtnWrapper>
-                <HeaderBtnContainer onClick={() => handleGridView()}
-                    initial={{ x: 50, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ 
-                        delay: 1,
-                        ease: "easeOut",
-                        times: [0, 1]
-                    }}
-                >
-                    <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
-                </HeaderBtnContainer>
-            </RightHeaderBtnWrapper>
+            <HeaderBtnContainer
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ 
+                    delay: 1,
+                    ease: "easeOut",
+                    times: [0, 1]
+                }}
+            >
+                <img src={menuIcon} alt="menu icon" />
+            </HeaderBtnContainer>
+            {cartCount === 0 ? 
+                <Banner />
+            :
+                <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} headerNav={true} />      
+            }
+            <HeaderBtnContainer onClick={() => handleGridView()}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ 
+                    delay: 1,
+                    ease: "easeOut",
+                    times: [0, 1]
+                }}
+            >
+                <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
+            </HeaderBtnContainer>
         </HeaderContainer>
     )
 }

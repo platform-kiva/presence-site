@@ -12,14 +12,44 @@ export const NavBtnContainer = styled.div`
     &:hover {
         width: 424px;
     }
-`
 
-export const SideIcons = styled.img`
+    @media (max-width: 550px) {
+        justify-content: center;
+        gap: 24px;
+    }
+`
+export const SideIcon1 = styled.img`
     opacity: 0.4;
     transition: 0.8s ease-in-out;
     width: 16px;
     &:hover {
         transition: 0.8s ease-in-out;
         opacity: 1.0;
+    }
+`
+export const SideIcon2 = styled.img`
+    opacity: 0.4;
+    transition: 0.8s ease-in-out;
+    width: 16px;
+    &:hover {
+        transition: 0.8s ease-in-out;
+        opacity: 1.0;
+    }
+
+    @media (max-width: 450px) {
+        display: none;
+    }
+`
+export const SideIcon3 = styled.img`
+    opacity: 0.4;
+    transition: 0.8s ease-in-out;
+    width: 16px;
+    &:hover {
+        transition: 0.8s ease-in-out;
+        opacity: 1.0;
+    }
+
+    @media (max-width: 550px) {
+        display: none;
     }
 `

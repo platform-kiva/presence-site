@@ -3,12 +3,19 @@ import { motion } from "framer-motion";
 import { device } from '../../media-breakpoints'
   
 export const ProductsContainer = styled.div`
+    align-items: center;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     width: 100vw;
 `
 export const HeaderContainer = styled(motion.div)`
     position: relative;
+    width: 100%;
+
+    @media ${device.laptopL} {
+        max-width: 1440px;
+    }
 `
 export const CarouselBtnsContainer = styled.div`
     display: flex;

@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      {products.length !== 0 && 
+      {products && 
           <HomeContainer>
             <Outlet context={[productInd, setProductInd]} />
             <AnimatePresence>
