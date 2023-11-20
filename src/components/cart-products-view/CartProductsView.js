@@ -14,20 +14,20 @@ export default function CartProductsView({ items }) {
         {items.map((item) => {
             if (item.imgURL === null) {
               return (
-                <div className='product-holder' key={`${item.topGradient}, ${item.botGradient}`}>
+                <div className='product-holder' key={item.cartID}>
                   <CustomShirtDisplay product={item} />
                   <div className='cart-item-details'>
-                    <h2>SIZE: {item.quantity}</h2>
+                    <h2>SIZE: {item.size}</h2>
                     <h2>QUANTITY: {item.quantity}</h2>
                   </div>
                 </div>
               );
             } else {
               return (
-                <div className='product-holder' key={item.sizeID}>
+                <div className='product-holder' key={item.cartID}>
                   <CartItem cartItem={item}/>
                   <div className='cart-item-details'>
-                    <h2>SIZE: {item.quantity}</h2>
+                    <h2>SIZE: {item.size}</h2>
                     <h2>QUANTITY: {item.quantity}</h2>
                   </div>
                 </div>

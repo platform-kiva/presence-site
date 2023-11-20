@@ -27,12 +27,12 @@ export default function CustomShirtDisplay({ product }) {
     controlDiv1.set({ opacity: 0 });
     controlDiv1.start({ 
         opacity: 1, 
-        transition: { duration: 0.8, delay: 0.1, ease: easeIn } 
+        transition: { duration: 0.1, delay: 0.1, ease: easeIn } 
       });
     controlDiv2.set({ opacity: 0 });
     controlDiv2.start({ 
         opacity: 1, 
-        transition: { duration: 0.8, delay: 0.1, ease: easeIn } 
+        transition: { duration: 0.1, delay: 0.1, ease: easeIn } 
       });
   }, [blankAlphaLoaded, controlDiv1, controlDiv2])
 

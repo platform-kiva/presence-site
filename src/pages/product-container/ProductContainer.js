@@ -37,10 +37,6 @@ export default function ProductContainer() {
         setIsScrolled(!isScrolled);
     };
 
-    useEffect(() => {
-        console.log(gridViewIsDisplayed)
-    }, [gridViewIsDisplayed])
-
     const handleIndChange = (val) => {
         let currInd = productInd;
         if (currInd === 3 && val === 1) {

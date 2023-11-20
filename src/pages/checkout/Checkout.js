@@ -30,7 +30,7 @@ export default function Checkout() {
       <BotNavBtnContainer>
         <NavBtn direction={"down"} btnIcon="cart" link={'/cart'}/>
       </BotNavBtnContainer>
-      <GradientBG $products={products} $productInd={cartItems[0].id} />
+      <GradientBG $cartItems={cartItems} $cartInd={0} />
     </CheckoutContainer>
   )
 };

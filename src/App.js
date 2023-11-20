@@ -7,7 +7,7 @@ import cursorIcon from './assets/icons/cursor.png';
 import Cart from './pages/cart/Cart';
 import Checkout from './pages/checkout/Checkout';
 import Home from './pages/home/Home';
-import PaymentMethod from './pages/checkout/components/payment-method/PaymentMethod';
+import PaymentInitializer from './pages/checkout/components/payment-initializer/PaymentInitializer';
 import PreLoader from "./pages/pre-loader/PreLoader";
 import ProductContainer from './pages/product-container/ProductContainer';
 import OrderComplete from './pages/order-complete/OrderComplete';
@@ -24,7 +24,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/complete" element={<OrderComplete />} />
           <Route path="/checkout" element={<Checkout />}>
-              <Route path="" element={<PaymentMethod />} />
+              <Route path="" element={<PaymentInitializer />} />
             </Route>
         </Routes>
       </BrowserRouter>

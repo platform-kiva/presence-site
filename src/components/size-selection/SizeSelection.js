@@ -39,7 +39,7 @@ export default function SizeSelection({ product, custom=false, scrollToElement=n
                 }, 2000);
             };
         } catch (error) {
-            console.log("Item was not added to cart.");
+            alert("Error: Item was not added to cart.");
         };
     };
 

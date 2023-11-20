@@ -21,7 +21,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore()
-// console.log(app)
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey);
@@ -33,19 +32,11 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     });
 
     await batch.commit();
-    console.log("Done");
+    alert("Done: Collection & Documents have been added");
 }
 
 export const getProductsAndDocuments = async () => {
     const docRef = doc(db, "products", "productsArray");
     const docSnap = await getDoc(docRef);
-
-    // if (docSnap.exists()) {
-    // console.log("Document data:", docSnap.data().products);
-    // } else {
-    // console.log("No such document!");
-    // }
-    console.log(docSnap.data().products)
-
     return docSnap.data().products;
 }

@@ -17,9 +17,7 @@ export default function NavBtn({ direction, btnIcon, link=null }) {
     const navigate = useNavigate()
 
     const handleNavigation = () => {
-        if (link === null ) {
-            console.log("no linke")
-        } else {
+        if (link) {
             navigate(link)
         }
     }

@@ -1,29 +1,29 @@
 import { CART_ACTION_TYPES } from "./cart.types";
 
 const addCartItem = (cartItems, productToAdd, size) => {
-    const sizeID = productToAdd.id + size
+    const cartID = productToAdd.id + size
     const itemExists = cartItems.find(
-        (item) => item.sizeID === sizeID
+        (item) => item.cartID === cartID
     )
     if (itemExists) {
         return cartItems.map((cartItem) => 
-            cartItem.sizeID === sizeID 
+            cartItem.cartID === cartID 
                 ? {...cartItem, quantity: cartItem.quantity + 1}
                 : cartItem
         )
     }
-    return [...cartItems, { ...productToAdd, quantity: 1, size: size, sizeID: sizeID}]
+    return [...cartItems, { ...productToAdd, quantity: 1, size: size, cartID: cartID}]
 }
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
     const existingCartItem = cartItems.find(
-        (item) => item.sizeID === cartItemToRemove.sizeID
+        (item) => item.cartID === cartItemToRemove.cartID
     )
     if (existingCartItem.quantity === 1) {
-        return cartItems.filter(cartItem => cartItem.sizeID !== cartItemToRemove.sizeID)
+        return cartItems.filter(cartItem => cartItem.cartID !== cartItemToRemove.cartID)
     }
     return cartItems.map(cartItem =>
-        cartItem.sizeID === cartItemToRemove.sizeID 
+        cartItem.cartID === cartItemToRemove.cartID 
             ? {...cartItem, quantity: cartItem.quantity - 1}
             : cartItem
     )

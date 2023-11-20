@@ -97,7 +97,7 @@ export default function Cart() {
                     );
                   } else {
                     return (
-                      <CartItemContainer key={item.sizeID}>
+                      <CartItemContainer key={item.cartID}>
                         <CartItem cartItem={item} cartInd={cartInd}/>
                       </CartItemContainer>
                     );

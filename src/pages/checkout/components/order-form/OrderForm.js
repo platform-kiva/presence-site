@@ -4,10 +4,11 @@ import { clearCart } from '../../../../store/cart/cart.action'
 import { useDispatch } from "react-redux";
 
 // styles
-import './OrderForm.styles.scss';
+import { OrderFormForm, OrderFormContainer } from "./OrderForm.styles";
 
 // components
 import PrimaryBtn from "../../../../components/btns/primary-btn/PrimaryBtn";
+
 
 export default function OrderForm({ clientSecret }) {
     const stripe = useStripe();
@@ -20,19 +21,15 @@ export default function OrderForm({ clientSecret }) {
     }
 
     const paymentHandler = async (e) => {
-        console.log("ran paymentHandler")
         e.preventDefault();
-        console.log("default prevented")
     
         if(!stripe || !elements) {
-            console.log("no stripe or element")
             return;
         }
-        console.log("stripe and element present")
 
         const {error: submitError} = await elements.submit();
         if (submitError) {
-            console.log(submitError);
+            alert(submitError);
         return;
   }
     
@@ -50,16 +47,16 @@ export default function OrderForm({ clientSecret }) {
         });
     
         if (paymentResult.error) {
-          console.log(paymentResult.error)
+          alert(paymentResult.error)
         } else {
           clearCartItems()
         }
     }
 
     return (
-      <div className='order-form-container'>
+      <OrderFormContainer id="orderFormID">
         <h1>ORDER FORM</h1>
-        <form className='order-form' onSubmit={paymentHandler}>
+        <OrderFormForm onSubmit={paymentHandler}>
           <input
             id="email"
             type="email"
@@ -71,7 +68,7 @@ export default function OrderForm({ clientSecret }) {
           <AddressElement options={{mode: 'shipping'}} />
           <PaymentElement />
           <PrimaryBtn label={"PLACE ORDER"}/>
-        </form>
-      </div>
+        </OrderFormForm>
+      </OrderFormContainer>
     )
 }
