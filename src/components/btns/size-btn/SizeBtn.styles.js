@@ -15,13 +15,12 @@ export const SizeBtnContainer = styled.div`
     opacity: ${props =>
         props.$selectedSize === props.$size ? "1.0" : "0.5"
     };
-    transition: 0.4s ease-in-out;
+    transition: 0.2s ease-in-out;
     width: 50px;
     &:hover {
-        background-color: rgba(255,255,255,0.2);
         opacity: 1.0;
         transform: scale(1.1);
-        transition: 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     };
 `
 export const BtnLabel = styled.h3`

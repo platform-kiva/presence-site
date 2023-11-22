@@ -7,9 +7,13 @@ export const HeaderContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding-top: 50px;
+    padding-top: 30px;
     width: 100%;
     z-index: 1000;
+
+    @media (min-width: 450px) {
+        padding-top: 50px;
+    }
 `
 export const HeaderBtnContainer = styled(motion.div)`
     cursor: url(${cursorIconFilled}) 15 15, auto;

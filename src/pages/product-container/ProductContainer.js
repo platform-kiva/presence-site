@@ -18,7 +18,6 @@ import GridItemsView from '../../components/grid-products-view/GridProductsView.
 import Header from '../../components/header/Header';
 import NavBtn from '../../components/btns/nav-btn/NavBtn';
 import Product from './product/Product';
-import { useEffect } from 'react';
 
 export default function ProductContainer() {
     const products = useSelector(selectProducts);
@@ -78,8 +77,8 @@ export default function ProductContainer() {
                 </>
             }
             {!gridViewIsDisplayed &&
-                <NavBtnContainer $isScrolled={isScrolled} onClick={() => handleScroll()}>
-                    <NavBtn direction={isScrolled ? "up" : "down"} btnIcon={isScrolled ? "up" : "down"}/>
+                <NavBtnContainer onClick={() => handleScroll()}>
+                    <NavBtn direction={"down"} btnIcon={"down"}/>
                 </NavBtnContainer>
             }
 

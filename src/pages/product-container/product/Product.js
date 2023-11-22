@@ -7,6 +7,7 @@ import { extractRGBValues, generateRgbaString, rgbaToRgb } from '../../../utils/
 import {
   ProductContainer,
   ProductContainerTopFold,
+  ProductHolder,
   ProductContainerBotFold,
   BotFoldCol,
   ProductImgCarousel,
@@ -15,7 +16,6 @@ import {
   DescriptionContainer,
   CustomGradientContainer,
   GradientBG,
-  TopNavBtnContainer,
   CustomControlsContainer,
   CustomizeBtnsContainer,
   CustomizeBtnContainer,
@@ -29,7 +29,6 @@ import {
 
 // components
 import ImgLoader from '../../../components/img-loader/ImgLoader.js';
-import NavBtn from '../../../components/btns/nav-btn/NavBtn.js';
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeSelection from '../../../components/size-selection/SizeSelection.js';
 import ProductDisplay from '../../../components/product-display/ProductDisplay.js';
@@ -50,7 +49,6 @@ export default function Product({ product }) {
   const [endColor, setEndColor] = useState(null);
   const [isFrozen, setIsFrozen] = useState(true);
 
-  const [leftBtnLabel, setLeftBtnLabel] = useState('START');
   const [rightBtnLabel, setRightBtnLabel] = useState('STOP');
 
   const [gradientWasSelected, setGradientWasSelected] = useState(null);
@@ -101,7 +99,6 @@ export default function Product({ product }) {
     } else if (actionTaken === "right") {
       if (!gradientWasSelected) {
         setGradientWasSelected(true);
-        setLeftBtnLabel('START OVER');
         setRightBtnLabel('NEXT');
       } else {
         setGradientWasChosen(true);
@@ -148,9 +145,9 @@ export default function Product({ product }) {
   return (
       <ProductContainer>
         <ProductContainerTopFold id="productTopFold">
-          <div className='product-display-holder' style={{ marginTop: '80px'}}>
+          <ProductHolder>
             <ProductDisplay product={product} scrollToElement={handleScroll} />
-          </div>   
+          </ProductHolder>
         </ProductContainerTopFold>
 
         <ProductContainerBotFold id="productBotFold">
@@ -174,16 +171,12 @@ export default function Product({ product }) {
           </BotFoldCol>
         </ProductContainerBotFold>
         <CustomGradientContainer id='customizationID'>
-          <TopNavBtnContainer onClick={() => handleScroll("botFold")}>
-              <NavBtn direction={"up"} btnIcon="up" />
-          </TopNavBtnContainer>
-
           <CustomControlsContainer>
               {!gradientWasChosen ? 
                   <>   
                       <CustomizeBtnsContainer>
                           <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
-                              <PrimaryBtn label={leftBtnLabel} isActive={isFrozen}/>
+                              <PrimaryBtn label={"START"} isActive={isFrozen}/>
                           </CustomizeBtnContainer>
                           <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
                               <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>

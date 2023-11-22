@@ -6,12 +6,14 @@ export const ProductsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    height: 100vh;
+    position: relative;
     width: 100vw;
 `
 export const HeaderContainer = styled(motion.div)`
-    position: relative;
+    position: fixed;
     width: 100%;
+    z-index: 500;
 
     @media ${device.laptopL} {
         max-width: 1440px;
@@ -22,7 +24,7 @@ export const CarouselBtnsContainer = styled.div`
     justify-content: space-between;
     left: 50%;
     position: absolute;
-    top: 50%;
+    top: 50vh;
     transform: translate(-50%, -50%);
     width: 100%;
     z-index: 500;
@@ -47,9 +49,7 @@ export const CarouselBtnContainer = styled(motion.div)`
     }
 `
 export const NavBtnContainer = styled.div`
-    bottom: ${props =>
-        props.$isScrolled ? "-102.5px" : "50px"
-    };
+    bottom: 50px;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);

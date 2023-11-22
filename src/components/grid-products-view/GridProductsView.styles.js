@@ -14,7 +14,11 @@ export const GridItemsContainer = styled.div`
     display: flex;
     gap: 48px;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 100px;
+
+    @media (max-width: 935px) {
+        flex-flow: wrap;
+    }
 `
 export const ProductHolder = styled.div`
     justify-content: center;

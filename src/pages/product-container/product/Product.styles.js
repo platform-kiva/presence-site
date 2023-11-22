@@ -21,6 +21,9 @@ export const ProductContainerTopFold = styled.div`
         gap: 80px;
     }
 `
+export const ProductHolder = styled.div`
+    padding-top: 100px;
+`
 export const ProductContainerBotFold = styled.div`
     align-items: center;
     display: flex;
@@ -123,17 +126,12 @@ export const GradientBG = styled(motion.div)`
     width: 100%;
     z-index: -99;
 `
-export const TopNavBtnContainer = styled.div`
-    position: absolute;
-    top: 50px;
-    z-index: 500;
-`
 export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 48px;
-    margin-top: 150px;
+    margin-top: 200px;
 `
 export const RgbDisplayContainer = styled.div`
     align-items: center;

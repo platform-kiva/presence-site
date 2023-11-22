@@ -2,7 +2,7 @@ const size = {
     // +1 added to all values 
     mobileS: '321px',
     mobileM: '376px',
-    mobileL: '426px',
+    mobileL: '431px',
     tablet: '769px',
     laptop: '1025px',
     laptopL: '1441px',
