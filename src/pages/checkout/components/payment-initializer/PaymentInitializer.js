@@ -51,7 +51,7 @@ export default function PaymentInitializer() {
             const clientSecretTemp = `${response.paymentIntent.client_secret}`;
             setClientSecret(clientSecretTemp)
         } catch (error) {
-            alert('Error fetching client secret:', error);
+            alert('Error fetching Stripe key:', error);
         }
     };
 
