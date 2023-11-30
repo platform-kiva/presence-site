@@ -1,24 +1,14 @@
 // styles
 import { 
-    BannerContainer,
-    BannerStampContainer,
-    StampSmallText,
-    StampLargeText,
-    BannerDay
+    BannerContainer, LogoMiddleText, LogoBottomText, LogoTopText
 }from './Banner.styles.js'
 
 export default function Banner() {
-    const date = new Date()
-    const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-
     return (
-    <BannerContainer>
-        <StampLargeText>presence</StampLargeText>
-        <BannerStampContainer>
-            <StampSmallText>{months[date.getMonth()]}</StampSmallText>
-            <StampSmallText>{date.getFullYear() % 100}</StampSmallText>
-        </BannerStampContainer>
-        <BannerDay>{date.getDate()}</BannerDay>
-    </BannerContainer>
+        <BannerContainer>
+            <LogoTopText><em>presence</em></LogoTopText>
+            <LogoMiddleText><em>presence</em></LogoMiddleText>
+            <LogoBottomText><em>presence</em></LogoBottomText>
+        </BannerContainer>
     )
 }

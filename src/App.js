@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-// assets
-import cursorIcon from './assets/icons/cursor.png';
+// styles
+import { AppContainer } from './App.styles.js'
 
 // pages
 import Cart from './pages/cart/Cart';
@@ -14,7 +14,7 @@ import OrderComplete from './pages/order-complete/OrderComplete';
 
 function App() {
   return (
-    <div style={{ cursor: `url(${cursorIcon}) 15 15, auto`}}>
+    <AppContainer>
       <BrowserRouter>
         <Routes>
           <Route path="" element={<PreLoader />} />
@@ -28,7 +28,7 @@ function App() {
             </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </AppContainer>
   );
 }
 

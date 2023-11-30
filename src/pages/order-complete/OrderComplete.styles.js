@@ -16,12 +16,8 @@ export const OrderCompleteContent = styled.div`
     flex-direction: column;
     gap: 20px;
 `
-export const HeaderText = styled.h1`
-    font-size: 36px
-`
-export const Instructions = styled.h2`
-    font-size: 20px;
-    font-weight: 400;
+export const BtnContainer = styled.div`
+    width: 100%;
 `
 export const GradientBG = styled.div`
     background:
@@ -35,7 +31,7 @@ export const GradientBG = styled.div`
                 32,
                 172,
                 232,
-                0.8) 88%)
+                0.8) 100%)
     ;
     height: 100%;
     position: fixed;

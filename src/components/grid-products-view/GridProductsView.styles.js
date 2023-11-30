@@ -26,8 +26,7 @@ export const ProductHolder = styled.div`
     position: relative;
 `
 export const BackgroundHighlight = styled(motion.div)`
-    background:
-        linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.33) 50%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.33) 50%, rgba(255,255,255,0) 100%);
     bottom: 100px;
     height: 1000px;
     position: absolute;

@@ -57,26 +57,40 @@ export const CartItemDetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
 `
-export const DetailsLabel = styled.h2`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
-    font-size: 18px;
+export const DetailsLabel = styled.h3`
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 `
 export const CartItemIncDecContainer = styled.div`
     display: flex;
     gap: 20px;
     z-index: 500;
 `
-export const IndDecLabel = styled.h3`
+export const IndDecLabel = styled.h4`
     cursor: url(${cursorIconFilled}) 15 15, auto;
-    font-size: 16px;
     margin-top: 10px;
     text-decoration: underline;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 `
 export const CartQuantity = styled.h1`
     color: rgba(0,0,0,0.1);
-    font-size: 48px;
     margin-top: 20px;
     margin-bottom: 6px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 `
 export const CartItemShadow = styled.div`
     background-color: rgba(0,0,0,0.15);

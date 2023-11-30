@@ -1,41 +1,47 @@
 // styles
-import './CartProductsView.styles.scss'
+import {
+  CartItemDetails,
+  CartItemsContainer,
+  CartProductsViewContainer,
+  ProductHolder,
+ } from './CartProductsView.styles.js';
 
 // components
 import CartItem from '../../pages/cart/cart-item/CartItem';
 import CustomShirtDisplay from '../custom-shirt-display/CustomShirtDisplay'
 
+
 export default function CartProductsView({ items }) {
 
   return (
-    <div className='cart-products-view-container'>
-      <h1>OVERVIEW</h1>
-      <div className='cart-items-container'>
+    <CartProductsViewContainer>
+      <h2>OVERVIEW</h2>
+      <CartItemsContainer>
         {items.map((item) => {
             if (item.imgURL === null) {
               return (
-                <div className='product-holder' key={item.cartID}>
+                <ProductHolder key={item.cartID}>
                   <CustomShirtDisplay product={item} />
-                  <div className='cart-item-details'>
-                    <h2>SIZE: {item.size}</h2>
-                    <h2>QUANTITY: {item.quantity}</h2>
-                  </div>
-                </div>
+                  <CartItemDetails>
+                    <h3>SIZE: {item.size}</h3>
+                    <h3>QUANTITY: {item.quantity}</h3>
+                  </CartItemDetails>
+                </ProductHolder>
               );
             } else {
               return (
-                <div className='product-holder' key={item.cartID}>
+                <ProductHolder key={item.cartID}>
                   <CartItem cartItem={item}/>
-                  <div className='cart-item-details'>
-                    <h2>SIZE: {item.size}</h2>
-                    <h2>QUANTITY: {item.quantity}</h2>
-                  </div>
-                </div>
+                  <CartItemDetails>
+                    <h3>SIZE: {item.size}</h3>
+                    <h3>QUANTITY: {item.quantity}</h3>
+                  </CartItemDetails>
+                </ProductHolder>
               );
             }
           }
         )}
-      </div>
-    </div>
+      </CartItemsContainer>
+    </CartProductsViewContainer>
   )
 }

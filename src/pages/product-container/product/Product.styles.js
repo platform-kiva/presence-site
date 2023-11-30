@@ -58,7 +58,6 @@ export const BotFoldCol = styled.div`
     @media ${device.laptop} {
         height: 100vh;
     }
-
 `
 export const ProductImgCarousel = styled.div`
     height: 500px;
@@ -76,6 +75,7 @@ export const PriceAction = styled.div`
     gap: 40px;
 `
 export const Price = styled.h1`
+    font-family: 'Roboto Condensed';
     font-size: 81px;
     text-shadow: ${props => 
         `3px 3px 1px rgba(${props.$accentCol}, 0.67)`
@@ -87,7 +87,6 @@ export const Price = styled.h1`
 `
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
-    font-size: 18px;
     width: 300px;
 
     @media ${device.laptopL} {
@@ -130,8 +129,8 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 48px;
-    margin-top: 200px;
+    gap: 24px;
+    margin-top: 160px;
 `
 export const RgbDisplayContainer = styled.div`
     align-items: center;
@@ -139,9 +138,22 @@ export const RgbDisplayContainer = styled.div`
     gap: 10px;
 `
 export const RgbSquare = styled.div`
+    border: 1px solid #FFFFFF;
     height: 20px;
     width: 20px;
-    background-color: red;
+    background-color: ${props => props.$bgCol};
+`
+export const CustomizationLabel = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 24px;
+    padding-top: 36px;
+`
+export const SizeSelectionContainer = styled.div`
+    align-items: center;
+    display: flex;
+    height: 155px;
 `
 export const CustomizeBtnsContainer = styled.div`
     display: flex;

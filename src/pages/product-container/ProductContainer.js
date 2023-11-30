@@ -81,7 +81,6 @@ export default function ProductContainer() {
                     <NavBtn direction={"down"} btnIcon={"down"}/>
                 </NavBtnContainer>
             }
-
         </ProductsContainer>
     );
 };

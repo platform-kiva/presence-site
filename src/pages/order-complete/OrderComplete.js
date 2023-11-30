@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import {
     OrderCompleteContainer,
     OrderCompleteContent,
-    HeaderText,
-    Instructions,
+    BtnContainer,
     GradientBG
 } from './OrderComplete.styles.js'
 
@@ -18,11 +17,11 @@ export default function OrderComplete() {
     return (
         <OrderCompleteContainer>
             <OrderCompleteContent>
-                <HeaderText>order complete</HeaderText>
-                <Instructions>check your email for further details</Instructions>
-                <div onClick={() => navigate("/home")} style={{ width: "200px" }}>
+                <h2>order complete</h2>
+                <h3>check your email for further details</h3>
+                <BtnContainer onClick={() => navigate("/home")}>
                     <PrimaryBtn label={"BACK TO SHOP"}/>
-                </div>
+                </BtnContainer>
             </OrderCompleteContent>
             <GradientBG />
         </OrderCompleteContainer>

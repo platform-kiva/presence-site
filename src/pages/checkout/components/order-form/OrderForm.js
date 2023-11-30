@@ -55,7 +55,7 @@ export default function OrderForm({ clientSecret }) {
 
     return (
       <OrderFormContainer id="orderFormID">
-        <h1>ORDER FORM</h1>
+        <h2>ORDER FORM</h2>
         <OrderFormForm onSubmit={paymentHandler}>
           <input
             id="email"

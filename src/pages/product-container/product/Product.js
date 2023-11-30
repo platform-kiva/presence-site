@@ -19,6 +19,8 @@ import {
   CustomControlsContainer,
   CustomizeBtnsContainer,
   CustomizeBtnContainer,
+  CustomizationLabel,
+  SizeSelectionContainer,
   RgbDisplayContainer,
   RgbSquare,
   CustomMockupContainer,
@@ -145,8 +147,8 @@ export default function Product({ product }) {
   return (
       <ProductContainer>
         <ProductContainerTopFold id="productTopFold">
-          <ProductHolder>
-            <ProductDisplay product={product} scrollToElement={handleScroll} />
+          <ProductHolder key={product.id}>
+            <ProductDisplay key={product.id} product={product} scrollToElement={handleScroll} />
           </ProductHolder>
         </ProductContainerTopFold>
 
@@ -174,30 +176,31 @@ export default function Product({ product }) {
           <CustomControlsContainer>
               {!gradientWasChosen ? 
                   <>   
-                      <CustomizeBtnsContainer>
-                          <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
-                              <PrimaryBtn label={"START"} isActive={isFrozen}/>
-                          </CustomizeBtnContainer>
-                          <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
-                              <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
-                          </CustomizeBtnContainer>
-                      </CustomizeBtnsContainer>
-                  
-                      {startColor &&
-                      <RgbDisplayContainer>
-                        <h3>{rgbaToRgb(endColor)}</h3>
-                        <RgbSquare style={{ backgroundColor: `${endColor}`, border: '1px solid #FFFFFF'}} />
-                        <h3>{rgbaToRgb(startColor)}</h3>
-                        <RgbSquare style={{ backgroundColor: `${startColor}`, border: '1px solid #FFFFFF'}} />
-                      </RgbDisplayContainer>
+                    <CustomizeBtnsContainer>
+                        <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
+                            <PrimaryBtn label={"START"} isActive={isFrozen}/>
+                        </CustomizeBtnContainer>
+                        <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
+                            <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
+                        </CustomizeBtnContainer>
+                    </CustomizeBtnsContainer>
+                    <CustomizationLabel>
+                      {startColor ? 
+                        <RgbDisplayContainer>
+                          <h3>{rgbaToRgb(endColor)}</h3>
+                          <RgbSquare $bgCol={endColor}/>
+                          <h3>{rgbaToRgb(startColor)}</h3>
+                          <RgbSquare $bgCol={startColor}/>
+                        </RgbDisplayContainer>
+                        :
+                        <h3>281,474,976,710,656 possibilities...find one that feels right.</h3>
                       }
-                      {!startColor &&
-                        <h3 style={{ fontSize: "20px"}}>281,474,976,710,656 possibilities...find one that feels right.</h3>
-                      }
-
+                    </CustomizationLabel>
                   </>
                   :
-                  <SizeSelection product={customProduct}/>
+                  <SizeSelectionContainer>
+                    <SizeSelection product={customProduct}/>
+                  </SizeSelectionContainer>
               }
           </CustomControlsContainer>
           <CustomMockupContainer>

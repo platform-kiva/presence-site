@@ -133,9 +133,7 @@ export default function Cart() {
         </>
       }
       {cartItems.length === 0 &&
-        <>
-          <h1>CART IS EMPTY</h1>
-        </>   
+        <h2>CART IS EMPTY</h2>
       }
       <BotNavBtnContainer>
         <NavBtn direction={"down"} btnIcon="down" link={'/home'}/>

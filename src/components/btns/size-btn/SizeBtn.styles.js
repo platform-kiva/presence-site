@@ -25,6 +25,11 @@ export const SizeBtnContainer = styled.div`
 `
 export const BtnLabel = styled.h3`
     font-size: 20px;
-    text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`
-    };
+    text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`};
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 `
