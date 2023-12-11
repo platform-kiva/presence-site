@@ -38,10 +38,10 @@ export default function ProductContainer() {
 
     const handleIndChange = (val) => {
         let currInd = productInd;
-        if (currInd === 3 && val === 1) {
+        if (currInd === products.length - 1 && val === 1) {
             currInd = 0;
         } else if (currInd === 0 && val === -1) {
-            currInd = 3;
+            currInd = products.length - 1;
         } else {
             currInd += val;
         }
@@ -84,3 +84,40 @@ export default function ProductContainer() {
         </ProductsContainer>
     );
 };
+
+// export async function getStaticProps() {
+//     const { data } = await storefront(productsQuery)
+//     return {
+//         props: {
+//             shopifyProducts: data.products
+
+//         }
+//     }
+// }
+
+// const productsQuery = `
+//     query Products {
+//         products(first:3) {
+//             edges {
+//                 node {
+//                     title
+//                     handle
+//                     tags
+//                     priceRange {
+//                         minVariantPrice {
+//                             amount
+//                         }
+//                     }
+//                     images(first:1) {
+//                         edges {
+//                             node {
+//                                 url(transform:{preferredContentType: PNG})
+//                                 altText
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// `

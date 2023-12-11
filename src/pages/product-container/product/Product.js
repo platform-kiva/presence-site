@@ -20,7 +20,6 @@ import {
   CustomizeBtnsContainer,
   CustomizeBtnContainer,
   CustomizationLabel,
-  SizeSelectionContainer,
   RgbDisplayContainer,
   RgbSquare,
   CustomMockupContainer,
@@ -71,7 +70,7 @@ export default function Product({ product }) {
         botGradient: extractedStartColor,
         imgURL: null,
         id: `${startColor}, ${endColor}`,
-        price: 400,
+        price: 35,
         quantity: 1,
         size: "TEST",
         isCustom: true,
@@ -148,11 +147,11 @@ export default function Product({ product }) {
       <ProductContainer>
         <ProductContainerTopFold id="productTopFold">
           <ProductHolder key={product.id}>
-            <ProductDisplay key={product.id} product={product} scrollToElement={handleScroll} />
+            <ProductDisplay key={product.id} product={product} scrollToElement={handleScroll} bobs={true}/>
           </ProductHolder>
         </ProductContainerTopFold>
 
-        <ProductContainerBotFold id="productBotFold">
+        {/* <ProductContainerBotFold id="productBotFold">
           <BotFoldCol>  
             <ProductImgCarousel>
               <ImgLoader src={product.imgURL} alt='product img enlarged' />
@@ -171,7 +170,7 @@ export default function Product({ product }) {
               </DescriptionContainer>
             </PriceAction>
           </BotFoldCol>
-        </ProductContainerBotFold>
+        </ProductContainerBotFold> */}
         <CustomGradientContainer id='customizationID'>
           <CustomControlsContainer>
               {!gradientWasChosen ? 
@@ -198,9 +197,15 @@ export default function Product({ product }) {
                     </CustomizationLabel>
                   </>
                   :
-                  <SizeSelectionContainer>
-                    <SizeSelection product={customProduct}/>
-                  </SizeSelectionContainer>
+                  <>
+                    <PriceAction>
+                      <Price $accentCol={customProduct.botGradient}>$35</Price>
+                      <SizeSelection product={customProduct} />
+                    </PriceAction>
+                    
+                    <h3 style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                  </>
+
               }
           </CustomControlsContainer>
           <CustomMockupContainer>

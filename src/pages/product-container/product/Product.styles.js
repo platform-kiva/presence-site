@@ -5,7 +5,8 @@ import { device } from '../../../media-breakpoints';
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 100vw;
+    position: relative;
+    width: 100%;
 `
 export const ProductContainerTopFold = styled.div`
     align-items: center;
@@ -22,7 +23,19 @@ export const ProductContainerTopFold = styled.div`
     }
 `
 export const ProductHolder = styled.div`
-    padding-top: 100px;
+
+    @media ${device.mobileS} {
+        height: 260px;
+        width: 260px;
+    }
+    @media ${device.mobileL} {
+        height: 270px;
+        width: 270px;
+    }
+    @media ${device.tablet} {
+        height: 280px;
+        width: 280px;
+    }
 `
 export const ProductContainerBotFold = styled.div`
     align-items: center;
@@ -51,17 +64,18 @@ export const BotFoldCol = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
+    height: 50%;
     justify-content: center;
-    margin-top: 60px;
-    width: 40vw;
+    width: 100%;
 
     @media ${device.laptop} {
         height: 100vh;
     }
 `
 export const ProductImgCarousel = styled.div`
-    height: 500px;
-    width: 500px;
+    background-color: pink;
+    width: 80%;
+    
 
     @media ${device.laptopL} {
         height: 667px;
@@ -72,7 +86,7 @@ export const PriceAction = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 `
 export const Price = styled.h1`
     font-family: 'Roboto Condensed';
@@ -129,8 +143,7 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-top: 160px;
+    margin-top: 132px;
 `
 export const RgbDisplayContainer = styled.div`
     align-items: center;
@@ -155,10 +168,14 @@ export const SizeSelectionContainer = styled.div`
     display: flex;
     height: 155px;
 `
+export const SizeBackBtnContainer = styled.div`
+    width:100%;
+`
 export const CustomizeBtnsContainer = styled.div`
     display: flex;
     gap: 24px;
     justify-content: center;
+    margin-top: 20px;
     width: 404px;
 `
 export const CustomizeBtnContainer = styled.div`

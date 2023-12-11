@@ -6,7 +6,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  `
+`
 export const GradientBG = styled(motion.div)`
   background: linear-gradient(
     45deg,

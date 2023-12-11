@@ -66,11 +66,6 @@ export default function PreLoader() {
                             ease: "easeInOut",
                             times: [0, 1]
                         }}
-                        whileHover={{
-                            scale: 1.08,
-                            transition: { duration: 0.8 }
-                        }}
-                        className='pre-loader-banner-container'
                     >
                         <Banner />
                     </BannerContainer>

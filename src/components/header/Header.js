@@ -5,7 +5,8 @@ import { selectCartCount } from '../../store/cart/cart.selector.js';
 // styles
 import { 
     HeaderBtnContainer,
-    HeaderContainer
+    HeaderContainer,
+    HeaderBtnImgContainer
  } from './Header.styles.js';
 
 // assets
@@ -42,7 +43,9 @@ export default function Header({ gridViewSetter, gridViewStatus }) {
                     times: [0, 1]
                 }}
             >
-                <img src={menuIcon} alt="menu icon" />
+                <HeaderBtnImgContainer>
+                    <img src={menuIcon} alt="menu icon" />
+                </HeaderBtnImgContainer> 
             </HeaderBtnContainer>
             {cartCount === 0 ? 
                 <Banner />
@@ -58,7 +61,9 @@ export default function Header({ gridViewSetter, gridViewStatus }) {
                     times: [0, 1]
                 }}
             >
-                <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
+                <HeaderBtnImgContainer>
+                    <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
+                </HeaderBtnImgContainer>
             </HeaderBtnContainer>
         </HeaderContainer>
     )

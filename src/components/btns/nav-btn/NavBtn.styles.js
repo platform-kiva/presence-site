@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
+import { device } from "../../../media-breakpoints";
 
 export const NavBtnContainer = styled.div`
     align-items: center;
@@ -9,11 +10,11 @@ export const NavBtnContainer = styled.div`
     transition: 0.8s ease-in-out;
     width: 324px;
     z-index: 500;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
 
     &:hover {
@@ -35,6 +36,7 @@ export const SideIcon1 = styled.img`
     }
 `
 export const SideIcon2 = styled.img`
+    display: none;
     opacity: 0.4;
     transition: 0.8s ease-in-out;
     width: 16px;
@@ -43,11 +45,12 @@ export const SideIcon2 = styled.img`
         opacity: 1.0;
     }
 
-    @media (max-width: 450px) {
-        display: none;
+    @media (min-width: 360px) {
+        display: block;
     }
 `
 export const SideIcon3 = styled.img`
+    display: none;
     opacity: 0.4;
     transition: 0.8s ease-in-out;
     width: 16px;
@@ -56,7 +59,7 @@ export const SideIcon3 = styled.img`
         opacity: 1.0;
     }
 
-    @media (max-width: 550px) {
-        display: none;
+    @media (min-width: 510px) {
+        display: block;
     }
 `

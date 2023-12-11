@@ -37,11 +37,11 @@ export default function GridProductsView({ items, indSetter, gridViewSetter }) {
               indSetter={indSetter}
               gridViewSetter={gridViewSetter}
             />
-            <BackgroundHighlight
+            {/* <BackgroundHighlight
               initial={{ opacity: 0 }}
               animate={{ opacity: hoveredItemId === item.id ? 1 : 0 }}
               transition={{ duration: 1.0 }}
-            />
+            /> */}
           </ProductHolder>
         ))}
       </GridItemsContainer>

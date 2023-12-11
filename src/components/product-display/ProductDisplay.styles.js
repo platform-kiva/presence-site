@@ -11,14 +11,20 @@ export const ProductDisplayContainer = styled.div`
     position: relative;
 `
 export const ProductImgContainer = styled(motion.div)`
+    align-items: center;
     cursor: url(${cursorIconFilled}) 15 15, auto;
-    height: 280px;
-    width: 280px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
 `
 export const ProductShadow = styled(motion.div)`
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0,0,0,0.12);
     border-radius: 50%;
     filter: blur(7px);
     height: 27px;
     width: 210px;
+    display: ${props =>
+        props.$isVisible ? "block" : "none"
+    };
 `

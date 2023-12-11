@@ -1,4 +1,6 @@
 Checklist
+- Smoothin gradient transition for customs background
+- ProductDisplay shadow shows briefly on mount
 - When OrderForm loads, scroll to view component
 - NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)
 - Add clicking on TopFold product image to scroll, (OR DISPLAY ADDTOCARTBUTTON)

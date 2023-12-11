@@ -1,51 +1,89 @@
 import styled from "styled-components";
+import { device } from '../../media-breakpoints'
 
 export const BannerContainer = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
     position: relative;
 `
 export const LogoTopText = styled.h1`
     color: rgba(255,255,255,0.2);
-    font-family: 'Roboto Condensed';
-    font-size: 48px;
     font-weight: 500;
-    margin: 0;
     position: absolute;
-    top: -13px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
+
+    @media ${device.mobileS} {
+        font-size: 30px;
+        top: -8px;
+    }
+
+    @media ${device.mobileM} {
+        font-size: 36px;
+        top: -9.5px;
+    }
+
+    @media ${device.mobileL} {
+        font-size: 40px;
+        top: -10.5px;
+    }
+
+    @media ${device.tablet} {
+        font-size: 48px;
+        top: -13px;
+    }
 `
 export const LogoMiddleText = styled.h1`
-    font-family: 'Roboto Condensed';
-    font-weight: 500;
-    font-size: 48px;
     color: rgba(255,255,255,0.8);
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    font-weight: 500;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
+
+    @media ${device.mobileS} {
+        font-size: 30px;
+    }
+    @media ${device.mobileM} {
+        font-size: 36px;
+    }
+    @media ${device.mobileL} {
+        font-size: 40px;
+    }
+    @media ${device.tablet} {
+        font-size: 48px;
+    }
 `
 export const LogoBottomText = styled.h1`
     color: rgba(255,255,255,0.2);
-    font-family: 'Roboto Condensed';
-    font-size: 48px;
     font-weight: 500;
-    margin: 0;
     position: absolute;
-    top: 13px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
+
+    @media ${device.mobileS} {
+        font-size: 30px;
+        top: 8px;
+    }
+    @media ${device.mobileM} {
+        font-size: 36px;
+        top: 9.5px;
+    }
+    @media ${device.mobileL} {
+        font-size: 40px;
+        top: 10.5px;
+    }
+    @media ${device.tablet} {
+        font-size: 48px;
+        top: 13px;
+    }
 `

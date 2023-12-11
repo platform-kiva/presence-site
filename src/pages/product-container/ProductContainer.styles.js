@@ -37,7 +37,11 @@ export const CarouselBtnsContainer = styled.div`
 export const CarouselBtnContainer = styled(motion.div)`
 
     @media ${device.mobileS} {
-        padding: 0px 30px;
+        padding: 0px 21px;
+    }
+
+    @media (min-width: 550px) {
+        padding: 0px 38px;
     }
 
     @media ${device.tablet} {
@@ -45,7 +49,7 @@ export const CarouselBtnContainer = styled(motion.div)`
     }
 
     @media ${device.laptop} {
-        padding: 0px 100px;
+        padding: 0px 104px;
     }
 `
 export const NavBtnContainer = styled.div`
