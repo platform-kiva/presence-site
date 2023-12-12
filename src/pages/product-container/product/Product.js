@@ -21,6 +21,7 @@ import {
   CustomizeBtnContainer,
   CustomizationLabel,
   RgbDisplayContainer,
+  RgbDisplay,
   RgbSquare,
   CustomMockupContainer,
   DesignOverlayContainer,
@@ -151,7 +152,7 @@ export default function Product({ product }) {
           </ProductHolder>
         </ProductContainerTopFold>
 
-        {/* <ProductContainerBotFold id="productBotFold">
+        <ProductContainerBotFold id="productBotFold">
           <BotFoldCol>  
             <ProductImgCarousel>
               <ImgLoader src={product.imgURL} alt='product img enlarged' />
@@ -170,7 +171,7 @@ export default function Product({ product }) {
               </DescriptionContainer>
             </PriceAction>
           </BotFoldCol>
-        </ProductContainerBotFold> */}
+        </ProductContainerBotFold>
         <CustomGradientContainer id='customizationID'>
           <CustomControlsContainer>
               {!gradientWasChosen ? 
@@ -186,10 +187,14 @@ export default function Product({ product }) {
                     <CustomizationLabel>
                       {startColor ? 
                         <RgbDisplayContainer>
-                          <h3>{rgbaToRgb(endColor)}</h3>
-                          <RgbSquare $bgCol={endColor}/>
-                          <h3>{rgbaToRgb(startColor)}</h3>
-                          <RgbSquare $bgCol={startColor}/>
+                          <RgbDisplay>
+                            <h3>{rgbaToRgb(endColor)}</h3>
+                            <RgbSquare $bgCol={endColor}/>
+                          </RgbDisplay>
+                          <RgbDisplay>
+                            <h3>{rgbaToRgb(startColor)}</h3>
+                            <RgbSquare $bgCol={startColor}/>
+                          </RgbDisplay>
                         </RgbDisplayContainer>
                         :
                         <h3>281,474,976,710,656 possibilities...find one that feels right.</h3>

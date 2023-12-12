@@ -1,5 +1,9 @@
 Checklist
-- Smoothin gradient transition for customs background
+- code top safe area for iPhone Safari
+- fix mobile browser margins
+    - determien what 100vh means for each browser,appears to be shifted down, but looks fine on scroll
+- remove hovers for mobile to be able to use buttons
+- Smooth gradient transition for customs background
 - ProductDisplay shadow shows briefly on mount
 - When OrderForm loads, scroll to view component
 - NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)

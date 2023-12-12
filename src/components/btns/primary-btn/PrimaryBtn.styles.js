@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
+import { device } from "../../../media-breakpoints";
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
@@ -26,13 +27,34 @@ export const PrimaryBtnContainer = styled.button`
             props.$isActive ? "transition: 0.2s ease-in-out;" : ""
         };
     };
+
+    @media ${device.mobileS} {
+        height: 36px;
+    }
+    @media ${device.mobileL} {
+        height: 42px;
+    }
+    @media ${device.tablet} {
+        height: 50px;
+    }
 `
 export const BtnLabel = styled.h3`
+    font-size: 16px;
     text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`};
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
+    
+    @media ${device.mobileS} {
+        font-size: 11.52px;
+    }
+    @media ${device.mobileL} {
+        font-size: 13.44px;
+    }
+    @media ${device.tablet} {
+        font-size: 16px;
+    }
 `

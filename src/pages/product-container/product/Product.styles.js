@@ -49,7 +49,7 @@ export const ProductContainerBotFold = styled.div`
         flex-direction: column;
     }
 
-    @media ${device.laptop} {
+    @media ${device.tablet} {
         flex-direction: row;
     }
 
@@ -66,27 +66,47 @@ export const BotFoldCol = styled.div`
     gap: 24px;
     height: 50%;
     justify-content: center;
+    position: relative;
     width: 100%;
 
     @media ${device.laptop} {
-        height: 100vh;
+        height: 100%;
     }
 `
 export const ProductImgCarousel = styled.div`
-    background-color: pink;
-    width: 80%;
-    
+    bottom: 20px;
+    position: absolute;
+    width: 240px;
 
-    @media ${device.laptopL} {
-        height: 667px;
-        width: 667px;
+    @media ${device.tablet} {
+        bottom: unset;
+        height: auto;
+        margin-top: 80px;
+        right: 20px;
+        width: 80%;
+    }
+
+    @media ${device.laptop} {
+        height: auto;
+        max-width: 420px;
+        width: 80%;
     }
 `
 export const PriceAction = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
+    position: absolute;
+    top: 20px;
+
+    @media ${device.tablet} {
+        top: unset;
+        height: auto;
+        left: 20px;
+        margin-top: 80px;
+        width: 80%;
+    }
 `
 export const Price = styled.h1`
     font-family: 'Roboto Condensed';
@@ -95,17 +115,36 @@ export const Price = styled.h1`
         `3px 3px 1px rgba(${props.$accentCol}, 0.67)`
     };
 
+    @media ${device.mobileS} {
+        font-size: 54px;
+    }
+
+    @media ${device.tablet} {
+        font-size: 72px;
+    }
+
     @media ${device.laptopL} {
         font-size: 108px;
     }
 `
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
+    font-size: 24px;
+    margin-top: 5px;
     width: 300px;
+
+    ul {
+        margin: 0;
+    }
+
+    @media ${device.mobileS} {
+        li {
+            font-size: 14px;
+        }
+    }
 
     @media ${device.laptopL} {
         font-size: 24px;
-        width: 400px;
     }
 `
 export const CustomGradientContainer = styled.div`
@@ -144,9 +183,31 @@ export const CustomControlsContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 132px;
+    width: 100vw;
+
+    @media ${device.mobileS} {
+        margin-top: 80px;
+    }
+    @media ${device.mobileM} {
+        margin-top: 96px;
+    }
+    @media ${device.tablet} {
+        margin-top: 132px;
+    }
 `
 export const RgbDisplayContainer = styled.div`
     align-items: center;
+    display: flex;
+    gap: 10px;
+
+    @media ${device.mobileS} {
+        flex-direction: column;
+    }
+    @media ${device.mobileL} {
+        flex-direction: row;
+    }
+`
+export const RgbDisplay = styled.div`
     display: flex;
     gap: 10px;
 `
@@ -162,6 +223,18 @@ export const CustomizationLabel = styled.div`
     justify-content: center;
     padding-bottom: 24px;
     padding-top: 36px;
+    width: 100%;
+
+    h3 {
+        text-align: center;
+    }
+
+    @media ${device.mobileS} {
+        h3 {
+            width: 90%;
+        }
+        
+    }
 `
 export const SizeSelectionContainer = styled.div`
     align-items: center;
@@ -172,14 +245,27 @@ export const SizeBackBtnContainer = styled.div`
     width:100%;
 `
 export const CustomizeBtnsContainer = styled.div`
+    align-items: center;
     display: flex;
     gap: 24px;
     justify-content: center;
     margin-top: 20px;
     width: 404px;
+
+    @media ${device.mobileS} {
+        flex-direction: column;
+    }
 `
 export const CustomizeBtnContainer = styled.div`
-    width: 190px;
+    @media ${device.mobileS} {
+        width: 180px;
+    }
+    @media ${device.mobileL} {
+        width: 210px;
+    }
+    @media ${device.tablet} {
+        width: 250px;
+    }
 `
 export const CustomMockupContainer = styled.div`
     overflow: hidden;

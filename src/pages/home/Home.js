@@ -15,6 +15,20 @@ export default function Home() {
   const products = useSelector(selectProducts);
   const [productInd, setProductInd] = useState(0);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+  const [themeColor, setThemeColor] = useState(null);
+
+  useEffect(() => {
+    // Find the existing meta tag or create a new one
+    let metaThemeColor = document.querySelector('meta[name=theme-color]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.setAttribute('name', 'theme-color');
+      document.getElementsByTagName('head')[0].appendChild(metaThemeColor);
+    }
+
+    // Set the content of the meta tag to the current theme color
+    metaThemeColor.setAttribute('content', themeColor);
+  }, [themeColor]); // Only re-run the effect if themeColor changes
 
   useEffect(() => {
     setInitialLoadComplete(true);
@@ -24,7 +38,8 @@ export default function Home() {
     if (products.length === 0) {
       navigate("/")
     }
-  }, [navigate, products])
+    setThemeColor(products[productInd].topGradient)
+  }, [navigate, products, productInd])
 
   return (
     <>

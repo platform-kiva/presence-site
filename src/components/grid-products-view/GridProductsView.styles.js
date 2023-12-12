@@ -16,8 +16,7 @@ export const GridItemsContainer = styled.div`
     flex-direction: column;
     gap: 24px;
     height: 100vh;
-    justify-content: end;
-    padding-bottom: 50px;
+    justify-content: center;
     width: 100vw;
 
     @media (min-width: 376px) {
