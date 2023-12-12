@@ -21,10 +21,8 @@ export const ProductImgContainer = styled(motion.div)`
 export const ProductShadow = styled(motion.div)`
     background-color: rgba(0,0,0,0.12);
     border-radius: 50%;
+    display: ${props => props.$isVisible ? "block" : "none"};
     filter: blur(7px);
     height: 27px;
     width: 210px;
-    display: ${props =>
-        props.$isVisible ? "block" : "none"
-    };
 `

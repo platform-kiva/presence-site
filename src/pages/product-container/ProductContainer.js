@@ -18,12 +18,14 @@ import GridItemsView from '../../components/grid-products-view/GridProductsView.
 import Header from '../../components/header/Header';
 import NavBtn from '../../components/btns/nav-btn/NavBtn';
 import Product from './product/Product';
+import SocialsView from '../../components/socials-view/SocialsView.js';
 
 export default function ProductContainer() {
     const products = useSelector(selectProducts);
     const [isScrolled, setIsScrolled] = useState(false);
     const [productInd, setProductInd] = useOutletContext();
-    const [gridViewIsDisplayed, setGridViewIsDisplayed] = useState(false)
+    const [gridViewIsDisplayed, setGridViewIsDisplayed] = useState(false);
+    const [socialsViewIsDisplayed,setSocialsViewIsDisplayed] = useState(false);
 
     const handleScroll = () => {
         if (!isScrolled) {
@@ -59,11 +61,20 @@ export default function ProductContainer() {
                     times: [0, 1]
                 }}
             >
-                <Header gridViewSetter={setGridViewIsDisplayed} gridViewStatus={gridViewIsDisplayed}/>
+                <Header
+                    gridViewSetter={setGridViewIsDisplayed}
+                    gridViewStatus={gridViewIsDisplayed}
+                    socialsViewSetter={setSocialsViewIsDisplayed}
+                    socialsViewStatus={socialsViewIsDisplayed}
+                />
             </HeaderContainer>
-            {gridViewIsDisplayed ?
+            {gridViewIsDisplayed &&
                 <GridItemsView items={products} indSetter={setProductInd} gridViewSetter={setGridViewIsDisplayed} />
-                :
+            }
+            {socialsViewIsDisplayed &&
+                <SocialsView />
+            }
+            {!gridViewIsDisplayed && !socialsViewIsDisplayed &&
                 <>
                     <CarouselBtnsContainer>
                         <CarouselBtnContainer onClick={() => handleIndChange(-1)}>
@@ -76,7 +87,7 @@ export default function ProductContainer() {
                     <Product product={products[productInd]} />
                 </>
             }
-            {!gridViewIsDisplayed &&
+            {!gridViewIsDisplayed && !socialsViewIsDisplayed &&
                 <NavBtnContainer onClick={() => handleScroll()}>
                     <NavBtn direction={"down"} btnIcon={"down"}/>
                 </NavBtnContainer>

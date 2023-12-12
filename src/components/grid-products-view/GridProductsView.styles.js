@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { device } from '../../media-breakpoints';
 
 export const GridProductsViewContainer = styled.div`
@@ -67,12 +66,4 @@ export const ProductHolder = styled.div`
         height: 280px;
         width: 280px;
     }
-`
-export const BackgroundHighlight = styled(motion.div)`
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.33) 50%, rgba(255,255,255,0) 100%);
-    bottom: 100px;
-    height: 1000px;
-    position: absolute;
-    width: 80%;
-    z-index: -99;
 `

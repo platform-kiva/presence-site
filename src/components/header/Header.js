@@ -19,22 +19,38 @@ import Banner from '../banner/Banner'
 import NavBtn from '../btns/nav-btn/NavBtn'
 import { useEffect } from 'react';
 
-export default function Header({ gridViewSetter, gridViewStatus }) {
+export default function Header({ gridViewSetter, gridViewStatus, socialsViewSetter, socialsViewStatus }) {
     const cartCount = useSelector(selectCartCount);
     const [gridViewIsActive, setGridViewIsActive] = useState(false);
+    const [socialsViewIsActive, setSocialsViewIsActive] = useState(false);
 
     const handleGridView = () => {
+        if (socialsViewStatus) {
+            return
+        }
         setGridViewIsActive(!gridViewIsActive);
-        gridViewSetter(!gridViewIsActive)
+        gridViewSetter(!gridViewIsActive);
     };
+
+    const handleSocialsView = () => {
+        if (gridViewStatus) {
+            return
+        }
+        setSocialsViewIsActive(!socialsViewIsActive);
+        socialsViewSetter(!socialsViewIsActive);
+    }
 
     useEffect(() => {
         setGridViewIsActive(gridViewStatus)
     }, [gridViewStatus])
+
+    useEffect(() => {
+        setSocialsViewIsActive(socialsViewStatus)
+    }, [socialsViewStatus])
     
     return (
         <HeaderContainer>
-            <HeaderBtnContainer
+            <HeaderBtnContainer onClick={() => handleSocialsView()}
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
@@ -43,8 +59,8 @@ export default function Header({ gridViewSetter, gridViewStatus }) {
                     times: [0, 1]
                 }}
             >
-                <HeaderBtnImgContainer>
-                    <img src={menuIcon} alt="menu icon" />
+                <HeaderBtnImgContainer $isVisible={!gridViewStatus}>
+                    <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                 </HeaderBtnImgContainer> 
             </HeaderBtnContainer>
             {cartCount === 0 ? 
@@ -61,7 +77,7 @@ export default function Header({ gridViewSetter, gridViewStatus }) {
                     times: [0, 1]
                 }}
             >
-                <HeaderBtnImgContainer>
+                <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>
                     <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
                 </HeaderBtnImgContainer>
             </HeaderBtnContainer>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import cursorIcon from '../../assets/icons/cursor.png';
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 import { motion } from "framer-motion";
 import { device } from "../../media-breakpoints";
@@ -17,7 +18,6 @@ export const HeaderContainer = styled.div`
     }
 `
 export const HeaderBtnContainer = styled(motion.div)`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
     display: flex;
     height: 20px;
     transform-origin: center;
@@ -47,9 +47,14 @@ export const HeaderBtnContainer = styled(motion.div)`
 `
 export const HeaderBtnImgContainer = styled.div`
     align-items: center;
+    cursor: ${props =>
+        props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+    };
     display: flex;
     justify-content: center;
+    opacity: ${props => props.$isVisible ? "1.0" : "0.0"};
     position: relative;
+    transition: 0.2s ease-out;
 
     @media ${device.mobileS} {
         img {
