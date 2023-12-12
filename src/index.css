@@ -5,13 +5,14 @@ body, span {
 
 h1, h2, h3, h4 {
   color: #FFFFFF;
-  font-family: 'Roboto Condensed';
   margin: 0;
 }
 h1 {
+  font-family: 'Roboto Condensed';
   font-size: 48px;
 }
 h2 {
+  font-family: 'Roboto Condensed';
   font-size: 36px;
 }
 h3 {
@@ -20,6 +21,7 @@ h3 {
   font-weight: 600;
 }
 h4 {
+  font-family: 'Roboto Condensed';
   font-size: 16px;
 }
 li {

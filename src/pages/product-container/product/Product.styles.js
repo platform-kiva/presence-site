@@ -118,11 +118,9 @@ export const Price = styled.h1`
     @media ${device.mobileS} {
         font-size: 54px;
     }
-
     @media ${device.tablet} {
         font-size: 72px;
     }
-
     @media ${device.laptopL} {
         font-size: 108px;
     }
@@ -142,7 +140,6 @@ export const DescriptionContainer = styled.div`
             font-size: 14px;
         }
     }
-
     @media ${device.laptopL} {
         font-size: 24px;
     }
@@ -232,8 +229,7 @@ export const CustomizationLabel = styled.div`
     @media ${device.mobileS} {
         h3 {
             width: 90%;
-        }
-        
+        }    
     }
 `
 export const SizeSelectionContainer = styled.div`
