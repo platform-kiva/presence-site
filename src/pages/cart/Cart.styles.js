@@ -57,7 +57,7 @@ export const CartItemDetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
 `
-export const DetailsLabel = styled.h3`
+export const DetailsLabel = styled.h4`
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */

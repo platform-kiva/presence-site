@@ -109,7 +109,7 @@ export const PriceAction = styled.div`
     }
 `
 export const Price = styled.h1`
-    font-family: 'Roboto Condensed';
+    font-family: 'Roboto Condensed', sans-serif;;
     font-size: 81px;
     text-shadow: ${props => 
         `3px 3px 1px rgba(${props.$accentCol}, 0.67)`

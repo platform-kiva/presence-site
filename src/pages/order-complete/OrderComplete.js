@@ -17,7 +17,7 @@ export default function OrderComplete() {
     return (
         <OrderCompleteContainer>
             <OrderCompleteContent>
-                <h2>order complete</h2>
+                <h2>ORDER COMPLETE</h2>
                 <h3>check your email for further details</h3>
                 <BtnContainer onClick={() => navigate("/home")}>
                     <PrimaryBtn label={"BACK TO SHOP"}/>

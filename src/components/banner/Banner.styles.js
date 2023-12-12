@@ -6,7 +6,7 @@ export const BannerContainer = styled.div`
 `
 export const LogoTopText = styled.h1`
     color: rgba(255,255,255,0.2);
-    font-weight: 500;
+    font-weight: 700;
     position: absolute;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -37,7 +37,7 @@ export const LogoTopText = styled.h1`
 `
 export const LogoMiddleText = styled.h1`
     color: rgba(255,255,255,0.8);
-    font-weight: 500;
+    font-weight: 700;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -60,7 +60,7 @@ export const LogoMiddleText = styled.h1`
 `
 export const LogoBottomText = styled.h1`
     color: rgba(255,255,255,0.2);
-    font-weight: 500;
+    font-weight: 700;
     position: absolute;
     
     -webkit-touch-callout: none;
