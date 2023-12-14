@@ -8,7 +8,7 @@ export const GridProductsViewContainer = styled.div`
     justify-content: center;
     overflow: hidden;
     width: 100vw;
-    z-index: 900;
+    z-index: 100;
 `
 export const GridItemsContainer = styled.div`
     align-items: center;
