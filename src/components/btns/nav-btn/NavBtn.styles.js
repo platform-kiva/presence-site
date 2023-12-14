@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
-import { device } from "../../../media-breakpoints";
 
 export const NavBtnContainer = styled.div`
     align-items: center;

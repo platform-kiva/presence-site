@@ -21,8 +21,16 @@ export default function PaymentInitializer() {
         clientSecret: clientSecret,
     };
 
+    const handleScroll = () => {
+        const botElement = document.getElementById("orderFormID");
+        if (botElement) {
+            botElement.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
     const handleButtonClick = () => {
         setShowOrderForm(true); // This triggers the component to render
+        handleScroll()
       };
 
     useEffect(() => {

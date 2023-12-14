@@ -3,12 +3,20 @@ import { useElements, useStripe, PaymentElement, AddressElement } from "@stripe/
 import { clearCart } from '../../../../store/cart/cart.action'
 import { useDispatch } from "react-redux";
 
+// assets
+import stripeLogo from '../../../../assets/png/stripe-logo.png';
+
 // styles
-import { OrderFormForm, OrderFormContainer } from "./OrderForm.styles";
-
-// components
-import PrimaryBtn from "../../../../components/btns/primary-btn/PrimaryBtn";
-
+import { OrderFormForm,
+  OrderFormHeader,
+  FormContainer,
+  EmailInput,
+  OrderFormContainer,
+  EmailInputContainer,
+  EmailLabel,
+  StripeHeader,
+  CheckoutBtn
+} from "./OrderForm.styles";
 
 export default function OrderForm({ clientSecret }) {
     const stripe = useStripe();
@@ -17,7 +25,7 @@ export default function OrderForm({ clientSecret }) {
     const [email, setEmail] = useState('');
 
     const clearCartItems = () => {
-      dispatch(clearCart())
+      dispatch(clearCart());
     }
 
     const paymentHandler = async (e) => {
@@ -55,20 +63,33 @@ export default function OrderForm({ clientSecret }) {
 
     return (
       <OrderFormContainer id="orderFormID">
-        <h2>ORDER FORM</h2>
-        <OrderFormForm onSubmit={paymentHandler}>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email here"
-            required
-          />
-          <AddressElement options={{mode: 'shipping'}} />
-          <PaymentElement />
-          <PrimaryBtn label={"PLACE ORDER"}/>
-        </OrderFormForm>
+        <OrderFormHeader>ORDER FORM</OrderFormHeader>
+
+        <FormContainer> 
+          <StripeHeader>
+            <h3>Payments processed with</h3>
+            <img src={stripeLogo} alt="Stripe logo" />
+          </StripeHeader>
+          
+          <OrderFormForm onSubmit={paymentHandler}>
+            <EmailInputContainer>
+              <EmailLabel>Email</EmailLabel>
+              <EmailInput
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                required
+              />
+            </EmailInputContainer>
+            <AddressElement options={{mode: 'shipping'}} />
+            <PaymentElement />
+            <CheckoutBtn>
+              Place Order
+            </CheckoutBtn>
+          </OrderFormForm>
+        </FormContainer>
       </OrderFormContainer>
     )
 }

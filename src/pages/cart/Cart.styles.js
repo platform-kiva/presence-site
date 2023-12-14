@@ -9,6 +9,7 @@ export const CartContainer = styled.div`
     flex-direction: column;
     height: 100vh;
     justify-content: center;
+    position: relative;
     width: 100vw;
 `
 export const TopNavBtnContainer = styled.div`
@@ -58,11 +59,11 @@ export const CartItemDetailsContainer = styled.div`
     flex-direction: column;
 `
 export const DetailsLabel = styled.h4`
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+        -ms-user-select: none;
             user-select: none;
 `
 export const CartItemIncDecContainer = styled.div`

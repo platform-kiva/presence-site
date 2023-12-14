@@ -25,7 +25,7 @@ export default function ProductDisplay({ product, scrollToElement=null, indSette
           });
         };
         sequenceInitialAnimations();
-      }, [controlDiv1]);
+      }, [controlDiv1, bobs]);
 
     useEffect(() => {
         if (!bobs) {
@@ -35,12 +35,12 @@ export default function ProductDisplay({ product, scrollToElement=null, indSette
             await controlDiv2.start({});
             controlDiv2.start({
                 scale: [1, 1.2, 1],
-                opacity: [1, 0.33, 1],
+                opacity: [0, 0.33, 1],
                 transition: { duration: 4, ease: "easeInOut", repeat: Infinity },
             });
         };
         sequenceInitialAnimations();
-    }, [controlDiv2]);
+    }, [controlDiv2, bobs]);
 
     useEffect(() => {
         controlDiv2.set({ opacity: 0 });

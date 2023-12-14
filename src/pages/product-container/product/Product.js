@@ -20,13 +20,15 @@ import {
   CustomizeBtnsContainer,
   CustomizeBtnContainer,
   CustomizationLabel,
+  PriceActionCustomContainer,
   RgbDisplayContainer,
   RgbDisplay,
   RgbSquare,
   CustomMockupContainer,
   DesignOverlayContainer,
   GradientBox,
-  ShirtMockupContainer
+  ShirtMockupContainer,
+  PriceActionProductContainer
 } from './Product.styles.js';
 
 // components
@@ -159,17 +161,19 @@ export default function Product({ product }) {
             </ProductImgCarousel>
           </BotFoldCol>
           <BotFoldCol>
-            <PriceAction>
-              <Price $accentCol={product.botGradient}>${product.price}</Price>
-              <SizeSelection product={product} custom={true} scrollToElement={handleScroll}/>
-              <DescriptionContainer>
-                <ul>
-                  {product.description.map(description => (
-                    <li key={description}>{description}</li>
-                  ))}
-                </ul>
-              </DescriptionContainer>
-            </PriceAction>
+            <PriceActionProductContainer>
+              <PriceAction>
+                <Price $accentCol={product.botGradient}>${product.price}</Price>
+                <SizeSelection product={product} custom={true} scrollToElement={handleScroll}/>
+                <DescriptionContainer>
+                  <ul>
+                    {product.description.map(description => (
+                      <li key={description}>{description}</li>
+                    ))}
+                  </ul>
+                </DescriptionContainer>
+              </PriceAction>
+            </PriceActionProductContainer>
           </BotFoldCol>
         </ProductContainerBotFold>
         <CustomGradientContainer id='customizationID'>
@@ -202,15 +206,13 @@ export default function Product({ product }) {
                     </CustomizationLabel>
                   </>
                   :
-                  <>
+                  <PriceActionCustomContainer>
                     <PriceAction>
                       <Price $accentCol={customProduct.botGradient}>$35</Price>
                       <SizeSelection product={customProduct} />
                     </PriceAction>
-                    
                     <h3 style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
-                  </>
-
+                  </PriceActionCustomContainer>
               }
           </CustomControlsContainer>
           <CustomMockupContainer>

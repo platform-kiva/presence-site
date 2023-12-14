@@ -9,6 +9,7 @@ export const ProductDisplayContainer = styled.div`
     gap: 60px;
     justify-content: center;
     position: relative;
+    z-index: 10;
 `
 export const ProductImgContainer = styled(motion.div)`
     align-items: center;
@@ -19,7 +20,7 @@ export const ProductImgContainer = styled(motion.div)`
     width: 100%;
 `
 export const ProductShadow = styled(motion.div)`
-    background-color: rgba(0,0,0,0.12);
+    background-color: rgba(0,0,0,0.175);
     border-radius: 50%;
     display: ${props => props.$isVisible ? "block" : "none"};
     filter: blur(7px);

@@ -92,11 +92,7 @@ export const ProductImgCarousel = styled.div`
         width: 80%;
     }
 `
-export const PriceAction = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+export const PriceActionProductContainer = styled.div`
     position: absolute;
     top: 20px;
 
@@ -107,6 +103,12 @@ export const PriceAction = styled.div`
         margin-top: 80px;
         width: 80%;
     }
+`
+export const PriceAction = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 `
 export const Price = styled.h1`
     font-family: 'Roboto Condensed', sans-serif;;
@@ -230,6 +232,17 @@ export const CustomizationLabel = styled.div`
         h3 {
             width: 90%;
         }    
+    }
+`
+export const PriceActionCustomContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @media ${device.mobileS} {
+        margin-top: 40px;
     }
 `
 export const SizeSelectionContainer = styled.div`

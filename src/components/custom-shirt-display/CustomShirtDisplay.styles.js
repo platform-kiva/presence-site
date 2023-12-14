@@ -1,18 +1,22 @@
-import styled from "styled-components"
-import { motion } from "framer-motion"
-import { device } from "../../media-breakpoints"
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { device } from "../../media-breakpoints";
 
 export const CustomShirtContainer = styled.div`
     position: relative;
 `
 export const DesignAlphaImgContainer = styled(motion.div)`
-    // background-color: pink;
     position: absolute;
     left: 50%;
-    top: 32px;
+    top: 33.25px;
     transform: translateX(-50%);
     width: 78px;
     z-index: 200;
+
+    @media ${device.laptopL} {
+        top: 46.55px;
+        width: 109.2px;
+    }
 `
 export const CustomGradient = styled(motion.div)`
     background: ${(props) =>
@@ -36,6 +40,12 @@ export const CustomGradient = styled(motion.div)`
     transform: translateX(-50%);
     width: 78px;
     z-index: 100;
+    
+    @media ${device.laptopL} {
+        height: 28px;
+        top: 86.8px;
+        width: 109.2px;
+    }
 `
 export const CustomShirtImgContainer = styled.div`
     width: 250px; 
