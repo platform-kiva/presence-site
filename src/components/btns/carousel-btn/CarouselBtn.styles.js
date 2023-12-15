@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
 import { device } from "../../../media-breakpoints";
@@ -28,6 +28,14 @@ export const CarouselBtnContainer = styled.div`
         };
         transition: 0.8s ease-in-out;
     }
+
+    ${({ $isParentHovered }) => $isParentHovered && css`
+        background-color: rgba(255,255,255,0.2);
+        transform: ${props =>
+            props.$active ? "scale(1.15)" : ""
+        };
+        transition: 0.8s ease-in-out;
+    `}
 
     @media ${device.mobileS} {
         height: 36px;

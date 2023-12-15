@@ -1,29 +1,35 @@
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // styles
 import {
     NavBtnContainer,
     SideIcon1, SideIcon2, SideIcon3
-} from './NavBtn.styles.js'
+} from './NavBtn.styles.js';
 
 // assets
-import chevronUp from '../../../assets/icons/chevron-icon-up.png'
-import chevronDown from '../../../assets/icons/chevron-icon-down.png'
+import chevronUp from '../../../assets/icons/chevron-icon-up.png';
+import chevronDown from '../../../assets/icons/chevron-icon-down.png';
 
 // components
-import CarouselBtn from '../carousel-btn/CarouselBtn'
+import CarouselBtn from '../carousel-btn/CarouselBtn';
 
 export default function NavBtn({ direction, btnIcon, link=null, headerNav=false }) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [isHovered, setIsHovered] = useState(false);
 
     const handleNavigation = () => {
         if (link) {
-            navigate(link)
+            navigate(link);
         }
     }
-
+    
     return (
-        <NavBtnContainer onClick={() => handleNavigation()}>
+        <NavBtnContainer
+            onClick={() => handleNavigation()}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             {headerNav &&
                 <>
                     {direction === 'up' && 
@@ -31,7 +37,7 @@ export default function NavBtn({ direction, btnIcon, link=null, headerNav=false 
                             <SideIcon3 src={chevronUp} alt="chevron icon" />
                             <SideIcon2 src={chevronUp} alt="chevron icon" />
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
-                            <CarouselBtn icon={btnIcon} />
+                            <CarouselBtn icon={btnIcon} isParentHovered={isHovered}/>
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
                             <SideIcon2 src={chevronUp} alt="chevron icon" />
                             <SideIcon3 src={chevronUp} alt="chevron icon" />
@@ -42,7 +48,7 @@ export default function NavBtn({ direction, btnIcon, link=null, headerNav=false 
                             <SideIcon3 src={chevronDown} alt="chevron icon" />
                             <SideIcon2 src={chevronDown} alt="chevron icon" />
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
-                            <CarouselBtn icon={btnIcon} />
+                            <CarouselBtn icon={btnIcon} isParentHovered={isHovered}/>
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
                             <SideIcon2 src={chevronDown} alt="chevron icon" />
                             <SideIcon3 src={chevronDown} alt="chevron icon" />
@@ -57,7 +63,7 @@ export default function NavBtn({ direction, btnIcon, link=null, headerNav=false 
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
-                            <CarouselBtn icon={btnIcon} />
+                            <CarouselBtn icon={btnIcon} isParentHovered={isHovered}/>
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
                             <SideIcon1 src={chevronUp} alt="chevron icon" />
@@ -68,7 +74,7 @@ export default function NavBtn({ direction, btnIcon, link=null, headerNav=false 
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
-                            <CarouselBtn icon={btnIcon} />
+                            <CarouselBtn icon={btnIcon} isParentHovered={isHovered}/>
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
                             <SideIcon1 src={chevronDown} alt="chevron icon" />
