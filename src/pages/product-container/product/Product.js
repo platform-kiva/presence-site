@@ -6,14 +6,8 @@ import { extractRGBValues, generateRgbaString, rgbaToRgb } from '../../../utils/
 // styled components
 import {
   ProductContainer,
-  ProductContainerTopFold,
-  ProductHolder,
-  ProductContainerBotFold,
-  BotFoldCol,
-  ProductImgCarousel,
   PriceAction,
   Price,
-  DescriptionContainer,
   CustomGradientContainer,
   GradientBG,
   CustomControlsContainer,
@@ -25,17 +19,16 @@ import {
   RgbDisplay,
   RgbSquare,
   CustomMockupContainer,
-  DesignOverlayContainer,
   GradientBox,
   ShirtMockupContainer,
-  PriceActionProductContainer
+  DescriptionContainer,
+  PromptContainer
 } from './Product.styles.js';
 
 // components
 import ImgLoader from '../../../components/img-loader/ImgLoader.js';
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeSelection from '../../../components/size-selection/SizeSelection.js';
-import ProductDisplay from '../../../components/product-display/ProductDisplay.js';
 
 export default function Product({ product }) {
 
@@ -81,17 +74,6 @@ export default function Product({ product }) {
       }
     )
   }, [startColor, endColor])
-
-  const handleScroll = (view) => {
-      if (view === "custom") {
-        document.getElementById("customizationID").scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-      if (view === "botFold") {
-        document.getElementById("productBotFold").scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-  };
 
   const handleCustomizationAction = (actionTaken) => {
     if (actionTaken === "left") {
@@ -148,35 +130,7 @@ export default function Product({ product }) {
 
   return (
       <ProductContainer>
-        <ProductContainerTopFold id="productTopFold">
-          <ProductHolder key={product.id}>
-            <ProductDisplay key={product.id} product={product} scrollToElement={handleScroll} bobs={true}/>
-          </ProductHolder>
-        </ProductContainerTopFold>
-
-        <ProductContainerBotFold id="productBotFold">
-          <BotFoldCol>  
-            <ProductImgCarousel>
-              <ImgLoader src={product.imgURL} alt='product img enlarged' />
-            </ProductImgCarousel>
-          </BotFoldCol>
-          <BotFoldCol>
-            <PriceActionProductContainer>
-              <PriceAction>
-                <Price $accentCol={product.botGradient}>${product.price}</Price>
-                <SizeSelection product={product} custom={true} scrollToElement={handleScroll}/>
-                <DescriptionContainer>
-                  <ul>
-                    {product.description.map(description => (
-                      <li key={description}>{description}</li>
-                    ))}
-                  </ul>
-                </DescriptionContainer>
-              </PriceAction>
-            </PriceActionProductContainer>
-          </BotFoldCol>
-        </ProductContainerBotFold>
-        <CustomGradientContainer id='customizationID'>
+        <CustomGradientContainer>
           <CustomControlsContainer>
               {!gradientWasChosen ? 
                   <>   
@@ -201,7 +155,10 @@ export default function Product({ product }) {
                           </RgbDisplay>
                         </RgbDisplayContainer>
                         :
-                        <h3>281,474,976,710,656 possibilities...find one that feels right.</h3>
+                        <PromptContainer>
+                          <h3>281,474,976,710,656 possibilities...find one that feels right.</h3>
+                        </PromptContainer>
+                        
                       }
                     </CustomizationLabel>
                   </>
@@ -211,14 +168,11 @@ export default function Product({ product }) {
                       <Price $accentCol={customProduct.botGradient}>$35</Price>
                       <SizeSelection product={customProduct} />
                     </PriceAction>
-                    <h3 style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                    <h3 className='back-btn' style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
                   </PriceActionCustomContainer>
               }
           </CustomControlsContainer>
           <CustomMockupContainer>
-              <DesignOverlayContainer>
-                  <ImgLoader src={product.designAlpha} alt={'design'} />
-                </DesignOverlayContainer>
               <GradientBox
                   animate={controlDiv3}
                   style={{
@@ -227,7 +181,18 @@ export default function Product({ product }) {
               />
               <ShirtMockupContainer>
                   <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
-              </ShirtMockupContainer>         
+              </ShirtMockupContainer>     
+              <DescriptionContainer>
+                <ul>
+                  <li>100% ring-spun cotton</li>
+                  <li>Garment-dyed, pre-shrunk fabric</li>
+                  <li>Relaxed fit</li>
+                  <li>7/8″ double-needle topstitched collar</li>
+                  <li>Twill-taped neck and shoulders for extra durability</li>
+                  <li>Double-needle armhole, sleeve, and bottom hems</li>
+                  <li>Signature twill label</li>
+                </ul>
+              </DescriptionContainer>
           </CustomMockupContainer>
           <AnimatePresence>
               <GradientBG

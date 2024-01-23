@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorIcon from '../../assets/icons/cursor.png';
 
 export const ProductDisplayContainer = styled.div`
+    background-color: pink;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -12,8 +13,9 @@ export const ProductDisplayContainer = styled.div`
     z-index: 10;
 `
 export const ProductImgContainer = styled(motion.div)`
+    background-color: red;
     align-items: center;
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorIcon}) 15 15, auto;
     display: flex;
     height: 100%;
     justify-content: center;

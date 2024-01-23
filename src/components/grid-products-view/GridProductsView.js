@@ -8,7 +8,7 @@ import {
 // components
 import ProductDisplay from '../product-display/ProductDisplay'
 
-export default function GridProductsView({ items, indSetter, gridViewSetter }) {
+export default function GridProductsView({ items, indSetter, cartViewSetter }) {
 
   return (
     <GridProductsViewContainer>
@@ -21,7 +21,7 @@ export default function GridProductsView({ items, indSetter, gridViewSetter }) {
               key={item.id}
               product={item}
               indSetter={indSetter}
-              gridViewSetter={gridViewSetter}
+              cartViewSetter={cartViewSetter}
             />
           </ProductHolder>
         ))}

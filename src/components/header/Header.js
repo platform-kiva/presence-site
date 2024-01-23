@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartCount } from '../../store/cart/cart.selector.js';
 
@@ -6,34 +6,34 @@ import { selectCartCount } from '../../store/cart/cart.selector.js';
 import { 
     HeaderBtnContainer,
     HeaderContainer,
-    HeaderBtnImgContainer
+    CartBtnContainer,
+    HeaderBtnImgContainer,
+    CartBtnImgContainer
  } from './Header.styles.js';
 
 // assets
 import closeIcon from '../../assets/icons/close-icon.svg';
-import gridIcon from '../../assets/icons/grid-icon.svg';
+import bagIcon from '../../assets/icons/bag-icon.svg';
 import menuIcon from '../../assets/icons/menu-icon.svg';
 
 // components
-import Banner from '../banner/Banner'
-import NavBtn from '../btns/nav-btn/NavBtn'
-import { useEffect } from 'react';
+import Banner from '../banner/Banner';
 
-export default function Header({ gridViewSetter, gridViewStatus, socialsViewSetter, socialsViewStatus }) {
+export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
     const cartCount = useSelector(selectCartCount);
-    const [gridViewIsActive, setGridViewIsActive] = useState(false);
+    const [cartViewIsActive, setCartViewIsActive] = useState(false);
     const [socialsViewIsActive, setSocialsViewIsActive] = useState(false);
 
     const handleGridView = () => {
         if (socialsViewStatus) {
             return
         }
-        setGridViewIsActive(!gridViewIsActive);
-        gridViewSetter(!gridViewIsActive);
+        setCartViewIsActive(!cartViewIsActive);
+        cartViewSetter(!cartViewIsActive);
     };
 
     const handleSocialsView = () => {
-        if (gridViewStatus) {
+        if (cartViewStatus) {
             return
         }
         setSocialsViewIsActive(!socialsViewIsActive);
@@ -41,12 +41,21 @@ export default function Header({ gridViewSetter, gridViewStatus, socialsViewSett
     }
 
     useEffect(() => {
-        setGridViewIsActive(gridViewStatus)
-    }, [gridViewStatus])
+        setCartViewIsActive(cartViewStatus)
+    }, [cartViewStatus])
 
     useEffect(() => {
         setSocialsViewIsActive(socialsViewStatus)
     }, [socialsViewStatus])
+
+    const [isAnimating, setIsAnimating] = useState(false);
+
+    useEffect(() => {
+      // Trigger animation on cartCount change
+      setIsAnimating(true);
+      const timer = setTimeout(() => setIsAnimating(false), 300); // Duration of the animation
+      return () => clearTimeout(timer);
+    }, [cartCount]);
     
     return (
         <HeaderContainer>
@@ -59,16 +68,12 @@ export default function Header({ gridViewSetter, gridViewStatus, socialsViewSett
                     times: [0, 1]
                 }}
             >
-                <HeaderBtnImgContainer $isVisible={!gridViewStatus}>
+                <HeaderBtnImgContainer $isVisible={!cartViewStatus}>
                     <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                 </HeaderBtnImgContainer> 
             </HeaderBtnContainer>
-            {cartCount === 0 ? 
-                <Banner />
-            :
-                <NavBtn direction={"up"} btnIcon={"cart"} link={"/cart"} headerNav={true} />      
-            }
-            <HeaderBtnContainer onClick={() => handleGridView()}
+            <Banner />
+            <CartBtnContainer onClick={() => handleGridView()}
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
@@ -77,10 +82,20 @@ export default function Header({ gridViewSetter, gridViewStatus, socialsViewSett
                     times: [0, 1]
                 }}
             >
-                <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>
-                    <img src={gridViewIsActive ? closeIcon : gridIcon} alt={gridViewIsActive ? "close icon" : "grid icon"} />
-                </HeaderBtnImgContainer>
-            </HeaderBtnContainer>
+                {cartViewIsActive ?
+                    <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
+                        <img src={closeIcon} alt={"close icon"} />
+                    </HeaderBtnImgContainer>
+                    :
+                    <CartBtnImgContainer $isVisible={!socialsViewStatus}
+                        animate={{ scale: isAnimating ? 1.5 : 1 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                    >
+                        <h4>{cartCount}</h4>
+                        <img src={bagIcon} alt={"cart icon"} />
+                    </CartBtnImgContainer> 
+                }
+            </CartBtnContainer>
         </HeaderContainer>
     )
 }

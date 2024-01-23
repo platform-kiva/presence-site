@@ -72,3 +72,65 @@ export const HeaderBtnImgContainer = styled.div`
         } 
     }
 `
+export const CartBtnContainer = styled(motion.div)`
+    display: flex;
+    height: 20px;
+    transform-origin: center;
+    transition: 0.6s ease-out;
+    width: 28px;
+    
+    &:hover {
+        transform: scale(1.5);
+        transition: 0.6s ease-out;
+    }
+
+    @media ${device.mobileS} {
+        padding: 0px 30px;
+    }
+
+    @media (min-width: 550px) {
+        padding: 0px 50px;
+    }
+
+    @media ${device.tablet} {
+        padding: 0px 66.5px;
+    }
+
+    @media ${device.laptop} {
+        padding: 0px 120px;
+    }
+`
+export const CartBtnImgContainer = styled(motion.div)`
+    align-items: center;
+    cursor: ${props =>
+        props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+    };
+    display: flex;
+    width: 50px;
+    justify-content: center;
+    opacity: ${props => props.$isVisible ? "1.0" : "0.0"};
+    position: relative;
+    transition: 0.2s ease-out;
+
+    h4 {
+        font-size: 12px;
+        margin-top: 8px;
+        position: absolute;
+    }
+
+    @media ${device.mobileS} {
+        img {
+            width: 70%;
+        } 
+    }
+    @media ${device.mobileM} {
+        img {
+            width: 80%;
+        } 
+    }
+    @media ${device.mobileL} {
+        img {
+            width: 100%;
+        } 
+    }
+`

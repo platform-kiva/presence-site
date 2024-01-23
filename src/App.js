@@ -22,8 +22,8 @@ function App() {
             <Route path="" element={<PreLoader />} />
             <Route path="/home" element={<Home />}>
               <Route path="" element={<ProductContainer />} />
+              <Route path="cart" element={<Cart />} />
             </Route> 
-            <Route path="/cart" element={<Cart />} />
             <Route path="/complete" element={<OrderComplete />} />
             <Route path="/checkout" element={<Checkout />}>
                 <Route path="" element={<PaymentInitializer />} />

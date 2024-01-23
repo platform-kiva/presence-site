@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { device } from '../../../media-breakpoints';
+import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 
 export const ProductContainer = styled.div`
     display: flex;
@@ -37,73 +38,6 @@ export const ProductHolder = styled.div`
         width: 280px;
     }
 `
-export const ProductContainerBotFold = styled.div`
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    position: relative;
-    width: 100vw;
-
-    @media ${device.mobileS} {
-        flex-direction: column;
-    }
-
-    @media ${device.tablet} {
-        flex-direction: row;
-    }
-
-    @media ${device.laptopL} {
-        left: 50%;
-        max-width: 1440px;
-        transform: translateX(-50%);
-    }
-`
-export const BotFoldCol = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    height: 50%;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-
-    @media ${device.laptop} {
-        height: 100%;
-    }
-`
-export const ProductImgCarousel = styled.div`
-    bottom: 20px;
-    position: absolute;
-    width: 240px;
-
-    @media ${device.tablet} {
-        bottom: unset;
-        height: auto;
-        margin-top: 80px;
-        right: 20px;
-        width: 80%;
-    }
-
-    @media ${device.laptop} {
-        height: auto;
-        max-width: 420px;
-        width: 80%;
-    }
-`
-export const PriceActionProductContainer = styled.div`
-    position: absolute;
-    top: 20px;
-
-    @media ${device.tablet} {
-        top: unset;
-        height: auto;
-        left: 20px;
-        margin-top: 80px;
-        width: 80%;
-    }
-`
 export const PriceAction = styled.div`
     align-items: center;
     display: flex;
@@ -124,14 +58,14 @@ export const Price = styled.h1`
         font-size: 72px;
     }
     @media ${device.laptopL} {
-        font-size: 108px;
+        font-size: 81px;
     }
 `
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
     font-size: 24px;
     margin-top: 5px;
-    width: 300px;
+    width: 420px;
 
     ul {
         margin: 0;
@@ -139,21 +73,20 @@ export const DescriptionContainer = styled.div`
 
     @media ${device.mobileS} {
         li {
-            font-size: 14px;
+            margin-top: 5px;
+            font-size: 16px;
         }
     }
     @media ${device.laptopL} {
-        font-size: 24px;
+        font-size: 100px;
     }
 `
 export const CustomGradientContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    height: 100vh;
-    overflow: hidden;
     position: relative;
+    transition: 0.4s;
 `
 export const GradientBG = styled(motion.div)`
     background: ${(props) =>
@@ -172,7 +105,7 @@ export const GradientBG = styled(motion.div)`
                 0.8) 100%)`
         : undefined};
     height: 100%;
-    position: absolute;
+    position: fixed;
     transition: background-color 1s ease;
     width: 100%;
     z-index: -99;
@@ -181,17 +114,16 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 132px;
     width: 100vw;
 
     @media ${device.mobileS} {
-        margin-top: 80px;
+        margin-top: 130px;
     }
     @media ${device.mobileM} {
-        margin-top: 96px;
+        margin-top: 146px;
     }
     @media ${device.tablet} {
-        margin-top: 132px;
+        margin-top: 182px;
     }
 `
 export const RgbDisplayContainer = styled.div`
@@ -219,6 +151,7 @@ export const RgbSquare = styled.div`
 export const CustomizationLabel = styled.div`
     align-items: center;
     display: flex;
+    height: 80px;
     justify-content: center;
     padding-bottom: 24px;
     padding-top: 36px;
@@ -239,10 +172,11 @@ export const PriceActionCustomContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 50px;
     width: 100%;
 
-    @media ${device.mobileS} {
-        margin-top: 40px;
+    .back-btn {
+        cursor: url(${cursorIconFilled}) 15 15, auto;
     }
 `
 export const SizeSelectionContainer = styled.div`
@@ -251,7 +185,7 @@ export const SizeSelectionContainer = styled.div`
     height: 155px;
 `
 export const SizeBackBtnContainer = styled.div`
-    width:100%;
+    width: 100%;
 `
 export const CustomizeBtnsContainer = styled.div`
     align-items: center;
@@ -261,9 +195,9 @@ export const CustomizeBtnsContainer = styled.div`
     margin-top: 20px;
     width: 404px;
 
-    @media ${device.mobileS} {
+    /* @media ${device.mobileS} {
         flex-direction: column;
-    }
+    } */
 `
 export const CustomizeBtnContainer = styled.div`
     @media ${device.mobileS} {
@@ -276,17 +210,20 @@ export const CustomizeBtnContainer = styled.div`
         width: 250px;
     }
 `
-export const CustomMockupContainer = styled.div`
-    overflow: hidden;
-    position: relative;
+export const PromptContainer = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 `
-export const DesignOverlayContainer = styled.div`
-    height: 210px;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%);
-    top: 99px;
-    z-index: 100;
+export const CustomMockupContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    padding-bottom: 50px;
+    position: relative;
 `
 export const GradientBox = styled(motion.div)`
     background-color: orange;
@@ -295,7 +232,7 @@ export const GradientBox = styled(motion.div)`
     position: absolute;
     transform: translate(-50%);
     top: 170px;
-    width: 220px;
+    width: 200px;
     z-index: 99;
 `
 export const ShirtMockupContainer = styled(motion.div)`

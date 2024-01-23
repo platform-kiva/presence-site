@@ -37,9 +37,9 @@ export default function OrderForm({ clientSecret }) {
 
         const {error: submitError} = await elements.submit();
         if (submitError) {
-            alert(submitError);
-        return;
-  }
+          alert(submitError);
+          return;
+        }
     
         const paymentResult = await stripe.confirmPayment({
           elements,
@@ -52,14 +52,19 @@ export default function OrderForm({ clientSecret }) {
                 }
             },
           },
+        })
+  
+        stripe.confirmCardPayment(clientSecret).then(result => {
+          if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+            console.log("Sucess!")
+            clearCartItems()
+            // handle order completion or other tasks here
+          } else {
+            console.log("Fail")
+            alert(paymentResult.error)
+          }
         });
-    
-        if (paymentResult.error) {
-          alert(paymentResult.error)
-        } else {
-          clearCartItems()
-        }
-    }
+      }
 
     return (
       <OrderFormContainer id="orderFormID">

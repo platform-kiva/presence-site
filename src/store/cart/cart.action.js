@@ -40,6 +40,5 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 }
 
 export const clearCart = () => {
-    console.log('inside clearCart')
-    return ({type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: {}});
+    return ({type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: []});
 }

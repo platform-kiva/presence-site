@@ -14,10 +14,11 @@ export const OrderCompleteContent = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
+    height: fit-content;
 `
 export const BtnContainer = styled.div`
-    width: 100%;
+    width: 500px;
 `
 export const GradientBG = styled.div`
     background:

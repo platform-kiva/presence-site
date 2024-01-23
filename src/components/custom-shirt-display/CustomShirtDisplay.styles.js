@@ -3,20 +3,11 @@ import { motion } from "framer-motion";
 import { device } from "../../media-breakpoints";
 
 export const CustomShirtContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     position: relative;
-`
-export const DesignAlphaImgContainer = styled(motion.div)`
-    position: absolute;
-    left: 50%;
-    top: 33.25px;
-    transform: translateX(-50%);
-    width: 78px;
-    z-index: 200;
-
-    @media ${device.laptopL} {
-        top: 46.55px;
-        width: 109.2px;
-    }
 `
 export const CustomGradient = styled(motion.div)`
     background: ${(props) =>
@@ -43,14 +34,23 @@ export const CustomGradient = styled(motion.div)`
     
     @media ${device.laptopL} {
         height: 28px;
-        top: 86.8px;
-        width: 109.2px;
+        top: 72px;
+        /* width: 109.2px; */
+        width: 80px;
     }
 `
-export const CustomShirtImgContainer = styled.div`
-    width: 250px; 
+export const CustomShirtImgContainer = styled(motion.div)`
+    width: 175px; 
 
     @media ${device.laptopL} {
-        width: 350px;
+        width: 275px;
     }
+`
+export const ProductShadow = styled(motion.div)`
+    background-color: rgba(0,0,0,0.175);
+    border-radius: 50%;
+    display: ${props => props.$isVisible ? "block" : "none"};
+    filter: blur(7px);
+    height: 27px;
+    width: 175px;
 `

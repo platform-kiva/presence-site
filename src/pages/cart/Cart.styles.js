@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
-import { device } from "../../media-breakpoints";
 
 export const CartContainer = styled.div`
     align-items: center;
@@ -12,11 +11,6 @@ export const CartContainer = styled.div`
     position: relative;
     width: 100vw;
 `
-export const TopNavBtnContainer = styled.div`
-    position: absolute;
-    top: 50px;
-    z-index: 500;
-`
 export const CartItemDisplayContainer = styled.div`
     align-items: center;
     display: flex;
@@ -26,24 +20,11 @@ export const CartItemDisplayContainer = styled.div`
     position: absolute;
     width: 100vw;
 `
-export const CustomProductHolder = styled.div`
-    margin-bottom: 200px;
-    @media ${device.laptopL} {
-        margin-bottom: 300px;
-    }
-`
-export const CartItemContainer = styled.div`
-    position: absolute;
-    margin-bottom: 200px;
-    @media ${device.laptopL} {
-        margin-bottom: 300px;
-    }
-`
 export const CarouselBtnContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-top: 300px;
+    margin-top: 600px;
     right: 36px;
     top: 120px;
     width: 300px;
@@ -93,17 +74,6 @@ export const CartQuantity = styled.h1`
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
 `
-export const CartItemShadow = styled.div`
-    background-color: rgba(0,0,0,0.15);
-    border-radius: 50%;
-    filter: blur(7px);
-    height: 30px;
-    width: 250px;
-`
-export const BotNavBtnContainer = styled.div`
-    position: absolute;
-    bottom: 50px;
-`
 export const GradientBG = styled(motion.div)`
   background: linear-gradient(
     45deg,
@@ -130,4 +100,9 @@ export const GradientBG = styled(motion.div)`
   transition: background-color 1s ease;
   width: 100%;
   z-index: -100;
+`
+export const CartDetailsContainer = styled.div`
+    margin-top: 20px;
+    width: 200px;
+    z-index: 500;
 `

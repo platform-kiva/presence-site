@@ -1,41 +1,39 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AnimatePresence } from 'framer-motion'
-import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js'
-import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
+import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js';
+import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js';
 
 // styles
 import {
   CartContainer,
-  TopNavBtnContainer,
   CartItemDisplayContainer,
-  CustomProductHolder,
   CarouselBtnContainer,
-  CartItemContainer,
   CartItemLabelContainer,
   CartItemDetailsContainer,
   DetailsLabel,
   CartItemIncDecContainer,
   IndDecLabel,
   CartQuantity,
-  CartItemShadow,
-  BotNavBtnContainer,
-  GradientBG
-} from './Cart.styles.js'
+  GradientBG,
+  CartDetailsContainer
+} from './Cart.styles.js';
+
 
 // components
-import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn'
-import CartItem from './cart-item/CartItem'
-import NavBtn from '../../components/btns/nav-btn/NavBtn'
-import CustomShirtDisplay from '../../components/custom-shirt-display/CustomShirtDisplay.js'
+import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
+import CustomShirtDisplay from '../../components/custom-shirt-display/CustomShirtDisplay.js';
+import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js';
 
 export default function Cart() {
-  const dispatch = useDispatch()
-  const cartCount = useSelector(selectCartCount)
-  const cartTotal = useSelector(selectCartTotal)
-  const cartItems = useSelector(selectCartItems)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cartCount = useSelector(selectCartCount);
+  const cartTotal = useSelector(selectCartTotal);
+  const cartItems = useSelector(selectCartItems);
   
-  const [cartInd, setCartInd] = useState(0)
+  const [cartInd, setCartInd] = useState(0);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
   useEffect(() => {
@@ -74,34 +72,16 @@ export default function Cart() {
     }
   }, [cartInd, cartItems])
 
-  useEffect(() => {
-    console.log(cartItems)
-  }, [cartItems])
-
   return (
     <CartContainer>
       {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
-          <TopNavBtnContainer>
-            <NavBtn direction={"up"} btnIcon="card" link={"/checkout"}/>
-          </TopNavBtnContainer>
-
           <CartItemDisplayContainer>
             {cartItems.map((item, index) => {
                 if (index === cartInd) {
-                  if (item.imgURL === null) {
-                    return (
-                      <CustomProductHolder>
-                        <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} />
-                      </CustomProductHolder>
-                    );
-                  } else {
-                    return (
-                      <CartItemContainer key={item.cartID}>
-                        <CartItem cartItem={item} cartInd={cartInd}/>
-                      </CartItemContainer>
-                    );
-                  }
+                  return (
+                    <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} bobs={true}/>
+                  );
                 }
                 return null
               })
@@ -128,16 +108,17 @@ export default function Cart() {
             <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
           </CartItemIncDecContainer>
 
-          <CartQuantity>CART: {cartCount} / ${cartTotal}</CartQuantity>
-          <CartItemShadow></CartItemShadow>
+          <CartDetailsContainer>
+            <div onClick={() => navigate("/checkout")}>
+              <PrimaryBtn label={"GO TO CHECKOUT"}/>
+            </div>
+          </CartDetailsContainer>
+
         </>
       }
       {cartItems.length === 0 &&
         <h2>CART IS EMPTY</h2>
       }
-      <BotNavBtnContainer>
-        <NavBtn direction={"down"} btnIcon="down" link={'/home'}/>
-      </BotNavBtnContainer>
 
       <AnimatePresence>
         <GradientBG

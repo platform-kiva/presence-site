@@ -1,4 +1,6 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../../store/cart/cart.action.js';
 
 // styles
 import {
@@ -9,17 +11,23 @@ import {
 } from './OrderComplete.styles.js'
 
 // components
-import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js'
+import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js';
 
 export default function OrderComplete() {
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        dispatch(clearCart());
+        navigate("/home");
+    }
 
     return (
         <OrderCompleteContainer>
             <OrderCompleteContent>
                 <h2>ORDER COMPLETE</h2>
-                <h3>check your email for further details</h3>
-                <BtnContainer onClick={() => navigate("/home")}>
+                <h3>please check your email for further details</h3>
+                <BtnContainer onClick={() => handleClick()}>
                     <PrimaryBtn label={"BACK TO SHOP"}/>
                 </BtnContainer>
             </OrderCompleteContent>

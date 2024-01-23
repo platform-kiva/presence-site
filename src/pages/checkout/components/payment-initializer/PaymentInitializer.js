@@ -45,6 +45,7 @@ export default function PaymentInitializer() {
     }, [showOrderForm]);
 
     const fetchClientSecret = async () => {
+        const cartToString = cartItems.join();
         try {
             const response = await fetch('/.netlify/functions/create-payment-intent', {
                 method: 'POST',
@@ -53,7 +54,7 @@ export default function PaymentInitializer() {
                 },
                 body: JSON.stringify({
                     amount: cartTotal,
-                    description: `${cartItems}`
+                    description: `${cartToString}`
                 })
             }).then((res) => res.json())
             const clientSecretTemp = `${response.paymentIntent.client_secret}`;
