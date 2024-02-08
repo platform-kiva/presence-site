@@ -29,7 +29,7 @@ export default function PaymentInitializer() {
     }
 
     const handleButtonClick = () => {
-        setShowOrderForm(true); // This triggers the component to render
+        setShowOrderForm(true);
         handleScroll()
       };
 

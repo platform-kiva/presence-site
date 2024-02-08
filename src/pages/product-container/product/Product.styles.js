@@ -64,8 +64,9 @@ export const Price = styled.h1`
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
     font-size: 24px;
-    margin-top: 5px;
-    width: 420px;
+    margin-bottom: 50px;
+    max-width: 420px;
+    width: 95%;
 
     ul {
         margin: 0;
@@ -78,7 +79,7 @@ export const DescriptionContainer = styled.div`
         }
     }
     @media ${device.laptopL} {
-        font-size: 100px;
+        font-size: 80px;
     }
 `
 export const CustomGradientContainer = styled.div`
@@ -114,13 +115,11 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
     width: 100vw;
 
-    @media ${device.mobileS} {
-        margin-top: 130px;
-    }
     @media ${device.mobileM} {
-        margin-top: 146px;
+        margin-top: 130px;
     }
     @media ${device.tablet} {
         margin-top: 182px;
@@ -190,29 +189,33 @@ export const SizeBackBtnContainer = styled.div`
 export const CustomizeBtnsContainer = styled.div`
     align-items: center;
     display: flex;
+    flex-direction: column;
     gap: 24px;
     justify-content: center;
     margin-top: 20px;
-    width: 404px;
+    max-width: 404px;
+    width: 80%;
 
-    /* @media ${device.mobileS} {
-        flex-direction: column;
-    } */
+    @media ${device.tablet} {
+        flex-direction: row;
+    }
 `
 export const CustomizeBtnContainer = styled.div`
     @media ${device.mobileS} {
-        width: 180px;
+        width: 100%;
     }
     @media ${device.mobileL} {
-        width: 210px;
+        width: 100%;
     }
     @media ${device.tablet} {
-        width: 250px;
+        width: 100%;
     }
 `
 export const PromptContainer = styled.div`
     align-items: center;
     display: flex;
+    flex-direction: column;
+    gap: 12px;
     justify-content: center;
     width: 100%;
 `
@@ -222,20 +225,29 @@ export const CustomMockupContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     justify-content: center;
+    margin: 2%;
     padding-bottom: 50px;
     position: relative;
-`
-export const GradientBox = styled(motion.div)`
-    background-color: orange;
-    height: 60px;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%);
-    top: 170px;
-    width: 200px;
-    z-index: 99;
 `
 export const ShirtMockupContainer = styled(motion.div)`
     height: 675px;
     width: 675px;
+
+    @media (max-width: 768px) {
+        height: 100%;
+        width: 100%;
+    }
+
+    @media (min-width: 1920px) {
+        height: 575px;
+        width: 575px;
+    }
+`
+export const GradientBox = styled(motion.div)`
+    background-color: orange;
+    height: 8.89%;
+    position: absolute;
+    top: 25%;
+    width: 29.93%;
+    z-index: 99;
 `

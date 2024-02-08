@@ -156,7 +156,8 @@ export default function Product({ product }) {
                         </RgbDisplayContainer>
                         :
                         <PromptContainer>
-                          <h3>281,474,976,710,656 possibilities...find one that feels right.</h3>
+                          <h3>281,474,976,710,656 possibilities...</h3>
+                          <h3>Find one that feels right.</h3>
                         </PromptContainer>
                         
                       }
@@ -182,18 +183,19 @@ export default function Product({ product }) {
               <ShirtMockupContainer>
                   <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
               </ShirtMockupContainer>     
-              <DescriptionContainer>
-                <ul>
-                  <li>100% ring-spun cotton</li>
-                  <li>Garment-dyed, pre-shrunk fabric</li>
-                  <li>Relaxed fit</li>
-                  <li>7/8″ double-needle topstitched collar</li>
-                  <li>Twill-taped neck and shoulders for extra durability</li>
-                  <li>Double-needle armhole, sleeve, and bottom hems</li>
-                  <li>Signature twill label</li>
-                </ul>
-              </DescriptionContainer>
-          </CustomMockupContainer>
+            </CustomMockupContainer>
+            <DescriptionContainer>
+              <ul>
+                <li>100% ring-spun cotton</li>
+                <li>Garment-dyed, pre-shrunk fabric</li>
+                <li>Relaxed fit</li>
+                <li>7/8″ double-needle topstitched collar</li>
+                <li>Twill-taped neck and shoulders for extra durability</li>
+                <li>Double-needle armhole, sleeve, and bottom hems</li>
+                <li>Signature twill label</li>
+              </ul>
+            </DescriptionContainer>
+          
           <AnimatePresence>
               <GradientBG
                 key={1}

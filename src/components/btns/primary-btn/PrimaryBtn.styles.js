@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import cursorIcon from '../../../assets/icons/cursor.png'
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
-import { device } from "../../../media-breakpoints";
+import cursorIcon from '../../../assets/icons/cursor.png';
+import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
@@ -27,16 +26,6 @@ export const PrimaryBtnContainer = styled.button`
             props.$isActive ? "transition: 0.2s ease-in-out;" : ""
         };
     };
-
-    @media ${device.mobileS} {
-        height: 36px;
-    }
-    @media ${device.mobileL} {
-        height: 42px;
-    }
-    @media ${device.tablet} {
-        height: 50px;
-    }
 `
 export const BtnLabel = styled.h3`
     font-size: 16px;
@@ -47,14 +36,4 @@ export const BtnLabel = styled.h3`
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-    
-    @media ${device.mobileS} {
-        font-size: 11.52px;
-    }
-    @media ${device.mobileL} {
-        font-size: 13.44px;
-    }
-    @media ${device.tablet} {
-        font-size: 16px;
-    }
 `
