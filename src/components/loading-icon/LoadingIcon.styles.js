@@ -10,7 +10,7 @@ export const LoadingIconContainer = styled.div`
       rgba(219, 120, 212, 0.8) 0%,
       rgba(32, 172, 232, 0.8) 100%)
   ;
-  width: 100vw;
+  width: 100%;
 `;
 
 export const Icon = styled.div`

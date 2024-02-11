@@ -17,7 +17,7 @@ export const ProductContainerTopFold = styled.div`
     height: 100vh;
     justify-content: center;
     position: relative;
-    width: 100vw;
+    width: 100%;
 
     @media ${device.laptopL} {
         gap: 80px;
@@ -113,7 +113,7 @@ export const CustomControlsContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 150px;
-    width: 100vw;
+    width: 100%;
 
     @media ${device.tablet} {
         margin-top: 182px;

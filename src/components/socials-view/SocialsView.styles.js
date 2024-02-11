@@ -10,7 +10,7 @@ export const SocialsViewContainer = styled.div`
     flex-direction: column;
     gap: 80px;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
 
     @media ${device.mobileM} {
         flex-direction: row;

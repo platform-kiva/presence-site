@@ -10,37 +10,21 @@ import {
 import CartItem from '../../pages/cart/cart-item/CartItem';
 import ShirtDisplay from '../shirt-display/ShirtDisplay'
 
-
 export default function CartProductsView({ items }) {
 
   return (
     <CartProductsViewContainer>
-      <h2>OVERVIEW</h2>
+      <h2>REVIEW YOUR CART</h2>
       <CartItemsContainer>
-        {items.map((item) => {
-            if (item.imgURL === null) {
-              return (
-                <ProductHolder key={item.cartID}>
-                  <ShirtDisplay product={item} />
-                  <CartItemDetails>
-                    <h3>SIZE: {item.size}</h3>
-                    <h3>QUANTITY: {item.quantity}</h3>
-                  </CartItemDetails>
-                </ProductHolder>
-              );
-            } else {
-              return (
-                <ProductHolder key={item.cartID}>
-                  <CartItem cartItem={item}/>
-                  <CartItemDetails>
-                    <h3>SIZE: {item.size}</h3>
-                    <h3>QUANTITY: {item.quantity}</h3>
-                  </CartItemDetails>
-                </ProductHolder>
-              );
-            }
-          }
-        )}
+        {items.map((item) => (
+          <ProductHolder key={item.cartID}>
+            <ShirtDisplay product={item} />
+            <CartItemDetails>
+              <h3>SIZE: {item.size}</h3>
+              <h3>QUANTITY: {item.quantity}</h3>
+            </CartItemDetails>
+        </ProductHolder>
+        ))}
       </CartItemsContainer>
     </CartProductsViewContainer>
   )

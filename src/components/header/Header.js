@@ -4,7 +4,7 @@ import { selectCartCount } from '../../store/cart/cart.selector.js';
 
 // styles
 import { 
-    HeaderBtnContainer,
+    SocialsBtnContainer,
     HeaderContainer,
     CartBtnContainer,
     HeaderBtnImgContainer,
@@ -58,7 +58,8 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     
     return (
         <HeaderContainer>
-            <HeaderBtnContainer onClick={() => handleSocialsView()}
+            <SocialsBtnContainer
+                onClick={() => handleSocialsView()}
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
@@ -70,9 +71,10 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                 <HeaderBtnImgContainer $isVisible={!cartViewStatus}>
                     <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                 </HeaderBtnImgContainer> 
-            </HeaderBtnContainer>
+            </SocialsBtnContainer>
             <Banner />
-            <CartBtnContainer onClick={() => handleGridView()}
+            <CartBtnContainer
+                onClick={() => handleGridView()}
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const GradientBGContainer = styled.div`
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     z-index: -500;
 `
 export const DynamicGradientDiv = styled.div`

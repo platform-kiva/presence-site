@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { device } from "../../media-breakpoints";
 
 export const CartProductsViewContainer = styled.div`
-    height: fit-content;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    width: 100vw;
+    width: 100%;
 
     h2 {
         padding-top: 50px;
@@ -13,9 +16,14 @@ export const CartItemsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-flow: wrap;
-    gap: 100px;
+    gap: 20px;
     justify-content: center;
-    padding: 50px 0px;
+    margin: 50px 0px;
+
+    @media ${device.mobileL} {
+        gap: 100px;
+        padding: 50px;
+    }
 `
 export const ProductHolder = styled.div`
     display: flex;

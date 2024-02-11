@@ -8,7 +8,7 @@ export const OrderCompleteContainer = styled.div`
     height: 100vh;
     justify-content: center;
     text-align: center;
-    width: 100vw;
+    width: 100%;
 `
 export const OrderCompleteContent = styled.div`
     align-items: center;

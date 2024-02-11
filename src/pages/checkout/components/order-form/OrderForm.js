@@ -68,8 +68,6 @@ export default function OrderForm({ clientSecret }) {
 
     return (
       <OrderFormContainer id="orderFormID">
-        <OrderFormHeader>ORDER FORM</OrderFormHeader>
-
         <FormContainer> 
           <StripeHeader>
             <h3>Payments processed with</h3>

@@ -10,7 +10,7 @@ export const CartContainer = styled.div`
     height: 100vh;
     justify-content: center;
     position: relative;
-    width: 100vw;
+    width: 100%;
 `
 export const CartItemDisplayContainer = styled.div`
     display: flex;
@@ -23,7 +23,7 @@ export const CartItemDisplayContainer = styled.div`
         justify-content: center;
         position: absolute;
         top: 0;
-        width: 100vw;
+        width: 100%;
     }
 `
 export const CarouselBtnContainer = styled.div`
@@ -89,7 +89,7 @@ export const GradientBG = styled(motion.div)`
             ${props.$cartItems[props.$cartInd].topGradient[2]},
             0.8) 100%)`
     : undefined};
-  height: 100%;
+  height: 100vh;
   position: fixed;
   transition: background-color 1s ease;
   width: 100%;

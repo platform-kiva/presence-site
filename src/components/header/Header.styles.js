@@ -17,7 +17,7 @@ export const HeaderContainer = styled.div`
         padding-top: 50px;
     }
 `
-export const HeaderBtnContainer = styled(motion.div)`
+export const SocialsBtnContainer = styled(motion.div)`
     display: flex;
     height: 20px;
     padding: 0px 30px;

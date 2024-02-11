@@ -8,7 +8,7 @@ export const ProductsContainer = styled.div`
     flex-direction: column;
     height: 100vh;
     position: relative;
-    width: 100vw;
+    width: 100%;
 `
 export const HeaderContainer = styled(motion.div)`
     position: fixed;

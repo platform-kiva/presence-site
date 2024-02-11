@@ -7,7 +7,7 @@ export const PreLoaderContainer = styled.div`
     display: flex;
     height: 100vh;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
 `
 export const BannerContainer = styled(motion.div)`
     cursor: url(${cursorIconFilled}) 15 15, auto;

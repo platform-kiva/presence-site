@@ -7,11 +7,10 @@ export const OrderFormContainer = styled.div`
     flex-direction: column;
     gap: 50px;
     margin-bottom: 150px;
-    max-width: 800px;
-    width: 100%;
-`
-export const OrderFormHeader = styled.h2`
     margin-top: 50px;
+    max-width: 800px;
+    padding-top: 50px;
+    width: 100%;
 `
 export const FormContainer = styled.div`
     align-items: center;

@@ -179,12 +179,13 @@ export default function Product({ product }) {
                   </ElementWrapper>
               }
           </CustomControlsContainer>
+
           <ShirtImgDisplayContainer>
             <ShirtImgDisplay product={product} startColor={startColor} endColor={endColor} alphaStart={0.49} alphaEnd={0.56}/>
           </ShirtImgDisplayContainer>
           
           <DescriptionContainer>
-            <ElementWrapper>
+            <ElementWrapper delay={0.0}>
               <ul>
                 <li>100% ring-spun cotton</li>
                 <li>Garment-dyed, pre-shrunk fabric</li>
