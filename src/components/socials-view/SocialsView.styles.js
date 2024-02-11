@@ -7,16 +7,13 @@ export const SocialsViewContainer = styled.div`
     align-items: center;
     display: flex;
     height: 100vh;
+    flex-direction: column;
+    gap: 80px;
     justify-content: center;
     width: 100vw;
 
-    @media ${device.mobileS} {
-        gap: 40px;
-    }
     @media ${device.mobileM} {
-        gap: 50px;
-    }
-    @media ${device.mobileL} {
+        flex-direction: row;
         gap: 60px;
     }
 `
@@ -25,20 +22,9 @@ export const SocialLink = styled(Link)`
 `
 export const SocialIconImgContainer = styled.div`
     cursor: url(${cursorIconFilled}) 15 15, auto;
+    height: 60px;
     transition: 0.5s ease-in-out;
-
-    @media ${device.mobileS} {
-        height: 40px;
-        width: 40px;
-    }
-    @media ${device.mobileM} {
-        height: 50px;
-        width: 50px;
-    }
-    @media ${device.mobileL} {
-        height: 60px;
-        width: 60px;
-    }
+    width: 60px;
 
     &:hover {
         transform: scale(1.1);

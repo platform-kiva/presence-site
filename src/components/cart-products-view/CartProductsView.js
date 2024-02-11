@@ -8,7 +8,7 @@ import {
 
 // components
 import CartItem from '../../pages/cart/cart-item/CartItem';
-import CustomShirtDisplay from '../custom-shirt-display/CustomShirtDisplay'
+import ShirtDisplay from '../shirt-display/ShirtDisplay'
 
 
 export default function CartProductsView({ items }) {
@@ -21,7 +21,7 @@ export default function CartProductsView({ items }) {
             if (item.imgURL === null) {
               return (
                 <ProductHolder key={item.cartID}>
-                  <CustomShirtDisplay product={item} />
+                  <ShirtDisplay product={item} />
                   <CartItemDetails>
                     <h3>SIZE: {item.size}</h3>
                     <h3>QUANTITY: {item.quantity}</h3>

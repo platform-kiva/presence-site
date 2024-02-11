@@ -20,6 +20,7 @@ export const HeaderContainer = styled.div`
 export const HeaderBtnContainer = styled(motion.div)`
     display: flex;
     height: 20px;
+    padding: 0px 30px;
     transform-origin: center;
     transition: 0.6s ease-out;
     width: 20px;
@@ -27,10 +28,6 @@ export const HeaderBtnContainer = styled(motion.div)`
     &:hover {
         transform: scale(1.5);
         transition: 0.6s ease-out;
-    }
-
-    @media ${device.mobileS} {
-        padding: 0px 30px;
     }
 
     @media (min-width: 550px) {
@@ -56,25 +53,14 @@ export const HeaderBtnImgContainer = styled.div`
     position: relative;
     transition: 0.2s ease-out;
 
-    @media ${device.mobileS} {
-        img {
-            width: 70%;
-        } 
-    }
-    @media ${device.mobileM} {
-        img {
-            width: 80%;
-        } 
-    }
-    @media ${device.mobileL} {
-        img {
-            width: 100%;
-        } 
+    img {
+        width: 100%;
     }
 `
 export const CartBtnContainer = styled(motion.div)`
     display: flex;
     height: 20px;
+    padding: 0px 30px;
     transform-origin: center;
     transition: 0.6s ease-out;
     width: 28px;
@@ -82,10 +68,6 @@ export const CartBtnContainer = styled(motion.div)`
     &:hover {
         transform: scale(1.5);
         transition: 0.6s ease-out;
-    }
-
-    @media ${device.mobileS} {
-        padding: 0px 30px;
     }
 
     @media (min-width: 550px) {
@@ -102,9 +84,7 @@ export const CartBtnContainer = styled(motion.div)`
 `
 export const CartBtnImgContainer = styled(motion.div)`
     align-items: center;
-    cursor: ${props =>
-        props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
-    };
+    cursor: ${props => props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`};
     display: flex;
     width: 50px;
     justify-content: center;
@@ -118,19 +98,7 @@ export const CartBtnImgContainer = styled(motion.div)`
         position: absolute;
     }
 
-    @media ${device.mobileS} {
-        img {
-            width: 70%;
-        } 
-    }
-    @media ${device.mobileM} {
-        img {
-            width: 80%;
-        } 
-    }
-    @media ${device.mobileL} {
-        img {
-            width: 100%;
-        } 
+    img {
+        width: 100%;
     }
 `

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js';
-import { selectCartCount, selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js';
+import { selectCartItems } from '../../store/cart/cart.selector.js';
 
 // styles
 import {
@@ -15,22 +15,19 @@ import {
   DetailsLabel,
   CartItemIncDecContainer,
   IndDecLabel,
-  CartQuantity,
   GradientBG,
   CartDetailsContainer
 } from './Cart.styles.js';
 
-
 // components
+import ElementWrapper from '../../components/element-wrapper/ElementWrapper.js';
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
-import CustomShirtDisplay from '../../components/custom-shirt-display/CustomShirtDisplay.js';
+import ShirtDisplay from '../../components/shirt-display/ShirtDisplay.js';
 import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js';
 
 export default function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartCount = useSelector(selectCartCount);
-  const cartTotal = useSelector(selectCartTotal);
   const cartItems = useSelector(selectCartItems);
   
   const [cartInd, setCartInd] = useState(0);
@@ -77,10 +74,10 @@ export default function Cart() {
       {cartItems.length !== 0 && cartItems[cartInd] &&
         <>
           <CartItemDisplayContainer>
-            {cartItems.map((item, index) => {
+            {cartItems.map((product, index) => {
                 if (index === cartInd) {
                   return (
-                    <CustomShirtDisplay key={`${item.topGradient}, ${item.botGradient}`} product={item} bobs={true}/>
+                    <ShirtDisplay key={`${product.topGradient}, ${product.botGradient}`} product={product} startColor={product.topGradient} endColor={product.botGradient} alphaStart={0.49} alphaEnd={0.56} bobs={true}/>
                   );
                 }
                 return null
@@ -88,32 +85,50 @@ export default function Cart() {
             }
           </CartItemDisplayContainer>    
 
-          <CarouselBtnContainer>
-            <div onClick={() => handleIndChange(-1)}>
-              <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
-            </div>
-            <CartItemLabelContainer>
-              <CartItemDetailsContainer>
-                <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
-                <DetailsLabel>QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
-              </CartItemDetailsContainer>
-            </CartItemLabelContainer>
+          
+              <CarouselBtnContainer>
+                
+                <div onClick={() => handleIndChange(-1)}>
+                  <ElementWrapper>
+                    <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
+                  </ElementWrapper>
+                </div>
+                
+                <ElementWrapper delay={0.4}>
+                  <CartItemLabelContainer>
+                    <CartItemDetailsContainer>
+                      <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
+                      <DetailsLabel>QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
+                    </CartItemDetailsContainer>
+                  </CartItemLabelContainer>
+                </ElementWrapper>
+                
+                <div onClick={() => handleIndChange(1)}>
+                  <ElementWrapper>
+                    <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
+                  </ElementWrapper>
+                </div> 
+                
+              </CarouselBtnContainer>
             
-            <div onClick={() => handleIndChange(1)}>
-              <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
-            </div> 
-          </CarouselBtnContainer>
-          <CartItemIncDecContainer>
-            <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
-            <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
-          </CartItemIncDecContainer>
-
-          <CartDetailsContainer>
-            <div onClick={() => navigate("/checkout")}>
-              <PrimaryBtn label={"GO TO CHECKOUT"}/>
-            </div>
-          </CartDetailsContainer>
-
+            <CartItemIncDecContainer>
+              <ElementWrapper delay={0.4}>
+                <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
+              </ElementWrapper>
+              
+              <ElementWrapper delay={0.4}>
+                <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
+              </ElementWrapper>
+              
+            </CartItemIncDecContainer>
+  
+            <CartDetailsContainer>
+              <div onClick={() => navigate("/checkout")}>
+                <ElementWrapper delay={0.4}>
+                  <PrimaryBtn label={"GO TO CHECKOUT"}/>
+                </ElementWrapper>
+              </div>
+            </CartDetailsContainer>
         </>
       }
       {cartItems.length === 0 &&

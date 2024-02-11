@@ -23,7 +23,7 @@ export default function SocialsView() {
                 </SocialLink>
             </SocialIconImgContainer>
             <SocialIconImgContainer>
-                <SocialLink to={'https://www.tiktok.com/@presence.exp'} target="_blank">
+                <SocialLink to={'https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=8316e9bcedb14f7ea5bb3e35e53a2ffa&metadata=01'} target="_blank">
                     <ImgLoader src={snapchatIcon} alt="Snapchat icon" />
                 </SocialLink>
             </SocialIconImgContainer>

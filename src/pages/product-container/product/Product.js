@@ -18,25 +18,21 @@ import {
   RgbDisplayContainer,
   RgbDisplay,
   RgbSquare,
-  CustomMockupContainer,
-  GradientBox,
-  ShirtMockupContainer,
   DescriptionContainer,
-  PromptContainer
+  PromptContainer,
+  ShirtImgDisplayContainer
 } from './Product.styles.js';
 
 // components
-import ImgLoader from '../../../components/img-loader/ImgLoader.js';
+import ElementWrapper from '../../../components/element-wrapper/ElementWrapper.js';
 import PrimaryBtn from '../../../components/btns/primary-btn/PrimaryBtn';
 import SizeSelection from '../../../components/size-selection/SizeSelection.js';
+import ShirtImgDisplay from '../../../components/shirt-img-display/ShirtImgDisplay.js';
 
 export default function Product({ product }) {
 
   const controlDiv2 = useAnimation();
   const controlDiv3 = useAnimation();
-
-  const alphaEnd = 0.56;
-  const alphaStart = 0.49;
 
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   const [isMainProductImgLoaded, setIsMainProductImgLoaded] = useState(false);
@@ -65,6 +61,7 @@ export default function Product({ product }) {
         availSizes: ['S', 'M', 'L'],
         botGradient: extractedStartColor,
         imgURL: null,
+        blankProductURL: product.blankProductURL,
         id: `${startColor}, ${endColor}`,
         price: 35,
         quantity: 1,
@@ -73,7 +70,7 @@ export default function Product({ product }) {
         topGradient: extractedEndColor
       }
     )
-  }, [startColor, endColor])
+  }, [startColor, endColor, product.blankProductURL])
 
   const handleCustomizationAction = (actionTaken) => {
     if (actionTaken === "left") {
@@ -96,8 +93,8 @@ export default function Product({ product }) {
   useEffect(() => {
     if (!isFrozen) { 
         const interval = setInterval(() => {
-            setStartColor(generateRgbaString(alphaStart));
-            setEndColor(generateRgbaString(alphaEnd));
+            setStartColor(generateRgbaString(0.49));
+            setEndColor(generateRgbaString(0.56));
         }, 2000);
         return () => clearInterval(interval);
     }
@@ -133,58 +130,61 @@ export default function Product({ product }) {
         <CustomGradientContainer>
           <CustomControlsContainer>
               {!gradientWasChosen ? 
-                  <>   
+                  <>         
                     <CustomizeBtnsContainer>
+                      <ElementWrapper> 
                         <CustomizeBtnContainer onClick={() => handleCustomizationAction("left")}>
                             <PrimaryBtn label={"START"} isActive={isFrozen}/>
                         </CustomizeBtnContainer>
+                      </ElementWrapper>
+                      <ElementWrapper>
                         <CustomizeBtnContainer onClick={() => handleCustomizationAction("right")}>
                             <PrimaryBtn label={rightBtnLabel} isActive={!isFrozen || gradientWasSelected === true}/>
                         </CustomizeBtnContainer>
-                    </CustomizeBtnsContainer>
+                      </ElementWrapper>
+                    </CustomizeBtnsContainer>  
                     <CustomizationLabel>
                       {startColor ? 
-                        <RgbDisplayContainer>
-                          <RgbDisplay>
-                            <h3>{rgbaToRgb(endColor)}</h3>
-                            <RgbSquare $bgCol={endColor}/>
-                          </RgbDisplay>
-                          <RgbDisplay>
-                            <h3>{rgbaToRgb(startColor)}</h3>
-                            <RgbSquare $bgCol={startColor}/>
-                          </RgbDisplay>
-                        </RgbDisplayContainer>
+                        <ElementWrapper delay={0.4}>      
+                          <RgbDisplayContainer>
+                            <RgbDisplay>
+                              <h3>{rgbaToRgb(endColor)}</h3>
+                              <RgbSquare $bgCol={endColor}/>
+                            </RgbDisplay>
+                            <RgbDisplay>
+                              <h3>{rgbaToRgb(startColor)}</h3>
+                              <RgbSquare $bgCol={startColor}/>
+                            </RgbDisplay>
+                          </RgbDisplayContainer>
+                        </ElementWrapper>
                         :
-                        <PromptContainer>
-                          <h3>281,474,976,710,656 possibilities...</h3>
-                          <h3>Find one that feels right.</h3>
-                        </PromptContainer>
-                        
+                        <ElementWrapper delay={0.4}>
+                          <PromptContainer>
+                            <h3>281,474,976,710,656 possibilities...</h3>
+                            <h3>Find one that feels right.</h3>
+                          </PromptContainer>
+                        </ElementWrapper>
                       }
                     </CustomizationLabel>
                   </>
                   :
-                  <PriceActionCustomContainer>
-                    <PriceAction>
-                      <Price $accentCol={customProduct.botGradient}>$35</Price>
-                      <SizeSelection product={customProduct} />
-                    </PriceAction>
-                    <h3 className='back-btn' style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
-                  </PriceActionCustomContainer>
+                  <ElementWrapper>
+                    <PriceActionCustomContainer>
+                      <PriceAction>
+                        <Price $accentCol={customProduct.botGradient}>$35</Price>
+                        <SizeSelection product={customProduct} />
+                      </PriceAction>
+                      <h3 className='back-btn' style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                    </PriceActionCustomContainer>
+                  </ElementWrapper>
               }
           </CustomControlsContainer>
-          <CustomMockupContainer>
-              <GradientBox
-                  animate={controlDiv3}
-                  style={{
-                      background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaStart})` : endColor} 100%)`
-                  }}
-              />
-              <ShirtMockupContainer>
-                  <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsCustomProductImgLoaded}/>
-              </ShirtMockupContainer>     
-            </CustomMockupContainer>
-            <DescriptionContainer>
+          <ShirtImgDisplayContainer>
+            <ShirtImgDisplay product={product} startColor={startColor} endColor={endColor} alphaStart={0.49} alphaEnd={0.56}/>
+          </ShirtImgDisplayContainer>
+          
+          <DescriptionContainer>
+            <ElementWrapper>
               <ul>
                 <li>100% ring-spun cotton</li>
                 <li>Garment-dyed, pre-shrunk fabric</li>
@@ -194,7 +194,8 @@ export default function Product({ product }) {
                 <li>Double-needle armhole, sleeve, and bottom hems</li>
                 <li>Signature twill label</li>
               </ul>
-            </DescriptionContainer>
+            </ElementWrapper>
+          </DescriptionContainer>
           
           <AnimatePresence>
               <GradientBG

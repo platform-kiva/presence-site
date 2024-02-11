@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { device } from "../../media-breakpoints";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const CartContainer = styled.div`
@@ -12,23 +13,32 @@ export const CartContainer = styled.div`
     width: 100vw;
 `
 export const CartItemDisplayContainer = styled.div`
-    align-items: center;
     display: flex;
-    height: 100vh;
-    justify-content: center;
-    overflow-x: hidden;
     position: absolute;
-    width: 100vw;
+    top: 110px;
+
+    @media ${device.mobileM} {
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+    }
 `
 export const CarouselBtnContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-top: 600px;
+    margin-top: 450px;
     right: 36px;
     top: 120px;
     width: 300px;
     z-index: 500;
+
+    @media ${device.mobileM} {
+        margin-top: 625px;
+    }
 `
 export const CartItemLabelContainer = styled.div`
     display: flex;
@@ -63,23 +73,7 @@ export const IndDecLabel = styled.h4`
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
 `
-export const CartQuantity = styled.h1`
-    color: rgba(0,0,0,0.1);
-    margin-top: 20px;
-    margin-bottom: 6px;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
-`
 export const GradientBG = styled(motion.div)`
-  background: linear-gradient(
-    45deg,
-    rgba(219,120,212,0.8) 0%,
-    rgba(32,172,232,0.8) 100%
-  );
   background: ${(props) =>
     props.$cartItems && props.$cartItems[props.$cartInd] 
     ? `linear-gradient(
@@ -102,7 +96,11 @@ export const GradientBG = styled(motion.div)`
   z-index: -100;
 `
 export const CartDetailsContainer = styled.div`
-    margin-top: 20px;
+    margin-top: 25px;
     width: 200px;
     z-index: 500;
+
+    @media ${device.tablet} {
+        margin-top: 50px;
+    }
 `

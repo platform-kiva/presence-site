@@ -15,10 +15,10 @@ export const LogoTopText = styled.h1`
         -ms-user-select: none;
             user-select: none;
 
-    @media ${device.mobileS} {
-        font-size: 30px;
-        top: -8px;
-    }
+
+    font-size: 30px;
+    top: -8px;
+    
 
     @media ${device.mobileM} {
         font-size: 36px;
@@ -45,9 +45,8 @@ export const LogoMiddleText = styled.h1`
         -ms-user-select: none;
             user-select: none;
 
-    @media ${device.mobileS} {
-        font-size: 30px;
-    }
+    font-size: 30px;
+
     @media ${device.mobileM} {
         font-size: 36px;
     }
@@ -70,10 +69,9 @@ export const LogoBottomText = styled.h1`
         -ms-user-select: none;
             user-select: none;
 
-    @media ${device.mobileS} {
-        font-size: 30px;
-        top: 8px;
-    }
+    font-size: 30px;
+    top: 8px;
+    
     @media ${device.mobileM} {
         font-size: 36px;
         top: 9.5px;

@@ -1,4 +1,6 @@
 Checklist
+- Allow size change in Cart
+- Persist current gradient (add to store state)
 - code top safe area for iPhone Safari
 - fix mobile browser margins
     - determien what 100vh means for each browser,appears to be shifted down, but looks fine on scroll

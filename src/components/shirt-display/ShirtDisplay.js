@@ -1,27 +1,21 @@
-import { useEffect, useState } from 'react'
-import { easeIn, useAnimation } from 'framer-motion'
+import { useEffect, useState } from 'react';
+import { easeIn, useAnimation } from 'framer-motion';
 
 // styles
 import {
-  CustomShirtContainer,
-  CustomShirtImgContainer,
-  CustomGradient,
+  ShirtDisplayContainer,
+  ShirtImgDisplayContainer,
   ProductShadow
-} from './CustomShirtDisplay.styles.js'
-
-// assets
-import blankAlpha from '../../assets/clothing/blank_ALPHA.png'
+} from './ShirtDisplay.styles.js'
 
 // compoments
-import ImgLoader from '../../components/img-loader/ImgLoader'
+import ShirtImgDisplay from '../shirt-img-display/ShirtImgDisplay.js';
 
-
-export default function CustomShirtDisplay({ product, bobs=false }) {
+export default function ShirtDisplay({ product, bobs=false }) {
   const [blankAlphaLoaded, setBlankAlphaLoaded] = useState(false)
 
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
-  const controlDiv3= useAnimation();
 
   useEffect(() => {
     if (!bobs) {
@@ -54,29 +48,18 @@ export default function CustomShirtDisplay({ product, bobs=false }) {
 
   useEffect(() => {
       controlDiv2.set({ opacity: 0 });
-      controlDiv3.set({ opacity: 0});
       controlDiv2.start({ 
           opacity: 1, 
           transition: { duration: 0.8, delay: 0.4, ease: easeIn } 
         });
-      controlDiv3.start({ 
-        opacity: 1, 
-        transition: { duration: 0.4, delay: 0.1, ease: easeIn } 
-      });
     }, [blankAlphaLoaded, controlDiv2]);
 
   return (
-    <CustomShirtContainer>
-      <CustomShirtImgContainer animate={controlDiv1}>
-        <CustomGradient
-          animate={controlDiv3}
-          $topGradient={product.topGradient}
-          $botGradient={product.botGradient}
-        />
-        <ImgLoader src={blankAlpha} alt={"custom product"} updateParent={setBlankAlphaLoaded}/>
-      </CustomShirtImgContainer>
-
+    <ShirtDisplayContainer>
+      <ShirtImgDisplayContainer animate={controlDiv1}>
+        <ShirtImgDisplay  product={product} startColor={null} endColor={null} alphaStart={0.49} alphaEnd={0.56} updateParent={setBlankAlphaLoaded}/>
+      </ShirtImgDisplayContainer>
       <ProductShadow initial={{ opacity: 0 }} animate={controlDiv2} $isVisible={bobs}/>
-    </CustomShirtContainer>
+    </ShirtDisplayContainer>
   )
 }

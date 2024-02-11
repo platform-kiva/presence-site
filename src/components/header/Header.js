@@ -51,9 +51,8 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     const [isAnimating, setIsAnimating] = useState(false);
 
     useEffect(() => {
-      // Trigger animation on cartCount change
       setIsAnimating(true);
-      const timer = setTimeout(() => setIsAnimating(false), 300); // Duration of the animation
+      const timer = setTimeout(() => setIsAnimating(false), 300);
       return () => clearTimeout(timer);
     }, [cartCount]);
     

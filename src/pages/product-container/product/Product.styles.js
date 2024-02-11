@@ -42,18 +42,15 @@ export const PriceAction = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 15px;
 `
 export const Price = styled.h1`
     font-family: 'Roboto Condensed', sans-serif;;
-    font-size: 81px;
+    font-size: 54px;
     text-shadow: ${props => 
         `3px 3px 1px rgba(${props.$accentCol}, 0.67)`
     };
-
-    @media ${device.mobileS} {
-        font-size: 54px;
-    }
+    
     @media ${device.tablet} {
         font-size: 72px;
     }
@@ -115,12 +112,9 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 150px;
     width: 100vw;
 
-    @media ${device.mobileM} {
-        margin-top: 130px;
-    }
     @media ${device.tablet} {
         margin-top: 182px;
     }
@@ -129,6 +123,8 @@ export const RgbDisplayContainer = styled.div`
     align-items: center;
     display: flex;
     gap: 10px;
+    height: 50px;
+    justify-content: center;
 
     @media ${device.mobileS} {
         flex-direction: column;
@@ -150,10 +146,8 @@ export const RgbSquare = styled.div`
 export const CustomizationLabel = styled.div`
     align-items: center;
     display: flex;
-    height: 80px;
     justify-content: center;
-    padding-bottom: 24px;
-    padding-top: 36px;
+    padding: 50px 0px;
     width: 100%;
 
     h3 {
@@ -201,15 +195,7 @@ export const CustomizeBtnsContainer = styled.div`
     }
 `
 export const CustomizeBtnContainer = styled.div`
-    @media ${device.mobileS} {
-        width: 100%;
-    }
-    @media ${device.mobileL} {
-        width: 100%;
-    }
-    @media ${device.tablet} {
-        width: 100%;
-    }
+    width: 100%;
 `
 export const PromptContainer = styled.div`
     align-items: center;
@@ -217,37 +203,19 @@ export const PromptContainer = styled.div`
     flex-direction: column;
     gap: 12px;
     justify-content: center;
-    width: 100%;
+    padding: 0px 20px;
+    width: calc(100% - 40px);
 `
-export const CustomMockupContainer = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    justify-content: center;
-    margin: 2%;
-    padding-bottom: 50px;
-    position: relative;
-`
-export const ShirtMockupContainer = styled(motion.div)`
-    height: 675px;
-    width: 675px;
+export const ShirtImgDisplayContainer = styled.div`
+    height: 550px;
+    width: 550px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 668px) {
         height: 100%;
         width: 100%;
     }
 
-    @media (min-width: 1920px) {
-        height: 575px;
-        width: 575px;
+    @media (min-width: 668px) {
+        margin-bottom: 50px;
     }
-`
-export const GradientBox = styled(motion.div)`
-    background-color: orange;
-    height: 8.89%;
-    position: absolute;
-    top: 25%;
-    width: 29.93%;
-    z-index: 99;
 `
