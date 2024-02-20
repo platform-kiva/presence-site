@@ -18,14 +18,18 @@ export const PrimaryBtnContainer = styled.button`
     };
     transition: 0.4s ease-in-out;
     width: 100%;
-    &:hover {
-        background-color: ${props =>
-            props.$isActive ? "rgba(255,255,255,0.2)" : ""
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background-color: ${props =>
+                props.$isActive ? "rgba(255, 255, 255, 0.2)" : ""
+            };
+            transition: ${props =>
+                props.$isActive ? "transition: 0.2s ease-in-out;" : ""
+            };
         };
-        transition: ${props =>
-            props.$isActive ? "transition: 0.2s ease-in-out;" : ""
-        };
-    };
+    }
+
 `
 export const BtnLabel = styled.h3`
     font-size: 16px;
