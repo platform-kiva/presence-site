@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LoadingIconContainer = styled.div`
   align-items: center;
   display: flex;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   background: linear-gradient(
     45deg,

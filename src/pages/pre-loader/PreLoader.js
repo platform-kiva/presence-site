@@ -51,13 +51,11 @@ export default function PreLoader() {
     }, [animateOut, navigate]);
 
     return (
-        <>
+        <PreLoaderContainer>
             {loadingIsDisplayed ?
-                <>
-                    <LoadingIcon />
-                </>
+                <LoadingIcon />
                 :
-                <PreLoaderContainer onClick={() => navigate("/home")}>
+                <>
                     <BannerContainer
                         initial={{ opacity: 0.0, translateX: -20 }}
                         animate={animateOut ? { opacity: 0, translateX: 20 } : { opacity: [0.0, 1.0], translateX: [-20, 0] }}
@@ -70,8 +68,9 @@ export default function PreLoader() {
                         <Banner />
                     </BannerContainer>
                     <GradientBG />
-                </PreLoaderContainer>
+                </>
             }
-        </>
+
+        </PreLoaderContainer>
     )
 }
