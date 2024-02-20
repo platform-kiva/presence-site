@@ -5,7 +5,7 @@ import { fetchProductsAsync } from '../../store/products/products.action.js';
 import { selectProductsIsLoading } from '../../store/products/products.selector.js';
 
 // styles
-import { GradientBG, BannerContainer, PreLoaderContainer,  } from './PreLoader.styles.js';
+import { BannerContainer, PreLoaderContainer,  } from './PreLoader.styles.js';
 
 // components
 import Banner from '../../components/banner/Banner';
@@ -55,22 +55,18 @@ export default function PreLoader() {
             {loadingIsDisplayed ?
                 <LoadingIcon />
                 :
-                <>
-                    <BannerContainer
-                        initial={{ opacity: 0.0, translateX: -20 }}
-                        animate={animateOut ? { opacity: 0, translateX: 20 } : { opacity: [0.0, 1.0], translateX: [-20, 0] }}
-                        transition={{
-                            duration: 1,
-                            ease: "easeInOut",
-                            times: [0, 1]
-                        }}
-                    >
-                        <Banner />
-                    </BannerContainer>
-                    <GradientBG />
-                </>
+                <BannerContainer
+                    initial={{ opacity: 0.0, translateX: -20 }}
+                    animate={animateOut ? { opacity: 0, translateX: 20 } : { opacity: [0.0, 1.0], translateX: [-20, 0] }}
+                    transition={{
+                        duration: 1,
+                        ease: "easeInOut",
+                        times: [0, 1]
+                    }}
+                >
+                    <Banner />
+                </BannerContainer>
             }
-
         </PreLoaderContainer>
     )
 }

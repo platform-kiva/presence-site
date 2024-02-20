@@ -5,11 +5,6 @@ export const LoadingIconContainer = styled.div`
   display: flex;
   height: 100%;
   justify-content: center;
-  background: linear-gradient(
-    45deg,
-      rgba(219, 120, 212, 0.8) 0%,
-      rgba(32, 172, 232, 0.8) 100%)
-  ;
   width: 100%;
 `;
 
