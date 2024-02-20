@@ -203,7 +203,7 @@ export const PromptContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 17px;
     justify-content: center;
     padding: 0px 20px;
     width: calc(100% - 40px);
