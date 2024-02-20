@@ -4,11 +4,11 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
-    background-color: transparent;
+    background-color: ${props => props.$wasActivated ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.0)"};
     border: 2px solid #FFFFFF;
     border-radius: 50px;
-    cursor: ${props =>
-        props.$isActive ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+    cursor: ${props => 
+        props.$isActive && !props.$wasActivated ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
     };
     display: flex;
     height: 50px;
@@ -21,15 +21,12 @@ export const PrimaryBtnContainer = styled.button`
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
-            background-color: ${props =>
-                props.$isActive ? "rgba(255, 255, 255, 0.2)" : ""
-            };
+            background-color: ${props => props.$isActive ? "rgba(255, 255, 255, 0.2)" : ""};
             transition: ${props =>
                 props.$isActive ? "transition: 0.2s ease-in-out;" : ""
             };
         };
     }
-
 `
 export const BtnLabel = styled.h3`
     font-size: 16px;

@@ -185,17 +185,15 @@ export default function Product({ product }) {
           </ShirtImgDisplayContainer>
           
           <DescriptionContainer>
-            <ElementWrapper delay={0.0}>
-              <ul>
-                <li>100% ring-spun cotton</li>
-                <li>Garment-dyed, pre-shrunk fabric</li>
-                <li>Relaxed fit</li>
-                <li>7/8″ double-needle topstitched collar</li>
-                <li>Twill-taped neck and shoulders for extra durability</li>
-                <li>Double-needle armhole, sleeve, and bottom hems</li>
-                <li>Signature twill label</li>
-              </ul>
-            </ElementWrapper>
+            <ul>
+              <li>100% ring-spun cotton</li>
+              <li>Garment-dyed, pre-shrunk fabric</li>
+              <li>Relaxed fit</li>
+              <li>7/8″ double-needle topstitched collar</li>
+              <li>Twill-taped neck and shoulders for extra durability</li>
+              <li>Double-needle armhole, sleeve, and bottom hems</li>
+              <li>Signature twill label</li>
+            </ul>
           </DescriptionContainer>
           
           <AnimatePresence>

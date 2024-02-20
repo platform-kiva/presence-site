@@ -57,7 +57,7 @@ export default function SizeSelection({ product }) {
                 ))}
             </SizesContainer>
                 <div onClick={() => addProductToCart(product, activeSize)}>
-                    <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
+                    <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null} wasActivated={timerRunning}/>
                 </div>
         </ActionContainer>
     )
