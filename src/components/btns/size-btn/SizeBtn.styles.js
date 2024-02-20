@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
-import { device } from "../../../media-breakpoints";
 
 export const SizeBtnContainer = styled.div`
     align-items: center;
@@ -11,27 +10,22 @@ export const SizeBtnContainer = styled.div`
     border-radius: 50px;
     cursor: url(${cursorIconFilled}) 15 15, auto;
     display: flex;
-    height: 42px;
+    height: 50px;
     justify-content: center;
     opacity: ${props =>
         props.$selectedSize === props.$size ? "1.0" : "0.5"
     };
     transition: 0.2s ease-in-out;
-    width: 42px;
+    width: 50px;
 
     &:hover {
         opacity: 1.0;
         transform: scale(1.1);
         transition: transform 0.2s ease-in-out;
     };
-
-    @media ${device.tablet} {
-        height: 50px;
-        width: 50px;
-    }
 `
 export const BtnLabel = styled.h3`
-    font-size: 16.8px;
+    font-size: 20px;
     text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`};
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -39,8 +33,4 @@ export const BtnLabel = styled.h3`
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-
-    @media ${device.tablet} {
-        font-size: 20px;
-    }
 `

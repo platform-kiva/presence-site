@@ -7,7 +7,6 @@ import { extractRGBValues, generateRgbaString, rgbaToRgb } from '../../../utils/
 import {
   ProductContainer,
   PriceAction,
-  Price,
   CustomGradientContainer,
   GradientBG,
   CustomControlsContainer,
@@ -93,8 +92,8 @@ export default function Product({ product }) {
   useEffect(() => {
     if (!isFrozen) { 
         const interval = setInterval(() => {
-            setStartColor(generateRgbaString(0.49));
-            setEndColor(generateRgbaString(0.56));
+            setStartColor(generateRgbaString(0.6));
+            setEndColor(generateRgbaString(0.6));
         }, 2000);
         return () => clearInterval(interval);
     }
@@ -170,11 +169,12 @@ export default function Product({ product }) {
                   :
                   <ElementWrapper>
                     <PriceActionCustomContainer>
-                      <PriceAction>
-                        <Price $accentCol={customProduct.botGradient}>$35</Price>
-                        <SizeSelection product={customProduct} />
-                      </PriceAction>
-                      <h3 className='back-btn' style={{ marginTop: "20px", textDecoration: "underline" }} onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                      <>
+                        <PriceAction>
+                          <SizeSelection product={customProduct} />
+                        </PriceAction>
+                        <h3 className='back-btn' onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                      </>
                     </PriceActionCustomContainer>
                   </ElementWrapper>
               }

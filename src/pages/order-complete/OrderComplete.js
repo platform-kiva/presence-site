@@ -6,6 +6,7 @@ import { clearCart } from '../../store/cart/cart.action.js';
 import {
     OrderCompleteContainer,
     OrderCompleteContent,
+    Message,
     BtnContainer,
     GradientBG
 } from './OrderComplete.styles.js'
@@ -19,14 +20,17 @@ export default function OrderComplete() {
 
     const handleClick = () => {
         dispatch(clearCart());
-        navigate("/home");
+        navigate("/");
     }
 
     return (
         <OrderCompleteContainer>
             <OrderCompleteContent>
-                <h2>ORDER COMPLETE</h2>
-                <h3>please check your email for further details</h3>
+                <Message>
+                    <h2>ORDER COMPLETE</h2>
+                    <h3>please check your email for further details</h3>
+                </Message>
+
                 <BtnContainer onClick={() => handleClick()}>
                     <PrimaryBtn label={"BACK TO SHOP"}/>
                 </BtnContainer>

@@ -5,21 +5,15 @@ export const ShirtImgDisplayContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 40px;
     justify-content: center;
-    margin-bottom: 50px;
+    padding: 0px 20px;
     position: relative;
-
-    @media (max-width: 668px) {
-        margin: 20px;
-        margin-bottom: 50px;
-    }
 `
 export const GradientBox = styled(motion.div)`
-    height: 8.89%;
+    height: 8.75%;
     position: absolute;
     top: 25%;
-    width: 29.93%;
+    width: 28%;
     z-index: 99;
 
     img {

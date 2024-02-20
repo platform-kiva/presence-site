@@ -4,11 +4,11 @@ import {
   CartItemsContainer,
   CartProductsViewContainer,
   ProductHolder,
+  ShirtImgContainer
  } from './CartProductsView.styles.js';
 
 // components
-import CartItem from '../../pages/cart/cart-item/CartItem';
-import ShirtDisplay from '../shirt-display/ShirtDisplay'
+import ShirtImgDisplay from '../shirt-img-display/ShirtImgDisplay.js';
 
 export default function CartProductsView({ items }) {
 
@@ -18,7 +18,9 @@ export default function CartProductsView({ items }) {
       <CartItemsContainer>
         {items.map((item) => (
           <ProductHolder key={item.cartID}>
-            <ShirtDisplay product={item} />
+            <ShirtImgContainer>
+              <ShirtImgDisplay product={item} />
+            </ShirtImgContainer>
             <CartItemDetails>
               <h3>SIZE: {item.size}</h3>
               <h3>QUANTITY: {item.quantity}</h3>

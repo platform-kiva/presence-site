@@ -29,6 +29,7 @@ export const PrimaryBtnContainer = styled.button`
 `
 export const BtnLabel = styled.h3`
     font-size: 16px;
+    padding: 0px 10px;
     text-shadow: ${props => `2px 2px 1px rgba(${props.$accentCol}, 0.67)`};
     -webkit-touch-callout: none;
     -webkit-user-select: none;

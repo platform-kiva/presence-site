@@ -2,19 +2,19 @@ import styled from "styled-components";
 import cursorIcon from '../../assets/icons/cursor.png';
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 import { motion } from "framer-motion";
-import { device } from "../../media-breakpoints";
+import { device, size } from "../../media-breakpoints";
 
 export const HeaderContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 50px;
     position: relative;
     width: 100%;
     z-index: 1000;
 
-    @media ${device.tablet} {
-        padding-top: 50px;
+    @media (max-width: ${size.tablet}) {
+        padding-top: 30px;
     }
 `
 export const SocialsBtnContainer = styled(motion.div)`

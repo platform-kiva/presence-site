@@ -13,9 +13,9 @@ import {
 import PrimaryBtn from '../btns/primary-btn/PrimaryBtn.js';
 import SizeBtn from '../btns/size-btn/SizeBtn.js'
 
-export default function SizeSelection({ product, custom=false, scrollToElement=null }) {
+export default function SizeSelection({ product }) {
     const dispatch = useDispatch();
-    const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART');
+    const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART +$35');
     const [activeSize, setActiveSize] = useState(null);
     const [timerRunning, setTimerRunning] = useState(false);
     const cartItems = useSelector(selectCartItems)
@@ -27,27 +27,20 @@ export default function SizeSelection({ product, custom=false, scrollToElement=n
     const addProductToCart = () => {
         try {
             if (timerRunning) {
-            return;
+                return;
             };
             if (activeSize !== null) {
                 dispatch(addItemToCart(cartItems, product, activeSize));
                 setPrimaryBtnLabel('ADDED TO CART!');
                 setTimerRunning(true);
                 setTimeout(() => {
-                    setPrimaryBtnLabel('ADD TO CART');
+                    setPrimaryBtnLabel('ADD TO CART +$35');
                     setTimerRunning(false);
                 }, 2000);
             };
         } catch (error) {
             alert("Error: Item was not added to cart.");
         };
-    };
-
-    const handleScroll = () => {
-        if (scrollToElement) {
-            scrollToElement('custom')
-        }
-        return;
     };
 
     useEffect(() => {
@@ -66,11 +59,6 @@ export default function SizeSelection({ product, custom=false, scrollToElement=n
                 <div onClick={() => addProductToCart(product, activeSize)}>
                     <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null}/>
                 </div>
-                {custom === true &&
-                    <div onClick={() => handleScroll()}>
-                        <PrimaryBtn label={"CREATE CUSTOM"} accentCol={product.botGradient} />
-                    </div>
-                }
         </ActionContainer>
     )
 }

@@ -11,7 +11,7 @@ import {
 // components
 import ImgLoader from "../img-loader/ImgLoader";
 
-export default function ShirtImgDisplay({ product, startColor=null, endColor=null, alphaStart, alphaEnd, updateParent=null }) {
+export default function ShirtImgDisplay({ product, startColor=null, endColor=null, alphaStart=0.49, alphaEnd=0.56, updateParent=null }) {
     const controlDiv1 = useAnimation();
 
     const [isShirtImgLoaded, setIsShirtImgLoaded] = useState(false);
@@ -36,11 +36,25 @@ export default function ShirtImgDisplay({ product, startColor=null, endColor=nul
             <GradientBox
                 animate={controlDiv1}
                 style={{
-                    background: `linear-gradient(0deg, ${startColor === null ? `rgba(${product.botGradient[0]}, ${product.botGradient[1]}, ${product.botGradient[2]}, ${alphaStart})` : startColor} 0%, ${endColor === null ? `rgba(${product.topGradient[0]}, ${product.topGradient[1]}, ${product.topGradient[2]}, ${alphaEnd})` : endColor} 100%)`
+                    background: `linear-gradient(0deg, 
+                        ${startColor === null ? 
+                            `rgba(
+                                ${product.botGradient[0]}, 
+                                ${product.botGradient[1]}, 
+                                ${product.botGradient[2]}, ${alphaStart})`: startColor} 0%,
+                        ${endColor === null ?
+                            `rgba(
+                                ${product.topGradient[0]}, 
+                                ${product.topGradient[1]}, 
+                                ${product.topGradient[2]}, ${alphaEnd})` : endColor} 100%)`
                 }}
             />
             <ShirtMockupContainer>
-                <ImgLoader src={product.blankProductURL} alt={"blank custom"} updateParent={setIsShirtImgLoaded}/>
+                <ImgLoader
+                    src={product.blankProductURL}
+                    alt={"blank shirt"}
+                    updateParent={setIsShirtImgLoaded}
+                />
             </ShirtMockupContainer>
         </ShirtImgDisplayContainer>
     )

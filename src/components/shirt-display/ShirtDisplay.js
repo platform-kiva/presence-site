@@ -13,7 +13,6 @@ import ShirtImgDisplay from '../shirt-img-display/ShirtImgDisplay.js';
 
 export default function ShirtDisplay({ product, bobs=false }) {
   const [blankAlphaLoaded, setBlankAlphaLoaded] = useState(false)
-
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
 
@@ -57,9 +56,20 @@ export default function ShirtDisplay({ product, bobs=false }) {
   return (
     <ShirtDisplayContainer>
       <ShirtImgDisplayContainer animate={controlDiv1}>
-        <ShirtImgDisplay  product={product} startColor={null} endColor={null} alphaStart={0.49} alphaEnd={0.56} updateParent={setBlankAlphaLoaded}/>
+        <ShirtImgDisplay 
+          product={product}
+          startColor={null}
+          endColor={null}
+          alphaStart={0.49}
+          alphaEnd={0.56}
+          updateParent={setBlankAlphaLoaded}
+        />
       </ShirtImgDisplayContainer>
-      <ProductShadow initial={{ opacity: 0 }} animate={controlDiv2} $isVisible={bobs}/>
+      <ProductShadow
+        initial={{ opacity: 0 }}
+        animate={controlDiv2}
+        $isVisible={bobs}
+        />
     </ShirtDisplayContainer>
   )
 }

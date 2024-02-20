@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { device } from '../../../media-breakpoints';
+import { device, size } from '../../../media-breakpoints';
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 
 export const ProductContainer = styled.div`
@@ -42,21 +42,6 @@ export const PriceAction = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-`
-export const Price = styled.h1`
-    font-family: 'Roboto Condensed', sans-serif;;
-    font-size: 54px;
-    text-shadow: ${props => 
-        `3px 3px 1px rgba(${props.$accentCol}, 0.67)`
-    };
-    
-    @media ${device.tablet} {
-        font-size: 72px;
-    }
-    @media ${device.laptopL} {
-        font-size: 81px;
-    }
 `
 export const DescriptionContainer = styled.div`
     color: #FFFFFF;
@@ -112,30 +97,35 @@ export const CustomControlsContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 180px;
     width: 100%;
 
-    @media ${device.tablet} {
-        margin-top: 182px;
+    @media (max-width: ${size.mobileM}) {
+        margin-top: 95px;
+    }
+    @media (min-width: ${size.mobileM}) and (max-width: ${size.mobileL}) {
+        margin-top: 110px;
+    }
+    @media (min-width: ${size.mobileL}) and (max-width: ${size.tablet}) {
+        margin-top: 120px;
     }
 `
 export const RgbDisplayContainer = styled.div`
     align-items: center;
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    height: 50px;
     justify-content: center;
+    height: 55px;
+    width: 100%;
 
-    @media ${device.mobileS} {
-        flex-direction: column;
-    }
-    @media ${device.mobileL} {
-        flex-direction: row;
-    }
 `
-export const RgbDisplay = styled.div`
+export const RgbDisplay = styled.div`   
     display: flex;
     gap: 10px;
+    justify-content: space-between;
+    max-width: 180px;
+    width: 100%;
 `
 export const RgbSquare = styled.div`
     border: 1px solid #FFFFFF;
@@ -152,24 +142,37 @@ export const CustomizationLabel = styled.div`
 
     h3 {
         text-align: center;
+        width: 90%;
     }
 
-    @media ${device.mobileS} {
-        h3 {
-            width: 90%;
-        }    
+    @media (max-width: ${size.tablet}) {
+        padding: 40px 0px;
     }
 `
 export const PriceActionCustomContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-bottom: 50px;
+    height: 205px;
+    justify-content: start;
     width: 100%;
+
+    @media (max-width: ${size.mobileL}) {
+        height: 259px;
+        justify-content: center;
+    }
+    @media (min-width: ${size.mobileL}) and (max-width: 500px) {
+        height: 259px;
+        justify-content: center;
+    }
+    @media (min-width: 500px) and (max-width: ${size.tablet}) {
+        height: 185px;
+    }
 
     .back-btn {
         cursor: url(${cursorIconFilled}) 15 15, auto;
+        margin-top: 20px;
+        text-decoration: underline;
     }
 `
 export const SizeSelectionContainer = styled.div`
@@ -183,15 +186,14 @@ export const SizeBackBtnContainer = styled.div`
 export const CustomizeBtnsContainer = styled.div`
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 24px;
     justify-content: center;
-    margin-top: 20px;
     max-width: 404px;
     width: 80%;
 
-    @media ${device.tablet} {
-        flex-direction: row;
+    @media (max-width: 500px) {
+        flex-direction: column;
     }
 `
 export const CustomizeBtnContainer = styled.div`
@@ -210,12 +212,9 @@ export const ShirtImgDisplayContainer = styled.div`
     height: 550px;
     width: 550px;
 
-    @media (max-width: 668px) {
+    @media (max-width: 600px) {
         height: 100%;
+        padding-bottom: 50px;
         width: 100%;
-    }
-
-    @media (min-width: 668px) {
-        margin-bottom: 50px;
     }
 `

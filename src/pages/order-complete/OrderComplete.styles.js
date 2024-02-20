@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png'
+import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const OrderCompleteContainer = styled.div`
     align-items: center;
@@ -14,14 +14,21 @@ export const OrderCompleteContent = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     height: fit-content;
 `
+export const Message = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+`
 export const BtnContainer = styled.div`
-    width: 500px;
+    max-width: 500px;
+    width: 90%;
 `
 export const GradientBG = styled.div`
-    background:
+    background: // add state gradient
         linear-gradient(45deg,
             rgba(
                 219,

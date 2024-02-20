@@ -84,51 +84,43 @@ export default function Cart() {
               })
             }
           </CartItemDisplayContainer>    
-
-          
-              <CarouselBtnContainer>
-                
-                <div onClick={() => handleIndChange(-1)}>
-                  <ElementWrapper>
-                    <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
-                  </ElementWrapper>
-                </div>
-                
-                <ElementWrapper delay={0.4}>
-                  <CartItemLabelContainer>
-                    <CartItemDetailsContainer>
-                      <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
-                      <DetailsLabel>QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
-                    </CartItemDetailsContainer>
-                  </CartItemLabelContainer>
-                </ElementWrapper>
-                
-                <div onClick={() => handleIndChange(1)}>
-                  <ElementWrapper>
-                    <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
-                  </ElementWrapper>
-                </div> 
-                
-              </CarouselBtnContainer>
+          <CarouselBtnContainer>      
+            <div onClick={() => handleIndChange(-1)}>
+              <ElementWrapper>
+                <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
+              </ElementWrapper>
+            </div>
+            <ElementWrapper>
+              <CartItemLabelContainer>
+                <CartItemDetailsContainer>
+                  <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
+                  <DetailsLabel>QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
+                </CartItemDetailsContainer>
+              </CartItemLabelContainer>
+            </ElementWrapper>
+            <div onClick={() => handleIndChange(1)}>
+              <ElementWrapper>
+                <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
+              </ElementWrapper>
+            </div> 
+          </CarouselBtnContainer>
             
-            <CartItemIncDecContainer>
-              <ElementWrapper delay={0.4}>
-                <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
-              </ElementWrapper>
-              
-              <ElementWrapper delay={0.4}>
-                <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
-              </ElementWrapper>
-              
-            </CartItemIncDecContainer>
+          <CartItemIncDecContainer>
+            <ElementWrapper>
+              <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
+            </ElementWrapper>
+            <ElementWrapper>
+              <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
+            </ElementWrapper>
+          </CartItemIncDecContainer>
   
-            <CartDetailsContainer>
-              <div onClick={() => navigate("/checkout")}>
-                <ElementWrapper delay={0.4}>
-                  <PrimaryBtn label={"GO TO CHECKOUT"}/>
-                </ElementWrapper>
-              </div>
-            </CartDetailsContainer>
+          <CartDetailsContainer>
+            <div onClick={() => navigate("/checkout")}>
+              <ElementWrapper delay={0.4}>
+                <PrimaryBtn label={"GO TO CHECKOUT"}/>
+              </ElementWrapper>
+            </div>
+          </CartDetailsContainer>
         </>
       }
       {cartItems.length === 0 &&

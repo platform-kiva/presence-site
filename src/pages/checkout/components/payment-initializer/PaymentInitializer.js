@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { stripePromise } from '../../../../utils/stripe/stripe.utils';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ export default function PaymentInitializer() {
     const [showOrderForm, setShowOrderForm] = useState(false);
     const cartTotal = useSelector(selectCartTotal) * 100;
     const cartItems = useSelector(selectCartItems);
+    const navigate = useNavigate()
 
     const options = {
         clientSecret: clientSecret,
@@ -28,9 +30,13 @@ export default function PaymentInitializer() {
         }
     }
 
-    const handleButtonClick = () => {
-        setShowOrderForm(true);
-        handleScroll()
+    const handleButtonClick = (val) => {
+        if (val === 1) {
+            setShowOrderForm(true);
+            handleScroll()
+        } else if (val === -1) {
+            navigate("/home")
+        }
       };
 
     useEffect(() => {
@@ -72,9 +78,10 @@ export default function PaymentInitializer() {
                 </Elements>
                 :
                 <CheckoutBtnContainer onClick={fetchClientSecret}>
-                    <div onClick={() => handleButtonClick()}>
+                    <div onClick={() => handleButtonClick(1)}>
                         <PrimaryBtn label={"GO TO CHECKOUT"}/>
                     </div>
+                    <h3 className='back-btn' onClick={() => handleButtonClick(-1)}>BACK</h3>
                 </CheckoutBtnContainer> 
             }
         </PaymentInitializerContainer>

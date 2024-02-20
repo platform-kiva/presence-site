@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
-import { device } from "../../../media-breakpoints";
+import { size } from "../../../media-breakpoints";
 
 export const CarouselBtnContainer = styled.div`
     align-items: center;
@@ -37,22 +37,20 @@ export const CarouselBtnContainer = styled.div`
         transition: 0.8s ease-in-out;
     `}
 
-    @media ${device.mobileS} {
+    @media (max-width: ${size.mobileS}) {
         height: 36px;
         width: 36px;
     }
-    @media ${device.mobileL} {
+    @media (min-width: ${size.mobileS}) and (max-width: ${size.tablet}) {
         height: 42px;
         width: 42px;
     }
-    @media ${device.tablet} {
+    @media (min-width: ${size.tablet}) {
         height: 50px;
         width: 50px;
     }
 `
 export const CarouselBtnIcon = styled.img`
-    height: 20px;
-    width: 20px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
      -khtml-user-select: none;
@@ -60,15 +58,15 @@ export const CarouselBtnIcon = styled.img`
         -ms-user-select: none;
             user-select: none;
 
-    @media ${device.mobileS} {
+    @media (max-width: ${size.mobileS}) {
         height: 14.4px;
         width: 14.4px;
     }
-    @media ${device.mobileL} {
+    @media (min-width: ${size.mobileS}) and (max-width: ${size.tablet}) {
         height: 16.8px;
         width: 16.8px;
     }
-    @media ${device.tablet} {
+    @media (min-width: ${size.tablet}) {
         height: 20px;
         width: 20px;
     }

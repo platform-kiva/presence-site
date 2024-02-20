@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { device } from "../../media-breakpoints";
+import { device, size } from "../../media-breakpoints";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const CartContainer = styled.div`
@@ -15,16 +15,6 @@ export const CartContainer = styled.div`
 export const CartItemDisplayContainer = styled.div`
     display: flex;
     position: absolute;
-    top: 110px;
-
-    @media ${device.mobileM} {
-        align-items: center;
-        height: 100vh;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
 `
 export const CarouselBtnContainer = styled.div`
     align-items: center;
@@ -36,13 +26,17 @@ export const CarouselBtnContainer = styled.div`
     width: 300px;
     z-index: 500;
 
-    @media ${device.mobileM} {
-        margin-top: 625px;
+    @media (max-width: ${size.mobileS}) {
+        width: 250px;
+    }
+    @media (min-width: ${size.mobileM}) {
+        margin-top: 550px;
     }
 `
 export const CartItemLabelContainer = styled.div`
     display: flex;
     flex-direction: column;
+    
 `
 export const CartItemDetailsContainer = styled.div`
     align-items: center;
@@ -101,6 +95,6 @@ export const CartDetailsContainer = styled.div`
     z-index: 500;
 
     @media ${device.tablet} {
-        margin-top: 50px;
+        margin-top: 25px;
     }
 `
