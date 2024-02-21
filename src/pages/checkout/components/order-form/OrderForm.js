@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 import stripeLogo from '../../../../assets/png/stripe-logo.png';
 
 // styles
-import { OrderFormForm,
-  OrderFormHeader,
+import {
+  OrderFormForm,
   FormContainer,
   EmailInput,
   OrderFormContainer,
@@ -56,11 +56,9 @@ export default function OrderForm({ clientSecret }) {
   
         stripe.confirmCardPayment(clientSecret).then(result => {
           if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-            console.log("Sucess!")
             clearCartItems()
             // handle order completion or other tasks here
           } else {
-            console.log("Fail")
             alert(paymentResult.error)
           }
         });

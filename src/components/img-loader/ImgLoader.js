@@ -15,7 +15,6 @@ export default function ImgLoader({ src, alt, updateParent=null }) {
   useEffect(() => {
     if (isImageLoaded && updateParent) {
       updateParent(true)
-      console.log("ImgLoader parent updated")
     }
     controlDiv.set({ scale: 0.9, opacity: 0, zIndex: -1 });
     if (isImageLoaded) {

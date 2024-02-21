@@ -19,10 +19,6 @@ export default function ShirtImgDisplay({ product, startColor=null, endColor=nul
     useEffect(() => {
         if (isShirtImgLoaded && updateParent) {
             updateParent(true)
-            console.log("parent updated")
-        }
-        if (isShirtImgLoaded) {
-            console.log("isShirtImgLoaded is loaded")
         }
         controlDiv1.set({ opacity: 0 });
         controlDiv1.start({ 

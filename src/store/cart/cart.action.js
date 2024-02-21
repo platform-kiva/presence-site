@@ -1,7 +1,7 @@
 import { CART_ACTION_TYPES } from "./cart.types";
 
 const addCartItem = (cartItems, productToAdd, size) => {
-    const cartID = productToAdd.id + size
+    const cartID = productToAdd.id + " " + size
     const itemExists = cartItems.find(
         (item) => item.cartID === cartID
     )

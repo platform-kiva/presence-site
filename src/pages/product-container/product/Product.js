@@ -64,8 +64,6 @@ export default function Product({ product }) {
         id: `${startColor}, ${endColor}`,
         price: 35,
         quantity: 1,
-        size: "TEST",
-        isCustom: true,
         topGradient: extractedEndColor
       }
     )
