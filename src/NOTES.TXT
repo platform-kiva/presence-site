@@ -1,16 +1,9 @@
 Checklist
+- Scroll to top after every page load
 - Allow size change in Cart
 - Persist current gradient (add to store state)
-- code top safe area for iPhone Safari
-- fix mobile browser margins
-    - determien what 100vh means for each browser,appears to be shifted down, but looks fine on scroll
 - remove hovers for mobile to be able to use buttons
 - Smooth gradient transition for customs background
-- When OrderForm loads, scroll to view component
-- NavBtn: sync arrow/btn hover, expand carusel btn to include description text (View More, Cart, Checkout)
-- Add clicking on TopFold product image to scroll, (OR DISPLAY ADDTOCARTBUTTON)
-- Responsive design
-- Make productInd persistant to keep currently viewed product on refresh
 
 Considerations
 - More microinteractions
