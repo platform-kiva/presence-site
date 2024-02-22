@@ -2,13 +2,13 @@ import styled from "styled-components";
 import cursorIconFilled from '../../../../assets/icons/cursor_filled.png';
 
 export const OrderFormContainer = styled.div`
-    background-color: red;
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 50px;
-    margin: 100px 0px 50px 0px;
+    margin-bottom: 50px 0px;
     max-width: 800px;
+    padding-top: 50px;
     width: 90%;
 `
 export const FormContainer = styled.div`

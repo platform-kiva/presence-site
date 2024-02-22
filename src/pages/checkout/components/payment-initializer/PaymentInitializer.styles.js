@@ -12,8 +12,7 @@ export const CheckoutBtnContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-bottom: 200px;
-    padding-top: 24px;
+    padding-top: 40px;
     width: 200px;
 
     .back-btn {

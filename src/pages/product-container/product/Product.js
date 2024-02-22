@@ -171,7 +171,7 @@ export default function Product({ product }) {
                         <PriceAction>
                           <SizeSelection product={customProduct} />
                         </PriceAction>
-                        <h3 className='back-btn' onClick={() => setGradientWasChosen(false)}>BACK</h3>
+                        <h3 className='back-btn' onClick={() => setGradientWasChosen(false)}>CREATE A NEW DESIGN</h3>
                       </>
                     </PriceActionCustomContainer>
                   </ElementWrapper>

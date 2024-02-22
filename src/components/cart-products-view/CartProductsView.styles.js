@@ -37,6 +37,10 @@ export const ShirtImgContainer = styled.div`
     height: 300px;
     justify-content: center;
     width: 300px;
+
+    @media (max-width: 300px) {
+        width: 100%;
+    }
 `
 export const CartItemDetails = styled.div`
     align-items: center;

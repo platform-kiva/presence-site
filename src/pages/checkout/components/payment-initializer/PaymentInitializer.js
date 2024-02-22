@@ -17,7 +17,7 @@ export default function PaymentInitializer() {
     const [showOrderForm, setShowOrderForm] = useState(false);
     const cartTotal = useSelector(selectCartTotal) * 100;
     const cartItems = useSelector(selectCartItems);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const options = {
         clientSecret: clientSecret,
@@ -30,12 +30,13 @@ export default function PaymentInitializer() {
         }
     }
 
-    const handleButtonClick = (val) => {
-        if (val === 1) {
+    const handleButtonClick = () => {
+        if (!clientSecret) {
+            fetchClientSecret();
             setShowOrderForm(true);
-            handleScroll()
-        } else if (val === -1) {
-            navigate("/home")
+            handleScroll();
+        } else {
+            return;
         }
       };
 
@@ -51,6 +52,9 @@ export default function PaymentInitializer() {
     }, [showOrderForm]);
 
     const fetchClientSecret = async () => {
+        if (clientSecret) {
+            return;
+        }
         const cartDetails = cartItems.map(item => `${item.cartID}:${item.quantity}`).join(' --- ');
         try {
             const response = await fetch('/.netlify/functions/create-payment-intent', {
@@ -72,17 +76,16 @@ export default function PaymentInitializer() {
 
     return (
         <PaymentInitializerContainer>
-            {clientSecret ?
+            <CheckoutBtnContainer>
+                <div onClick={handleButtonClick}>
+                    <PrimaryBtn label={"GO TO CHECKOUT"} isActive={!clientSecret}/>
+                </div>
+                <h3 className='back-btn' onClick={() => navigate("/home")}>BACK</h3>
+            </CheckoutBtnContainer> 
+            {clientSecret &&
                 <Elements stripe={stripePromise} options={options}>
                     <OrderForm clientSecret={clientSecret} />
                 </Elements>
-                :
-                <CheckoutBtnContainer onClick={fetchClientSecret}>
-                    <div onClick={() => handleButtonClick(1)}>
-                        <PrimaryBtn label={"GO TO CHECKOUT"}/>
-                    </div>
-                    <h3 className='back-btn' onClick={() => handleButtonClick(-1)}>BACK</h3>
-                </CheckoutBtnContainer> 
             }
         </PaymentInitializerContainer>
     )

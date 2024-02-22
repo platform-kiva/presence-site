@@ -9,6 +9,16 @@ export const CartOverviewContainer = styled.div`
     display: flex;
     flex-direction: column;
 `
+export const CostContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+`
+export const CostRowContainer = styled.div`
+    display: flex;
+    gap: 100px;
+    justify-content: space-between;
+`
 export const GradientBG = styled.div`
     background: ${props =>
         `linear-gradient(45deg,
