@@ -13,6 +13,7 @@ import {
 
 // assets
 import closeIcon from '../../assets/icons/close-icon.svg';
+
 // import bagIcon from '../../assets/icons/bag-icon.svg';
 import menuIcon from '../../assets/icons/menu-icon.svg';
 import storeIcon from '../../assets/icons/store-icon.svg';
@@ -73,7 +74,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                     <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                 </HeaderBtnImgContainer> 
             </SocialsBtnContainer>
-            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'socials' : 'presence')} />
+            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} />
             <CartBtnContainer
                 onClick={() => handleGridView()}
                 initial={{ x: 50, opacity: 0 }}

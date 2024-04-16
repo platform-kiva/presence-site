@@ -37,6 +37,7 @@ export default function Cart() {
   const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
   const [cartInd, setCartInd] = useState(0);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleIndChange = (val) => {
     let currInd = cartInd
@@ -69,6 +70,11 @@ export default function Cart() {
     if (cartItems.length !== 0 && cartItems[cartInd]) {
     }
   }, [cartInd, cartItems])
+
+  const handleClick = () => {
+    setAddedToCart(!addedToCart)
+    console.log(addedToCart ? 'TRUE' : 'FALSE');
+  }
 
   return (
     <CartContainer>
@@ -132,17 +138,24 @@ export default function Cart() {
                 <img src={infoIcon} alt='more info' />
               </InfoBtnContainer>
 
-              <div style={{ width: '75%' }}>
-                <ShirtImgDisplay />
-              </div>
+              {!addedToCart ?
+              <>
+                <div style={{ width: '75%' }}>
+                  <ShirtImgDisplay />
+                </div>
 
-              <ProductInfo>
-                  <h2 style={{ fontSize: '24px' }}>T-Shirt ($30)</h2>
-              </ProductInfo>
-
-              <div style={{ width: '200px' }}>
+                <ProductInfo>
+                    <h2 style={{ fontSize: '24px' }}>T-Shirt ($30)</h2>
+                </ProductInfo>
+              </>
+              :
+              <>
+                <h3>Gotcha.</h3>
+              </>
+            }
+              <div style={{ width: '200px' }} onClick={handleClick}>
                 <ElementWrapper>
-                  <PrimaryBtn label={'ADD TO CART'}/>
+                  <PrimaryBtn label={addedToCart ? 'BACK' : 'ADD TO CART'} />
                 </ElementWrapper>
               </div>
             
