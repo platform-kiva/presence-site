@@ -118,7 +118,6 @@ export const RgbDisplayContainer = styled.div`
     justify-content: center;
     height: 55px;
     width: 100%;
-
 `
 export const RgbDisplay = styled.div`   
     display: flex;

@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { AnimatePresence } from 'framer-motion';
 import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js';
 import { selectCartItems } from '../../store/cart/cart.selector.js';
 
 // styles
 import {
   CartContainer,
+  EmptyCartContent,
+  ProductBox,
+  InfoBtnContainer,
+  ProductInfo,
   CartItemDisplayContainer,
   CarouselBtnContainer,
   CartItemLabelContainer,
@@ -15,27 +18,25 @@ import {
   DetailsLabel,
   CartItemIncDecContainer,
   IndDecLabel,
-  GradientBG,
   CartDetailsContainer
 } from './Cart.styles.js';
+
+// assets
+import infoIcon from '../../assets/icons/info-icon.svg';
 
 // components
 import ElementWrapper from '../../components/element-wrapper/ElementWrapper.js';
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
 import ShirtDisplay from '../../components/shirt-display/ShirtDisplay.js';
 import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js';
+import GradientControls from '../../components/gradient-controls/GradientControls.js';
+import ShirtImgDisplay from '../../components/shirt-img-display/ShirtImgDisplay.js';
 
 export default function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartItems = useSelector(selectCartItems);
-  
   const [cartInd, setCartInd] = useState(0);
-  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
-
-  useEffect(() => {
-    setInitialLoadComplete(true);
-  }, []);
 
   const handleIndChange = (val) => {
     let currInd = cartInd
@@ -124,20 +125,32 @@ export default function Cart() {
         </>
       }
       {cartItems.length === 0 &&
-        <h2>CART IS EMPTY</h2>
-      }
+        <>
+          <EmptyCartContent>
+            <ProductBox>
+              <InfoBtnContainer>
+                <img src={infoIcon} alt='more info' />
+              </InfoBtnContainer>
 
-      <AnimatePresence>
-        <GradientBG
-          key={cartInd}
-          $cartItems={cartItems}
-          $cartInd={cartInd}
-          initial={initialLoadComplete ? { opacity: 0 } : { opacity: 1 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-        />
-      </AnimatePresence>
+              <div style={{ width: '75%' }}>
+                <ShirtImgDisplay />
+              </div>
+
+              <ProductInfo>
+                  <h2 style={{ fontSize: '24px' }}>T-Shirt ($30)</h2>
+              </ProductInfo>
+
+              <div style={{ width: '200px' }}>
+                <ElementWrapper>
+                  <PrimaryBtn label={'ADD TO CART'}/>
+                </ElementWrapper>
+              </div>
+            
+            </ProductBox>
+          </EmptyCartContent>
+        </>
+      }
+      <GradientControls />
     </CartContainer>
   )
 }

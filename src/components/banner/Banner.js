@@ -3,12 +3,12 @@ import {
     BannerContainer, LogoMiddleText, LogoBottomText, LogoTopText
 }from './Banner.styles.js'
 
-export default function Banner() {
+export default function Banner({ label }) {
     return (
         <BannerContainer>
-            <LogoTopText><em>presence</em></LogoTopText>
-            <LogoMiddleText><em>presence</em></LogoMiddleText>
-            <LogoBottomText><em>presence</em></LogoBottomText>
+            <LogoTopText><em>{label}</em></LogoTopText>
+            <LogoMiddleText><em>{label}</em></LogoMiddleText>
+            <LogoBottomText><em>{label}</em></LogoBottomText>
         </BannerContainer>
     )
 }

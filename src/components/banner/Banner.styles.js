@@ -19,7 +19,6 @@ export const LogoTopText = styled.h1`
     font-size: 30px;
     top: -8px;
     
-
     @media ${device.mobileM} {
         font-size: 36px;
         top: -9.5px;

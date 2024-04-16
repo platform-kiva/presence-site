@@ -1,41 +1,48 @@
-import { useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
-import { selectProducts } from '../../store/products/products.selector.js';
+import { useState } from 'react';
 
 // styles
-import { HomeContainer } from './Home.styles.js';
+import { 
+  HomeContainer,
+  HeaderContainer
+} from './Home.styles.js';
 
 // components
-import GradientBG from '../../components/gradient-bg/GradientBG.js';
-import LoadingIcon from '../../components/loading-icon/LoadingIcon.js';
+import Cart from '../cart/Cart.js';
+import Header from '../../components/header/Header.js';
+import SocialsView from '../../components/socials-view/SocialsView.js';
+import GradientControlsContainer from '../../components/gradient-controls/GradientControls.js';
 
 export default function Home() {
-  const products = useSelector(selectProducts);
-
-  const gradient = () => {
-    return `linear-gradient(45deg,
-              rgba(
-                ${products[0].botGradient[0]},
-                ${products[0].botGradient[1]},
-                ${products[0].botGradient[2]}, 0.8) 0%,
-              rgba(
-                ${products[0].topGradient[0]},
-                ${products[0].topGradient[1]},
-                ${products[0].topGradient[2]}, 0.8) 100%)`
-  } 
+  const [cartViewIsDisplayed, setCartViewIsDisplayed] = useState(false);
+  const [socialsViewIsDisplayed,setSocialsViewIsDisplayed] = useState(false);
 
   return (
-    <>
-      {products.length !== 0 ? 
-          <HomeContainer>
-            <Outlet />
-            <GradientBG gradient={gradient(0)} />
-          </HomeContainer>
-          :
-          <>
-            <LoadingIcon />
-          </>      
+    <HomeContainer>
+      <HeaderContainer
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+              duration: 1,
+              ease: "easeOut",
+              times: [0, 1]
+          }}
+      >
+          <Header
+              cartViewSetter={setCartViewIsDisplayed}
+              cartViewStatus={cartViewIsDisplayed}
+              socialsViewSetter={setSocialsViewIsDisplayed}
+              socialsViewStatus={socialsViewIsDisplayed}
+          />
+      </HeaderContainer>
+      {socialsViewIsDisplayed &&
+        <SocialsView />
       }
-    </>
-  );
+      {cartViewIsDisplayed &&
+          <Cart />
+      }
+      {!cartViewIsDisplayed && !socialsViewIsDisplayed &&
+        <GradientControlsContainer />
+      }
+    </HomeContainer>
+  )
 };

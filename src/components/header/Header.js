@@ -13,8 +13,9 @@ import {
 
 // assets
 import closeIcon from '../../assets/icons/close-icon.svg';
-import bagIcon from '../../assets/icons/bag-icon.svg';
+// import bagIcon from '../../assets/icons/bag-icon.svg';
 import menuIcon from '../../assets/icons/menu-icon.svg';
+import storeIcon from '../../assets/icons/store-icon.svg';
 
 // components
 import Banner from '../banner/Banner';
@@ -72,7 +73,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                     <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                 </HeaderBtnImgContainer> 
             </SocialsBtnContainer>
-            <Banner />
+            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'socials' : 'presence')} />
             <CartBtnContainer
                 onClick={() => handleGridView()}
                 initial={{ x: 50, opacity: 0 }}
@@ -92,8 +93,8 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                         animate={{ scale: isAnimating ? 1.5 : 1 }}
                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
                     >
-                        <h4>{cartCount}</h4>
-                        <img src={bagIcon} alt={"cart icon"} />
+                        {/* <h4>{cartCount}</h4> */}
+                        <img style={{ width: "22.5px" }} src={storeIcon} alt={"cart icon"} />
                     </CartBtnImgContainer> 
                 }
             </CartBtnContainer>

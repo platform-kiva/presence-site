@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { fetchProductsAsync } from '../../store/products/products.action.js';
 import { selectProductsIsLoading } from '../../store/products/products.selector.js';
 
+import { setDisplayedGradient, setDefaultGradient, setStatus } from '../../store/gradients/gradient.action.js';
+
 // styles
 import { BannerContainer, PreLoaderContainer,  } from './PreLoader.styles.js';
 
@@ -19,7 +21,10 @@ export default function PreLoader() {
     const [animateOut, setAnimateOut] = useState(false);
     
     useEffect(() => {
-      dispatch(fetchProductsAsync());
+        dispatch(setStatus(true));
+        dispatch(setDisplayedGradient('A'));
+        dispatch(setDefaultGradient([[219,120,212], [32,172,232]]));
+        dispatch(fetchProductsAsync());
     }, [dispatch]);
 
     useEffect(() => {
@@ -56,15 +61,15 @@ export default function PreLoader() {
                 <LoadingIcon />
                 :
                 <BannerContainer
-                    initial={{ opacity: 0.0, translateX: -20 }}
-                    animate={animateOut ? { opacity: 0, translateX: 20 } : { opacity: [0.0, 1.0], translateX: [-20, 0] }}
+                    initial={{ opacity: 0.0 }}
+                    animate={animateOut ? { opacity: 0 } : { opacity: [0.0, 1.0] }}
                     transition={{
                         duration: 1,
                         ease: "easeInOut",
                         times: [0, 1]
                     }}
                 >
-                    <Banner />
+                    <Banner label={"presence"}/>
                 </BannerContainer>
             }
         </PreLoaderContainer>

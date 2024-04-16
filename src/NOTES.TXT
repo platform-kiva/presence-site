@@ -1,4 +1,5 @@
 Checklist
+- Add feature that displays how many X products have been bought of a gradient
 - Scroll to top after every page load
 - Allow size change in Cart
 - Persist current gradient (add to store state)

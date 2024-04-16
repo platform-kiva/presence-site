@@ -157,7 +157,7 @@ export default function Product({ product }) {
                         :
                         <ElementWrapper delay={0.4}>
                           <PromptContainer>
-                            <h3>281,474,976,710,656 possibilities...</h3>
+                            <h3>281,474,976,710,656 possibilities,</h3>
                             <h3>Find one that feels right.</h3>
                           </PromptContainer>
                         </ElementWrapper>

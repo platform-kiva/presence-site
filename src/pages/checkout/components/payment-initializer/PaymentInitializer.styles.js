@@ -12,11 +12,12 @@ export const CheckoutBtnContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: 40px;
+    padding: 40px 0px;
     width: 200px;
 
     .back-btn {
         cursor: url(${cursorIconFilled}) 15 15, auto;
+        padding: 5px 10px;
         text-decoration: underline;
     }
 `

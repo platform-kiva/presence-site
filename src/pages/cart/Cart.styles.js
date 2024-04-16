@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { device, size } from "../../media-breakpoints";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
@@ -11,6 +10,60 @@ export const CartContainer = styled.div`
     justify-content: center;
     position: relative;
     width: 100%;
+`
+export const EmptyCartContent = styled.div`
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    left: 50%;
+    padding-bottom: 50px;
+    position: absolute;
+    max-width: 80%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+`
+export const ProductBox = styled.div`
+    align-items: center;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; 
+    height: 375px;
+    justify-content: center;
+    transition: 0.4s ease-in;
+    width: 300px;
+
+    &:hover {
+        background: rgba(255,255,255,0.2);
+        border: 2px solid rgba(255,255,255,0.5);
+        transition: 0.4s ease-in;
+    }
+`
+export const InfoBtnContainer = styled.div`
+    cursor: url(${cursorIconFilled}) 15 15, auto;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    img {
+        height: 20px;
+        transition: 0.4s ease-out;
+        width: 20px;
+
+        &:hover {
+            transform: scale(1.25);
+            transition: 0.4s ease-out;
+        }
+    }
+`
+export const ProductInfo = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 `
 export const CartItemDisplayContainer = styled.div`
     display: flex;
@@ -66,28 +119,6 @@ export const IndDecLabel = styled.h4`
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
-`
-export const GradientBG = styled(motion.div)`
-  background: ${(props) =>
-    props.$cartItems && props.$cartItems[props.$cartInd] 
-    ? `linear-gradient(
-        45deg,
-        rgba(
-            ${props.$cartItems[props.$cartInd].botGradient[0]},
-            ${props.$cartItems[props.$cartInd].botGradient[1]},
-            ${props.$cartItems[props.$cartInd].botGradient[2]},
-            0.8) 0%,
-        rgba(
-            ${props.$cartItems[props.$cartInd].topGradient[0]},
-            ${props.$cartItems[props.$cartInd].topGradient[1]},
-            ${props.$cartItems[props.$cartInd].topGradient[2]},
-            0.8) 100%)`
-    : undefined};
-  height: 100vh;
-  position: fixed;
-  transition: background-color 1s ease;
-  width: 100%;
-  z-index: -100;
 `
 export const CartDetailsContainer = styled.div`
     margin-top: 25px;

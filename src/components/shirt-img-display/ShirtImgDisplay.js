@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAnimation } from 'framer-motion';
+import { useSelector } from 'react-redux';
+import { selectDisplayedGradient, selectGradientA, selectGradientB } from '../../store/gradients/gradient.selector';
 
 // styles
 import {
@@ -8,11 +10,17 @@ import {
     ShirtMockupContainer
 } from './ShirtImgDisplay.styles';
 
+// assets
+import blankShirtImg from '../../assets/clothing/blank_ALPHA.png';
+
 // components
 import ImgLoader from "../img-loader/ImgLoader";
 
-export default function ShirtImgDisplay({ product, startColor=null, endColor=null, alphaStart=0.49, alphaEnd=0.56, updateParent=null }) {
+export default function ShirtImgDisplay({ updateParent=null }) {
     const controlDiv1 = useAnimation();
+    const displayedGradient = useSelector(selectDisplayedGradient);
+    const gradientA = useSelector(selectGradientA);
+    const gradientB = useSelector(selectGradientB);
 
     const [isShirtImgLoaded, setIsShirtImgLoaded] = useState(false);
 
@@ -29,25 +37,10 @@ export default function ShirtImgDisplay({ product, startColor=null, endColor=nul
 
     return (
         <ShirtImgDisplayContainer>
-            <GradientBox
-                animate={controlDiv1}
-                style={{
-                    background: `linear-gradient(0deg, 
-                        ${startColor === null ? 
-                            `rgba(
-                                ${product.botGradient[0]}, 
-                                ${product.botGradient[1]}, 
-                                ${product.botGradient[2]}, ${alphaStart})`: startColor} 0%,
-                        ${endColor === null ?
-                            `rgba(
-                                ${product.topGradient[0]}, 
-                                ${product.topGradient[1]}, 
-                                ${product.topGradient[2]}, ${alphaEnd})` : endColor} 100%)`
-                }}
-            />
+            <GradientBox $gradient={displayedGradient === 'A' ? gradientA : gradientB } animate={controlDiv1} />
             <ShirtMockupContainer>
                 <ImgLoader
-                    src={product.blankProductURL}
+                    src={blankShirtImg}
                     alt={"blank shirt"}
                     updateParent={setIsShirtImgLoaded}
                 />

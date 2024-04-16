@@ -1,21 +1,50 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Outlet } from "react-router-dom";
-import { selectProducts } from "../../store/products/products.selector";
+import { setDisplayedGradient, setGradient } from "../../store/gradients/gradient.action";
+
+import { OutletContainer } from "./SiteContainer.styles";
+
+// components
+import GradientBG from '../../components/gradient-bg/GradientBG';
+import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus } from "../../store/gradients/gradient.selector";
 
 export default function SiteContainer() {
+    const dispatch = useDispatch();
+    const status = useSelector(selectStatus);
+    const displayedGradient = useSelector(selectDisplayedGradient);
+    const gradientA = useSelector(selectGradientA);
+    const gradientB = useSelector(selectGradientB);
     const navigate = useNavigate();
-    const products = useSelector(selectProducts);
 
     useEffect(() => {
-    if (products.length === 0) {
-        navigate("/")
-    }
-    }, [navigate, products])
+        if (!gradientA || !gradientB || !displayedGradient || status === null) {
+            navigate("/");
+        }
+        }, [status, displayedGradient, gradientA, gradientB, navigate]);
+
+    useEffect(() => {
+        if (status === true) { 
+            const interval = setInterval(() => {
+                if (displayedGradient === 'A') {
+                    dispatch(setGradient('B'));
+                    dispatch(setDisplayedGradient('B'));
+                } else {
+                    dispatch(setGradient('A'));
+                    dispatch(setDisplayedGradient('A'));
+                }
+            }, 3000);
+            return () => clearInterval(interval);
+        }
+    }, [dispatch, status, displayedGradient]);
 
     return (
         <>
-            <Outlet />
+            <OutletContainer>
+                <Outlet />
+            </OutletContainer>
+            
+            <GradientBG />
         </>
     )
 }

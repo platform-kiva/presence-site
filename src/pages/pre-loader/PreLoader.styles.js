@@ -5,8 +5,8 @@ export const PreLoaderContainer = styled.div`
     align-items: center;
     background: linear-gradient(
         45deg,
-        rgba(219,120,212,0.8) 0%,
-        rgba(32,172,232,0.8) 100%
+        rgba(219,120,212,1.0) 0%,
+        rgba(32,172,232,1.0) 100%
     );
     display: flex;
     height: 100vh;

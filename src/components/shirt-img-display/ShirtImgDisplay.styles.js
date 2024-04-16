@@ -10,10 +10,11 @@ export const ShirtImgDisplayContainer = styled.div`
     position: relative;
 `
 export const GradientBox = styled(motion.div)`
+    background: ${(props) => `linear-gradient(45deg, rgba(${props.$gradient[0][0]},${props.$gradient[0][1]},${props.$gradient[0][2]},0.8) 0%, rgba(${props.$gradient[1][0]},${props.$gradient[1][1]},${props.$gradient[1][2]},0.8) 100%)`};
     height: 8.75%;
     position: absolute;
     top: 25%;
-    width: 28%;
+    width: 26%;
     z-index: 99;
 
     img {
