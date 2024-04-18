@@ -32,18 +32,17 @@ export const CustomizationLabel = styled.div`
 export const RgbDisplayContainer = styled.div`
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: ${props => !props.$additionalCtrls ? 'column' : 'row'};
     gap: 10px;
     justify-content: center;
-    height: 55px;
+    height: ${props => !props.$additionalCtrls ? '55px' : '35px'};
     width: 100%;
 `
 export const RgbDisplay = styled.div`   
     display: flex;
     gap: 10px;
     justify-content: space-between;
-    max-width: 180px;
-    width: 100%;
+    width: 180px;
 `
 export const RgbSquare = styled.div`
     border: 1px solid #FFFFFF;
@@ -52,5 +51,7 @@ export const RgbSquare = styled.div`
     background-color: ${props => `rgba(${props.$bgCol[0]},${props.$bgCol[1]},${props.$bgCol[2]},0.8)`};
 `
 export const ButtonContainer = styled.div`
-  width: 200px;
+    display: flex;
+    gap: 24px;
+    width: ${props => props.$additionalCtrls ? '424px ' : '200px'};
 `

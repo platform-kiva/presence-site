@@ -48,18 +48,21 @@ export const HeaderBtnImgContainer = styled.div`
         props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
     };
     display: flex;
+    height: 20px;
     justify-content: center;
     opacity: ${props => props.$isVisible ? "1.0" : "0.0"};
     position: relative;
     transition: 0.2s ease-out;
 
     img {
-        width: 100%;
+        width: 20px;
     }
 `
 export const CartBtnContainer = styled(motion.div)`
+    align-items: center;
     display: flex;
     height: 20px;
+    justify-content: center;
     padding: 0px 30px;
     transform-origin: center;
     transition: 0.6s ease-out;
@@ -99,6 +102,6 @@ export const CartBtnImgContainer = styled(motion.div)`
     }
 
     img {
-        width: 100%;
+        width: 28px;
     }
 `

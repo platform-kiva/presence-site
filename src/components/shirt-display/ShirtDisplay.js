@@ -23,8 +23,8 @@ export default function ShirtDisplay({ product, bobs=false }) {
     const sequenceInitialAnimations = async () => {
       await controlDiv1.start({});
       controlDiv1.start({
-        y: ["0%", "-5%", "0%"],
-        transition: { duration: 4, ease: "easeInOut", repeat: Infinity },
+        y: ["0%", "5%", "0%"],
+        transition: { duration: 6, ease: "easeInOut", repeat: Infinity },
       });
     };
     sequenceInitialAnimations();
@@ -39,7 +39,7 @@ export default function ShirtDisplay({ product, bobs=false }) {
           controlDiv2.start({
               scale: [1, 1.2, 1],
               opacity: [0, 0.33, 1],
-              transition: { duration: 4, ease: "easeInOut", repeat: Infinity },
+              transition: { duration: 6, ease: "easeInOut", repeat: Infinity },
           });
       };
       sequenceInitialAnimations();

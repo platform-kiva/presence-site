@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Outlet } from "react-router-dom";
 import { setDisplayedGradient, setGradient } from "../../store/gradients/gradient.action";
 
-import { OutletContainer } from "./SiteContainer.styles";
+import { OutletContainer, MainGradientBGContainer } from "./SiteContainer.styles";
 
 // components
 import GradientBG from '../../components/gradient-bg/GradientBG';
@@ -43,8 +43,9 @@ export default function SiteContainer() {
             <OutletContainer>
                 <Outlet />
             </OutletContainer>
-            
-            <GradientBG />
+            <MainGradientBGContainer>
+                <GradientBG />
+            </MainGradientBGContainer>
         </>
     )
 }

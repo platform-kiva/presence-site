@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAddToCartStatus } from '../../store/gradients/gradient.action.js';
 
 // styles
 import { 
@@ -15,6 +17,13 @@ import GradientControlsContainer from '../../components/gradient-controls/Gradie
 export default function Home() {
   const [cartViewIsDisplayed, setCartViewIsDisplayed] = useState(false);
   const [socialsViewIsDisplayed,setSocialsViewIsDisplayed] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!cartViewIsDisplayed) {
+      dispatch(setAddToCartStatus(false));
+    }
+  }, [cartViewIsDisplayed, dispatch ])
 
   return (
     <HomeContainer>

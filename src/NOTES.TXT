@@ -1,17 +1,19 @@
 Checklist
-- Add feature that displays how many X products have been bought of a gradient
+- Add functionality for feature that displays how many X products have been bought of a gradient
+    - After successful transaction, upload gradient ID to database as map key
+        if (gradientID exist in database) {
+            + Quantity to existing Quantity field
+        } else {
+            Create new key-value pair (gradientID:Quantity)
+        }
+
+        - Make sure you are counting the same gradient in different sizes as one gradient (within an order and in general)
+    - When Add to Cart is clicked, scan map keys for current gradient
+        - ONLY ON RESULT, render in purchased amount H3 tag
 - Scroll to top after every page load
 - Allow size change in Cart
-- Persist current gradient (add to store state)
-- remove hovers for mobile to be able to use buttons
-- Smooth gradient transition for customs background
-
-Considerations
 - More microinteractions
-- Need to create ColorsContext/ProductContext?
-    - Because of themed UI, is it better to separate Product data from Product colors?
-    - Maybe not, as the data being pulled is used in multiple places (Product, Cart), it may make more sense to keep bundled
-
+- Re-create Snapchat filter
 
 TOPICS COVERED
 - Hooks

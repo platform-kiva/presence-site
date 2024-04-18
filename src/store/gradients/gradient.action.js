@@ -4,6 +4,9 @@ import { generateRgbString } from "../../utils/general/general.utils";
 export const setStatus = (status) => {
     return ({ type: GRADIENTS_ACTION_TYPES.SET_STATUS, payload: !status });
 }
+export const setAddToCartStatus = (status) => {
+    return ({ type: GRADIENTS_ACTION_TYPES.SET_ADD_TO_CART_STATUS, payload: !status })
+}
 export const setDisplayedGradient = (gradientType) => {
     return ({ type: GRADIENTS_ACTION_TYPES.SET_DISPLAYED_GRADIENT, payload: gradientType });
 }

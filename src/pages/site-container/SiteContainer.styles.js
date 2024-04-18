@@ -5,3 +5,9 @@ export const OutletContainer = styled.div`
     position: absolute;
     width: 100%;
 `
+export const MainGradientBGContainer = styled.div`
+    height: 100vh;
+    position: fixed;
+    width: 100vw;
+    z-index: -500;
+`

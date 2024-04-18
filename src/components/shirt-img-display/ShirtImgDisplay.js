@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useAnimation } from 'framer-motion';
-import { useSelector } from 'react-redux';
-import { selectDisplayedGradient, selectGradientA, selectGradientB } from '../../store/gradients/gradient.selector';
 
 // styles
 import {
@@ -14,13 +12,11 @@ import {
 import blankShirtImg from '../../assets/clothing/blank_ALPHA.png';
 
 // components
+import GradientBG from '../gradient-bg/GradientBG';
 import ImgLoader from "../img-loader/ImgLoader";
 
 export default function ShirtImgDisplay({ updateParent=null }) {
     const controlDiv1 = useAnimation();
-    const displayedGradient = useSelector(selectDisplayedGradient);
-    const gradientA = useSelector(selectGradientA);
-    const gradientB = useSelector(selectGradientB);
 
     const [isShirtImgLoaded, setIsShirtImgLoaded] = useState(false);
 
@@ -37,7 +33,9 @@ export default function ShirtImgDisplay({ updateParent=null }) {
 
     return (
         <ShirtImgDisplayContainer>
-            <GradientBox $gradient={displayedGradient === 'A' ? gradientA : gradientB } animate={controlDiv1} />
+            <GradientBox animate={controlDiv1}>
+                <GradientBG />
+            </GradientBox>
             <ShirtMockupContainer>
                 <ImgLoader
                     src={blankShirtImg}

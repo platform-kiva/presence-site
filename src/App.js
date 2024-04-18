@@ -10,7 +10,6 @@ import Checkout from './pages/checkout/Checkout';
 import Home from './pages/home/Home';
 import PaymentInitializer from './pages/checkout/components/payment-initializer/PaymentInitializer';
 import PreLoader from "./pages/pre-loader/PreLoader";
-import ProductContainer from './pages/product-container/ProductContainer';
 import OrderComplete from './pages/order-complete/OrderComplete';
 import SiteContainer from './pages/site-container/SiteContainer.js';
 import GradientBG from './components/gradient-bg/GradientBG.js';
