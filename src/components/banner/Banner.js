@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAnimation } from 'framer-motion';
 import { BannerContainer, LogoMiddleText, LogoBottomText, LogoTopText } from './Banner.styles.js';
 
@@ -6,20 +6,45 @@ export default function Banner({ label }) {
     const controlsTop = useAnimation();
     const controlsMiddle = useAnimation();
     const controlsBottom = useAnimation();
+    const [translateY, setTranslateY] = useState(getTranslateY());
+
+    function getTranslateY() {
+        const width = window.innerWidth;
+        if (width < 376) {
+            return -8; // Smaller translation for smaller screens
+        } else if (width <= 431) {
+            return -9.5; // Medium translation
+        } else if (width <= 769) {
+            return -10.5; // Medium translation
+        } else {
+            return -13; // Larger translation for larger screens
+        }
+    }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setTranslateY(getTranslateY());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const startAnimations = async () => {
             await controlsMiddle.start({ opacity: 1 });
             await Promise.all([
-                controlsTop.start({ opacity: 1, y: -13 }),
-                controlsBottom.start({ opacity: 1, y: 13 })
+                controlsTop.start({ opacity: 1, y: translateY }),
+                controlsBottom.start({ opacity: 1, y: -translateY })
             ]);
         };
+
         controlsTop.set({ opacity: 0, y: 0 });
         controlsMiddle.set({ opacity: 0 });
         controlsBottom.set({ opacity: 0, y: 0 });
+
         startAnimations();
-    }, [label, controlsTop, controlsMiddle, controlsBottom]);
+    }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
 
     return (
         <BannerContainer>
@@ -33,7 +58,7 @@ export default function Banner({ label }) {
             <LogoMiddleText
                 animate={controlsMiddle}
                 initial={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1.0 }}
             >
                 <em>{label}</em>
             </LogoMiddleText>
