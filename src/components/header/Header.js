@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCartCount } from '../../store/cart/cart.selector.js';
+import { setStatus } from '../../store/gradients/gradient.action.js';
 
 // styles
 import { 
@@ -23,12 +24,14 @@ import storeIcon from '../../assets/icons/store-icon.svg';
 import Banner from '../banner/Banner';
 
 export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartCount = useSelector(selectCartCount);
     const [cartViewIsActive, setCartViewIsActive] = useState(false);
     const [socialsViewIsActive, setSocialsViewIsActive] = useState(false);
 
     const handleNavigate = () => {
+        dispatch(setStatus(true));
         if (cartCount !== 0) {
             navigate('/cart');
         }
@@ -68,7 +71,6 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     
     return (
         <HeaderContainer>
-            
             <SocialsBtnContainer
                 onClick={() => handleSocialsView()}
                 initial={{ x: -50, opacity: 0 }}
