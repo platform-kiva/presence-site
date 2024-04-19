@@ -2,21 +2,25 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Outlet } from "react-router-dom";
 import { setDisplayedGradient, setGradient } from "../../store/gradients/gradient.action";
+import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus } from "../../store/gradients/gradient.selector";
 
-import { OutletContainer, MainGradientBGContainer } from "./SiteContainer.styles";
+// styles
+import {
+    OutletContainer,
+    MainGradientBGContainer
+} from "./SiteContainer.styles";
 
 // components
 import GradientBG from '../../components/gradient-bg/GradientBG';
-import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus } from "../../store/gradients/gradient.selector";
 
 export default function SiteContainer() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const status = useSelector(selectStatus);
     const displayedGradient = useSelector(selectDisplayedGradient);
     const gradientA = useSelector(selectGradientA);
     const gradientB = useSelector(selectGradientB);
-    const navigate = useNavigate();
-
+    
     useEffect(() => {
         if (!gradientA || !gradientB || !displayedGradient || status === null) {
             navigate("/");

@@ -13,14 +13,14 @@ export const setDisplayedGradient = (gradientType) => {
 export const setDefaultGradient = (gradient) => {
     return ({type: GRADIENTS_ACTION_TYPES.SET_DEFAULT_GRADIENT, payload: gradient }); 
 }
-export const setGradient = (gradientType) => {
+export const setGradient = (gradientType, presetGradient=null) => {
     const rgb1 = generateRgbString();
     const rgb2 = generateRgbString();
     const newGradient = [rgb1, rgb2];
     if (gradientType === "A") {
-        return ({type: GRADIENTS_ACTION_TYPES.SET_GRADIENT_A, payload: newGradient });
+        return ({type: GRADIENTS_ACTION_TYPES.SET_GRADIENT_A, payload: presetGradient ? presetGradient : newGradient });
     } else if (gradientType === "B") {
-        return ({type: GRADIENTS_ACTION_TYPES.SET_GRADIENT_B, payload: newGradient });
+        return ({type: GRADIENTS_ACTION_TYPES.SET_GRADIENT_B, payload: presetGradient ? presetGradient : newGradient });
     } else {
         alert('error setting gradient');
     }

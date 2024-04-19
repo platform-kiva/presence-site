@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectCartCount } from '../../store/cart/cart.selector.js';
 
@@ -22,13 +23,20 @@ import storeIcon from '../../assets/icons/store-icon.svg';
 import Banner from '../banner/Banner';
 
 export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
+    const navigate = useNavigate();
     const cartCount = useSelector(selectCartCount);
     const [cartViewIsActive, setCartViewIsActive] = useState(false);
     const [socialsViewIsActive, setSocialsViewIsActive] = useState(false);
 
+    const handleNavigate = () => {
+        if (cartCount !== 0) {
+            navigate('/cart');
+        }
+    }
+
     const handleGridView = () => {
         if (socialsViewStatus) {
-            return
+            return;
         }
         setCartViewIsActive(!cartViewIsActive);
         cartViewSetter(!cartViewIsActive);
@@ -36,19 +44,19 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
 
     const handleSocialsView = () => {
         if (cartViewStatus) {
-            return
+            return;
         }
         setSocialsViewIsActive(!socialsViewIsActive);
         socialsViewSetter(!socialsViewIsActive);
     }
 
     useEffect(() => {
-        setCartViewIsActive(cartViewStatus)
-    }, [cartViewStatus])
+        setCartViewIsActive(cartViewStatus);
+    }, [cartViewStatus]);
 
     useEffect(() => {
-        setSocialsViewIsActive(socialsViewStatus)
-    }, [socialsViewStatus])
+        setSocialsViewIsActive(socialsViewStatus);
+    }, [socialsViewStatus]);
 
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -76,13 +84,15 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                         <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
                     </HeaderBtnImgContainer>
                 :
-                    <CartBtnImgContainer $isVisible={cartCount !== 0}
-                        animate={{ scale: isAnimating ? 1.5 : 1 }}
-                        transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    >
-                        <h4>{cartCount}</h4>
-                        <img src={bagIcon} alt={"bag icon"} />
-                    </CartBtnImgContainer> 
+                    <div onClick={handleNavigate}>
+                        <CartBtnImgContainer $isVisible={cartCount !== 0}
+                            animate={{ scale: isAnimating ? 1.5 : 1 }}
+                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                        >
+                            <h4>{cartCount}</h4>
+                            <img src={bagIcon} alt={"bag icon"} />
+                        </CartBtnImgContainer> 
+                    </div>
                 }
             </SocialsBtnContainer>
 

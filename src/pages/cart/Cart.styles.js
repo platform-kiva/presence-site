@@ -1,57 +1,82 @@
 import styled from "styled-components";
-import { size } from "../../media-breakpoints";
+import { device } from "../../media-breakpoints";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const CartContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     position: relative;
     width: 100%;
 `
-export const EmptyCartContent = styled.div`
-    align-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
-    left: 50%;
-    padding-bottom: 50px;
-    position: absolute;
-    max-width: 80%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-`
-export const PriceActionCustomContainer = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 205px;
-    justify-content: space-between;
+export const CartHeaderContainer = styled.div`
+    position: fixed;
+    top: 0;
     width: 100%;
+    z-index: 500;
 
-    @media (max-width: ${size.mobileL}) {
-        height: 259px;
-        justify-content: center;
-    }
-    @media (min-width: ${size.mobileL}) and (max-width: 500px) {
-        height: 259px;
-        justify-content: center;
-    }
-    @media (min-width: 500px) and (max-width: ${size.tablet}) {
-        height: 185px;
-    }
-
-    .back-btn {
-        cursor: url(${cursorIconFilled}) 15 15, auto;
-        margin-top: 20px;
-        text-decoration: underline;
+    @media ${device.laptopL} {
+        max-width: 1440px;
     }
 `
-export const PriceAction = styled.div`
+export const CartItemDisplayContainer = styled.div`
+    display: flex;
+    position: absolute;
+
+    @media ${device.mobileM} {
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+    }
+`
+export const CarouselBtnContainer = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 500px;
+    z-index: 500;
+`
+export const QuantityControl = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 145px;
 `
+export const CartItemLabelContainer = styled.div`
+    align-items: center;
+    display: flex;
+    gap: 5px;
+`
+export const DetailsLabel = styled.h3`
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+`
+export const CartItemIncDecContainer = styled.div`
+    display: flex;
+    gap: 20px;
+    z-index: 500;
+`
+export const IndDecLabel = styled.h4`
+    cursor: url(${cursorIconFilled}) 15 15, auto;
+    margin-top: 10px;
+    text-decoration: underline;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+`
+

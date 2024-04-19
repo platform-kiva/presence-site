@@ -9,21 +9,21 @@ import {
 } from './Home.styles.js';
 
 // components
-import Cart from '../cart/Cart.js';
 import Header from '../../components/header/Header.js';
 import SocialsView from '../../components/socials-view/SocialsView.js';
+import GiftShop from '../gift-shop/GiftShop.js';
 import GradientControlsContainer from '../../components/gradient-controls/GradientControls.js';
 
 export default function Home() {
-  const [cartViewIsDisplayed, setCartViewIsDisplayed] = useState(false);
-  const [socialsViewIsDisplayed,setSocialsViewIsDisplayed] = useState(false);
   const dispatch = useDispatch();
-
+  const [giftShopViewIsDisplayed, setGiftShopViewIsDisplayed] = useState(false);
+  const [socialsViewIsDisplayed, setSocialsViewIsDisplayed] = useState(false);
+  
   useEffect(() => {
-    if (!cartViewIsDisplayed) {
+    if (!giftShopViewIsDisplayed) {
       dispatch(setAddToCartStatus(false));
     }
-  }, [cartViewIsDisplayed, dispatch ])
+  }, [giftShopViewIsDisplayed, dispatch ]);
 
   return (
     <HomeContainer>
@@ -37,8 +37,8 @@ export default function Home() {
           }}
       >
           <Header
-              cartViewSetter={setCartViewIsDisplayed}
-              cartViewStatus={cartViewIsDisplayed}
+              cartViewSetter={setGiftShopViewIsDisplayed} // update from 'cart'
+              cartViewStatus={giftShopViewIsDisplayed}
               socialsViewSetter={setSocialsViewIsDisplayed}
               socialsViewStatus={socialsViewIsDisplayed}
           />
@@ -46,10 +46,10 @@ export default function Home() {
       {socialsViewIsDisplayed &&
         <SocialsView />
       }
-      {cartViewIsDisplayed &&
-          <Cart />
+      {giftShopViewIsDisplayed &&
+          <GiftShop />
       }
-      {!cartViewIsDisplayed && !socialsViewIsDisplayed &&
+      {!giftShopViewIsDisplayed && !socialsViewIsDisplayed &&
         <GradientControlsContainer />
       }
     </HomeContainer>

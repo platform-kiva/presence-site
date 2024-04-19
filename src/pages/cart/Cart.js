@@ -1,71 +1,131 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectGradientA, selectGradientB, selectAddToCartStatus, selectCurrGradient } from '../../store/gradients/gradient.selector.js';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action';
+import { setGradient } from "../../store/gradients/gradient.action";
+import { selectDisplayedGradient } from "../../store/gradients/gradient.selector";
+import { selectCartItems } from "../../store/cart/cart.selector";
+
 
 // styles
 import {
-  CartContainer,
-  EmptyCartContent,
-  PriceActionCustomContainer,
-  PriceAction,
-} from './Cart.styles.js';
+    CartContainer,
+    CartHeaderContainer,
+    CartItemDisplayContainer,
+    CarouselBtnContainer,
+    QuantityControl,
+    CartItemLabelContainer,
+    DetailsLabel,
+    CartItemIncDecContainer,
+    IndDecLabel
+} from "./Cart.styles";
 
 // components
-import ElementWrapper from '../../components/element-wrapper/ElementWrapper.js';
-import ShirtDisplay from '../../components/shirt-display/ShirtDisplay.js';
-import GradientControls from '../../components/gradient-controls/GradientControls.js';
-import ProductBox from '../../components/product-box/ProductBox.js';
-import SizeSelection from '../../components/size-selection/SizeSelection.js';
+import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
+import CartHeader from "./cart-header/CartHeader";
+import ElementWrapper from "../../components/element-wrapper/ElementWrapper";
+import ShirtDisplay from "../../components/shirt-display/ShirtDisplay";
+import GradientControls from "../../components/gradient-controls/GradientControls";
+
 
 export default function Cart() {
-  const gradientA = useSelector(selectGradientA);
-  const gradientB = useSelector(selectGradientB);
-  const currGradient = useSelector(selectCurrGradient);
-  const addToCartStatus = useSelector(selectAddToCartStatus);
-  const [customProduct, setCustomProduct] = useState(null)
+    const dispatch = useDispatch();
+    const cartItems = useSelector(selectCartItems);
+    const [cartInd, setCartInd] = useState(0);
+    const displayedGradient = useSelector(selectDisplayedGradient);
 
-
-  useEffect(() => {
-    if (!gradientA || !gradientB) {
-      return;
-    }
-    setCustomProduct(
-      {
-        availSizes: ['S', 'M', 'L'],
-        id: currGradient[0] + ' - ' + currGradient[1],
-        price: 35,
-        quantity: 1,
+    useEffect(() => {
+        if (cartItems.length === 0) {
+            return;
+        }
+        console.log(cartItems[cartInd].gradient);
+        dispatch(setGradient('A', cartItems[cartInd].gradient));
+        dispatch(setGradient('B', cartItems[cartInd].gradient));
+    }, [dispatch, cartInd, cartItems, displayedGradient])
+  
+    const handleIndChange = (val) => {
+      let currInd = cartInd
+      if (currInd === (cartItems.length - 1) && val === 1) {
+          currInd = 0
+      } else if (currInd === 0 && val === -1) {
+          currInd = cartItems.length - 1
+      } else {
+          currInd += val
       }
-    )
-  }, [gradientA, gradientB, currGradient])
+      setCartInd(currInd)
+    }
+  
+    const handleAddItemFromCart = () => {
+      dispatch(addItemToCart(cartItems, cartItems[cartInd], cartItems[cartInd].size))
+    }
+  
+    const handleRemoveItemFromCart = () => {
+      if (cartInd === cartItems.length - 1 && cartItems[cartInd].quantity === 1) {
+        const indToRemove = cartInd
+        const newCartInd = cartInd - 1
+        setCartInd(newCartInd)
+        dispatch(removeItemFromCart(cartItems, cartItems[indToRemove]))
+      } else {
+        dispatch(removeItemFromCart(cartItems, cartItems[cartInd]))
+      }
+    }
+  
+    useEffect(() => {
+      if (cartItems.length !== 0 && cartItems[cartInd]) {
+      }
+    }, [cartInd, cartItems])
+  
+    return (
+      <CartContainer>
+        <CartHeaderContainer>
+            <CartHeader />
+        </CartHeaderContainer>
 
-  return (
-    <CartContainer>
-      <EmptyCartContent>
-        <ProductBox>
-          {addToCartStatus ?
-            <ShirtDisplay bobs={true} />
-            :
-            <ElementWrapper>
-              <PriceActionCustomContainer>
-                <>
-                  <PriceAction>
-                    <SizeSelection product={customProduct} />
-                  </PriceAction>
-                </>
-                <div>
-                <ElementWrapper delay={0.4}>
-                  <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination has been purchased 0 times.</h3>
+        {cartItems.length !== 0 &&
+            <GradientControls readOnly={true} />
+        }
+
+        {cartItems.length !== 0 && cartItems[cartInd] &&
+          <>
+            <CartItemDisplayContainer>
+              {cartItems.map((product, index) => {
+                  if (index === cartInd) {
+                    return (
+                      <ShirtDisplay key={`${product.topGradient}, ${product.botGradient}`} product={product} startColor={product.topGradient} endColor={product.botGradient} alphaStart={0.49} alphaEnd={0.56} bobs={true}/>
+                    );
+                  }
+                  return null
+                })
+              }
+            </CartItemDisplayContainer>    
+            
+            <CarouselBtnContainer>
+                <div onClick={() => handleIndChange(-1)}>
+                <ElementWrapper>
+                    <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
                 </ElementWrapper>
                 </div>
-              </PriceActionCustomContainer>
-              
-            </ElementWrapper>
-          }
-        </ProductBox>
-      </EmptyCartContent>
-      <GradientControls additionalCtrls={true} />
+                <div onClick={() => handleIndChange(1)}>
+                <ElementWrapper>
+                    <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
+                </ElementWrapper>
+                </div> 
+            </CarouselBtnContainer>
 
-    </CartContainer>
-  )
-}
+            <QuantityControl>
+                <CartItemLabelContainer>
+                    <DetailsLabel>SIZE: {cartItems[cartInd].size}&ensp;/&ensp;QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
+                </CartItemLabelContainer>
+                <CartItemIncDecContainer>
+                    <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
+                    <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
+                </CartItemIncDecContainer>
+            </QuantityControl>
+            
+          </>
+        }
+        {cartItems.length === 0 &&
+          <h2>CART IS EMPTY</h2>
+        }
+      </CartContainer>
+    )
+  }

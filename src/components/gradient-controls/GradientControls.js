@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { selectGradientA, selectGradientB, selectDisplayedGradient, selectStatus, selectAddToCartStatus } from '../../store/gradients/gradient.selector';
 import { setStatus, setAddToCartStatus } from '../../store/gradients/gradient.action';
 import { useEffect } from 'react';
@@ -16,8 +17,9 @@ import {
 import ElementWrapper from '../element-wrapper/ElementWrapper';
 import PrimaryBtn from '../btns/primary-btn/PrimaryBtn';
 
-export default function GradientControls({ additionalCtrls = false }) {
-    const dispatch = useDispatch()
+export default function GradientControls({ additionalCtrls = false, readOnly=false }) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const status = useSelector(selectStatus);
     const addToCartStatus = useSelector(selectAddToCartStatus);
     const displayedGradient = useSelector(selectDisplayedGradient);
@@ -78,21 +80,31 @@ export default function GradientControls({ additionalCtrls = false }) {
                     }
                 </CustomizationLabel>
             }
-            <ButtonContainer $additionalCtrls={additionalCtrls}>
-                <ElementWrapper>
-                    <div onClick={handleClick}>
-                        <PrimaryBtn label={status ? "STOP" : "START"} />
-                    </div>
-                    
-                </ElementWrapper>
-                {additionalCtrls &&
+            {!readOnly ?
+                <ButtonContainer $additionalCtrls={additionalCtrls}>
                     <ElementWrapper>
-                        <div onClick={!status ? handleAdd : null }>
-                            <PrimaryBtn label={!addToCartStatus ? "BACK" : "ADD TO CART"} isActive={!status ? true : false}/>
+                        <div onClick={handleClick}>
+                            <PrimaryBtn label={status ? "STOP" : "START"} />
+                        </div>
+                        
+                    </ElementWrapper>
+                    {additionalCtrls &&
+                        <ElementWrapper>
+                            <div onClick={!status ? handleAdd : null }>
+                                <PrimaryBtn label={!addToCartStatus ? "BACK" : "ADD TO CART"} isActive={!status ? true : false}/>
+                            </div>
+                        </ElementWrapper>
+                    }
+                </ButtonContainer>
+                :
+                <ButtonContainer>
+                    <ElementWrapper>
+                        <div onClick={() => navigate("/checkout")}>
+                            <PrimaryBtn label={"GO TO CHECKOUT"} />
                         </div>
                     </ElementWrapper>
-                }
-            </ButtonContainer>
+                </ButtonContainer>
+            }
         </GradientControlsContainer>
     )
 }

@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setDisplayedGradient, setDefaultGradient, setStatus } from '../../store/gradients/gradient.action.js';
 import { fetchProductsAsync } from '../../store/products/products.action.js';
 import { selectProductsIsLoading } from '../../store/products/products.selector.js';
 
-import { setDisplayedGradient, setDefaultGradient, setStatus } from '../../store/gradients/gradient.action.js';
-
 // styles
-import { BannerContainer, PreLoaderContainer,  } from './PreLoader.styles.js';
+import {
+    BannerContainer,
+    PreLoaderContainer
+} from './PreLoader.styles.js';
 
 // components
 import Banner from '../../components/banner/Banner';

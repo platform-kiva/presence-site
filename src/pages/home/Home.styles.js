@@ -6,7 +6,7 @@ export const HomeContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     position: relative;
     width: 100%;
 `
