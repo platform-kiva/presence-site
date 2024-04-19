@@ -73,7 +73,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
         <HeaderContainer>
             <SocialsBtnContainer
                 onClick={() => handleSocialsView()}
-                initial={{ x: -50, opacity: 0 }}
+                initial={{ x: -25, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
                     delay: 1,
@@ -101,7 +101,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
             <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} />
             <CartBtnContainer
                 onClick={() => handleGridView()}
-                initial={{ x: 50, opacity: 0 }}
+                initial={{ x: 25, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
                     delay: 1,

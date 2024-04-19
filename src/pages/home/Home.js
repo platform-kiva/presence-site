@@ -27,15 +27,7 @@ export default function Home() {
 
   return (
     <HomeContainer>
-      <HeaderContainer
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-              duration: 1,
-              ease: "easeOut",
-              times: [0, 1]
-          }}
-      >
+      <HeaderContainer>
           <Header
               cartViewSetter={setGiftShopViewIsDisplayed} // update from 'cart'
               cartViewStatus={giftShopViewIsDisplayed}

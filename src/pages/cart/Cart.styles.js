@@ -88,4 +88,12 @@ export const IndDecLabel = styled.h4`
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
 `
-
+export const EmptyCartMessageContainer = styled.h2`
+    left: 50%;
+    max-width: 300px;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+`

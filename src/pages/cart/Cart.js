@@ -16,7 +16,8 @@ import {
     CartItemLabelContainer,
     DetailsLabel,
     CartItemIncDecContainer,
-    IndDecLabel
+    IndDecLabel,
+    EmptyCartMessageContainer
 } from "./Cart.styles";
 
 // components
@@ -124,7 +125,12 @@ export default function Cart() {
           </>
         }
         {cartItems.length === 0 &&
-          <h2>CART IS EMPTY</h2>
+        <EmptyCartMessageContainer>
+          <ElementWrapper>
+            <h2>CART IS EMPTY</h2>
+          </ElementWrapper>
+        </EmptyCartMessageContainer>
+
         }
       </CartContainer>
     )
