@@ -39,7 +39,8 @@ export const CarouselBtnContainer = styled.div`
     display: flex;
     justify-content: space-between;
     position: absolute;
-    width: 500px;
+    max-width: 500px;
+    width: 80%;
     z-index: 500;
 `
 export const QuantityControl = styled.div`

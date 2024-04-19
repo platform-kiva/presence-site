@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { device, size } from "../../media-breakpoints";
 
 export const GradientControlsContainer = styled.div`
-  align-items: center;
-  bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%);
-  z-index: 500;
+    align-items: center;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    width: 100%;
+    z-index: 500;
 
-  @media ${device.laptopL} {
+    @media ${device.laptopL} {
         bottom: 50px;
     }
 `
@@ -20,14 +21,11 @@ export const CustomizationLabel = styled.div`
     align-items: center;
     display: flex;
     justify-content: center;
+    padding: 10px 0px;
 
     h3 {
         text-align: center;
         width: 90%;
-    }
-
-    @media (max-width: ${size.tablet}) {
-        padding: 40px 0px;
     }
 `
 export const RgbDisplayContainer = styled.div`
@@ -38,6 +36,10 @@ export const RgbDisplayContainer = styled.div`
     justify-content: center;
     height: ${props => !props.$additionalCtrls ? '55px' : '35px'};
     width: 100%;
+
+    @media (max-width: 450px) {
+        flex-direction: column;
+    }
 `
 export const RgbDisplay = styled.div`   
     display: flex;
@@ -55,4 +57,9 @@ export const ButtonContainer = styled.div`
     display: flex;
     gap: 24px;
     width: ${props => props.$additionalCtrls ? '424px ' : '200px'};
+
+    @media (max-width: 450px) {
+        flex-direction: column;
+        width: 80%;
+    }
 `

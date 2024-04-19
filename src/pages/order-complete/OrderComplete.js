@@ -31,7 +31,7 @@ export default function OrderComplete() {
                 </Message>
 
                 <BtnContainer onClick={() => handleClick()}>
-                    <PrimaryBtn label={"BACK TO SHOP"}/>
+                    <PrimaryBtn label={"BACK TO HOME"}/>
                 </BtnContainer>
             </OrderCompleteContent>
         </OrderCompleteContainer>
