@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { size } from "../../media-breakpoints";
 
 export const ShirtDisplayContainer = styled.div`
     align-items: center;
@@ -9,10 +8,6 @@ export const ShirtDisplayContainer = styled.div`
     gap: 40px;
     position: relative;
     padding-bottom: 50px;
-
-    /* @media (max-width: ${size.mobileM}) {
-        padding-bottom: ;
-    } */
 `
 export const ShirtImgDisplayContainer = styled(motion.div)`
     height: 300px;

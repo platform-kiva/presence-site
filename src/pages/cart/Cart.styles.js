@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../media-breakpoints";
+import { size, device } from "../../media-breakpoints";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const CartContainer = styled.div`
@@ -50,6 +50,14 @@ export const QuantityControl = styled.div`
     gap: 5px;
     position: absolute;
     top: 145px;
+
+    @media (max-width: ${size.mobileL}) {
+        top: 100px;
+    }
+
+    @media (min-width: ${size.mobileL}) and (max-width: ${size.tablet}) {
+        top: 120px
+    }
 `
 export const CartItemLabelContainer = styled.div`
     align-items: center;
