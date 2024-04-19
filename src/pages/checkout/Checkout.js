@@ -5,14 +5,15 @@ import { selectCartSubtotal } from '../../store/cart/cart.selector'
 
 // styles
 import {
-  GradientBG,
   CheckoutContainer,
+  CheckoutHeaderContainer,
   CartOverviewContainer,
   CostContainer,
   CostRowContainer
 } from './Checkout.styles.js';
 
 // components
+import CheckoutHeader from './components/checkout-header/CheckoutHeader.js';
 import CartProductsView from '../../components/cart-products-view/CartProductsView.js'
 
 export default function Checkout() {
@@ -31,6 +32,9 @@ export default function Checkout() {
 
   return (
     <CheckoutContainer>
+      <CheckoutHeaderContainer>
+        <CheckoutHeader nav={"/cart"}/>
+      </CheckoutHeaderContainer>
       <CartOverviewContainer>
         <CartProductsView items={cartItems} />
         <CostContainer>
@@ -55,7 +59,6 @@ export default function Checkout() {
 
       <Outlet />
 
-      <GradientBG $cartItems={cartItems} $cartInd={0} />
     </CheckoutContainer>
   )
 };

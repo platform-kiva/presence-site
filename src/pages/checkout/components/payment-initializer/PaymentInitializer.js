@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { stripePromise } from '../../../../utils/stripe/stripe.utils';
 import { useSelector } from 'react-redux';
@@ -17,7 +16,6 @@ export default function PaymentInitializer() {
     const [showOrderForm, setShowOrderForm] = useState(false);
     const cartTotal = useSelector(selectCartTotal) * 100;
     const cartItems = useSelector(selectCartItems);
-    const navigate = useNavigate();
 
     const options = {
         clientSecret: clientSecret,
@@ -77,10 +75,9 @@ export default function PaymentInitializer() {
     return (
         <PaymentInitializerContainer>
             <CheckoutBtnContainer>
-                <div onClick={handleButtonClick}>
-                    <PrimaryBtn label={"GO TO CHECKOUT"} isActive={!clientSecret}/>
+                <div style={{ width: "50%" }} onClick={handleButtonClick}>
+                    <PrimaryBtn label={"LOOKS GOOD!"} isActive={!clientSecret}/>
                 </div>
-                <h3 className='back-btn' onClick={() => navigate("/home")}>BACK</h3>
             </CheckoutBtnContainer> 
             {clientSecret &&
                 <Elements stripe={stripePromise} options={options}>

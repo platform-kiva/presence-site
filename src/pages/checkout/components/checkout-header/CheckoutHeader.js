@@ -5,15 +5,15 @@ import {
     HeaderContainer,
     CartBtnContainer,
     HeaderBtnImgContainer
- } from './CartHeader.styles.js';
+ } from './CheckoutHeader.styles.js';
 
 // assets
-import chevronLeft from '../../../assets/icons/chevron-icon-left.png';
+import chevronLeft from '../../../../assets/icons/chevron-icon-left.png';
 
 // components
-import Banner from '../../../components/banner/Banner.js';
+import Banner from '../../../../components/banner/Banner.js';
 
-export default function CartHeader({ nav }) {
+export default function CheckoutHeader({ nav }) {
     const navigate = useNavigate();
     
     return (
@@ -25,7 +25,7 @@ export default function CartHeader({ nav }) {
                 </HeaderBtnImgContainer>
             </CartBtnContainer>
 
-            <Banner label={'cart'} />
+            <Banner label={'checkout'} />
 
             <CartBtnContainer>
                 <HeaderBtnImgContainer $isVisible={false}>   

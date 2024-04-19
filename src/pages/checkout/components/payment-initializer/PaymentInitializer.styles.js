@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../../../assets/icons/cursor_filled.png';
 
 export const PaymentInitializerContainer = styled.div`
     align-items: center;
@@ -10,14 +9,9 @@ export const PaymentInitializerContainer = styled.div`
 export const CheckoutBtnContainer = styled.div`
     align-items: center;
     display: flex;
-    flex-direction: column;
     gap: 20px;
-    padding: 40px 0px;
-    width: 200px;
-
-    .back-btn {
-        cursor: url(${cursorIconFilled}) 15 15, auto;
-        padding: 5px 10px;
-        text-decoration: underline;
-    }
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 400px;
 `

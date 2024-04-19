@@ -10,6 +10,7 @@ export const GradientControlsContainer = styled.div`
   left: 50%;
   position: absolute;
   transform: translate(-50%);
+  z-index: 500;
 
   @media ${device.laptopL} {
         bottom: 50px;

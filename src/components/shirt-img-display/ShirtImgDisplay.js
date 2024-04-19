@@ -15,7 +15,7 @@ import blankShirtImg from '../../assets/clothing/blank_ALPHA.png';
 import GradientBG from '../gradient-bg/GradientBG';
 import ImgLoader from "../img-loader/ImgLoader";
 
-export default function ShirtImgDisplay({ updateParent=null }) {
+export default function ShirtImgDisplay({ updateParent=null, setGradient=null }) {
     const controlDiv1 = useAnimation();
 
     const [isShirtImgLoaded, setIsShirtImgLoaded] = useState(false);
@@ -34,7 +34,7 @@ export default function ShirtImgDisplay({ updateParent=null }) {
     return (
         <ShirtImgDisplayContainer>
             <GradientBox animate={controlDiv1}>
-                <GradientBG />
+                <GradientBG setGradient={setGradient ? setGradient : null}/>
             </GradientBox>
             <ShirtMockupContainer>
                 <ImgLoader

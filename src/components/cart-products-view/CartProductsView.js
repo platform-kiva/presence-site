@@ -14,12 +14,11 @@ export default function CartProductsView({ items }) {
 
   return (
     <CartProductsViewContainer>
-      <h2>REVIEW YOUR CART</h2>
       <CartItemsContainer>
         {items.map((item) => (
           <ProductHolder key={item.cartID}>
             <ShirtImgContainer>
-              <ShirtImgDisplay product={item} />
+              <ShirtImgDisplay setGradient={item.gradient}/>
             </ShirtImgContainer>
             <CartItemDetails>
               <h3>SIZE: {item.size}</h3>

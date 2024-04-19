@@ -8,7 +8,6 @@ import {
     OrderCompleteContent,
     Message,
     BtnContainer,
-    GradientBG
 } from './OrderComplete.styles.js'
 
 // components
@@ -20,7 +19,7 @@ export default function OrderComplete() {
 
     const handleClick = () => {
         dispatch(clearCart());
-        navigate("/");
+        navigate("/home");
     }
 
     return (
@@ -35,7 +34,6 @@ export default function OrderComplete() {
                     <PrimaryBtn label={"BACK TO SHOP"}/>
                 </BtnContainer>
             </OrderCompleteContent>
-            <GradientBG />
         </OrderCompleteContainer>
     )
 }

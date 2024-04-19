@@ -5,6 +5,7 @@ export const CartProductsViewContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    margin-top: 80px;
     text-align: center;
     width: 100%;
 

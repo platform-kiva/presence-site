@@ -27,22 +27,3 @@ export const BtnContainer = styled.div`
     max-width: 500px;
     width: 90%;
 `
-export const GradientBG = styled.div`
-    background: // add state gradient
-        linear-gradient(45deg,
-            rgba(
-                219,
-                120,
-                212,
-                0.8) 0%,
-            rgba(
-                32,
-                172,
-                232,
-                0.8) 100%)
-    ;
-    height: 100%;
-    position: fixed;
-    width: 100%;
-    z-index: -100;
-`

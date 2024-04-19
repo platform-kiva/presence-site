@@ -77,7 +77,7 @@ export default function Cart() {
     return (
       <CartContainer>
         <CartHeaderContainer>
-            <CartHeader />
+            <CartHeader nav={"/home"} />
         </CartHeaderContainer>
 
         {cartItems.length !== 0 &&
