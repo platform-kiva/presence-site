@@ -31,20 +31,32 @@ export default function Banner({ label }) {
     }, []);
 
     useEffect(() => {
+        let mounted = true; // This flag will track the mounting status
+    
         const startAnimations = async () => {
-            await controlsMiddle.start({ opacity: 1 });
-            await Promise.all([
-                controlsTop.start({ opacity: 1, y: translateY }),
-                controlsBottom.start({ opacity: 1, y: -translateY })
-            ]);
+            if (mounted) {
+                await controlsMiddle.start({ opacity: 1 });
+                await Promise.all([
+                    controlsTop.start({ opacity: 1, y: translateY }),
+                    controlsBottom.start({ opacity: 1, y: -translateY })
+                ]);
+            }
         };
-
+    
+        // Initialize control properties
         controlsTop.set({ opacity: 0, y: 0 });
         controlsMiddle.set({ opacity: 0 });
         controlsBottom.set({ opacity: 0, y: 0 });
-
+    
+        // Start animations
         startAnimations();
+    
+        // Cleanup function to set mounted flag to false when component unmounts
+        return () => {
+            mounted = false;
+        };
     }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
+    
 
     return (
         <BannerContainer>

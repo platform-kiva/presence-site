@@ -41,3 +41,7 @@ export const selectCartTotal = createSelector(
         return itemsCost + shippingAndTaxCost;
     }
 );
+export const selectCartIsOpen = createSelector(
+    [selectCartReducer],
+    (cart) => cart.cartIsOpen
+)

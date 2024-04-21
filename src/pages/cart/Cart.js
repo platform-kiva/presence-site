@@ -99,26 +99,28 @@ export default function Cart() {
               }
             </CartItemDisplayContainer>    
             
-            <CarouselBtnContainer>
-                <div onClick={() => handleIndChange(-1)}>
-                <ElementWrapper>
-                    <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
-                </ElementWrapper>
-                </div>
-                <div onClick={() => handleIndChange(1)}>
-                <ElementWrapper>
-                    <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
-                </ElementWrapper>
-                </div> 
-            </CarouselBtnContainer>
+            {cartItems.length > 1 && 
+              <CarouselBtnContainer>
+                  <div onClick={() => handleIndChange(-1)}>
+                  <ElementWrapper>
+                      <CarouselBtn icon="left" active={cartItems.length === 1 ? false : true} />
+                  </ElementWrapper>
+                  </div>
+                  <div onClick={() => handleIndChange(1)}>
+                  <ElementWrapper>
+                      <CarouselBtn icon="right" active={cartItems.length === 1 ? false : true} />
+                  </ElementWrapper>
+                  </div> 
+              </CarouselBtnContainer>
+            }
 
             <QuantityControl>
                 <CartItemLabelContainer>
                     <DetailsLabel>SIZE: {cartItems[cartInd].size}&ensp;/&ensp;QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
                 </CartItemLabelContainer>
                 <CartItemIncDecContainer>
-                    <IndDecLabel onClick={() => handleRemoveItemFromCart()}>REMOVE</IndDecLabel>
-                    <IndDecLabel onClick={() => handleAddItemFromCart()}>ADD</IndDecLabel>
+                    <IndDecLabel onClick={() => handleRemoveItemFromCart()}>remove -1</IndDecLabel>
+                    <IndDecLabel onClick={() => handleAddItemFromCart()}>add +1</IndDecLabel>
                 </CartItemIncDecContainer>
             </QuantityControl>
             

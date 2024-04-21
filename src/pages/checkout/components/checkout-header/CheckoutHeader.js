@@ -8,7 +8,7 @@ import {
  } from './CheckoutHeader.styles.js';
 
 // assets
-import chevronLeft from '../../../../assets/icons/chevron-icon-left.png';
+import chevronLeft from '../../../../assets/icons/chevron-icon-left2.png';
 
 // components
 import Banner from '../../../../components/banner/Banner.js';

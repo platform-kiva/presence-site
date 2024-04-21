@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { device, size } from "../../media-breakpoints";
+import { device } from "../../media-breakpoints";
 
 export const GradientControlsContainer = styled.div`
     align-items: center;
     bottom: 30px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     left: 50%;
     position: absolute;
     transform: translate(-50%);
@@ -55,7 +55,7 @@ export const RgbSquare = styled.div`
 `
 export const ButtonContainer = styled.div`
     display: flex;
-    gap: 24px;
+    gap: 12px;
     width: ${props => props.$additionalCtrls ? '424px ' : '200px'};
 
     @media (max-width: 450px) {

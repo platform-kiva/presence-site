@@ -34,7 +34,7 @@ export default function ShirtImgDisplay({ updateParent=null, setGradient=null })
     return (
         <ShirtImgDisplayContainer>
             <GradientBox animate={controlDiv1}>
-                <GradientBG setGradient={setGradient ? setGradient : null}/>
+                <GradientBG setGradient={setGradient ? setGradient : null} shirtDisplay={true} />
             </GradientBox>
             <ShirtMockupContainer>
                 <ImgLoader

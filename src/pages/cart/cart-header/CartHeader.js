@@ -1,37 +1,44 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCartIsOpen } from '../../../store/cart/cart.action.js';
 
 // styles
 import { 
-    HeaderContainer,
+    CartHeaderContainer,
     CartBtnContainer,
-    HeaderBtnImgContainer
+    CartHeaderBtnImgContainer
  } from './CartHeader.styles.js';
 
 // assets
-import chevronLeft from '../../../assets/icons/chevron-icon-left.png';
+import chevronLeft from '../../../assets/icons/chevron-icon-left2.png';
 
 // components
 import Banner from '../../../components/banner/Banner.js';
 
 export default function CartHeader({ nav }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        dispatch(setCartIsOpen(true));
+        navigate(nav);
+    }
     
     return (
-        <HeaderContainer>
-
-            <CartBtnContainer onClick={() => navigate(nav)}>
-                <HeaderBtnImgContainer $isVisible={true}>   
-                    <img src={chevronLeft} alt={"trick button"} />
-                </HeaderBtnImgContainer>
+        <CartHeaderContainer>
+            <CartBtnContainer onClick={handleNavigate}>
+                <CartHeaderBtnImgContainer $isVisible={true}>   
+                    <img src={chevronLeft} alt={"back button"} />
+                </CartHeaderBtnImgContainer>
             </CartBtnContainer>
 
             <Banner label={'cart'} />
 
             <CartBtnContainer>
-                <HeaderBtnImgContainer $isVisible={false}>   
+                <CartHeaderBtnImgContainer $isVisible={false}>   
                     <img src={chevronLeft} alt={"trick button"} />
-                </HeaderBtnImgContainer>
+                </CartHeaderBtnImgContainer>
             </CartBtnContainer>
-        </HeaderContainer>
+        </CartHeaderContainer>
     )
 }

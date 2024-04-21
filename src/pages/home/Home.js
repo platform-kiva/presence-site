@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartIsOpen } from '../../store/cart/cart.selector.js';
 import { setAddToCartStatus } from '../../store/gradients/gradient.action.js';
 
 // styles
@@ -13,11 +14,21 @@ import Header from '../../components/header/Header.js';
 import SocialsView from '../../components/socials-view/SocialsView.js';
 import GiftShop from '../gift-shop/GiftShop.js';
 import GradientControlsContainer from '../../components/gradient-controls/GradientControls.js';
+import { setCartIsOpen } from '../../store/cart/cart.action.js';
+
 
 export default function Home() {
+  const cartIsOpen = useSelector(selectCartIsOpen);
   const dispatch = useDispatch();
   const [giftShopViewIsDisplayed, setGiftShopViewIsDisplayed] = useState(false);
   const [socialsViewIsDisplayed, setSocialsViewIsDisplayed] = useState(false);
+
+  useEffect(() => {
+    if (cartIsOpen) {
+      setGiftShopViewIsDisplayed(true);
+      dispatch(setCartIsOpen(false));
+    }
+  }, [dispatch, cartIsOpen])
   
   useEffect(() => {
     if (!giftShopViewIsDisplayed) {

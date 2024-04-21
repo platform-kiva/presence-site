@@ -4,7 +4,7 @@ import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 import { motion } from "framer-motion";
 import { device, size } from "../../../media-breakpoints";
 
-export const HeaderContainer = styled.div`
+export const CartHeaderContainer = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -17,7 +17,7 @@ export const HeaderContainer = styled.div`
         padding-top: 30px;
     }
 `
-export const HeaderBtnImgContainer = styled.div`
+export const CartHeaderBtnImgContainer = styled.div`
     align-items: center;
     cursor: ${props =>
         props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`

@@ -58,7 +58,7 @@ export const HeaderBtnImgContainer = styled.div`
         width: 20px;
     }
 `
-export const CartBtnContainer = styled(motion.div)`
+export const GiftShopBtnContainer = styled(motion.div)`
     align-items: center;
     display: flex;
     height: 20px;
@@ -104,4 +104,12 @@ export const CartBtnImgContainer = styled(motion.div)`
     img {
         width: 28px;
     }
+`
+export const GiftShopNavBtnsContainer = styled.div`
+    position: relative;
+`
+export const CartBtnContainer = styled.div`
+    left: -15px;
+    position: absolute;
+    top: 45px;
 `

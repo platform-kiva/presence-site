@@ -16,6 +16,8 @@ Checklist
 - Re-create Snapchat filter
 - Header icons opacity glitch on Safari
 
+- wishlist
+
 TOPICS COVERED
 - Hooks
 - styled components

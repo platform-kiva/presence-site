@@ -8,20 +8,22 @@ import { setStatus } from '../../store/gradients/gradient.action.js';
 import { 
     SocialsBtnContainer,
     HeaderContainer,
-    CartBtnContainer,
+    GiftShopBtnContainer,
     HeaderBtnImgContainer,
-    CartBtnImgContainer
+    CartBtnImgContainer,
+    GiftShopNavBtnsContainer,
+    CartBtnContainer
  } from './Header.styles.js';
 
 // assets
-import closeIcon from '../../assets/icons/close-icon.svg';
-
 import bagIcon from '../../assets/icons/bag-icon.svg';
+import closeIcon from '../../assets/icons/close-icon.svg';
 import menuIcon from '../../assets/icons/menu-icon.svg';
 import storeIcon from '../../assets/icons/store-icon.svg';
 
 // components
 import Banner from '../banner/Banner';
+import ElementWrapper from '../element-wrapper/ElementWrapper.js';
 
 export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
     const dispatch = useDispatch();
@@ -73,7 +75,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
         <HeaderContainer>
             <SocialsBtnContainer
                 onClick={() => handleSocialsView()}
-                initial={{ x: -25, opacity: 0 }}
+                initial={{ x: -10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
                     delay: 1,
@@ -81,27 +83,15 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                     times: [0, 1]
                 }}
             >
-                {!cartViewStatus ?
-                    <HeaderBtnImgContainer $isVisible={!cartViewStatus}>
-                        <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
-                    </HeaderBtnImgContainer>
-                :
-                    <div onClick={handleNavigate}>
-                        <CartBtnImgContainer $isVisible={cartCount !== 0}
-                            animate={{ scale: isAnimating ? 1.5 : 1 }}
-                            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                        >
-                            <h4>{cartCount}</h4>
-                            <img src={bagIcon} alt={"bag icon"} />
-                        </CartBtnImgContainer> 
-                    </div>
-                }
+                <HeaderBtnImgContainer $isVisible={!cartViewStatus}>
+                    <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
+                </HeaderBtnImgContainer>          
             </SocialsBtnContainer>
 
             <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} />
-            <CartBtnContainer
+            <GiftShopBtnContainer
                 onClick={() => handleGridView()}
-                initial={{ x: 25, opacity: 0 }}
+                initial={{ x: 10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ 
                     delay: 1,
@@ -110,15 +100,39 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                 }}
             >
                 {cartViewIsActive ?
-                    <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
-                        <img src={closeIcon} alt={"close icon"} />
-                    </HeaderBtnImgContainer>
+                    <GiftShopNavBtnsContainer
+                        onClick={() => handleGridView()}
+                        initial={{ x: 10, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ 
+                            delay: 1,
+                            ease: "easeOut",
+                            times: [0, 1]
+                        }}
+                    >
+                        <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
+                            <img src={closeIcon} alt={"close icon"} />
+                        </HeaderBtnImgContainer>
+                        
+                            <CartBtnContainer onClick={handleNavigate}>
+                                <ElementWrapper>
+                                <CartBtnImgContainer $isVisible={cartCount !== 0}
+                                    animate={{ scale: isAnimating ? 1.5 : 1 }}
+                                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                                >
+                                    <h4>{cartCount}</h4>
+                                    <img src={bagIcon} alt={"bag icon"} />
+                                </CartBtnImgContainer> 
+                                </ElementWrapper>
+                            </CartBtnContainer>
+                        
+                    </GiftShopNavBtnsContainer>
                     :
                     <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
                         <img src={storeIcon} alt={"store icon"} />
                     </HeaderBtnImgContainer>
                 }
-            </CartBtnContainer>
+            </GiftShopBtnContainer>
         </HeaderContainer>
     )
 }

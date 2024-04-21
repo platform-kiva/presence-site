@@ -31,14 +31,17 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 
 export const addItemToCart = (cartItems, productToAdd, size) => {
     const newCartItems = addCartItem(cartItems, productToAdd, size);
-    return ({type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems});
+    return ({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems });
 }
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove);
-    return ({type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems});
+    return ({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems });
 }
 
 export const clearCart = () => {
-    return ({type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: []});
+    return ({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: [] });
+}
+export const setCartIsOpen = (status) => {
+    return ({ type: CART_ACTION_TYPES.SET_CART_IS_OPEN, payload: status })
 }

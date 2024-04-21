@@ -79,6 +79,7 @@ export const CartItemIncDecContainer = styled.div`
 `
 export const IndDecLabel = styled.h4`
     cursor: url(${cursorIconFilled}) 15 15, auto;
+    font-weight: 300;
     margin-top: 10px;
     text-decoration: underline;
     -webkit-touch-callout: none; /* iOS Safari */
