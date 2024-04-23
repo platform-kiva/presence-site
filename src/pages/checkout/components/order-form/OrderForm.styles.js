@@ -6,7 +6,7 @@ export const OrderFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 50px;
-    margin-bottom: 50px 0px;
+    margin-bottom: 50px;
     max-width: 800px;
     padding-top: 50px;
     width: 90%;
