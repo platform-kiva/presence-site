@@ -68,7 +68,7 @@ export default function PaymentInitializer() {
             const clientSecretTemp = `${response.paymentIntent.client_secret}`;
             setClientSecret(clientSecretTemp)
         } catch (error) {
-            alert('Stripe is currently disabled while in test mode');
+            alert(error);
         }
     };
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectGradientA, selectGradientB, selectAddToCartStatus, selectCurrGradient } from '../../store/gradients/gradient.selector.js';
+import { getGradientPurchaseData } from '../../utils/firebase/firebase.utils.js';
 
 // styles
 import {
@@ -22,9 +23,21 @@ export default function GiftShop() {
   const gradientB = useSelector(selectGradientB);
   const currGradient = useSelector(selectCurrGradient);
   const addToCartStatus = useSelector(selectAddToCartStatus);
-  const [customProduct, setCustomProduct] = useState(null)
+  const [customProduct, setCustomProduct] = useState(null);
+  const [purchasedCount, setPurchasedCount] = useState(null);
 
-
+  useEffect(() => {
+    if (addToCartStatus) {
+      return;
+    } else {
+      async function fetchPurchaseCount() {
+        const count = await getGradientPurchaseData(currGradient);
+        setPurchasedCount(count);
+      }
+      fetchPurchaseCount();
+    }
+  }, [addToCartStatus, currGradient]);
+  
   useEffect(() => {
     if (!gradientA || !gradientB) {
       return;
@@ -55,18 +68,18 @@ export default function GiftShop() {
                   </PriceAction>
                 </>
                 <div>
-                <ElementWrapper delay={0.4}>
-                  <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination has been purchased 0 times.</h3>
-                </ElementWrapper>
+                  {purchasedCount !== null &&
+                    <ElementWrapper delay={0.4}>
+                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination has been purchased {purchasedCount} times.</h3>
+                    </ElementWrapper>
+                  }
                 </div>
               </PriceActionCustomContainer>
-              
             </ElementWrapper>
           }
         </ProductBox>
       </EmptyCartContent>
       <GradientControls additionalCtrls={true} />
-
     </CartContainer>
   )
 }

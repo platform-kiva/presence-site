@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useElements, useStripe, PaymentElement, AddressElement } from "@stripe/react-stripe-js";
-import { clearCart } from '../../../../store/cart/cart.action'
-import { useDispatch } from "react-redux";
 
 // assets
 import stripeLogo from '../../../../assets/png/stripe-logo.png';
@@ -21,12 +19,7 @@ import {
 export default function OrderForm({ clientSecret }) {
     const stripe = useStripe();
     const elements = useElements();
-    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
-
-    const clearCartItems = () => {
-      dispatch(clearCart());
-    }
 
     const paymentHandler = async (e) => {
         e.preventDefault();
@@ -56,10 +49,8 @@ export default function OrderForm({ clientSecret }) {
   
         stripe.confirmCardPayment(clientSecret).then(result => {
           if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-            clearCartItems()
-            // handle order completion or other tasks here
           } else {
-            alert(paymentResult.error)
+            alert("ERROR: " + paymentResult.error);
           }
         });
       }
@@ -93,4 +84,4 @@ export default function OrderForm({ clientSecret }) {
         </FormContainer>
       </OrderFormContainer>
     )
-}
+};

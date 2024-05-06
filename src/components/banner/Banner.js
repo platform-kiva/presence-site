@@ -11,13 +11,13 @@ export default function Banner({ label }) {
     function getTranslateY() {
         const width = window.innerWidth;
         if (width < 376) {
-            return -8; // Smaller translation for smaller screens
+            return -8;
         } else if (width <= 431) {
-            return -9.5; // Medium translation
+            return -9.5;
         } else if (width <= 769) {
-            return -10.5; // Medium translation
+            return -10.5;
         } else {
-            return -13; // Larger translation for larger screens
+            return -13;
         }
     }
 
@@ -31,7 +31,7 @@ export default function Banner({ label }) {
     }, []);
 
     useEffect(() => {
-        let mounted = true; // This flag will track the mounting status
+        let mounted = true;
     
         const startAnimations = async () => {
             if (mounted) {
@@ -43,21 +43,17 @@ export default function Banner({ label }) {
             }
         };
     
-        // Initialize control properties
         controlsTop.set({ opacity: 0, y: 0 });
         controlsMiddle.set({ opacity: 0 });
         controlsBottom.set({ opacity: 0, y: 0 });
     
-        // Start animations
         startAnimations();
     
-        // Cleanup function to set mounted flag to false when component unmounts
         return () => {
             mounted = false;
         };
     }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
     
-
     return (
         <BannerContainer>
             <LogoTopText
