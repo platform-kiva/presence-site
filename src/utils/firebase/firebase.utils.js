@@ -46,7 +46,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
         }
     }
 
-    alert("Done: Collection & Documents have been added or updated");
+    // alert("Done: Collection & Documents have been added or updated");
     // const collectionRef = collection(db, collectionKey);
     // const batch = writeBatch(db);
 
@@ -78,7 +78,7 @@ export const getGradientPurchaseData = async (currGradient) => {
             if (count !== undefined) {
                 return count;
             } else {
-                alert("The document does not contain a 'count' field.");
+                // alert("The document does not contain a 'count' field.");
                 return 0;
             }
         } else {
@@ -86,7 +86,7 @@ export const getGradientPurchaseData = async (currGradient) => {
         }
     } catch (error) {
         console.error("Error fetching document:", error);
-        alert("Failed to fetch the document.");
+        // alert("Failed to fetch the document.");
         return null;
     }
 }

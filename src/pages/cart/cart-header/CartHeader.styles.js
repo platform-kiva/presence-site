@@ -2,7 +2,7 @@ import styled from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png';
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
 import { motion } from "framer-motion";
-import { device, size } from "../../../media-breakpoints";
+import { device, size } from "../../../media-breakpoints.js";
 
 export const CartHeaderContainer = styled.div`
     align-items: center;

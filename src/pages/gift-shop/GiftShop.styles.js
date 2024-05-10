@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { size } from "../../media-breakpoints";
+import { size } from "../../media-breakpoints.js";
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 export const CartContainer = styled.div`

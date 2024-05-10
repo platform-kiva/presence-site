@@ -1,4 +1,4 @@
-import { CART_ACTION_TYPES } from "./cart.types";
+import { CART_ACTION_TYPES } from "./cart.types.js";
 
 const addCartItem = (cartItems, productToAdd, size) => {
     const cartID = productToAdd.id + " " + size

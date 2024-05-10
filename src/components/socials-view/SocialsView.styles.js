@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from '../../media-breakpoints';
+import { device } from '../../media-breakpoints.js';
 import { Link } from 'react-router-dom';
 import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 

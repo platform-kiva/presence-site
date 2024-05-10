@@ -12,7 +12,7 @@ import {
 } from './PreLoader.styles.js';
 
 // components
-import Banner from '../../components/banner/Banner';
+import Banner from '../../components/banner/Banner.js';
 import LoadingIcon from '../../components/loading-icon/LoadingIcon.js';
 
 export default function PreLoader() {
@@ -34,10 +34,10 @@ export default function PreLoader() {
         if (!isLoading) {
             timer1 = setTimeout(() => {
                 setLoadingIsDisplayed(false);
-            }, 500);
+            }, 1200);
             timer2 = setTimeout(() => {
                 setAnimateOut(true);
-            }, 2000);
+            }, 3200);
         };
         return () => {
             clearTimeout(timer1);
@@ -49,7 +49,7 @@ export default function PreLoader() {
         let timer;
         if (animateOut) {
             timer = setTimeout(() => {
-                navigate('/home');
+                navigate('home');
             }, 1000);
         };
         return () => {

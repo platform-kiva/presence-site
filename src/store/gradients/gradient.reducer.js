@@ -1,4 +1,4 @@
-import { GRADIENTS_ACTION_TYPES } from "./gradient.types";
+import { GRADIENTS_ACTION_TYPES } from "./gradient.types.js";
 
 export const GRADIENTS_INITIAL_STATE = {
     status: null,

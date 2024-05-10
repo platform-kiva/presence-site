@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { device } from "../../media-breakpoints"
+import { device } from "../../media-breakpoints.js"
 
 export const ActionContainer = styled.div`
     display: flex;

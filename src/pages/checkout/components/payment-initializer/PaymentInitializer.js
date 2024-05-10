@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Elements } from '@stripe/react-stripe-js';
-import { stripePromise } from '../../../../utils/stripe/stripe.utils';
+import { stripePromise } from '../../../../utils/stripe/stripe.utils.js';
 import { useSelector } from 'react-redux';
-import { selectCartTotal, selectCartItems } from '../../../../store/cart/cart.selector';
+import { selectCartTotal, selectCartItems } from '../../../../store/cart/cart.selector.js';
 
 // styles
 import { PaymentInitializerContainer, CheckoutBtnContainer } from './PaymentInitializer.styles.js';
 
 // components
-import OrderForm from '../order-form/OrderForm';
-import PrimaryBtn from '../../../../components/btns/primary-btn/PrimaryBtn';
+import OrderForm from '../order-form/OrderForm.js';
+import PrimaryBtn from '../../../../components/btns/primary-btn/PrimaryBtn.js';
 
 export default function PaymentInitializer() {
     const [clientSecret, setClientSecret] = useState(null);
@@ -19,6 +19,33 @@ export default function PaymentInitializer() {
 
     const options = {
         clientSecret: clientSecret,
+    };
+
+    const fetchClientSecret = async () => {
+        if (clientSecret) {
+            return;
+        }
+        const cartDetails = cartItems.map(item => `${item.cartID}:${item.quantity}`).join(' --- ');
+        try {
+            const response = await fetch('https://us-central1-presence-9cced.cloudfunctions.net/createPaymentIntent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: cartTotal,
+                    description: cartDetails
+                })
+            }).then((res) => res.json())
+
+            const clientSecretTemp = `${response.clientSecret}`;   
+
+            setClientSecret(clientSecretTemp)
+
+        } catch (error) {
+            // alert("ERR: " + error);
+            return;
+        }
     };
 
     const handleScroll = () => {
@@ -39,38 +66,17 @@ export default function PaymentInitializer() {
       };
 
     useEffect(() => {
-    if (showOrderForm) {
-        setTimeout(() => {
-            const element = document.getElementById("orderFormID");
-            if (element) {
-              element.scrollIntoView({ behavior: "smooth" });
-            }
-          }, 1000);
-    }
+        if (showOrderForm) {
+            setTimeout(() => {
+                const element = document.getElementById("orderFormID");
+                if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 1000);
+        }
     }, [showOrderForm]);
 
-    const fetchClientSecret = async () => {
-        if (clientSecret) {
-            return;
-        }
-        const cartDetails = cartItems.map(item => `${item.cartID}:${item.quantity}`).join(' --- ');
-        try {
-            const response = await fetch('/.netlify/functions/create-payment-intent', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: cartTotal,
-                    description: cartDetails
-                })
-            }).then((res) => res.json())
-            const clientSecretTemp = `${response.paymentIntent.client_secret}`;
-            setClientSecret(clientSecretTemp)
-        } catch (error) {
-            alert(error);
-        }
-    };
+
 
     return (
         <PaymentInitializerContainer>

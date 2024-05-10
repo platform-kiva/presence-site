@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { selectCartItems, selectCartQuantity, selectCartTotal } from '../../store/cart/cart.selector';
-import { selectCartSubtotal } from '../../store/cart/cart.selector'
+import { useSelector } from 'react-redux/es/hooks/useSelector.js';
+import { selectCartItems, selectCartQuantity, selectCartTotal } from '../../store/cart/cart.selector.js';
+import { selectCartSubtotal } from '../../store/cart/cart.selector.js'
 
 // styles
 import {

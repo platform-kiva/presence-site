@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectGradientA, selectGradientB, selectDisplayedGradient, selectStatus, selectAddToCartStatus } from '../../store/gradients/gradient.selector';
-import { setStatus, setAddToCartStatus } from '../../store/gradients/gradient.action';
+import { selectGradientA, selectGradientB, selectDisplayedGradient, selectStatus, selectAddToCartStatus } from '../../store/gradients/gradient.selector.js';
+import { setStatus, setAddToCartStatus } from '../../store/gradients/gradient.action.js';
 import { useEffect } from 'react';
 
 import {
@@ -11,11 +11,11 @@ import {
     RgbDisplay,
     RgbSquare,
     ButtonContainer
-} from './GradientControls.styles';
+} from './GradientControls.styles.js';
 
 // components
-import ElementWrapper from '../element-wrapper/ElementWrapper';
-import PrimaryBtn from '../btns/primary-btn/PrimaryBtn';
+import ElementWrapper from '../element-wrapper/ElementWrapper.js';
+import PrimaryBtn from '../btns/primary-btn/PrimaryBtn.js';
 
 export default function GradientControls({ additionalCtrls = false, readOnly=false }) {
     const dispatch = useDispatch();
@@ -99,7 +99,7 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
                 :
                 <ButtonContainer>
                     <ElementWrapper>
-                        <div onClick={() => navigate("/checkout")}>
+                        <div onClick={() => navigate("../checkout")}>
                             <PrimaryBtn label={"GO TO CHECKOUT"} />
                         </div>
                     </ElementWrapper>

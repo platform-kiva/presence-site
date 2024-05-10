@@ -13,7 +13,7 @@ import {
 import Header from '../../components/header/Header.js';
 import SocialsView from '../../components/socials-view/SocialsView.js';
 import GiftShop from '../gift-shop/GiftShop.js';
-import GradientControlsContainer from '../../components/gradient-controls/GradientControls.js';
+import GradientControls from '../../components/gradient-controls/GradientControls.js';
 import { setCartIsOpen } from '../../store/cart/cart.action.js';
 
 
@@ -53,7 +53,7 @@ export default function Home() {
           <GiftShop />
       }
       {!giftShopViewIsDisplayed && !socialsViewIsDisplayed &&
-        <GradientControlsContainer />
+        <GradientControls />
       }
     </HomeContainer>
   )

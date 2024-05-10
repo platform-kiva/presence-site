@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useFadeInUpAnimation } from '../../hooks/fadeUpAndIn';
+import { useFadeInUpAnimation } from '../../hooks/fadeUpAndIn.js';
 
 export default function ElementWrapper({ children, delay=0.2 }) {
     const motionPropsWithDelay = useFadeInUpAnimation(delay);

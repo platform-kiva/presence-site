@@ -22,7 +22,7 @@ import menuIcon from '../../assets/icons/menu-icon.svg';
 import storeIcon from '../../assets/icons/store-icon.svg';
 
 // components
-import Banner from '../banner/Banner';
+import Banner from '../banner/Banner.js';
 import ElementWrapper from '../element-wrapper/ElementWrapper.js';
 
 export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
@@ -35,7 +35,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     const handleNavigate = () => {
         dispatch(setStatus(true));
         if (cartCount !== 0) {
-            navigate('/cart');
+            navigate('../cart');
         }
     }
 

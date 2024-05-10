@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action';
-import { setGradient } from "../../store/gradients/gradient.action";
-import { selectDisplayedGradient } from "../../store/gradients/gradient.selector";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { addItemToCart, removeItemFromCart } from '../../store/cart/cart.action.js';
+import { setGradient } from "../../store/gradients/gradient.action.js";
+import { selectDisplayedGradient } from "../../store/gradients/gradient.selector.js";
+import { selectCartItems } from "../../store/cart/cart.selector.js";
 
 
 // styles
@@ -18,14 +18,14 @@ import {
     CartItemIncDecContainer,
     IndDecLabel,
     EmptyCartMessageContainer
-} from "./Cart.styles";
+} from "./Cart.styles.js";
 
 // components
-import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn';
-import CartHeader from "./cart-header/CartHeader";
-import ElementWrapper from "../../components/element-wrapper/ElementWrapper";
-import ShirtDisplay from "../../components/shirt-display/ShirtDisplay";
-import GradientControls from "../../components/gradient-controls/GradientControls";
+import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn.js';
+import CartHeader from "./cart-header/CartHeader.js";
+import ElementWrapper from "../../components/element-wrapper/ElementWrapper.js";
+import ShirtDisplay from "../../components/shirt-display/ShirtDisplay.js";
+import GradientControls from "../../components/gradient-controls/GradientControls.js";
 
 
 export default function Cart() {
@@ -38,7 +38,6 @@ export default function Cart() {
         if (cartItems.length === 0) {
             return;
         }
-        console.log(cartItems[cartInd].gradient);
         dispatch(setGradient('A', cartItems[cartInd].gradient));
         dispatch(setGradient('B', cartItems[cartInd].gradient));
     }, [dispatch, cartInd, cartItems, displayedGradient])

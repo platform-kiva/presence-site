@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import cursorIcon from '../../../assets/icons/cursor.png'
 import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
-import { size } from "../../../media-breakpoints";
+import { size } from "../../../media-breakpoints.js";
 
 export const CarouselBtnContainer = styled.div`
     align-items: center;

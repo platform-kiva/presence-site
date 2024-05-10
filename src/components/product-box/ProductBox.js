@@ -1,4 +1,4 @@
-import { ProductBoxContainer } from "./ProductBox.styles";
+import { ProductBoxContainer } from "./ProductBox.styles.js";
 
 export default function ProductBox({ children }) {
   return (

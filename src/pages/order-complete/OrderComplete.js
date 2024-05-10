@@ -29,7 +29,7 @@ export default function OrderComplete() {
 
         addCollectionAndDocuments('purchased', gradientData)
         dispatch(clearCart());
-        navigate("/home");
+        navigate("../home");
     }
 
     return (

@@ -1,4 +1,4 @@
-import { CART_ACTION_TYPES } from "./cart.types";
+import { CART_ACTION_TYPES } from "./cart.types.js";
 
 export const CART_INITIAL_STATE = {
     cartItems: [],

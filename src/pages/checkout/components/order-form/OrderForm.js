@@ -14,7 +14,7 @@ import {
   EmailLabel,
   StripeHeader,
   CheckoutBtn
-} from "./OrderForm.styles";
+} from "./OrderForm.styles.js";
 
 export default function OrderForm({ clientSecret }) {
     const stripe = useStripe();
@@ -30,6 +30,7 @@ export default function OrderForm({ clientSecret }) {
 
         const {error: submitError} = await elements.submit();
         if (submitError) {
+          console.log("submitError: ", submitError);
           alert(submitError);
           return;
         }
@@ -38,7 +39,7 @@ export default function OrderForm({ clientSecret }) {
           elements,
           clientSecret,
           confirmParams: {
-            return_url: 'http://localhost:8888/complete',
+            return_url: 'https://presencedesign.online/complete',
             payment_method_data: {
                 billing_details: {
                     email: email,
@@ -50,7 +51,7 @@ export default function OrderForm({ clientSecret }) {
         stripe.confirmCardPayment(clientSecret).then(result => {
           if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
           } else {
-            alert("ERROR: " + paymentResult.error);
+            console.log("ERROR: " + paymentResult.error);
           }
         });
       }

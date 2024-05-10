@@ -1,5 +1,5 @@
-import { GRADIENTS_ACTION_TYPES } from "./gradient.types";
-import { generateRgbString } from "../../utils/general/general.utils";
+import { GRADIENTS_ACTION_TYPES } from "./gradient.types.js";
+import { generateRgbString } from "../../utils/general/general.utils.js";
 
 export const setStatus = (status) => {
     return ({ type: GRADIENTS_ACTION_TYPES.SET_STATUS, payload: !status });
@@ -22,6 +22,7 @@ export const setGradient = (gradientType, presetGradient=null) => {
     } else if (gradientType === "B") {
         return ({type: GRADIENTS_ACTION_TYPES.SET_GRADIENT_B, payload: presetGradient ? presetGradient : newGradient });
     } else {
-        alert('error setting gradient');
+        // alert('error setting gradient');
+        return;
     }
 }

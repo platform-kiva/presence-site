@@ -6,14 +6,14 @@ import {
     ShirtImgDisplayContainer,
     GradientBox,
     ShirtMockupContainer
-} from './ShirtImgDisplay.styles';
+} from './ShirtImgDisplay.styles.js';
 
 // assets
 import blankShirtImg from '../../assets/clothing/blank_ALPHA.png';
 
 // components
-import GradientBG from '../gradient-bg/GradientBG';
-import ImgLoader from "../img-loader/ImgLoader";
+import GradientBG from '../gradient-bg/GradientBG.js';
+import ImgLoader from "../img-loader/ImgLoader.js";
 
 export default function ShirtImgDisplay({ updateParent=null, setGradient=null }) {
     const controlDiv1 = useAnimation();

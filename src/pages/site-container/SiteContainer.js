@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Outlet } from "react-router-dom";
-import { setDisplayedGradient, setGradient } from "../../store/gradients/gradient.action";
-import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus } from "../../store/gradients/gradient.selector";
+import { setDisplayedGradient, setGradient } from "../../store/gradients/gradient.action.js";
+import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus } from "../../store/gradients/gradient.selector.js";
 
 // styles
 import {
     OutletContainer,
     MainGradientBGContainer
-} from "./SiteContainer.styles";
+} from "./SiteContainer.styles.js";
 
 // components
-import GradientBG from '../../components/gradient-bg/GradientBG';
+import GradientBG from '../../components/gradient-bg/GradientBG.js';
 
 export default function SiteContainer() {
     const dispatch = useDispatch();

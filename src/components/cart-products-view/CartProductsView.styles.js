@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { size } from "../../media-breakpoints";
+import { size } from "../../media-breakpoints.js";
 
 export const CartProductsViewContainer = styled.div`
     align-items: center;

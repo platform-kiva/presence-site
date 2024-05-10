@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { selectDisplayedGradient, selectGradientA } from "../../store/gradients/gradient.selector";
-import { selectGradientB } from "../../store/gradients/gradient.selector";
+import { selectDisplayedGradient, selectGradientA } from "../../store/gradients/gradient.selector.js";
+import { selectGradientB } from "../../store/gradients/gradient.selector.js";
 import { motion } from 'framer-motion'; 
 
 // styles
 import {
     GradientBGContainer,
     DynamicGradientDiv
-} from "./GradientBG.styles";
+} from "./GradientBG.styles.js";
 
 export default function GradientBG({ setGradient = null, shirtDisplay = false }) {
     const displayedGradient = useSelector(selectDisplayedGradient);

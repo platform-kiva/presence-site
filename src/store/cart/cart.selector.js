@@ -37,7 +37,6 @@ export const selectCartTotal = createSelector(
         );
         const totalItems = cart.cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
         const shippingAndTaxCost = 4.89 + ((totalItems - 1) * 2.20);
-        console.log(itemsCost + shippingAndTaxCost);
         return itemsCost + shippingAndTaxCost;
     }
 );

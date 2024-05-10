@@ -6,12 +6,13 @@ import { AppContainer } from './App.styles.js';
 
 // pages
 import Cart from './pages/cart/Cart.js';
-import Checkout from './pages/checkout/Checkout';
-import Home from './pages/home/Home';
-import PaymentInitializer from './pages/checkout/components/payment-initializer/PaymentInitializer';
-import PreLoader from "./pages/pre-loader/PreLoader";
-import OrderComplete from './pages/order-complete/OrderComplete';
+import Checkout from './pages/checkout/Checkout.js';
+import Home from './pages/home/Home.js';
+import PaymentInitializer from './pages/checkout/components/payment-initializer/PaymentInitializer.js';
+import PreLoader from "./pages/pre-loader/PreLoader.js";
+import OrderComplete from './pages/order-complete/OrderComplete.js';
 import SiteContainer from './pages/site-container/SiteContainer.js';
+import LandingPage from './pages/landing-page/LandingPage.js';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -29,13 +30,19 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="" element={<SiteContainer />}>  
-            <Route path="" element={<PreLoader />} />
-            <Route path="/home" element={<Home />} /> 
+          {/* Set LandingPage as the default route at the root */}
+          <Route path="/" element={<LandingPage />} />
+
+          {/* Set SiteContainer to be accessed at /281-474-976-710-656 */}
+          <Route path="/281-474-976-710-656" element={<SiteContainer />}>
+            {/* Nested routes under /281-474-976-710-656 */}
+            <Route index element={<PreLoader />} />  {/* Use index for the default sub-route */}
+            <Route path="home" element={<Home />} />
             <Route path="cart" element={<Cart />} />
-            <Route path="/complete" element={<OrderComplete />} />
-            <Route path="/checkout" element={<Checkout />}>
-                <Route path="" element={<PaymentInitializer />} />
+            <Route path="complete" element={<OrderComplete />} />
+            <Route path="checkout" element={<Checkout />}>
+              {/* Nested route under /checkout */}
+              <Route index element={<PaymentInitializer />} />
             </Route>
           </Route>
         </Routes>

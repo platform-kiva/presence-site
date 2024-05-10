@@ -1,4 +1,9 @@
 Checklist
+- gradient speed?
+- terms & conditions
+- about page,
+    - need an external landing pag with the about. include artist statment for project but not within the experience
+- product information
 - Add functionality for feature that displays how many X products have been bought of a gradient
     - After successful transaction, upload gradient ID to database as map key
         if (gradientID exist in database) {
@@ -12,9 +17,22 @@ Checklist
         - ONLY ON RESULT, render in purchased amount H3 tag
 - Scroll to top after every page load
 - Allow size change in Cart
+    - check Figma: + & - buttons below both size and quantity labels
+        - S -> M -> L -> XL -> XXL  
 - More microinteractions
 - Re-create Snapchat filter
 - Header icons opacity glitch on Safari
+- "PURCHASED ON" badge when on purchasedGradient
+- custom emails
+- word of mouth experiences
+- microinteractions
+- 3D
+- gradient speed meter
+- create a control panel, like a 3D remote, is responsive to mouse movements
+- GradientControls should intially be located dead center of page. put a flag variable in storage that tracks if the user has clicked "start" for the first time.
+    - cache should cause GradientControls to render at the bottom of the screen moving forwrards
+- only one of each color can be purchased
+- re-create Snapchat filter, make more dynamic
 
 - wishlist
 
