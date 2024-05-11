@@ -32,7 +32,8 @@ Checklist
 - GradientControls should intially be located dead center of page. put a flag variable in storage that tracks if the user has clicked "start" for the first time.
     - cache should cause GradientControls to render at the bottom of the screen moving forwrards
 - only one of each color can be purchased
-- re-create Snapchat filter, make more dynamic
+- re-create Snapchat filter, make more dynamic (wearable)
+- when presence banner is clicked, return to home screen
 
 - wishlist
 

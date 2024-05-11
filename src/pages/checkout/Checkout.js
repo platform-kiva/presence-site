@@ -33,7 +33,7 @@ export default function Checkout() {
   return (
     <CheckoutContainer>
       <CheckoutHeaderContainer>
-        <CheckoutHeader nav={"/cart"}/>
+        <CheckoutHeader nav={"../cart"}/>
       </CheckoutHeaderContainer>
       <CartOverviewContainer>
         <CartProductsView items={cartItems} />

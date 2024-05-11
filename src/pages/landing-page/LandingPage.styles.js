@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
 
 // APP LOGOS
 export const App1LogoContainer = styled.div`
@@ -12,7 +11,6 @@ export const App1LogoContainer = styled.div`
 
     border: 4px solid rgba(255,255,255,0.5);
     box-sizing: border-box;
-    cursor: ${props => props.$isActive ? `url(${cursorIconFilled}) 15 15, auto` : ""};
     display: flex;
     height: 100%;
     justify-content: center;
@@ -118,19 +116,32 @@ export const NavContainer = styled.div`
     }
 `
 export const SystemModeContainer = styled.div`
+    align-items: center;
     background: #FFFFFF;
     border: 2px solid #1e1e1e;
     border-radius: 32px;
     display: flex;
     height: 32px;
+    justify-content: space-evenly;
     width: 100px;
 
     img {
         height: 16px;
     }
 
-`
+    .active {
+        img {
+            filter: invert(100%);
+        }
+    }
+    #moon {
+        filter: ${props => props.$mode === "dark" ? "100%" : ""}
+    }
+    #sun {
+        filter: ${props => props.$mode === "light" ? "100%" : ""}
 
+    }
+`
 export const AppsContainer = styled.div`
     display: flex;
     height: fit-content;

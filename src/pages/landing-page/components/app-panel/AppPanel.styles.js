@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import cursorIconFilled from '../../../../assets/icons/cursor_filled.png';
 
 export const AppPanelContainer = styled.div`
     align-items: center;
     background: ${props => props.$singleLine ? "#FBFBFB" : ""};
     border: ${props => props.$singleLine ? "4px solid #E4E4E4" : ""};
     box-sizing: border-box;
+    cursor: url(${cursorIconFilled}) 15 15, auto;
     display: flex;
     height: 350px;
     justify-content: center;
@@ -36,7 +38,7 @@ export const ReleaseDate = styled.h4`
 `
 export const Moon = styled.div`
     border: 2px solid #FFFFFF;
-    height: 12px;
-    width: 12px;
+    height: 8px;
+    width: 8px;
     border-radius: 12px;
 `
