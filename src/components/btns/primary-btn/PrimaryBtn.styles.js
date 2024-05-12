@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import cursorIcon from '../../../assets/icons/cursor.png';
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png';
+import cursorLight from '../../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../../assets/icons/cursors/cursor-filled-light.png';
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
@@ -8,7 +8,7 @@ export const PrimaryBtnContainer = styled.button`
     border: 2px solid #FFFFFF;
     border-radius: 50px;
     cursor: ${props => 
-        props.$isActive && !props.$wasActivated ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+        props.$isActive && !props.$wasActivated ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`
     };
     display: flex;
     height: 50px;

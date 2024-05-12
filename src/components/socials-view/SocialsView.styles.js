@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from '../../media-breakpoints.js';
 import { Link } from 'react-router-dom';
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const SocialsViewContainer = styled.div`
     align-items: center;
@@ -18,10 +18,10 @@ export const SocialsViewContainer = styled.div`
     }
 `
 export const SocialLink = styled(Link)`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
 `
 export const SocialIconImgContainer = styled.div`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
     height: 60px;
     transition: 0.5s ease-in-out;
     width: 60px;

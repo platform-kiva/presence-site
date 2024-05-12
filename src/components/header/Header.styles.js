@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import cursorIcon from '../../assets/icons/cursor.png';
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorLight from '../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 import { motion } from "framer-motion";
 import { device, size } from "../../media-breakpoints.js";
 
@@ -45,7 +45,7 @@ export const SocialsBtnContainer = styled(motion.div)`
 export const HeaderBtnImgContainer = styled.div`
     align-items: center;
     cursor: ${props =>
-        props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+        props.$isVisible ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`
     };
     display: flex;
     height: 20px;
@@ -87,7 +87,7 @@ export const GiftShopBtnContainer = styled(motion.div)`
 `
 export const CartBtnImgContainer = styled(motion.div)`
     align-items: center;
-    cursor: ${props => props.$isVisible ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`};
+    cursor: ${props => props.$isVisible ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`};
     display: flex;
     width: 50px;
     justify-content: center;

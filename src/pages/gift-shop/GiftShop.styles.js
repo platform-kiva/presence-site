@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { size } from "../../media-breakpoints.js";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const CartContainer = styled.div`
     align-items: center;
@@ -45,7 +45,7 @@ export const PriceActionCustomContainer = styled.div`
     }
 
     .back-btn {
-        cursor: url(${cursorIconFilled}) 15 15, auto;
+        cursor: url(${cursorLightFilled}) 15 15, auto;
         margin-top: 20px;
         text-decoration: underline;
     }

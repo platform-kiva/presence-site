@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const OrderCompleteContainer = styled.div`
     align-items: center;
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
     display: flex;
     height: 100vh;
     justify-content: center;

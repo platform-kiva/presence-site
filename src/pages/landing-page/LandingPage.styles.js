@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import cursorDark from '../../assets/icons/cursors/cursor-dark.png';
+import cursorLight from '../../assets/icons/cursors/cursor-light.png';
 
 // APP LOGOS
 export const App1LogoContainer = styled.div`
@@ -77,72 +79,16 @@ export const App1LogoContainer = styled.div`
         }
     }
 `
-
 export const LandingPageContainer = styled.div`
+    background: ${props => props.$mode === "light" ? '#FFFFFF' : '#1E1E1E'};
+    cursor: url(${props => props.$mode === "light" ? cursorDark : cursorLight}) 15 15, auto;
     height: 100vh;
     position: relative;
     width: 100vw;
-`
-export const HeaderContainer = styled.div`
-    align-items: center;
-    display: flex;
-    height: 144px;
-    justify-content: space-between;
-    padding: 0px 50px;
-`
-export const LogoContainer = styled.div`
-    height: 56px;
-    width: fit-content;
-
-    h1 {
-        color: #1e1e1e;
-    }
-
-    img {
-        height: 100%;
-    }
-`
-export const NavContainer = styled.div`
-    align-items: center;
-    display: flex;
-    gap: 30px;
-
-    h3 {
-        color: #1e1e1e;
-    }
-
-    img {
-        height: 24px;
-    }
-`
-export const SystemModeContainer = styled.div`
-    align-items: center;
-    background: #FFFFFF;
-    border: 2px solid #1e1e1e;
-    border-radius: 32px;
-    display: flex;
-    height: 32px;
-    justify-content: space-evenly;
-    width: 100px;
-
-    img {
-        height: 16px;
-    }
-
-    .active {
-        img {
-            filter: invert(100%);
-        }
-    }
-    #moon {
-        filter: ${props => props.$mode === "dark" ? "100%" : ""}
-    }
-    #sun {
-        filter: ${props => props.$mode === "light" ? "100%" : ""}
-
-    }
 `
 export const AppsContainer = styled.div`
     display: flex;
     height: fit-content;
 `
+
+

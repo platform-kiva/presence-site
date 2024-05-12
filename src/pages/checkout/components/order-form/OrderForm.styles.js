@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../../../assets/icons/cursor_filled.png';
+import cursorLightFilled from '../../../../assets/icons/cursors/cursor-filled-light.png';
 
 export const OrderFormContainer = styled.div`
     align-items: center;
@@ -74,7 +74,7 @@ export const CheckoutBtn = styled.button`
     border: 2px solid #B4B4B4;
     border-radius: 5px;
     color: #454545;
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 600;
     font-size: 14px;

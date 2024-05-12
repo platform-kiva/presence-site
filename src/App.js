@@ -30,18 +30,13 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          {/* Set LandingPage as the default route at the root */}
           <Route path="/" element={<LandingPage />} />
-
-          {/* Set SiteContainer to be accessed at /281-474-976-710-656 */}
           <Route path="/281-474-976-710-656" element={<SiteContainer />}>
-            {/* Nested routes under /281-474-976-710-656 */}
-            <Route index element={<PreLoader />} />  {/* Use index for the default sub-route */}
+            <Route index element={<PreLoader />} />
             <Route path="home" element={<Home />} />
             <Route path="cart" element={<Cart />} />
             <Route path="complete" element={<OrderComplete />} />
             <Route path="checkout" element={<Checkout />}>
-              {/* Nested route under /checkout */}
               <Route index element={<PaymentInitializer />} />
             </Route>
           </Route>

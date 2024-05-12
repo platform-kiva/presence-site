@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
+import cursorLightFilled from '../../../assets/icons/cursors/cursor-filled-light.png';
 
 export const SizeBtnContainer = styled.div`
     align-items: center;
@@ -8,7 +8,7 @@ export const SizeBtnContainer = styled.div`
     };
     border: 2px solid #FFFFFF;
     border-radius: 50px;
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
     display: flex;
     height: 50px;
     justify-content: center;

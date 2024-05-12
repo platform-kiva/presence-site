@@ -6,6 +6,7 @@ import { selectDisplayedGradient, selectGradientA, selectGradientB, selectStatus
 
 // styles
 import {
+    MainContainer,
     OutletContainer,
     MainGradientBGContainer
 } from "./SiteContainer.styles.js";
@@ -43,13 +44,13 @@ export default function SiteContainer() {
     }, [dispatch, status, displayedGradient]);
 
     return (
-        <>
+        <MainContainer>
             <OutletContainer>
                 <Outlet />
             </OutletContainer>
             <MainGradientBGContainer>
                 <GradientBG />
             </MainGradientBGContainer>
-        </>
+        </MainContainer>
     )
 }

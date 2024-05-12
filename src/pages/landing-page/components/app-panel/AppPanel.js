@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import { selectSystemMode } from '../../../../store/system/system.selector.js';
+
 import {
     AppPanelContainer,
     InfoContainer,
@@ -8,8 +11,10 @@ import {
 } from './AppPanel.styles.js';
 
 export default function AppPanel({ children, title, releaseDate, $singleLine=false }) {
+  const systemMode = useSelector(selectSystemMode);
+
   return (
-    <AppPanelContainer $singleLine={$singleLine} >
+    <AppPanelContainer $singleLine={$singleLine} $mode={systemMode}>
       {!$singleLine ?
         <>
           { children }
@@ -22,7 +27,7 @@ export default function AppPanel({ children, title, releaseDate, $singleLine=fal
           </InfoContainer>
         </>
         :
-        <h3 style={{ color: "#1e1e1e" }}>{title}</h3>
+        <h3 style={{ color: systemMode === "light" ? "#1E1E1E" : "#FFFFFF" }}>{title}</h3>
       }
     </AppPanelContainer>
   )

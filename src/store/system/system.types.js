@@ -1,0 +1,3 @@
+export const SYSTEM_ACTION_TYPES = {
+    SET_SYSTEM_MODE: 'cart/SET_SYSTEM_MODE'
+};

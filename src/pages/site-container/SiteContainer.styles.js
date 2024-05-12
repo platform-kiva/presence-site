@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import cursorLight from '../../assets/icons/cursors/cursor-light.png';
 
+export const MainContainer = styled.div`
+    cursor: url(${cursorLight}) 15 15, auto;
+`
 export const OutletContainer = styled.div`
     height: 100%;
     position: absolute;

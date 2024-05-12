@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import cursorIcon from '../../../assets/icons/cursor.png'
-import cursorIconFilled from '../../../assets/icons/cursor_filled.png'
+import cursorLight from '../../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../../assets/icons/cursors/cursor-filled-light.png';
 import { size } from "../../../media-breakpoints.js";
 
 export const CarouselBtnContainer = styled.div`
@@ -11,7 +11,7 @@ export const CarouselBtnContainer = styled.div`
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50px;
     cursor: ${props =>
-        props.$active ? `url(${cursorIconFilled}) 15 15, auto` : `url(${cursorIcon}) 15 15, auto`
+        props.$active ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`
     };
     display: flex;
     height: 50px;

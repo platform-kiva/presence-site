@@ -1,17 +1,28 @@
 import styled from "styled-components";
-import cursorIconFilled from '../../../../assets/icons/cursor_filled.png';
+import cursorDark from '../../../../assets/icons/cursors/cursor-dark.png';
+import cursorDarkFilled from '../../../../assets/icons/cursors/cursor-filled-dark.png';
+import cursorLight from '../../../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../../../assets/icons/cursors/cursor-filled-light.png';
 
 export const AppPanelContainer = styled.div`
     align-items: center;
-    background: ${props => props.$singleLine ? "#FBFBFB" : ""};
-    border: ${props => props.$singleLine ? "4px solid #E4E4E4" : ""};
+    background: ${props => props.$singleLine ? (props.$mode === "light" ? "#FBFBFB" : "#333333") : ""};
+    border: ${props => props.$singleLine ? (props.$mode === "light" ?  "4px solid #E4E4E4" : "4px solid #575757") : ""};
     box-sizing: border-box;
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: ${props => {
+        if (props.$singleLine) {
+        return props.$mode === "light" ? `url(${cursorDark}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`;
+        } else {
+        return props.$mode === "light" ? `url(${cursorDarkFilled}) 15 15, auto` : `url(${cursorLightFilled}) 15 15, auto`;
+        }
+    }};
     display: flex;
     height: 350px;
     justify-content: center;
     position: relative;
     width: 350px;
+
+    
 `
 export const InfoContainer = styled.div`
     bottom: 44px;
@@ -20,6 +31,7 @@ export const InfoContainer = styled.div`
     flex-direction: column;
     gap: 10px;
     left: 50%;
+    pointer-events: none;
     position: absolute;
     transform: translate(-50%);
     width: fit-content;
@@ -34,7 +46,7 @@ export const ReleaseDateContainer = styled.div`
 `
 export const ReleaseDate = styled.h4`
     font-size: 12px;
-    font-weight: 400;;
+    font-weight: 400;
 `
 export const Moon = styled.div`
     border: 2px solid #FFFFFF;

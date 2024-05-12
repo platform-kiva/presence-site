@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { size, device } from "../../media-breakpoints.js";
-import cursorIconFilled from '../../assets/icons/cursor_filled.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const CartContainer = styled.div`
     align-items: center;
@@ -78,7 +78,7 @@ export const CartItemIncDecContainer = styled.div`
     z-index: 500;
 `
 export const IndDecLabel = styled.h4`
-    cursor: url(${cursorIconFilled}) 15 15, auto;
+    cursor: url(${cursorLightFilled}) 15 15, auto;
     font-weight: 300;
     margin-top: 10px;
     text-decoration: underline;
