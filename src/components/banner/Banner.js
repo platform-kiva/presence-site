@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAnimation } from 'framer-motion';
 import { BannerContainer, LogoMiddleText, LogoBottomText, LogoTopText } from './Banner.styles.js';
 
-export default function Banner({ label }) {
+export default function Banner({ label, linkTo=null }) {
+    const navigate = useNavigate();
     const controlsTop = useAnimation();
     const controlsMiddle = useAnimation();
     const controlsBottom = useAnimation();
@@ -53,9 +55,17 @@ export default function Banner({ label }) {
             mounted = false;
         };
     }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
+
+    const handleClick = () => {
+        if (linkTo) {
+            navigate(linkTo);
+        } else {
+            return;
+        }
+    }
     
     return (
-        <BannerContainer>
+        <BannerContainer $label={label} onClick={handleClick} $linkTo={linkTo} >
             <LogoTopText
                 animate={controlsTop}
                 initial={{ opacity: 0, y: 0 }}

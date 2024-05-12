@@ -88,7 +88,8 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                 </HeaderBtnImgContainer>          
             </SocialsBtnContainer>
 
-            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} />
+            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} linkTo={!cartViewIsActive && !socialsViewIsActive ? '../../' : null} />
+            
             <GiftShopBtnContainer
                 onClick={() => handleGridView()}
                 initial={{ x: 10, opacity: 0 }}

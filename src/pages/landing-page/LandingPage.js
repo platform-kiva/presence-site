@@ -19,7 +19,7 @@ export default function LandingPage() {
 
   return (
     <LandingPageContainer $mode={systemMode}>
-        <LandingHeader />
+        <LandingHeader navLabel={'about'} navLink={'/about'}/>
         <AppsContainer>
             <div onClick={() => navigate("/281-474-976-710-656")}>
             <AppPanel title={"281,474,976,710,656"} releaseDate={"JUN ‘24"}>

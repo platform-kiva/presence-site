@@ -69,7 +69,7 @@ export default function GiftShop() {
                 </>
                 <div>
                   {purchasedCount !== null &&
-                    <ElementWrapper delay={0.4}>
+                    <ElementWrapper>
                       <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination has been purchased {purchasedCount} times.</h3>
                     </ElementWrapper>
                   }

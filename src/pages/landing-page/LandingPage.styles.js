@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import cursorDark from '../../assets/icons/cursors/cursor-dark.png';
 import cursorLight from '../../assets/icons/cursors/cursor-light.png';
+
+import night from './assets/night2.png';
+import day from './assets/day2.png';
 
 // APP LOGOS
 export const App1LogoContainer = styled.div`
@@ -10,8 +12,8 @@ export const App1LogoContainer = styled.div`
         rgba(219,120,212,1.0) 0%,
         rgba(32,172,232,1.0) 100%
     );
-
     border: 4px solid rgba(255,255,255,0.5);
+    border-radius: 16px;
     box-sizing: border-box;
     display: flex;
     height: 100%;
@@ -80,15 +82,18 @@ export const App1LogoContainer = styled.div`
     }
 `
 export const LandingPageContainer = styled.div`
-    background: ${props => props.$mode === "light" ? '#FFFFFF' : '#1E1E1E'};
-    cursor: url(${props => props.$mode === "light" ? cursorDark : cursorLight}) 15 15, auto;
+    /* background: ${props => props.$mode === "light" ? '#FFFFFF' : '#1E1E1E'}; */
+    background-image: ${props => props.$mode === "light" ? `url(${day})` : `url(${night})`};
+    cursor: url(${props => props.$mode === "light" ? cursorLight : cursorLight}) 15 15, auto;
     height: 100vh;
     position: relative;
     width: 100vw;
 `
 export const AppsContainer = styled.div`
     display: flex;
+    gap: 16px;
     height: fit-content;
+    padding: 0px 50px;
 `
 
 

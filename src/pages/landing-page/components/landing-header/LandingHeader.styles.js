@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import cursorDark from '../../../../assets/icons/cursors/cursor-dark.png';
-import cursorDarkFilled from '../../../../assets/icons/cursors/cursor-filled-dark.png';
 import cursorLight from '../../../../assets/icons/cursors/cursor-light.png';
 import cursorLightFilled from '../../../../assets/icons/cursors/cursor-filled-light.png';
 
@@ -16,10 +14,9 @@ export const LogoContainer = styled.div`
     width: fit-content;
 
     h1 {
-        color: ${props => props.$mode === "light" ? '#1E1E1E' : '#FFFFFF'};
-        cursor: url(${props => props.$mode === "light" ? cursorDarkFilled : cursorLightFilled}) 15 15, auto;
+        color: ${props => props.$mode === "light" ? '#FFFFFF' : '#FFFFFF'};
+        cursor: url(${props => props.$mode === "light" ? cursorLightFilled : cursorLightFilled}) 15 15, auto;
     }
-
     img {
         height: 100%;
     }
@@ -30,16 +27,16 @@ export const NavContainer = styled.div`
     gap: 30px;
 
     a {
-        cursor: url(${props => props.$mode === "light" ? cursorDark : cursorLight}) 15 15, auto;
+        cursor: url(${props => props.$mode === "light" ? cursorLight : cursorLight}) 15 15, auto;
     }
 
     h3, img {
-        cursor: url(${props => props.$mode === "light" ? cursorDarkFilled : cursorLightFilled}) 15 15, auto;
+        cursor: url(${props => props.$mode === "light" ? cursorLightFilled : cursorLightFilled}) 15 15, auto;
         transition: 0.4s;
     }
 
     h3 {
-        color: ${props => props.$mode === "light" ? '#1E1E1E' : '#FFFFFF'};
+        color: ${props => props.$mode === "light" ? '#FFFFFF' : '#FFFFFF'};
     }
 
     img {
@@ -56,7 +53,7 @@ export const NavContainer = styled.div`
 `
 export const SystemModeContainer = styled.div`
     align-items: center;
-    border: ${props => props.$mode === "light" ? "2px solid #1E1E1E" : "2px solid #FFFFFF"};
+    border: ${props => props.$mode === "light" ? "2px solid #FFFFFF" : "2px solid #FFFFFF"};
     border-radius: 32px;
     display: flex;
     height: 32px;
@@ -65,7 +62,7 @@ export const SystemModeContainer = styled.div`
     width: 100px;
 `
 export const BackgroundDiv = styled.div`
-    background: ${props => props.$mode === "light" ? "#1E1E1E" : "#FFFFFF"};
+    background: ${props => props.$mode === "light" ? "#FFFFFF" : "#FFFFFF"};
     border-radius: 32px;
     height: 100%;
     left: 0;
@@ -78,6 +75,7 @@ export const BackgroundDiv = styled.div`
 
 export const MoonIcon = styled.img`
     cursor: pointer;
+    filter: invert(${props => props.$mode === "light" ? "100%" : "0%"});
     z-index: 10;
     width: 16px;
     
@@ -85,7 +83,7 @@ export const MoonIcon = styled.img`
 
 export const SunIcon = styled.img`
     cursor: pointer;
-    filter: invert(${props => props.$mode === "light" ? "100%" : ""});
+    filter: invert(${props => props.$mode === "light" ? "0%" : ""});
     z-index: 10;
     width: 16px;
 `;

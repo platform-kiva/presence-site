@@ -1,16 +1,10 @@
 Checklist
-- gradient speed?
+- gradient speed slider
 - terms & conditions
-- about page,
-    - need an external landing pag with the about. include artist statment for project but not within the experience
-- product information
+- project descriptions
+- product information (281)
 - Add functionality for feature that displays how many X products have been bought of a gradient
-    - After successful transaction, upload gradient ID to database as map key
-        if (gradientID exist in database) {
-            + Quantity to existing Quantity field
-        } else {
-            Create new key-value pair (gradientID:Quantity)
-        }
+    - Update so that only 1 of each color combo can be purchased
 
         - Make sure you are counting the same gradient in different sizes as one gradient (within an order and in general)
     - When Add to Cart is clicked, scan map keys for current gradient
@@ -34,7 +28,6 @@ Checklist
 - only one of each color can be purchased
 - re-create Snapchat filter, make more dynamic (wearable)
 - when presence banner is clicked, return to home screen
-
 - wishlist
 
 TOPICS COVERED

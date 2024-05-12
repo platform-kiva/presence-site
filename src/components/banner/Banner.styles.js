@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { device } from '../../media-breakpoints.js';
 import { motion } from "framer-motion";
+import cursorLight from '../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const BannerContainer = styled.div`
+    cursor: url(${props => props.$linkTo ? cursorLightFilled : cursorLight }) 15 15, auto;
     position: relative;
     width: fit-content;
 `

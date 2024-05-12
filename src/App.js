@@ -5,14 +5,15 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { AppContainer } from './App.styles.js';
 
 // pages
+import About from './pages/landing-page/About.js';
 import Cart from './pages/cart/Cart.js';
 import Checkout from './pages/checkout/Checkout.js';
 import Home from './pages/home/Home.js';
+import LandingPage from './pages/landing-page/LandingPage.js';
 import PaymentInitializer from './pages/checkout/components/payment-initializer/PaymentInitializer.js';
 import PreLoader from "./pages/pre-loader/PreLoader.js";
 import OrderComplete from './pages/order-complete/OrderComplete.js';
 import SiteContainer from './pages/site-container/SiteContainer.js';
-import LandingPage from './pages/landing-page/LandingPage.js';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/281-474-976-710-656" element={<SiteContainer />}>
             <Route index element={<PreLoader />} />
             <Route path="home" element={<Home />} />
