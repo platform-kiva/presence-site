@@ -19,6 +19,7 @@ import instagram_dark from '../../../../assets/icons/instagram-icon-dark.png'
 import moon_icon from '../../assets/moon-icon.svg';
 import sun_icon from '../../assets/sun-icon.svg';
 import tiktok_dark from '../../../../assets/icons/tiktok-icon-dark.png';
+import ElementWrapper from '../../../../components/element-wrapper/ElementWrapper.js';
 
 export default function LandingHeader({ navLabel, navLink }) {
     const dispatch = useDispatch();
@@ -32,7 +33,6 @@ export default function LandingHeader({ navLabel, navLink }) {
             dispatch(setSystemMode("light"));
         }
     }
-    
     const handleNav = (path) => {
         navigate(path)
     }
@@ -41,23 +41,33 @@ export default function LandingHeader({ navLabel, navLink }) {
         <LandingHeaderContainer>
             <LogoContainer $mode={systemMode}>
                 <div onClick={() => navigate("/")}>
-                    <h1><em>presence</em></h1>
+                    <ElementWrapper>
+                        <h1><em>presence</em></h1>
+                    </ElementWrapper>
                 </div>
             </LogoContainer>
             <NavContainer $mode={systemMode}>
-                <h3 onClick={() => handleNav(navLink)}>{navLabel}</h3>
-                <a href="https://www.tiktok.com/@presence.exp" target="_blank" rel="noopener noreferrer">
-                    <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={tiktok_dark} alt='TikTok' />
-                </a>
-                <a href="https://www.instagram.com/presence.exp/" target="_blank" rel="noopener noreferrer">
-                    <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={instagram_dark} alt='Instagram' />
-                </a>  
+                <ElementWrapper delay={0.3}>
+                    <h3 onClick={() => handleNav(navLink)}>{navLabel}</h3>
+                </ElementWrapper>
+                <ElementWrapper delay={0.4}>
+                    <a href="https://www.tiktok.com/@presence.exp" target="_blank" rel="noopener noreferrer">
+                        <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={tiktok_dark} alt='TikTok' />
+                    </a>
+                </ElementWrapper>
+                <ElementWrapper delay={0.5}>
+                    <a href="https://www.instagram.com/presence.exp/" target="_blank" rel="noopener noreferrer">
+                        <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={instagram_dark} alt='Instagram' />
+                    </a>  
+                </ElementWrapper>
+                <ElementWrapper delay={0.6}>
                 <SystemModeContainer $mode={systemMode} onClick={() => handleSystemChange()}>
                     <MoonIcon $mode={systemMode} src={moon_icon} alt="Dark Mode" />
                     <span />
                     <SunIcon $mode={systemMode} src={sun_icon} alt="Light Mode" />
                     <BackgroundDiv $mode={systemMode} />
                 </SystemModeContainer>
+                </ElementWrapper>
             </NavContainer>
         </LandingHeaderContainer>
     )

@@ -4,8 +4,8 @@ import cursorLightFilled from '../../../../assets/icons/cursors/cursor-filled-li
 
 export const AppPanelContainer = styled.div`
     align-items: center;
-    background: ${props => props.$singleLine ? (props.$mode === "light" ? "rgba(251,251,251,0.4)" : "rgba(51,51,51,0.4)") : ""};
-    border: ${props => props.$singleLine ? (props.$mode === "light" ?  "4px solid #E4E4E4" : "4px solid #575757") : ""};
+    background: ${props => props.$singleLine ? (props.$mode === "light" ? "rgba(251,251,251,0.2)" : "rgba(51,51,51,0.5)") : ""};
+    border: ${props => props.$singleLine ? (props.$mode === "light" ?  "4px solid rgba(228,228,228,0.4)" : "4px solid rgba(87,87,87,0.4)") : ""};
     border-radius: 16px;
     box-sizing: border-box;
     cursor: ${props => {

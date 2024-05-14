@@ -8,6 +8,7 @@ export const LandingHeaderContainer = styled.div`
     height: 144px;
     justify-content: space-between;
     padding: 0px 50px;
+    z-index: 100;
 `
 export const LogoContainer = styled.div`
     height: 56px;

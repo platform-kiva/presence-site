@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import cursorLight from '../../assets/icons/cursors/cursor-light.png';
+import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
-import night from './assets/night2.png';
-import day from './assets/day2.png';
+import night from './assets/night.png';
+import day from './assets/day.png';
 
 export const AboutContainer = styled.div`
     /* background: ${props => props.$mode === "light" ? '#FFFFFF' : '#1E1E1E'}; */
@@ -20,7 +21,13 @@ export const AboutDescription = styled.div`
 `
 export const AboutText = styled.h3`
     color: ${props => props.$mode === "light" ? '#FFFFFF' : '#FFFFFF'};
+    
     font-weight: 300;
     font-size: 16px;
     max-width: 300px;
+
+    a {
+        color: #FFFFFF;
+        cursor: url(${props => props.$mode === "light" ? cursorLightFilled : cursorLightFilled}) 15 15, auto;
+    }
 `

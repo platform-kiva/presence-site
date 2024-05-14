@@ -27,7 +27,7 @@ export default function AppPanel({ children, title, releaseDate, $singleLine=fal
           </InfoContainer>
         </>
         :
-        <h3 style={{ color: systemMode === "light" ? "#1E1E1E" : "#FFFFFF" }}>{title}</h3>
+        <h3>{title}</h3>
       }
     </AppPanelContainer>
   )
