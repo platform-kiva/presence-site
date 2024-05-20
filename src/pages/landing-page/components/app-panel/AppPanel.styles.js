@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { size } from '../../../../media-breakpoints.js';
 import cursorLight from '../../../../assets/icons/cursors/cursor-light.png';
 import cursorLightFilled from '../../../../assets/icons/cursors/cursor-filled-light.png';
 
@@ -16,10 +17,21 @@ export const AppPanelContainer = styled.div`
         }
     }};
     display: flex;
-    height: 350px;
     justify-content: center;
     position: relative;
-    width: 350px;
+
+    @media (max-width: 689px) {
+        height: 50%;
+        width: 50%;
+    }
+    @media (min-width: 689px) and (max-width: ${size.laptop}) {
+        height: 280px;
+        width: 280px;
+    }
+    @media (min-width: ${size.laptop}) {
+        height: 350px;
+        width: 350px;
+    }
 `
 export const InfoContainer = styled.div`
     bottom: 44px;

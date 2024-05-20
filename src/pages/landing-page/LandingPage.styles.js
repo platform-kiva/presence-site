@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import cursorLight from '../../assets/icons/cursors/cursor-light.png';
-// import night from './assets/night.png';
-// import day from './assets/day.png';
 
 // APP LOGOS
 export const App1LogoContainer = styled.div`
@@ -81,7 +79,6 @@ export const App1LogoContainer = styled.div`
     }
 `
 export const LandingPageContainer = styled.div`
-
     cursor: url(${props => props.$mode === "light" ? cursorLight : cursorLight}) 15 15, auto;
     height: 100vh;
     position: relative;
@@ -92,5 +89,10 @@ export const AppsContainer = styled.div`
     gap: 16px;
     height: fit-content;
     padding: 0px 50px;
+    width: 100%;
+
+    @media (max-width: 689px) {
+        padding: 0px 20px;
+    }
 `
 

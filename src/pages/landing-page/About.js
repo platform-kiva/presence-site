@@ -4,20 +4,38 @@ import { selectSystemMode } from '../../store/system/system.selector.js';
 // styles
 import {
     AboutContainer,
+    SocialsContainer,
     AboutDescription,
     AboutText
 } from './About.styles.js';
 
+// assets
+import instagram_dark from '../../assets/icons/instagram-icon-dark.png';
+import tiktok_dark from '../../assets/icons/tiktok-icon-dark.png';
+
 // components
 import ElementWrapper from '../../components/element-wrapper/ElementWrapper.js';
-import LandingHeader from './components/landing-header/LandingHeader'
+import LandingHeader from './components/landing-header/LandingHeader';
+import ModeBG from './components/mode-bg/ModeBG.js';
 
 export default function About() {
     const systemMode = useSelector(selectSystemMode);
 
     return (
         <AboutContainer $mode={systemMode}>
-            <LandingHeader navLabel={'home'} navLink={'/'}/>
+            <LandingHeader socials={false} navLabel={'back'} navLink={'/'}/>
+                <SocialsContainer>
+                    <ElementWrapper delay={0.4}>
+                        <a href="https://www.tiktok.com/@presence.exp" target="_blank" rel="noopener noreferrer">
+                            <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={tiktok_dark} alt='TikTok' />
+                        </a>
+                    </ElementWrapper>
+                    <ElementWrapper delay={0.5}>
+                        <a href="https://www.instagram.com/presence.exp/" target="_blank" rel="noopener noreferrer">
+                            <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={instagram_dark} alt='Instagram' />
+                        </a>  
+                    </ElementWrapper>
+                </SocialsContainer>
                 <AboutDescription>
                     <ElementWrapper>
                     <AboutText $mode={systemMode}>
@@ -32,7 +50,7 @@ export default function About() {
                     </ElementWrapper>
 
                 </AboutDescription>
-            
+            <ModeBG />
         </AboutContainer>
     )
 }

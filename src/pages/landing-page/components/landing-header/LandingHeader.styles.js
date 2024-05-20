@@ -51,6 +51,11 @@ export const NavContainer = styled.div`
             transition: 0.4s;
         }
     }
+
+    @media (max-width: 689px) {
+        background-color: red;
+        flex-flow: column;
+    }
 `
 export const SystemModeContainer = styled.div`
     align-items: center;
