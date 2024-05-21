@@ -32,13 +32,20 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
                 const docRef = doc(collectionRef, object.id);
                 const docSnap = await transaction.get(docRef);
 
+                // Create a formatted date string
+                const purchaseDate = new Date().toLocaleDateString('en-US', {
+                    year: '2-digit',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+
                 if (docSnap.exists()) {
-                    // Document exists, increment the count field
+                    // Document exists, increment the count field and update the purchaseDate
                     const newCount = docSnap.data().count + object.count;
-                    transaction.update(docRef, { count: newCount });
+                    transaction.update(docRef, { count: newCount, purchaseDate });
                 } else {
-                    // Document does not exist, create new
-                    transaction.set(docRef, object);
+                    // Document does not exist, create new with purchaseDate
+                    transaction.set(docRef, { ...object, purchaseDate });
                 }
             });
         } catch (e) {
@@ -73,20 +80,17 @@ export const getGradientPurchaseData = async (currGradient) => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            const count = docSnap.data().count;
+            const purchaseDate = docSnap.data().purchaseDate;
 
-            if (count !== undefined) {
-                return count;
+            if (purchaseDate !== undefined) {
+                return purchaseDate;
             } else {
-                // alert("The document does not contain a 'count' field.");
-                return 0;
+                return null;
             }
         } else {
-            return 0;
+            return null;
         }
     } catch (error) {
-        console.error("Error fetching document:", error);
-        // alert("Failed to fetch the document.");
         return null;
     }
 }

@@ -4,10 +4,10 @@ import {
   BtnLabel
 } from './SizeBtn.styles.js'
 
-export default function SizeBtn({ size, accentCol, selectedSize=null }) {
+export default function SizeBtn({ isActive, size, accentCol, selectedSize=null }) {
 
   return (
-    <SizeBtnContainer $size={size} $selectedSize={selectedSize}>
+    <SizeBtnContainer $size={size} $selectedSize={selectedSize} $isActive={isActive}>
         <BtnLabel $accentCol={accentCol}>{size}</BtnLabel>
     </SizeBtnContainer>
   )

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartIsOpen } from '../../store/cart/cart.selector.js';
+import { selectExperienceWasStarted } from '../../store/system/system.selector.js';
 import { setAddToCartStatus } from '../../store/gradients/gradient.action.js';
 
 // styles
 import { 
   HomeContainer,
-  HeaderContainer
+  HeaderContainer,
+  ControlsContainer
 } from './Home.styles.js';
 
 // components
@@ -19,6 +21,7 @@ import { setCartIsOpen } from '../../store/cart/cart.action.js';
 
 export default function Home() {
   const cartIsOpen = useSelector(selectCartIsOpen);
+  const experienceWasStarted = useSelector(selectExperienceWasStarted);
   const dispatch = useDispatch();
   const [giftShopViewIsDisplayed, setGiftShopViewIsDisplayed] = useState(false);
   const [socialsViewIsDisplayed, setSocialsViewIsDisplayed] = useState(false);
@@ -53,7 +56,9 @@ export default function Home() {
           <GiftShop />
       }
       {!giftShopViewIsDisplayed && !socialsViewIsDisplayed &&
-        <GradientControls />
+        <ControlsContainer $checker={experienceWasStarted}>
+          <GradientControls />
+        </ControlsContainer>
       }
     </HomeContainer>
   )

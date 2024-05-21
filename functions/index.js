@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 
-const cors = require('cors')({origin: true});  // Allows requests from all origins
+const cors = require('cors')({origin: true});
 
 const stripeSecretKey = functions.config().stripe.key;
 const stripe = require('stripe')(stripeSecretKey);
@@ -11,7 +11,6 @@ exports.createPaymentIntent = functions.https.onRequest((req, res) => {
             res.status(204).send('');
         } else if (req.method === 'POST') {
             try {
-
                 const { amount, description } = req.body;
 
                 stripe.paymentIntents.create({
@@ -19,6 +18,7 @@ exports.createPaymentIntent = functions.https.onRequest((req, res) => {
                     currency: "usd",
                     description: description
                 }).then(paymentIntent => {
+                    console.log("client_secret: ", paymentIntent.client_secret)
                     res.status(200).send({clientSecret: paymentIntent.client_secret});
                 }).catch(error => {
                     res.status(400).send({ error: error.message });

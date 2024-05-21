@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import cursorLight from '../../../assets/icons/cursors/cursor-light.png';
 import cursorLightFilled from '../../../assets/icons/cursors/cursor-filled-light.png';
 
 export const SizeBtnContainer = styled.div`
@@ -8,7 +9,9 @@ export const SizeBtnContainer = styled.div`
     };
     border: 2px solid #FFFFFF;
     border-radius: 50px;
-    cursor: url(${cursorLightFilled}) 15 15, auto;
+    cursor: ${props => 
+        props.$isActive ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`
+    };
     display: flex;
     height: 50px;
     justify-content: center;
@@ -19,8 +22,8 @@ export const SizeBtnContainer = styled.div`
     width: 50px;
 
     &:hover {
-        opacity: 1.0;
-        transform: scale(1.1);
+        opacity: ${props => props.$isActive ? '1.0' : ''};
+        transform: scale(${props => props.$isActive ? '1.1' : '1.0'});
         transition: transform 0.2s ease-in-out;
     };
 `

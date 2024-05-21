@@ -1,7 +1,8 @@
 import { SYSTEM_ACTION_TYPES } from "./system.types.js";
 
 export const SYSTEM_INITIAL_STATE = {
-    mode: "light"
+    mode: "light",
+    experienceWasStarted: false
 };
 
 export const systemReducer = (state = SYSTEM_INITIAL_STATE, action = {}) => {
@@ -10,6 +11,8 @@ export const systemReducer = (state = SYSTEM_INITIAL_STATE, action = {}) => {
     switch (type) {
         case SYSTEM_ACTION_TYPES.SET_SYSTEM_MODE:
             return { ...state, mode: payload };
+        case SYSTEM_ACTION_TYPES.SET_EXPERIENCE_WAS_STARTED:
+            return { ...state, experienceWasStarted: payload };
         default:
             return state;
     }

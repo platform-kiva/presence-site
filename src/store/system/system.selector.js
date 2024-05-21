@@ -6,3 +6,8 @@ export const selectSystemMode = createSelector(
     [selectSystemReducer],
     (system) => system.mode
 );
+
+export const selectExperienceWasStarted = createSelector(
+    [selectSystemReducer],
+    (system) => system.experienceWasStarted
+);

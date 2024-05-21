@@ -9,6 +9,7 @@ import {
   EmptyCartContent,
   PriceActionCustomContainer,
   PriceAction,
+  ControlsContainer
 } from './GiftShop.styles.js';
 
 // components
@@ -24,15 +25,15 @@ export default function GiftShop() {
   const currGradient = useSelector(selectCurrGradient);
   const addToCartStatus = useSelector(selectAddToCartStatus);
   const [customProduct, setCustomProduct] = useState(null);
-  const [purchasedCount, setPurchasedCount] = useState(null);
+  const [purchasedDate, setPurchasedDate] = useState(null);
 
   useEffect(() => {
     if (addToCartStatus) {
       return;
     } else {
       async function fetchPurchaseCount() {
-        const count = await getGradientPurchaseData(currGradient);
-        setPurchasedCount(count);
+        const purchaseDate = await getGradientPurchaseData(currGradient);
+        setPurchasedDate(purchaseDate);
       }
       fetchPurchaseCount();
     }
@@ -64,13 +65,18 @@ export default function GiftShop() {
               <PriceActionCustomContainer>
                 <>
                   <PriceAction>
-                    <SizeSelection product={customProduct} />
+                    <SizeSelection product={customProduct} purchasedDate={purchasedDate}/>
                   </PriceAction>
                 </>
                 <div>
-                  {purchasedCount !== null &&
+                  {purchasedDate !== null &&
                     <ElementWrapper>
-                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination has been purchased {purchasedCount} times.</h3>
+                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination was claimed on {purchasedDate}</h3>
+                    </ElementWrapper>
+                  }
+                  {purchasedDate === null &&
+                    <ElementWrapper>
+                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination is available for purchase.</h3>
                     </ElementWrapper>
                   }
                 </div>
@@ -79,7 +85,11 @@ export default function GiftShop() {
           }
         </ProductBox>
       </EmptyCartContent>
-      <GradientControls additionalCtrls={true} />
+
+      <ControlsContainer>
+        <GradientControls additionalCtrls={true} />
+      </ControlsContainer>
+      
     </CartContainer>
   )
 }

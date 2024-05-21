@@ -13,7 +13,7 @@ import {
 import PrimaryBtn from '../btns/primary-btn/PrimaryBtn.js';
 import SizeBtn from '../btns/size-btn/SizeBtn.js'
 
-export default function SizeSelection({ product }) {
+export default function SizeSelection({ product, purchasedDate }) {
     const dispatch = useDispatch();
     const [primaryBtnLabel, setPrimaryBtnLabel] = useState('ADD TO CART +$35');
     const [activeSize, setActiveSize] = useState(null);
@@ -25,6 +25,9 @@ export default function SizeSelection({ product }) {
     };
 
     const addProductToCart = () => {
+        if (purchasedDate !== null) {
+            return
+        }
         try {
             if (timerRunning) {
                 return;
@@ -52,12 +55,12 @@ export default function SizeSelection({ product }) {
             <SizesContainer>
                 {product.availSizes.map(size => (
                     <div key={size} onClick={() => handleSizeSelection(size)}>
-                        <SizeBtn size={size} accentCol={product.botGradient} selectedSize={activeSize} />
+                        <SizeBtn isActive={purchasedDate === null} size={size} accentCol={product.botGradient} selectedSize={activeSize} />
                     </div>
                 ))}
             </SizesContainer>
                 <div onClick={() => addProductToCart(product, activeSize)}>
-                    <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null} wasActivated={timerRunning}/>
+                    <PrimaryBtn label={primaryBtnLabel} accentCol={product.botGradient} isActive={activeSize !== null && purchasedDate === null} wasActivated={timerRunning}/>
                 </div>
         </ActionContainer>
     )

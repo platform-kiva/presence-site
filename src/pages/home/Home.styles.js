@@ -19,3 +19,15 @@ export const HeaderContainer = styled(motion.div)`
         max-width: 1440px;
     }
 `
+export const ControlsContainer = styled(motion.div)`
+    bottom: ${props => props.$checker ? '30px' : '42%'};
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    transition: bottom 1s ease-in-out;
+
+    @media ${device.laptopL} {
+        bottom: ${props => props.$checker ? '50px' : '42%'};
+        transition: bottom 1s ease-in-out;
+    }
+`

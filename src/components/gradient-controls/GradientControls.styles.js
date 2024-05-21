@@ -1,21 +1,12 @@
 import styled from "styled-components";
-import { device } from "../../media-breakpoints.js";
 
 export const GradientControlsContainer = styled.div`
     align-items: center;
-    bottom: 30px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%);
     width: 100%;
     z-index: 500;
-
-    @media ${device.laptopL} {
-        bottom: 50px;
-    }
 `
 export const CustomizationLabel = styled.div`
     align-items: center;

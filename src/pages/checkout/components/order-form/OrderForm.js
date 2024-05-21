@@ -30,8 +30,8 @@ export default function OrderForm({ clientSecret }) {
 
         const {error: submitError} = await elements.submit();
         if (submitError) {
-          console.log("submitError: ", submitError);
-          alert(submitError);
+          console.log("submitError: ", submitError.message);
+          alert(submitError.message);
           return;
         }
     
@@ -39,7 +39,8 @@ export default function OrderForm({ clientSecret }) {
           elements,
           clientSecret,
           confirmParams: {
-            return_url: 'https://presencedesign.online/complete',
+            // return_url: 'https://presencedesign.online/281-474-976-710-656/complete',
+            return_url: 'http://localhost:8888/281-474-976-710-656/complete',
             payment_method_data: {
                 billing_details: {
                     email: email,
@@ -51,7 +52,7 @@ export default function OrderForm({ clientSecret }) {
         stripe.confirmCardPayment(clientSecret).then(result => {
           if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
           } else {
-            console.log("ERROR: " + paymentResult.error);
+            alert("ERROR: " + paymentResult.error);
           }
         });
       }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { size } from "../../media-breakpoints.js";
+import { device, size } from "../../media-breakpoints.js";
 import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const CartContainer = styled.div`
@@ -54,4 +54,14 @@ export const PriceAction = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+`
+export const ControlsContainer = styled.div`
+    bottom: 30px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+
+    @media ${device.laptopL} {
+        bottom: 50px;
+    }
 `
