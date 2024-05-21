@@ -48,6 +48,11 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
 
     return (
         <GradientControlsContainer>
+            {!experienceWasStarted && !additionalCtrls &&
+                <ElementWrapper>
+                    <h3 style={{ padding: '10px', maxWidth: '360px', textAlign: 'center', fontWeight: '500'}}>Design a custom item in our gift shop. Once purchased, that color will be unavailable to others.</h3>
+                </ElementWrapper>  
+            }
             {gradientA && (experienceWasStarted || additionalCtrls) &&
                 <CustomizationLabel>
                     {displayedGradient === 'A' && 
@@ -92,7 +97,6 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
                         <div onClick={handleClick}>
                             <PrimaryBtn label={status ? "STOP" : "START"} />
                         </div>
-                        
                     </ElementWrapper>
                     {additionalCtrls &&
                         <ElementWrapper>

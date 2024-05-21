@@ -68,18 +68,7 @@ export default function GiftShop() {
                     <SizeSelection product={customProduct} purchasedDate={purchasedDate}/>
                   </PriceAction>
                 </>
-                <div>
-                  {purchasedDate !== null &&
-                    <ElementWrapper>
-                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination was claimed on {purchasedDate}</h3>
-                    </ElementWrapper>
-                  }
-                  {purchasedDate === null &&
-                    <ElementWrapper>
-                      <h3 style={{ padding: "10px 0px", textAlign: "center", fontWeight: "100" }}>This color combination is available for purchase.</h3>
-                    </ElementWrapper>
-                  }
-                </div>
+
               </PriceActionCustomContainer>
             </ElementWrapper>
           }

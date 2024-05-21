@@ -28,7 +28,6 @@ export const PriceActionCustomContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 205px;
     justify-content: space-between;
     width: 100%;
 

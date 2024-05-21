@@ -8,5 +8,5 @@ export const ProductBoxContainer = styled.div`
     height: 375px;
     justify-content: center;
     transition: 0.4s ease-in;
-    width: 300px;
+    width: 350px;
 `
