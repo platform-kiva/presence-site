@@ -44,11 +44,9 @@ export const CarouselBtnContainer = styled.div`
     width: 80%;
     z-index: 500;
 `
-export const QuantityControl = styled.div`
-    align-items: center;
+export const ProductControlsContainer = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 20px;
     position: absolute;
     top: 145px;
 
@@ -60,12 +58,21 @@ export const QuantityControl = styled.div`
         top: 120px
     }
 `
+export const ProductControl = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 120px;
+`
 export const CartItemLabelContainer = styled.div`
     align-items: center;
     display: flex;
     gap: 5px;
 `
 export const DetailsLabel = styled.h3`
+    font-size: 20px;
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -77,18 +84,6 @@ export const CartItemIncDecContainer = styled.div`
     display: flex;
     gap: 20px;
     z-index: 500;
-`
-export const IndDecLabel = styled.h4`
-    cursor: url(${cursorLightFilled}) 15 15, auto;
-    font-weight: 300;
-    margin-top: 10px;
-    text-decoration: underline;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none;
 `
 export const EmptyCartMessageContainer = styled.h2`
     left: 50%;

@@ -6,20 +6,20 @@ import {
   ShirtDisplayContainer,
   ShirtImgDisplayContainer,
   ProductShadow
-} from './ShirtDisplay.styles.js'
+} from './ShirtDisplay.styles.js';
 
 // compoments
 import ShirtImgDisplay from '../shirt-img-display/ShirtImgDisplay.js';
 
 export default function ShirtDisplay({ product, bobs=false }) {
-  const [blankAlphaLoaded, setBlankAlphaLoaded] = useState(false)
+  const [blankAlphaLoaded, setBlankAlphaLoaded] = useState(false);
   const controlDiv1 = useAnimation();
   const controlDiv2 = useAnimation();
 
   useEffect(() => {
     if (!bobs) {
-        return
-    }
+        return;
+    };
     const sequenceInitialAnimations = async () => {
       await controlDiv1.start({});
       controlDiv1.start({
@@ -32,7 +32,7 @@ export default function ShirtDisplay({ product, bobs=false }) {
 
   useEffect(() => {
       if (!bobs) {
-          return
+          return;
       }
       const sequenceInitialAnimations = async () => {
           await controlDiv2.start({});
@@ -60,8 +60,6 @@ export default function ShirtDisplay({ product, bobs=false }) {
           product={product}
           startColor={null}
           endColor={null}
-          alphaStart={0.49}
-          alphaEnd={0.56}
           updateParent={setBlankAlphaLoaded}
         />
       </ShirtImgDisplayContainer>

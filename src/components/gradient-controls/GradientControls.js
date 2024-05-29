@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { selectGradientA, selectGradientB, selectDisplayedGradient, selectStatus, selectAddToCartStatus } from '../../store/gradients/gradient.selector.js';
 import { selectExperienceWasStarted } from '../../store/system/system.selector.js';
 import { setStatus, setAddToCartStatus } from '../../store/gradients/gradient.action.js';
@@ -21,6 +21,7 @@ import PrimaryBtn from '../btns/primary-btn/PrimaryBtn.js';
 
 export default function GradientControls({ additionalCtrls = false, readOnly=false }) {
     const dispatch = useDispatch();
+    const location = useLocation();
     const navigate = useNavigate();
     const status = useSelector(selectStatus);
     const addToCartStatus = useSelector(selectAddToCartStatus);
@@ -28,6 +29,7 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
     const gradientA = useSelector(selectGradientA);
     const gradientB = useSelector(selectGradientB);
     const experienceWasStarted = useSelector(selectExperienceWasStarted);
+    const isCartPage = location.pathname.endsWith('/cart');
 
     useEffect(() => {
         if (status) {
@@ -48,12 +50,12 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
 
     return (
         <GradientControlsContainer>
-            {!experienceWasStarted && !additionalCtrls &&
+            {!experienceWasStarted && !additionalCtrls && !isCartPage &&
                 <ElementWrapper>
                     <h3 style={{ padding: '10px', maxWidth: '360px', textAlign: 'center', fontWeight: '500'}}>welcome.</h3>
                 </ElementWrapper>  
             }
-            {gradientA && (experienceWasStarted || additionalCtrls) &&
+            {gradientA && (experienceWasStarted || additionalCtrls || isCartPage) &&
                 <CustomizationLabel>
                     {displayedGradient === 'A' && 
                         <RgbDisplayContainer $additionalCtrls={additionalCtrls}>

@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectGradientA, selectGradientB, selectAddToCartStatus, selectCurrGradient } from '../../store/gradients/gradient.selector.js';
 import { getGradientPurchaseData } from '../../utils/firebase/firebase.utils.js';
+import {
+  selectGradientA,
+  selectGradientB, 
+  selectAddToCartStatus,
+  selectCurrGradient
+} from '../../store/gradients/gradient.selector.js';
 
 // styles
 import {
@@ -61,23 +66,18 @@ export default function GiftShop() {
             <ShirtDisplay bobs={true} />
             :
             <ElementWrapper>
-              <PriceActionCustomContainer>
-                <>
-                  <PriceAction>
-                    <SizeSelection product={customProduct} purchasedDate={purchasedDate}/>
-                  </PriceAction>
-                </>
-
+              <PriceActionCustomContainer>       
+                <PriceAction>
+                  <SizeSelection product={customProduct} purchasedDate={purchasedDate}/>
+                </PriceAction>
               </PriceActionCustomContainer>
             </ElementWrapper>
           }
         </ProductBox>
       </EmptyCartContent>
-
       <ControlsContainer>
         <GradientControls additionalCtrls={true} />
       </ControlsContainer>
-      
     </CartContainer>
   )
-}
+};

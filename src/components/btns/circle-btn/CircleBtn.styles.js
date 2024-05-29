@@ -14,6 +14,11 @@ export const CircleBtnContainer = styled.div`
     transition: 0.2s ease-in-out;
     width: 100%;
 
+    img {
+        height: 50%;
+        width: 50%;
+    }
+
     &:hover {
         background: ${props => props.$isActive ? "rgba(255,255,255,0.2)" : "" };
         transform: scale(${props => props.$isActive ? '1.1' : '1.0'});

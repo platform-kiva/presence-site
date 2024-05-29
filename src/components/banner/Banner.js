@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAnimation } from 'framer-motion';
-import { BannerContainer, LogoMiddleText, LogoBottomText, LogoTopText } from './Banner.styles.js';
+
+// styles
+import {
+    BannerContainer,
+    LogoTopText,
+    LogoMiddleText,
+    LogoBottomText
+} from './Banner.styles.js';
 
 export default function Banner({ label, linkTo=null }) {
     const navigate = useNavigate();
@@ -20,16 +27,17 @@ export default function Banner({ label, linkTo=null }) {
             return -10.5;
         } else {
             return -13;
-        }
+        };
     }
 
     useEffect(() => {
         const handleResize = () => {
             setTranslateY(getTranslateY());
         };
-
         window.addEventListener('resize', handleResize);
+
         return () => window.removeEventListener('resize', handleResize);
+
     }, []);
 
     useEffect(() => {
@@ -42,7 +50,7 @@ export default function Banner({ label, linkTo=null }) {
                     controlsTop.start({ opacity: 1, y: translateY }),
                     controlsBottom.start({ opacity: 1, y: -translateY })
                 ]);
-            }
+            };
         };
     
         controlsTop.set({ opacity: 0, y: 0 });
@@ -50,10 +58,9 @@ export default function Banner({ label, linkTo=null }) {
         controlsBottom.set({ opacity: 0, y: 0 });
     
         startAnimations();
-    
-        return () => {
-            mounted = false;
-        };
+
+        return () => { mounted = false; };
+
     }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
 
     const handleClick = () => {
@@ -61,7 +68,7 @@ export default function Banner({ label, linkTo=null }) {
             navigate(linkTo);
         } else {
             return;
-        }
+        };
     }
     
     return (

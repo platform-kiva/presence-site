@@ -12,14 +12,17 @@ import {
     CartHeaderContainer,
     CartItemDisplayContainer,
     CarouselBtnContainer,
-    QuantityControl,
+    ProductControlsContainer,
+    ProductControl,
     CartItemLabelContainer,
     DetailsLabel,
     CartItemIncDecContainer,
-    IndDecLabel,
     EmptyCartMessageContainer,
     ControlsContainer
 } from "./Cart.styles.js";
+
+// assets
+import arrowIcon from '../../assets/icons/arrow-icon-up.png';
 
 // components
 import CarouselBtn from '../../components/btns/carousel-btn/CarouselBtn.js';
@@ -27,7 +30,7 @@ import CartHeader from "./cart-header/CartHeader.js";
 import ElementWrapper from "../../components/element-wrapper/ElementWrapper.js";
 import ShirtDisplay from "../../components/shirt-display/ShirtDisplay.js";
 import GradientControls from "../../components/gradient-controls/GradientControls.js";
-
+import CircleBtn from "../../components/btns/circle-btn/CircleBtn.js";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -116,15 +119,44 @@ export default function Cart() {
               </CarouselBtnContainer>
             }
 
-            <QuantityControl>
-                <CartItemLabelContainer>
-                    <DetailsLabel>SIZE: {cartItems[cartInd].size}&ensp;/&ensp;QUANTITY: {cartItems[cartInd].quantity}</DetailsLabel>
-                </CartItemLabelContainer>
-                <CartItemIncDecContainer>
-                    <IndDecLabel onClick={() => handleRemoveItemFromCart()}>remove -1</IndDecLabel>
-                    <IndDecLabel onClick={() => handleAddItemFromCart()}>add +1</IndDecLabel>
-                </CartItemIncDecContainer>
-            </QuantityControl>
+            <ProductControlsContainer>
+              <ProductControl>
+                  <CartItemLabelContainer>
+                      <DetailsLabel>SIZE: {cartItems[cartInd].size}</DetailsLabel>
+                  </CartItemLabelContainer>
+                  <CartItemIncDecContainer>
+                      <div onClick={() => handleRemoveItemFromCart()} style={{ height: '30px', width: '30px' }}>
+                        <CircleBtn isActive={true}>
+                          <img style={{ transform: 'rotate(-90deg)' }} src={arrowIcon} alt={"arrow icon"} />
+                        </CircleBtn>
+                      </div>
+                      <div onClick={() => handleAddItemFromCart()} style={{ height: '30px', width: '30px' }}>
+                        <CircleBtn isActive={true}>
+                          <img style={{ transform: 'rotate(90deg)' }}src={arrowIcon} alt={"arrow icon"} />
+                        </CircleBtn>
+                      </div>
+                  </CartItemIncDecContainer>
+              </ProductControl>
+              <ProductControl>
+                  <CartItemLabelContainer>
+                      <DetailsLabel>QTY: {cartItems[cartInd].quantity}</DetailsLabel>
+                  </CartItemLabelContainer>
+                  <CartItemIncDecContainer>
+                      <div onClick={() => handleRemoveItemFromCart()} style={{ height: '30px', width: '30px' }}>
+                        <CircleBtn isActive={true}>
+                          <img style={{ transform: 'rotate(-180deg)' }} src={arrowIcon} alt={"arrow icon"} />
+                        </CircleBtn>
+                      </div>
+                      <div onClick={() => handleAddItemFromCart()} style={{ height: '30px', width: '30px' }}>
+                        <CircleBtn isActive={true}>
+                          <img  src={arrowIcon} alt={"arrow icon"} />
+                        </CircleBtn>
+                      </div>
+                  </CartItemIncDecContainer>
+              </ProductControl>
+            </ProductControlsContainer>
+
+
             
           </>
         }
