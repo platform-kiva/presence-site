@@ -1,34 +1,25 @@
 Checklist
-- gradient speed slider
-- terms & conditions
-- project descriptions
-- product information (281)
-- Add functionality for feature that displays how many X products have been bought of a gradient
-    - Update so that only 1 of each color combo can be purchased
+- (!) Create custom icons (SVGs)
+- (!) Terms & Conditions pages
+- (!) Store data on purchases, for use later, perhaps
+    - Total amount of shirts purchased
+- (!) Allow size change in Cart
+    - check Figma: + & - buttons below both size and quantity labels 
+- (!) Project descriptions on main landing page 
+- (!) Re-create Snapchat filter, make more dynamic (wearable?)
+- (!) 3D model of shirt
+- (!) Custom email receipt
+    - Shirt with custom gradient, in box with custom gradient background-color
 
-        - Make sure you are counting the same gradient in different sizes as one gradient (within an order and in general)
-    - When Add to Cart is clicked, scan map keys for current gradient
-        - ONLY ON RESULT, render in purchased amount H3 tag
-- Scroll to top after every page load
-- Allow size change in Cart
-    - check Figma: + & - buttons below both size and quantity labels
-        - S -> M -> L -> XL -> XXL  
-- More microinteractions
-- Re-create Snapchat filter
-- Header icons opacity glitch on Safari
-- "PURCHASED ON" badge when on purchasedGradient
-- custom emails
-- word of mouth experiences
-- microinteractions
-- 3D
-- gradient speed meter
-- create a control panel, like a 3D remote, is responsive to mouse movements
-- GradientControls should intially be located dead center of page. put a flag variable in storage that tracks if the user has clicked "start" for the first time.
-    - cache should cause GradientControls to render at the bottom of the screen moving forwrards
-- only one of each color can be purchased
-- re-create Snapchat filter, make more dynamic (wearable)
-- when presence banner is clicked, return to home screen
-- wishlist
+- (*) More microinteractions
+- (*) Word of mouth experiences
+- (*) User Accounts
+    - (?) Wishlist, probably not for this site
+
+- (?) Gradient speed slider
+- (?) Create a control panel, like a 3D remote, is responsive to mouse movements
+
+
 
 TOPICS COVERED
 - Hooks

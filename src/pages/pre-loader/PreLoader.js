@@ -2,14 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setDisplayedGradient, setDefaultGradient, setStatus } from '../../store/gradients/gradient.action.js';
-import { fetchProductsAsync } from '../../store/products/products.action.js';
 import { selectProductsIsLoading } from '../../store/products/products.selector.js';
 
 // styles
-import {
-    BannerContainer,
-    PreLoaderContainer
-} from './PreLoader.styles.js';
+import { PreLoaderContainer, BannerContainer } from './PreLoader.styles.js';
 
 // components
 import Banner from '../../components/banner/Banner.js';
@@ -26,7 +22,6 @@ export default function PreLoader() {
         dispatch(setStatus(true));
         dispatch(setDisplayedGradient('A'));
         dispatch(setDefaultGradient([[219,120,212], [32,172,232]]));
-        dispatch(fetchProductsAsync());
     }, [dispatch]);
 
     useEffect(() => {
@@ -64,7 +59,7 @@ export default function PreLoader() {
                 :
                 <BannerContainer
                     initial={{ opacity: 0.0 }}
-                    animate={animateOut ? { opacity: 0 } : { opacity: [0.0, 1.0] }}
+                    animate={ animateOut ? { opacity: 0 } : { opacity: [0.0, 1.0] } }
                     transition={{
                         duration: 1,
                         ease: "easeInOut",

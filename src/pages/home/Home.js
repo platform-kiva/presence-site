@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCartIsOpen } from '../../store/cart/cart.selector.js';
 import { selectExperienceWasStarted } from '../../store/system/system.selector.js';
 import { setAddToCartStatus } from '../../store/gradients/gradient.action.js';
+import { setCartIsOpen } from '../../store/cart/cart.action.js';
 
 // styles
 import { 
@@ -12,17 +13,15 @@ import {
 } from './Home.styles.js';
 
 // components
-import Header from '../../components/header/Header.js';
-import SocialsView from '../../components/socials-view/SocialsView.js';
 import GiftShop from '../gift-shop/GiftShop.js';
 import GradientControls from '../../components/gradient-controls/GradientControls.js';
-import { setCartIsOpen } from '../../store/cart/cart.action.js';
-
+import Header from '../../components/header/Header.js';
+import SocialsView from '../../components/socials-view/SocialsView.js';
 
 export default function Home() {
+  const dispatch = useDispatch();
   const cartIsOpen = useSelector(selectCartIsOpen);
   const experienceWasStarted = useSelector(selectExperienceWasStarted);
-  const dispatch = useDispatch();
   const [giftShopViewIsDisplayed, setGiftShopViewIsDisplayed] = useState(false);
   const [socialsViewIsDisplayed, setSocialsViewIsDisplayed] = useState(false);
 
@@ -31,7 +30,7 @@ export default function Home() {
       setGiftShopViewIsDisplayed(true);
       dispatch(setCartIsOpen(false));
     }
-  }, [dispatch, cartIsOpen])
+  }, [dispatch, cartIsOpen]);
   
   useEffect(() => {
     if (!giftShopViewIsDisplayed) {
@@ -43,7 +42,7 @@ export default function Home() {
     <HomeContainer>
       <HeaderContainer>
           <Header
-              cartViewSetter={setGiftShopViewIsDisplayed} // update from 'cart'
+              cartViewSetter={setGiftShopViewIsDisplayed}
               cartViewStatus={giftShopViewIsDisplayed}
               socialsViewSetter={setSocialsViewIsDisplayed}
               socialsViewStatus={socialsViewIsDisplayed}

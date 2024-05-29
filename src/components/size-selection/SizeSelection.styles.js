@@ -12,16 +12,6 @@ export const ActionContainer = styled.div`
         gap: 20px;
     }
 `;
-export const SizesContainer = styled.div`
-    display: flex;
-    gap: 14.4px;
-    justify-content: center;
-    width: 100%;
-
-    @media ${device.tablet} {
-        gap: 20px;
-    }
-`;
 export const ProductInfoButtons = styled.div`
     display: flex;
     gap: 16px;
@@ -44,30 +34,31 @@ export const SizeGuideContainer = styled.div`
     height: fit-content;
     width: 100%;
 
-    .size-chart {
-        font-family: 'Roboto Condensed';
-        font-size: 12px;
-        border-collapse: collapse;
-        margin: 0 auto; /* Center the table */
-        width: 100%; /* Adjust width to fit content */
-    }
-
-    .size-chart th, .size-chart td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
     .note {
         font-family: 'Roboto Condensed';
-        font-size: 14px;
+        font-size: 16px;
         text-align: center;
     }
 `;
+export const SizeChart = styled.table`
+    font-family: 'Roboto Condensed';
+    background: ${(props) => `linear-gradient(45deg, rgba(${props.$bgA[0][0]},${props.$bgA[0][1]},${props.$bgA[0][2]},0.2) 0%, rgba(${props.$bgB[1][0]},${props.$bgB[1][1]},${props.$bgB[1][2]},0.2) 100%)`};
+    font-size: 16px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+`
 export const SizeGuideTableContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+    
 `;
 export const BulletText = styled.ul`
     color: #FFFFFF;
@@ -84,3 +75,31 @@ export const ProductInfoContainer = styled.div`
     gap: 10px;
     justify-content: center;
 `;
+export const StatusContainer = styled.div`
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+`
+export const StatusDot = styled.div`
+    border: 1px solid #FFFFFF;
+    border-radius: 100px;
+    background: ${props => props.$status ? "#3dc45c" : "#d63827"};
+    height: 12px;
+    width: 12px;
+`
+export const MultiLineStatusContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+`
+export const ClaimedDateContainer = styled.div`
+    background: ${(props) => `linear-gradient(45deg, rgba(${props.$bgA[0][0]},${props.$bgA[0][1]},${props.$bgA[0][2]},0.2) 0%, rgba(${props.$bgB[1][0]},${props.$bgB[1][1]},${props.$bgB[1][2]},0.2) 100%)`};
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    margin: 10px;
+    
+    h3 {
+        padding: 10px 40px;
+    }
+`

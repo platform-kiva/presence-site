@@ -27,10 +27,11 @@ export const CartItemDisplayContainer = styled.div`
 
     @media ${device.mobileM} {
         align-items: center;
-        height: 100vh;
+        height: fit-content;
         justify-content: center;
         position: absolute;
-        top: 0;
+        top: 50%;
+        transform: translate(0%, -50%);
         width: 100vw;
     }
 `
@@ -97,4 +98,14 @@ export const EmptyCartMessageContainer = styled.h2`
     text-align: center;
     transform: translate(-50%, -50%);
     width: 100%;
+`
+export const ControlsContainer = styled.div`
+    bottom: 30px;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+
+    @media ${device.laptopL} {
+        bottom: 50px;
+    }
 `

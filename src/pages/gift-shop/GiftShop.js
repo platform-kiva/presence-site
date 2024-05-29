@@ -45,7 +45,6 @@ export default function GiftShop() {
     }
     setCustomProduct(
       {
-        availSizes: ['S', 'M', 'L'],
         id: currGradient[0] + ' - ' + currGradient[1],
         gradient: [currGradient[0], currGradient[1]],
         price: 35,

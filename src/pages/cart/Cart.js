@@ -17,7 +17,8 @@ import {
     DetailsLabel,
     CartItemIncDecContainer,
     IndDecLabel,
-    EmptyCartMessageContainer
+    EmptyCartMessageContainer,
+    ControlsContainer
 } from "./Cart.styles.js";
 
 // components
@@ -81,7 +82,9 @@ export default function Cart() {
         </CartHeaderContainer>
 
         {cartItems.length !== 0 &&
+          <ControlsContainer>
             <GradientControls readOnly={true} />
+          </ControlsContainer>
         }
 
         {cartItems.length !== 0 && cartItems[cartInd] &&
@@ -126,12 +129,11 @@ export default function Cart() {
           </>
         }
         {cartItems.length === 0 &&
-        <EmptyCartMessageContainer>
-          <ElementWrapper>
-            <h2>CART IS EMPTY</h2>
-          </ElementWrapper>
-        </EmptyCartMessageContainer>
-
+          <EmptyCartMessageContainer>
+            <ElementWrapper>
+              <h2>CART IS EMPTY</h2>
+            </ElementWrapper>
+          </EmptyCartMessageContainer>
         }
       </CartContainer>
     )

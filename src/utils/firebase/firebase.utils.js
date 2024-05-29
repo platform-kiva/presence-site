@@ -52,24 +52,6 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
             console.error("Transaction failed: ", e);
         }
     }
-
-    // alert("Done: Collection & Documents have been added or updated");
-    // const collectionRef = collection(db, collectionKey);
-    // const batch = writeBatch(db);
-
-    // objectsToAdd.forEach((object) => {
-    //     const docRef = doc(collectionRef, object.id);
-    //     batch.set(docRef, object);
-    // });
-
-    // await batch.commit();
-    // alert("Done: Collection & Documents have been added");
-}
-
-export const getProductsAndDocuments = async () => {
-    const docRef = doc(db, "products", "productsArray");
-    const docSnap = await getDoc(docRef);
-    return docSnap.data().products;
 }
 
 export const getGradientPurchaseData = async (currGradient) => {

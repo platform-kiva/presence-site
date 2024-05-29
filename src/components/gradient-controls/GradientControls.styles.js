@@ -6,7 +6,7 @@ export const GradientControlsContainer = styled.div`
     flex-direction: column;
     gap: 16px;
     width: 100%;
-    z-index: 500;
+    z-index: 1000;
 `
 export const CustomizationLabel = styled.div`
     align-items: center;
