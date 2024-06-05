@@ -4,8 +4,8 @@ import cursorLightFilled from '../../../assets/icons/cursors/cursor-filled-light
 
 export const PrimaryBtnContainer = styled.button`
     align-items: center;
-    background-color: ${props => props.$wasActivated ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.0)"};
-    border: 2px solid #FFFFFF;
+    background-color: ${props => props.$wasActivated ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)"};
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 50px;
     cursor: ${props => 
         props.$isActive && !props.$wasActivated ? `url(${cursorLightFilled}) 15 15, auto` : `url(${cursorLight}) 15 15, auto`

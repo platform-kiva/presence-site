@@ -15,8 +15,8 @@ export const CircleBtnContainer = styled.div`
     width: 100%;
 
     img {
-        height: 50%;
-        width: 50%;
+        height: 40%;
+        width: 40%;
     }
 
     &:hover {

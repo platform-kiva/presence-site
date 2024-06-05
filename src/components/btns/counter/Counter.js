@@ -3,14 +3,17 @@ import { selectUserSize } from '../../../store/system/system.selector.js';
 import { setUserSize } from '../../../store/system/system.action.js';
 
 import {
-    CounterContainer
+    CounterContainer,
+    BtnsContainer,
+    BtnContainer,
+    DisplayContainer,
+    CounterLabel
 } from './Counter.styles.js';
 
 // components
 import CircleBtn from '../circle-btn/CircleBtn.js';
 
-
-export default function Counter() {
+export default function Counter({ label }) {
     const dispatch = useDispatch();
     const userSize = useSelector(selectUserSize);
     const sizes = ['S','M','L','XL','2XL', '3XL', '4XL'];
@@ -35,15 +38,18 @@ export default function Counter() {
 
     return (
         <CounterContainer>
-            <div onClick={() => handleSizeSelection(-1)} style={{ height: '30px', width: '30px' }}>
-                <CircleBtn label={"-"} bg={false} isActive={true}/>
-            </div>
-            <div style={{ height: '50px', width: '50px' }}>
-                <CircleBtn label={sizes[userSize]} bg={false} isActive={false}/>
-            </div>
-            <div onClick={() => handleSizeSelection(1)} style={{ height: '30px', width: '30px' }}>
-                <CircleBtn label={"+"} bg={false} isActive={true}/>
-            </div>
+            <CounterLabel>{label}</CounterLabel>
+            <BtnsContainer>
+                <BtnContainer onClick={() => handleSizeSelection(-1)}>
+                    <CircleBtn label={"-"} bg={false} isActive={true}/>
+                </BtnContainer>
+                <DisplayContainer>
+                    <CircleBtn label={sizes[userSize]} bg={false} isActive={false}/>
+                </DisplayContainer>
+                <BtnContainer onClick={() => handleSizeSelection(1)}>
+                    <CircleBtn label={"+"} bg={false} isActive={true}/>
+                </BtnContainer>
+            </BtnsContainer>
         </CounterContainer>
     )
 }

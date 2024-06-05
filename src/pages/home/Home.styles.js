@@ -20,14 +20,28 @@ export const HeaderContainer = styled(motion.div)`
     }
 `
 export const ControlsContainer = styled(motion.div)`
-    bottom: ${props => props.$checker ? '30px' : '42%'};
-    left: 50%;
+    bottom: ${props => props.$checker ? '30px' : '46%'};
+    display: flex;
+    padding: 0px 30px;
     position: absolute;
-    transform: translate(-50%);
     transition: bottom 1s ease-in-out;
+    max-width: 1440px;
+    width: 100%;
+
+    @media (min-width: 550px) {
+        padding: 0px 50px;
+    }
+
+    @media ${device.tablet} {
+        padding: 0px 66.5px;
+    }
+
+    @media ${device.laptop} {
+        padding: 0px 120px;
+    }
 
     @media ${device.laptopL} {
-        bottom: ${props => props.$checker ? '50px' : '42%'};
+        bottom: ${props => props.$checker ? '50px' : '46%'};
         transition: bottom 1s ease-in-out;
     }
 `

@@ -5,15 +5,15 @@ import { setCartIsOpen } from '../../../store/cart/cart.action.js';
 // styles
 import { 
     CartHeaderContainer,
-    CartBtnContainer,
-    CartHeaderBtnImgContainer
+    HeaderBtnContainer
  } from './CartHeader.styles.js';
 
 // assets
-import chevronLeft from '../../../assets/icons/chevron-icon-left2.png';
+import chevronIcon from '../../../assets/icons/chevron-icon.svg';
 
 // components
 import Banner from '../../../components/banner/Banner.js';
+import HeaderIcon from '../../../components/header/components/header-icon/HeaderIcon.js';
 
 export default function CartHeader({ nav }) {
     const dispatch = useDispatch();
@@ -26,19 +26,21 @@ export default function CartHeader({ nav }) {
     
     return (
         <CartHeaderContainer>
-            <CartBtnContainer onClick={handleNavigate}>
-                <CartHeaderBtnImgContainer $isVisible={true}>   
-                    <img src={chevronLeft} alt={"back button"} />
-                </CartHeaderBtnImgContainer>
-            </CartBtnContainer>
+            <HeaderBtnContainer onClick={handleNavigate}>
+                <HeaderIcon iconSize={20}>   
+                    <img src={chevronIcon} alt={"back button"} />
+                </HeaderIcon>
+            </HeaderBtnContainer>
 
             <Banner label={'cart'} />
 
-            <CartBtnContainer>
-                <CartHeaderBtnImgContainer $isVisible={false}>   
-                    <img src={chevronLeft} alt={"trick button"} />
-                </CartHeaderBtnImgContainer>
-            </CartBtnContainer>
+            <HeaderBtnContainer>
+                {1 == 0 &&
+                    <HeaderIcon iconSize={20}>   
+                        <img src={chevronIcon} alt={"trick button"} />
+                    </HeaderIcon>
+                }
+            </HeaderBtnContainer>
         </CartHeaderContainer>
     )
 }

@@ -6,12 +6,8 @@ import { setStatus } from '../../store/gradients/gradient.action.js';
 
 // styles
 import { 
-    SocialsBtnContainer,
     HeaderContainer,
-    GiftShopBtnContainer,
-    HeaderBtnImgContainer,
-    CartBtnImgContainer,
-    GiftShopNavBtnsContainer,
+    HeaderBtnContainer,
     CartBtnContainer
  } from './Header.styles.js';
 
@@ -22,14 +18,13 @@ import menuIcon from '../../assets/icons/menu-icon.svg';
 import storeIcon from '../../assets/icons/store-icon.svg';
 
 // components
-import Banner from '../banner/Banner.js';
-import ElementWrapper from '../element-wrapper/ElementWrapper.js';
+import HeaderIcon from './components/header-icon/HeaderIcon.js';
 
 export default function Header({ cartViewSetter, cartViewStatus, socialsViewSetter, socialsViewStatus }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartCount = useSelector(selectCartCount);
-    const [cartViewIsActive, setCartViewIsActive] = useState(false);
+    const [giftShopViewIsActive, setGiftShopViewIsActive] = useState(false);
     const [socialsViewIsActive, setSocialsViewIsActive] = useState(false);
 
     const handleNavigate = () => {
@@ -39,12 +34,12 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
         }
     }
 
-    const handleGridView = () => {
+    const handleGiftShopView = () => {
         if (socialsViewStatus) {
             return;
         }
-        setCartViewIsActive(!cartViewIsActive);
-        cartViewSetter(!cartViewIsActive);
+        setGiftShopViewIsActive(!giftShopViewIsActive);
+        cartViewSetter(!giftShopViewIsActive);
     };
 
     const handleSocialsView = () => {
@@ -56,7 +51,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     }
 
     useEffect(() => {
-        setCartViewIsActive(cartViewStatus);
+        setGiftShopViewIsActive(cartViewStatus);
     }, [cartViewStatus]);
 
     useEffect(() => {
@@ -73,67 +68,35 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
     
     return (
         <HeaderContainer>
-            <SocialsBtnContainer
-                onClick={() => handleSocialsView()}
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ 
-                    delay: 1,
-                    ease: "easeOut",
-                    times: [0, 1]
-                }}
-            >
-                <HeaderBtnImgContainer $isVisible={!cartViewStatus}>
-                    <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
-                </HeaderBtnImgContainer>          
-            </SocialsBtnContainer>
-
-            <Banner label={cartViewIsActive ? 'gift shop' : (socialsViewIsActive ? 'platforms' : 'presence')} linkTo={!cartViewIsActive && !socialsViewIsActive ? '../../' : null} />
             
-            <GiftShopBtnContainer
-                onClick={() => handleGridView()}
-                initial={{ x: 10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ 
-                    delay: 1,
-                    ease: "easeOut",
-                    times: [0, 1]
-                }}
-            >
-                {cartViewIsActive ?
-                    <GiftShopNavBtnsContainer
-                        onClick={() => handleGridView()}
-                        initial={{ x: 10, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ 
-                            delay: 1,
-                            ease: "easeOut",
-                            times: [0, 1]
-                        }}
-                    >
-                        <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
-                            <img src={closeIcon} alt={"close icon"} />
-                        </HeaderBtnImgContainer>
-                        
-                            <CartBtnContainer onClick={handleNavigate}>
-                                <ElementWrapper>
-                                <CartBtnImgContainer $isVisible={cartCount !== 0}
-                                    animate={{ scale: isAnimating ? 1.5 : 1 }}
-                                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                >
-                                    <h4>{cartCount}</h4>
-                                    <img src={bagIcon} alt={"bag icon"} />
-                                </CartBtnImgContainer> 
-                                </ElementWrapper>
-                            </CartBtnContainer>
-                        
-                    </GiftShopNavBtnsContainer>
-                    :
-                    <HeaderBtnImgContainer $isVisible={!socialsViewStatus}>   
-                        <img src={storeIcon} alt={"store icon"} />
-                    </HeaderBtnImgContainer>
-                }
-            </GiftShopBtnContainer>
+            <HeaderBtnContainer onClick={handleSocialsView}>
+                <HeaderIcon iconSize={20}>
+                    {!giftShopViewIsActive &&
+                        <img src={socialsViewIsActive ? closeIcon : menuIcon} alt={socialsViewIsActive ? "close icon" : "socials icon"} />
+                    }
+                </HeaderIcon>
+            </HeaderBtnContainer>
+        
+            <HeaderBtnContainer onClick={handleGiftShopView}>
+                <HeaderIcon iconSize={20}>
+                    {!socialsViewIsActive &&
+                    <   img src={!giftShopViewIsActive ? storeIcon : closeIcon} alt={giftShopViewIsActive ? "store icon" : "close icon"} />
+                    }
+                </HeaderIcon>
+            </HeaderBtnContainer>
+            
+            {cartCount !== 0 &&
+                <CartBtnContainer
+                    onClick={handleNavigate}
+                    animate={{ scale: isAnimating ? 1.5 : 1 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                >
+                    <HeaderIcon iconSize={26}>
+                        <h4>{cartCount}</h4>
+                        <img src={bagIcon} alt={"bag icon"} />
+                    </HeaderIcon>
+                </CartBtnContainer>
+            }
         </HeaderContainer>
     )
 }

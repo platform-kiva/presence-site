@@ -34,12 +34,32 @@ export const RgbDisplayContainer = styled.div`
 `
 export const RgbDisplay = styled.div`   
     display: flex;
-    gap: 10px;
+    gap: 0px;
     justify-content: space-between;
-    width: 180px;
+    width: 200px;
+`
+export const ColorValContainer = styled.div`
+    align-items: baseline;
+    display: flex;
+    gap: 2px;
+    width: 25%;
+
+    h4 {
+        color: rgba(255,255,255,0.5);
+    }
+
+    h3 {
+        font-size: 20px;
+        width: fit-content;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
 `
 export const RgbSquare = styled.div`
-    border: 1px solid #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
     height: 20px;
     width: 20px;
     background-color: ${props => `rgba(${props.$bgCol[0]},${props.$bgCol[1]},${props.$bgCol[2]},0.8)`};

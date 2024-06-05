@@ -60,14 +60,11 @@ export const CarouselBtnIcon = styled.img`
 
     @media (max-width: ${size.mobileS}) {
         height: 14.4px;
-        width: 14.4px;
     }
     @media (min-width: ${size.mobileS}) and (max-width: ${size.tablet}) {
         height: 16.8px;
-        width: 16.8px;
     }
     @media (min-width: ${size.tablet}) {
         height: 20px;
-        width: 20px;
     }
 `

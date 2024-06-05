@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom';
 // styles
 import { 
     HeaderContainer,
-    CartBtnContainer,
-    HeaderBtnImgContainer
+    HeaderBtnContainer
  } from './CheckoutHeader.styles.js';
 
 // assets
-import chevronLeft from '../../../../assets/icons/chevron-icon-left2.png';
+import chevronIcon from '../../../../assets/icons/chevron-icon.svg';
 
 // components
 import Banner from '../../../../components/banner/Banner.js';
+import HeaderIcon from '../../../../components/header/components/header-icon/HeaderIcon.js';
 
 export default function CheckoutHeader({ nav }) {
     const navigate = useNavigate();
@@ -19,19 +19,21 @@ export default function CheckoutHeader({ nav }) {
     return (
         <HeaderContainer>
 
-            <CartBtnContainer onClick={() => navigate(nav)}>
-                <HeaderBtnImgContainer $isVisible={true}>   
-                    <img src={chevronLeft} alt={"trick button"} />
-                </HeaderBtnImgContainer>
-            </CartBtnContainer>
+            <HeaderBtnContainer onClick={() => navigate(nav)}>
+                <HeaderIcon iconSize={20}>   
+                    <img src={chevronIcon} alt={"back button"} />
+                </HeaderIcon>
+            </HeaderBtnContainer>
 
             <Banner label={'checkout'} />
 
-            <CartBtnContainer>
-                <HeaderBtnImgContainer $isVisible={false}>   
-                    <img src={chevronLeft} alt={"trick button"} />
-                </HeaderBtnImgContainer>
-            </CartBtnContainer>
+            <HeaderBtnContainer>
+                {1 == 0 &&
+                    <HeaderIcon iconSize={20}>   
+                        <img src={chevronIcon} alt={"trick button"} />
+                    </HeaderIcon>
+                }
+            </HeaderBtnContainer>
         </HeaderContainer>
     )
 }

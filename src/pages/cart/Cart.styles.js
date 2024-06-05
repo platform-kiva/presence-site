@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { size, device } from "../../media-breakpoints.js";
-import cursorLightFilled from '../../assets/icons/cursors/cursor-filled-light.png';
 
 export const CartContainer = styled.div`
     align-items: center;
@@ -30,7 +29,7 @@ export const CartItemDisplayContainer = styled.div`
         height: fit-content;
         justify-content: center;
         position: absolute;
-        top: 50%;
+        top: 40%;
         transform: translate(0%, -50%);
         width: 100vw;
     }
@@ -41,6 +40,7 @@ export const CarouselBtnContainer = styled.div`
     justify-content: space-between;
     position: absolute;
     max-width: 500px;
+    top: 280px;
     width: 80%;
     z-index: 500;
 `
@@ -48,14 +48,14 @@ export const ProductControlsContainer = styled.div`
     display: flex;
     gap: 20px;
     position: absolute;
-    top: 145px;
+    bottom: 250px;
 
     @media (max-width: ${size.mobileL}) {
-        top: 100px;
+        bottom: 250px;
     }
 
     @media (min-width: ${size.mobileL}) and (max-width: ${size.tablet}) {
-        top: 120px
+        bottom: 250px
     }
 `
 export const ProductControl = styled.div`
@@ -63,7 +63,7 @@ export const ProductControl = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 120px;
+    width: 186.29px;
 `
 export const CartItemLabelContainer = styled.div`
     align-items: center;
@@ -103,4 +103,29 @@ export const ControlsContainer = styled.div`
     @media ${device.laptopL} {
         bottom: 50px;
     }
+`
+export const CounterContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    width: 100%;
+`
+export const BtnsContainer = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+`
+export const BtnContainer = styled.div`
+    height: 30px;
+    width: 30px;
+`
+export const DisplayContainer = styled.div`
+    height: 50px;
+    width: 50px;
+`
+export const CounterLabel = styled.h4`
+    font-size: 16px;
 `
