@@ -122,38 +122,42 @@ export default function Cart() {
             }
 
             <ProductControlsContainer>
-              <ProductControl>
-                <CounterContainer>
-                  <CounterLabel>SIZE</CounterLabel>
-                    <BtnsContainer>
-                      <BtnContainer onClick={() => handleDecreaseItemSize()}>
-                          <CircleBtn label={"-"} bg={false} isActive={true}/>
-                      </BtnContainer>
-                      <DisplayContainer>
-                          <CircleBtn label={cartItems[cartInd].size} bg={false} isActive={false}/>
-                      </DisplayContainer>
-                      <BtnContainer onClick={() => handleIncreaseItemSize()}>
-                          <CircleBtn label={"+"} bg={false} isActive={true}/>
-                      </BtnContainer>
-                    </BtnsContainer>
-                </CounterContainer>
-              </ProductControl>
-              <ProductControl>
-                <CounterContainer>
-                  <CounterLabel>QTY</CounterLabel>
-                    <BtnsContainer>
-                      <BtnContainer onClick={() => handleRemoveItemFromCart()}>
-                          <CircleBtn label={"-"} bg={false} isActive={true}/>
-                      </BtnContainer>
-                      <DisplayContainer>
-                          <CircleBtn label={cartItems[cartInd].quantity} bg={false} isActive={false}/>
-                      </DisplayContainer>
-                      <BtnContainer onClick={() => handleAddItemFromCart()}>
-                          <CircleBtn label={"+"} bg={false} isActive={true}/>
-                      </BtnContainer>
-                    </BtnsContainer>
-                </CounterContainer>
-              </ProductControl>
+              <ElementWrapper delay={0.4}>
+                <ProductControl>
+                  <CounterContainer>
+                    <CounterLabel>SIZE</CounterLabel>
+                      <BtnsContainer>
+                        <BtnContainer onClick={() => handleDecreaseItemSize()}>
+                            <CircleBtn label={"-"} bg={false} isActive={true}/>
+                        </BtnContainer>
+                        <DisplayContainer>
+                            <CircleBtn label={cartItems[cartInd].size} bg={false} isActive={false}/>
+                        </DisplayContainer>
+                        <BtnContainer onClick={() => handleIncreaseItemSize()}>
+                            <CircleBtn label={"+"} bg={false} isActive={true}/>
+                        </BtnContainer>
+                      </BtnsContainer>
+                  </CounterContainer>
+                </ProductControl>
+              </ElementWrapper>
+              <ElementWrapper delay={0.4}>
+                <ProductControl>
+                  <CounterContainer>
+                    <CounterLabel>QTY</CounterLabel>
+                      <BtnsContainer>
+                        <BtnContainer onClick={() => handleRemoveItemFromCart()}>
+                            <CircleBtn label={"-"} bg={false} isActive={true}/>
+                        </BtnContainer>
+                        <DisplayContainer>
+                            <CircleBtn label={cartItems[cartInd].quantity} bg={false} isActive={false}/>
+                        </DisplayContainer>
+                        <BtnContainer onClick={() => handleAddItemFromCart()}>
+                            <CircleBtn label={"+"} bg={false} isActive={true}/>
+                        </BtnContainer>
+                      </BtnsContainer>
+                  </CounterContainer>
+                </ProductControl>
+              </ElementWrapper>
             </ProductControlsContainer>       
           </>
         }

@@ -20,11 +20,13 @@ export const CartOverviewContainer = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 `
 export const CostContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0px;
+    max-width: 340px;
 `
 export const CostRowContainer = styled.div`
     display: flex;

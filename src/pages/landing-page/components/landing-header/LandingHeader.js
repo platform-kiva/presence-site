@@ -11,7 +11,8 @@ import {
     SystemModeContainer,
     MoonIcon,
     SunIcon,
-    BackgroundDiv
+    BackgroundDiv,
+    SocialsContainer
 } from './LandingHeader.styles.js';
 
 // assets
@@ -47,11 +48,13 @@ export default function LandingHeader({ navLabel, navLink, socials=true }) {
                 </div>
             </LogoContainer>
             <NavContainer $mode={systemMode}>
-                <ElementWrapper delay={0.3}>
-                    <h3 onClick={() => handleNav(navLink)}>{navLabel}</h3>
-                </ElementWrapper>
+                <div style={{ width: "fit-content" }}>
+                    <ElementWrapper delay={0.3}>
+                        <h3 onClick={() => handleNav(navLink)}>{navLabel}</h3>
+                    </ElementWrapper>
+                </div>
                 {socials &&
-                    <>
+                    <SocialsContainer>
                         <ElementWrapper delay={0.4}>
                             <a href="https://www.tiktok.com/@presence.exp" target="_blank" rel="noopener noreferrer">
                                 <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={tiktok_dark} alt='TikTok' />
@@ -62,7 +65,7 @@ export default function LandingHeader({ navLabel, navLink, socials=true }) {
                                 <img style={{ filter: systemMode === "light" ? 'invert(100%)' : 'invert(100%)' }} src={instagram_dark} alt='Instagram' />
                             </a>  
                         </ElementWrapper>
-                    </>
+                    </SocialsContainer>
                 }
                 <ElementWrapper delay={0.6}>
                 <SystemModeContainer $mode={systemMode} onClick={() => handleSystemChange()}>

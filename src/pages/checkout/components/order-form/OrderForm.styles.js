@@ -81,3 +81,17 @@ export const CheckoutBtn = styled.button`
     height: 44px;
     width: 100%;
 `
+export const CheckoutMessageContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 0px;
+
+    h3 {
+        color: #1E1E1E;
+        max-width: 80%;
+        text-align: center;
+        font-weight: "400";
+    }
+`

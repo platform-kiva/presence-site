@@ -25,7 +25,10 @@ export default function CheckoutHeader({ nav }) {
                 </HeaderIcon>
             </HeaderBtnContainer>
 
-            <Banner label={'checkout'} />
+            <div style={{ pointerEvents: "none" }}>
+                <Banner label={'checkout'} />
+            </div>
+            
 
             <HeaderBtnContainer>
                 {1 == 0 &&

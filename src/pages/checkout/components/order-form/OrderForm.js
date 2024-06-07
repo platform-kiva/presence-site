@@ -13,7 +13,8 @@ import {
   EmailInputContainer,
   EmailLabel,
   StripeHeader,
-  CheckoutBtn
+  CheckoutBtn,
+  CheckoutMessageContainer
 } from "./OrderForm.styles.js";
 
 export default function OrderForm({ clientSecret }) {
@@ -79,6 +80,12 @@ export default function OrderForm({ clientSecret }) {
             </EmailInputContainer>
             <AddressElement options={{mode: 'shipping'}} />
             <PaymentElement />
+            <CheckoutMessageContainer>
+              <h3>By clicking 'Place Order' you acknowledge that ALL SALES ARE FINAL.</h3>
+              <h3>If you are unsatisfied with your experience, please shoot us a DM on Instagram or Tiktok at @presence.exp</h3>
+              <h3>NOTE: Purchased color combinations will act as an entry point to future presence design</h3>
+            </CheckoutMessageContainer>
+            
             <CheckoutBtn>
               Place Order
             </CheckoutBtn>

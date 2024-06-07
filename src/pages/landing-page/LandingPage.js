@@ -5,7 +5,9 @@ import { selectSystemMode } from '../../store/system/system.selector.js';
 // styles
 import {
     LandingPageContainer,
+    LandingHeaderContainer,
     AppsContainer,
+    AppContainer,
     App1LogoContainer
 } from './LandingPage.styles.js';
 
@@ -21,9 +23,12 @@ export default function LandingPage() {
 
   return (
     <LandingPageContainer $mode={systemMode}>
-        <LandingHeader navLabel={'about'} navLink={'/about'}/>
+        <LandingHeaderContainer>
+            <LandingHeader navLabel={'about'} navLink={'/about'}/>
+        </LandingHeaderContainer>
+        
         <AppsContainer>
-            <div onClick={() => navigate("/281-474-976-710-656")}>
+            <AppContainer onClick={() => navigate("/281-474-976-710-656")}>
                 <ElementWrapper>
                     <AppPanel title={"281,474,976,710,656"} releaseDate={"JUN ‘24"}>
                         <App1LogoContainer $isActive={true} >
@@ -36,10 +41,12 @@ export default function LandingPage() {
                         </App1LogoContainer>
                     </AppPanel>
                 </ElementWrapper>
-            </div>
-            <ElementWrapper delay={0.3}>
-                <AppPanel title={"COMING SOON..."} $singleLine={true} />
-            </ElementWrapper>
+            </AppContainer>
+            <AppContainer>
+                <ElementWrapper delay={0.3}>
+                    <AppPanel title={"COMING SOON..."} $singleLine={true} />
+                </ElementWrapper>
+            </AppContainer>
         </AppsContainer>
         <ModeBG />
     </LandingPageContainer>

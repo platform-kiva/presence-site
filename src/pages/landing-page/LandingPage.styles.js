@@ -29,7 +29,7 @@ export const App1LogoContainer = styled.div`
         opacity: 0.0;
         position: absolute;
         transition: 0.8s;
-        width: 100%;
+        width: 100%
     }
 
     .texts-container {
@@ -79,20 +79,60 @@ export const App1LogoContainer = styled.div`
     }
 `
 export const LandingPageContainer = styled.div`
+    align-items: center;
     cursor: url(${props => props.$mode === "light" ? cursorLight : cursorLight}) 15 15, auto;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     position: relative;
     width: 100vw;
 `
+export const LandingHeaderContainer = styled.div`
+    max-width: 1080px;
+    width: 100%;
+`
 export const AppsContainer = styled.div`
+    box-sizing: border-box;
     display: flex;
     gap: 16px;
     height: fit-content;
-    padding: 0px 50px;
+    max-width: 1080px;
     width: 100%;
 
-    @media (max-width: 689px) {
-        padding: 0px 20px;
+    @media (max-width: 568px) {
+        flex-direction: column;
+        padding: 40px 10px;
+    }
+    @media (min-width: 568px) {
+        padding: 30px 30px;
+    }
+    @media (min-width: 668px) and (max-width: 1168px) {
+        padding: 50px 50px;
+    }
+    @media (min-width: 1168px) {
+        padding: 50px 0px;
+    }
+`
+export const AppContainer = styled.div`
+    flex: 1;
+    max-width: 33%;
+    box-sizing: border-box;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 568px) {
+        max-width: 100%;
+        width: 100%;
+        /* flex: 0 0 100%; */
+        flex-direction: column;
+    }
+
+    @media (min-width: 568px) and (max-width: 968px) {
+        max-width: 50%;
+        flex: 0 0 50%;
     }
 `
 

@@ -41,13 +41,16 @@ export default function Home() {
   return (
     <HomeContainer>
       <HeaderContainer>
+        {experienceWasStarted &&
           <Header
               cartViewSetter={setGiftShopViewIsDisplayed}
               cartViewStatus={giftShopViewIsDisplayed}
               socialsViewSetter={setSocialsViewIsDisplayed}
               socialsViewStatus={socialsViewIsDisplayed}
           />
+        }
       </HeaderContainer>
+
       {socialsViewIsDisplayed &&
         <SocialsView />
       }

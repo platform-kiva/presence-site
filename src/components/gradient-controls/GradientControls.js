@@ -13,7 +13,8 @@ import {
     RgbDisplay,
     ColorValContainer,
     RgbSquare,
-    ButtonContainer
+    ButtonContainer,
+    WelcomeMessageContainer
 } from './GradientControls.styles.js';
 
 // components
@@ -132,6 +133,19 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
                     </ElementWrapper>
                     }
                 </CustomizationLabel>
+            }
+            {!experienceWasStarted &&
+                <WelcomeMessageContainer>
+                    <ElementWrapper delay={0.5}>
+                        <h3>RGB values are randomly generated, producing a sequence of 281,474,976,710,656 color combinations.</h3>
+                    </ElementWrapper>
+                    <ElementWrapper delay={0.4}>
+                        <h3>Color combinations can be bought in the gift shop, after which they are made unavailable for purchase.</h3>
+                    </ElementWrapper>
+                    <ElementWrapper delay={0.3}>
+                        <h3>Proceeds are reinvested into the growth and development of <em>presence design LLC</em></h3>
+                    </ElementWrapper>
+                </WelcomeMessageContainer>
             }
             {!readOnly ?
                 <ButtonContainer $additionalCtrls={additionalCtrls}>

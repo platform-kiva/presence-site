@@ -1,5 +1,4 @@
 Checklist
-- (!) Create System state for Header compoent rendering
 - (!) Create custom icons (SVGs)
 - (!) Terms & Conditions pages
 - (!) Store data on purchases, for use later, perhaps

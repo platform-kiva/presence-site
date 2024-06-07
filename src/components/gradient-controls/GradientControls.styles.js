@@ -7,6 +7,7 @@ export const GradientControlsContainer = styled.div`
     gap: 16px;
     width: 100%;
     z-index: 1000;
+    /* background-color: red; */
 `
 export const CustomizationLabel = styled.div`
     align-items: center;
@@ -72,5 +73,17 @@ export const ButtonContainer = styled.div`
     @media (max-width: 450px) {
         flex-direction: column;
         width: 80%;
+    }
+`
+export const WelcomeMessageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 0px;
+
+    h3 {
+        max-width: 320px;
+        text-align: center;
+        font-weight: "400";
     }
 `
