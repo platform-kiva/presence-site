@@ -14,6 +14,7 @@ import {
 
 // components
 import PrimaryBtn from '../../components/btns/primary-btn/PrimaryBtn.js';
+import ElementWrapper from '../../components/element-wrapper/ElementWrapper.js';
 
 export default function OrderComplete() {
     const dispatch = useDispatch();
@@ -36,12 +37,18 @@ export default function OrderComplete() {
         <OrderCompleteContainer>
             <OrderCompleteContent>
                 <Message>
-                    <h2>ORDER COMPLETE</h2>
+                    <ElementWrapper>
+                        <h2>ORDER COMPLETE</h2>
+                    </ElementWrapper>
+                   <ElementWrapper delay={0.3}>
                     <h3>please check your email for further details</h3>
+                   </ElementWrapper> 
                 </Message>
 
                 <BtnContainer onClick={() => handleClick()}>
-                    <PrimaryBtn label={"BACK TO HOME"}/>
+                    <ElementWrapper delay={0.4}>
+                        <PrimaryBtn label={"BACK TO HOME"}/>
+                    </ElementWrapper>
                 </BtnContainer>
             </OrderCompleteContent>
         </OrderCompleteContainer>

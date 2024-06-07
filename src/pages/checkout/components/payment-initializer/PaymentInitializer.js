@@ -27,24 +27,8 @@ export default function PaymentInitializer() {
         }
         const cartDetails = cartItems.map(item => `${item.cartID}:${item.quantity}`).join(' --- ');
         
-        try {
-            const response = await fetch('/.netlify/functions/create-payment-intent', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: cartTotal,
-                    description: cartDetails
-                })
-            }).then((res) => res.json())
-            const clientSecretTemp = `${response.paymentIntent.client_secret}`;
-            setClientSecret(clientSecretTemp)
-        } catch (error) {
-            alert(error);
-        }
         // try {
-        //     const response = await fetch('https://us-central1-presence-9cced.cloudfunctions.net/createPaymentIntent', {
+        //     const response = await fetch('/.netlify/functions/create-payment-intent', {
         //         method: 'POST',
         //         headers: {
         //             'Content-Type': 'application/json'
@@ -54,15 +38,31 @@ export default function PaymentInitializer() {
         //             description: cartDetails
         //         })
         //     }).then((res) => res.json())
-
-        //     const clientSecretTemp = `${response.clientSecret}`;   
-
+        //     const clientSecretTemp = `${response.paymentIntent.client_secret}`;
         //     setClientSecret(clientSecretTemp)
-
         // } catch (error) {
-        //     alert("ERR: " + error);
-        //     return;
+        //     alert(error);
         // }
+        try {
+            const response = await fetch('https://us-central1-presence-9cced.cloudfunctions.net/createPaymentIntent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    amount: cartTotal,
+                    description: cartDetails
+                })
+            }).then((res) => res.json())
+
+            const clientSecretTemp = `${response.clientSecret}`;   
+
+            setClientSecret(clientSecretTemp)
+
+        } catch (error) {
+            alert("ERR: " + error);
+            return;
+        }
     };
 
     const handleScroll = () => {

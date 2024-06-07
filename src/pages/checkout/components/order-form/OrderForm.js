@@ -40,8 +40,8 @@ export default function OrderForm({ clientSecret }) {
           elements,
           clientSecret,
           confirmParams: {
-            // return_url: 'https://presencedesign.online/281-474-976-710-656/complete',
-            return_url: 'http://localhost:8888/281-474-976-710-656/complete',
+            return_url: 'https://presencedesign.online/281-474-976-710-656/complete',
+            // return_url: 'http://localhost:8888/281-474-976-710-656/complete',
             payment_method_data: {
                 billing_details: {
                     email: email,
@@ -51,9 +51,29 @@ export default function OrderForm({ clientSecret }) {
         })
   
         stripe.confirmCardPayment(clientSecret).then(result => {
-          if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+          if (result.error) {
+            // Extract and log detailed error information
+            console.error('Payment error:', result.error);
+            const errorMessage = result.error.message || 'An unknown error occurred';
+            const errorType = result.error.type || 'No error type';
+            const errorCode = result.error.code || 'No error code';
+            const errorDeclineCode = result.error.decline_code || 'No decline code';
+        
+            console.error(`Error type: ${errorType}`);
+            console.error(`Error code: ${errorCode}`);
+            console.error(`Decline code: ${errorDeclineCode}`);
+            
+            // Display a detailed error message to the user
+            alert(`ERROR: ${errorMessage}\nType: ${errorType}\nCode: ${errorCode}\nDecline Code: ${errorDeclineCode}`);
+          } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+            // The payment was successful!
+            // console.log('Payment succeeded:', result.paymentIntent);
+            // alert("Payment successful!");
+            // Optionally, redirect the user or update the UI to reflect successful payment
           } else {
-            alert("ERROR: " + paymentResult.error);
+            // Handle other statuses or unexpected results
+            console.warn('Unexpected payment result:', result);
+            alert("Unexpected payment result");
           }
         });
       }
