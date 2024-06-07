@@ -21,6 +21,10 @@ export default function LandingPage() {
     const navigate = useNavigate();
     const systemMode = useSelector(selectSystemMode);
 
+    const handleNavigate = () => {
+        navigate("/281-474-976-710-656");
+    }
+
   return (
     <LandingPageContainer $mode={systemMode}>
         <LandingHeaderContainer>
@@ -28,7 +32,7 @@ export default function LandingPage() {
         </LandingHeaderContainer>
         
         <AppsContainer>
-            <AppContainer onClick={() => navigate("/281-474-976-710-656")}>
+            <AppContainer onClick={handleNavigate}>
                 <ElementWrapper>
                     <AppPanel title={"281,474,976,710,656"} releaseDate={"JUN ‘24"}>
                         <App1LogoContainer $isActive={true} >
@@ -43,7 +47,7 @@ export default function LandingPage() {
                 </ElementWrapper>
             </AppContainer>
             <AppContainer>
-                <ElementWrapper delay={0.3}>
+                <ElementWrapper delay={0.2}>
                     <AppPanel title={"COMING SOON..."} $singleLine={true} />
                 </ElementWrapper>
             </AppContainer>

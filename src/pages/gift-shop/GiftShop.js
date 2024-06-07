@@ -14,7 +14,8 @@ import {
   EmptyCartContent,
   PriceActionCustomContainer,
   PriceAction,
-  ControlsContainer
+  ControlsContainer,
+  ShirtDisplayHolder
 } from './GiftShop.styles.js';
 
 // components
@@ -63,7 +64,10 @@ export default function GiftShop() {
       <EmptyCartContent>
         <ProductBox>
           {addToCartStatus ?
-            <ShirtDisplay bobs={true} />
+            <ShirtDisplayHolder>
+              <ShirtDisplay bobs={true} />
+            </ShirtDisplayHolder>
+            
             :
             <ElementWrapper>
               <PriceActionCustomContainer>       

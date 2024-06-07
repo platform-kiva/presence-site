@@ -39,6 +39,14 @@ export const SizeGuideContainer = styled.div`
         font-size: 16px;
         text-align: center;
     }
+
+    @media (max-width: 468px) {
+        transform: scale(0.8);
+    }
+
+    @media (min-width: 468px) {
+        padding-bottom: 20px;
+    }
 `;
 export const SizeChart = styled.table`
     font-family: 'Roboto Condensed';

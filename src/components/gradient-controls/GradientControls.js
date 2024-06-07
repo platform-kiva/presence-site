@@ -143,7 +143,7 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
                         <h3>Color combinations can be bought in the gift shop, after which they are made unavailable for purchase.</h3>
                     </ElementWrapper>
                     <ElementWrapper delay={0.3}>
-                        <h3>Proceeds are reinvested into the growth and development of <em>presence design LLC</em></h3>
+                        <h3>Proceeds are reinvested into the growth and development of <em>presence design LLC.</em></h3>
                     </ElementWrapper>
                 </WelcomeMessageContainer>
             }

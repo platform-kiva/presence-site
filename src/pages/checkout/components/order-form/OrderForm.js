@@ -41,7 +41,6 @@ export default function OrderForm({ clientSecret }) {
           clientSecret,
           confirmParams: {
             return_url: 'https://presencedesign.online/281-474-976-710-656/complete',
-            // return_url: 'http://localhost:8888/281-474-976-710-656/complete',
             payment_method_data: {
                 billing_details: {
                     email: email,
@@ -53,11 +52,11 @@ export default function OrderForm({ clientSecret }) {
         stripe.confirmCardPayment(clientSecret).then(result => {
           if (result.error) {
             // Extract and log detailed error information
-            console.error('Payment error:', result.error);
-            const errorMessage = result.error.message || 'An unknown error occurred';
-            const errorType = result.error.type || 'No error type';
-            const errorCode = result.error.code || 'No error code';
-            const errorDeclineCode = result.error.decline_code || 'No decline code';
+            console.error('Payment error:', paymentResult.error);
+            const errorMessage = paymentResult.error.message || 'An unknown error occurred';
+            const errorType = paymentResult.error.type || 'No error type';
+            const errorCode = paymentResult.error.code || 'No error code';
+            const errorDeclineCode = paymentResult.error.decline_code || 'No decline code';
         
             console.error(`Error type: ${errorType}`);
             console.error(`Error code: ${errorCode}`);

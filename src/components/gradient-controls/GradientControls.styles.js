@@ -67,11 +67,11 @@ export const RgbSquare = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     gap: 12px;
-    width: ${props => props.$additionalCtrls ? '424px ' : '200px'};
+    width: ${props => props.$additionalCtrls ? '100% ' : '320px'};
 
     @media (max-width: 468px) {
         flex-direction: column;
-        width: 130%;
+
     }
 `
 export const WelcomeMessageContainer = styled.div`

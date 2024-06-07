@@ -23,6 +23,10 @@ export const EmptyCartContent = styled.div`
     max-width: 80%;
     top: 50%;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 468px) {
+        top: 42%;
+    }
 `
 export const PriceActionCustomContainer = styled.div`
     align-items: center;
@@ -63,4 +67,6 @@ export const ControlsContainer = styled.div`
     @media ${device.laptopL} {
         bottom: 50px;
     }
+`
+export const ShirtDisplayHolder = styled.div`
 `

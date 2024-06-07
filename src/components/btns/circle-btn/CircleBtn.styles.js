@@ -19,11 +19,14 @@ export const CircleBtnContainer = styled.div`
         width: 40%;
     }
 
-    &:hover {
-        background: ${props => props.$isActive ? "rgba(255,255,255,0.2)" : "" };
-        transform: scale(${props => props.$isActive ? '1.1' : '1.0'});
-        transition: transform 0.2s ease-in-out;
-    };
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            background: ${props => props.$isActive ? "rgba(255,255,255,0.2)" : "" };
+            transform: scale(${props => props.$isActive ? '1.1' : '1.0'});
+            transition: transform 0.2s ease-in-out;
+        };
+    }
+
 `
 export const BtnLabel = styled.h3`
     font-size: 20px;
