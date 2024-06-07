@@ -7,7 +7,6 @@ export const GradientControlsContainer = styled.div`
     gap: 16px;
     width: 100%;
     z-index: 1000;
-    /* background-color: red; */
 `
 export const CustomizationLabel = styled.div`
     align-items: center;
@@ -29,7 +28,7 @@ export const RgbDisplayContainer = styled.div`
     height: ${props => !props.$additionalCtrls ? '55px' : '35px'};
     width: 100%;
 
-    @media (max-width: 450px) {
+    @media (max-width: 468px) {
         flex-direction: column;
     }
 `
@@ -70,16 +69,16 @@ export const ButtonContainer = styled.div`
     gap: 12px;
     width: ${props => props.$additionalCtrls ? '424px ' : '200px'};
 
-    @media (max-width: 450px) {
+    @media (max-width: 468px) {
         flex-direction: column;
-        width: 80%;
+        width: 130%;
     }
 `
 export const WelcomeMessageContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 24px 0px;
+    padding-bottom: 24px;
 
     h3 {
         max-width: 320px;

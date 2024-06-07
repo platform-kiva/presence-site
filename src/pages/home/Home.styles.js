@@ -20,11 +20,13 @@ export const HeaderContainer = styled(motion.div)`
     }
 `
 export const ControlsContainer = styled(motion.div)`
-    bottom: ${props => props.$checker ? '30px' : '40%'};
+    bottom: ${props => props.$checker ? '30px' : '50%'};
+    box-sizing: border-box;
     display: flex;
     padding: 0px 30px;
     position: absolute;
     transition: bottom 1s ease-in-out;
+    transform: ${props => props.$checker ? 'translateY(0%)' : 'translateY(50%)'};
     max-width: 1440px;
     width: 100%;
 
@@ -41,7 +43,7 @@ export const ControlsContainer = styled(motion.div)`
     }
 
     @media ${device.laptopL} {
-        bottom: ${props => props.$checker ? '50px' : '40%'};
+        bottom: ${props => props.$checker ? '50px' : '50%'};
         transition: bottom 1s ease-in-out;
     }
 `

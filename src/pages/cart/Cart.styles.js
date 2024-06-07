@@ -23,14 +23,15 @@ export const CartHeaderContainer = styled.div`
 export const CartItemDisplayContainer = styled.div`
     display: flex;
     position: absolute;
+    top: 45%;
+        transform: translate(0%, -50%);
 
     @media ${device.mobileM} {
         align-items: center;
         height: fit-content;
         justify-content: center;
         position: absolute;
-        top: 40%;
-        transform: translate(0%, -50%);
+        
         width: 100vw;
     }
 `
@@ -46,16 +47,27 @@ export const CarouselBtnContainer = styled.div`
 `
 export const ProductControlsContainer = styled.div`
     display: flex;
+    flex-direction: column;
     gap: 20px;
     position: absolute;
-    bottom: 250px;
 
-    @media (max-width: ${size.mobileL}) {
-        bottom: 250px;
+    @media (max-width: ${size.mobileS}) {
+        bottom: 11%;
+        transform: scale(0.6);
     }
 
-    @media (min-width: ${size.mobileL}) and (max-width: ${size.tablet}) {
-        bottom: 250px
+    @media (min-width: ${size.mobileS}) and (max-width: ${size.tablet}) {
+        bottom: 11%;
+        transform: scale(0.7);
+    }
+
+    @media (min-width: ${size.tablet}) and (max-width: ${size.laptop}) {
+        bottom: 13%;
+        transform: scale(0.8);
+    }
+    @media (min-width: ${size.laptop}) {
+        bottom: 15%;
+        transform: scale(1.0);
     }
 `
 export const ProductControl = styled.div`

@@ -4,6 +4,8 @@ import { selectSystemMode } from '../../store/system/system.selector.js';
 // styles
 import {
     AboutContainer,
+    LandingHeaderContainer,
+    AboutContentContainer,
     SocialsContainer,
     AboutDescription,
     AboutText
@@ -23,7 +25,11 @@ export default function About() {
 
     return (
         <AboutContainer $mode={systemMode}>
-            <LandingHeader socials={false} navLabel={'back'} navLink={'/'}/>
+            <LandingHeaderContainer>
+                <LandingHeader socials={false} navLabel={'back'} navLink={'/'}/>
+            </LandingHeaderContainer>   
+            
+            <AboutContentContainer>
                 <SocialsContainer>
                     <ElementWrapper delay={0.4}>
                         <a href="https://www.tiktok.com/@presence.exp" target="_blank" rel="noopener noreferrer">
@@ -48,8 +54,8 @@ export default function About() {
                             new experiences are released periodically, follow <a href="https://www.instagram.com/presence.exp/" target="_blank" rel="noopener noreferrer"><em>@presence.exp</em></a> for more.
                         </AboutText>
                     </ElementWrapper>
-
                 </AboutDescription>
+            </AboutContentContainer>
             <ModeBG />
         </AboutContainer>
     )

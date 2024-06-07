@@ -52,7 +52,7 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
 
     return (
         <GradientControlsContainer>
-            {gradientA && (experienceWasStarted || additionalCtrls || isCartPage) &&
+            {gradientA && (experienceWasStarted || additionalCtrls) && !isCartPage &&
                 <CustomizationLabel>
                     {displayedGradient === 'A' && 
                         <RgbDisplayContainer $additionalCtrls={additionalCtrls}>

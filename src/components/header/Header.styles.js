@@ -17,26 +17,23 @@ export const HeaderContainer = styled.div`
     }
 `
 export const HeaderBtnContainer = styled.div`
-    /* background-color: orange; */
     align-items: center;
     display: flex;
     justify-content: center;
-    padding: 0px 30px;
 
-    @media (min-width: 550px) {
-        padding: 0px 50px;
+    @media (max-width: 769px) {
+        padding: 20px 50px;
     }
 
     @media ${device.tablet} {
-        padding: 0px 66.5px;
+        padding: 20px 66.5px;
     }
 
     @media ${device.laptop} {
-        padding: 0px 120px;
+        padding: 20px 120px;
     }
 `
 export const CartBtnContainer = styled(motion.div)`
-    /* background-color: green; */
     align-items: center;
     display: flex;
     justify-content: center;
@@ -45,15 +42,15 @@ export const CartBtnContainer = styled(motion.div)`
     right: -3px;
     top: 64px;
 
-    @media (min-width: 550px) {
-        padding: 0px 50px;
+    @media (max-width: 769px) {
+        padding: 20px 50px;
     }
 
     @media ${device.tablet} {
-        padding: 0px 66.5px;
+        padding: 20px 66.5px;
     }
 
     @media ${device.laptop} {
-        padding: 0px 120px;
+        padding: 20px 120px;
     }
 `

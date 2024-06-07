@@ -7,7 +7,6 @@ export const ShirtDisplayContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     position: relative;
-    padding-bottom: 50px;
 `
 export const ShirtImgDisplayContainer = styled(motion.div)`
     height: 300px;
