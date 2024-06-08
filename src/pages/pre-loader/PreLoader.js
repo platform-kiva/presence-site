@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setDisplayedGradient, setDefaultGradient, setStatus } from '../../store/gradients/gradient.action.js';
 import { selectProductsIsLoading } from '../../store/products/products.selector.js';
+import { selectDisplayedGradient } from '../../store/gradients/gradient.selector.js';
 
 // styles
 import { PreLoaderContainer, BannerContainer } from './PreLoader.styles.js';
@@ -14,15 +15,18 @@ import LoadingIcon from '../../components/loading-icon/LoadingIcon.js';
 export default function PreLoader() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const displayedGradient = useSelector(selectDisplayedGradient);
     const isLoading = useSelector(selectProductsIsLoading);
     const [loadingIsDisplayed, setLoadingIsDisplayed] = useState(true);
     const [animateOut, setAnimateOut] = useState(false);
     
     useEffect(() => {
         dispatch(setStatus(true));
-        dispatch(setDisplayedGradient('A'));
-        dispatch(setDefaultGradient([[219,120,212], [32,172,232]]));
-    }, [dispatch]);
+        if (!displayedGradient) {
+            dispatch(setDisplayedGradient('A'));
+            dispatch(setDefaultGradient([[219,120,212], [32,172,232]]));
+        }
+    }, [displayedGradient, dispatch]);
 
     useEffect(() => {
         let timer1, timer2;

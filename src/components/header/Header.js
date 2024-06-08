@@ -80,7 +80,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
             <HeaderBtnContainer onClick={handleGiftShopView}>
                 <HeaderIcon iconSize={20}>
                     {!socialsViewIsActive &&
-                    <   img src={!giftShopViewIsActive ? storeIcon : closeIcon} alt={giftShopViewIsActive ? "store icon" : "close icon"} />
+                        <img src={!giftShopViewIsActive ? storeIcon : closeIcon} alt={giftShopViewIsActive ? "store icon" : "close icon"} />
                     }
                 </HeaderIcon>
             </HeaderBtnContainer>

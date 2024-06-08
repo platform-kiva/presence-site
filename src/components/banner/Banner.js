@@ -28,21 +28,16 @@ export default function Banner({ label, linkTo=null }) {
         } else {
             return -13;
         };
-    }
+    };
 
     useEffect(() => {
-        const handleResize = () => {
-            setTranslateY(getTranslateY());
-        };
+        const handleResize = () => { setTranslateY(getTranslateY()); };
         window.addEventListener('resize', handleResize);
-
         return () => window.removeEventListener('resize', handleResize);
-
     }, []);
 
     useEffect(() => {
         let mounted = true;
-    
         const startAnimations = async () => {
             if (mounted) {
                 await controlsMiddle.start({ opacity: 1 });
@@ -52,15 +47,11 @@ export default function Banner({ label, linkTo=null }) {
                 ]);
             };
         };
-    
         controlsTop.set({ opacity: 0, y: 0 });
         controlsMiddle.set({ opacity: 0 });
         controlsBottom.set({ opacity: 0, y: 0 });
-    
         startAnimations();
-
         return () => { mounted = false; };
-
     }, [label, translateY, controlsTop, controlsMiddle, controlsBottom]);
 
     const handleClick = () => {
@@ -72,7 +63,7 @@ export default function Banner({ label, linkTo=null }) {
     }
     
     return (
-        <BannerContainer $label={label} onClick={handleClick} $linkTo={linkTo} >
+        <BannerContainer $label={label} $linkTo={linkTo} onClick={handleClick}>
             <LogoTopText
                 animate={controlsTop}
                 initial={{ opacity: 0, y: 0 }}
@@ -96,4 +87,4 @@ export default function Banner({ label, linkTo=null }) {
             </LogoBottomText>
         </BannerContainer>
     );
-}
+};

@@ -16,6 +16,7 @@ export const PrimaryBtnContainer = styled.button`
     opacity: ${props =>
         props.$isActive ? "1.0" : "0.5"
     };
+    outline: none;
     transition: 0.4s ease-in-out;
     width: 100%;
 

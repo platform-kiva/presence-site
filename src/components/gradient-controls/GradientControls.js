@@ -33,6 +33,15 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
     const experienceWasStarted = useSelector(selectExperienceWasStarted);
     const isCartPage = location.pathname.endsWith('/cart');
 
+    const handleKeyUp = (event) => {
+        if (event.key === ' ') {
+            if (!experienceWasStarted) {
+                dispatch(setExperienceWasStarted());
+            }
+            dispatch(setStatus(status));
+        }
+    };
+
     useEffect(() => {
         if (status) {
             dispatch(setAddToCartStatus(false));
@@ -150,7 +159,7 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
             {!readOnly ?
                 <ButtonContainer $additionalCtrls={additionalCtrls}>
                     <ElementWrapper>
-                        <div onClick={handleClick}>
+                        <div onClick={handleClick} onKeyUp={handleKeyUp} tabIndex="0">
                             <PrimaryBtn label={status ? "STOP" : "START"} />
                         </div>
                     </ElementWrapper>
