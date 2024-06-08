@@ -85,7 +85,7 @@ export default function Header({ cartViewSetter, cartViewStatus, socialsViewSett
                 </HeaderIcon>
             </HeaderBtnContainer>
             
-            {cartCount !== 0 &&
+            {cartCount !== 0 && !socialsViewIsActive &&
                 <CartBtnContainer
                     onClick={handleNavigate}
                     animate={{ scale: isAnimating ? 1.5 : 1 }}
