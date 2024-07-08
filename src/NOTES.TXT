@@ -1,4 +1,9 @@
 Checklist
+- re-design RGB display to mouse-directed floating box (on-drag)
+- receipt in the mail with gradient Card - business card
+- Purchase with intentionality
+    - lower costs
+    - free? 
 - (!) Create custom icons (SVGs)
 - (!) Terms & Conditions pages
 - (!) Store data on purchases, for use later, perhaps

@@ -1,0 +1,109 @@
+[debug] [2024-07-08T18:38:28.082Z] ----------------------------------------------------------------------
+[debug] [2024-07-08T18:38:28.083Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2024-07-08T18:38:28.083Z] CLI Version:   13.0.2
+[debug] [2024-07-08T18:38:28.083Z] Platform:      darwin
+[debug] [2024-07-08T18:38:28.083Z] Node Version:  v20.10.0
+[debug] [2024-07-08T18:38:28.083Z] Time:          Mon Jul 08 2024 14:38:28 GMT-0400 (Eastern Daylight Time)
+[debug] [2024-07-08T18:38:28.083Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-08T18:38:28.112Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-08T18:38:28.113Z] > authorizing via signed-in user (presence.exp@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/kivaloor/Documents/Projects/00 Active/presence/presence-site
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Account Setup
+[info] 
+[info] Which account do you want to use for this project? Choose an account or add a new one now
+[info] 
+[debug] [2024-07-08T18:38:42.363Z] setProjectAccount(/Users/kivaloor/Documents/Projects/00 Active/presence/presence-site, presence.exp@gmail.com)
+[info] 
+[info] ✔  Using account: presence.exp@gmail.com 
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-07-08T18:38:42.374Z] Using project from CLI flag: presence-9cced
+[debug] [2024-07-08T18:38:42.375Z] > refreshing access token with scopes: []
+[debug] [2024-07-08T18:38:42.378Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-07-08T18:38:42.378Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-07-08T18:38:42.512Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-07-08T18:38:42.512Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-07-08T18:38:42.520Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/presence-9cced [none]
+[debug] [2024-07-08T18:38:42.723Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/presence-9cced 200
+[debug] [2024-07-08T18:38:42.723Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/presence-9cced {"projectId":"presence-9cced","projectNumber":"1083294801819","displayName":"281-474-976-710-656","name":"projects/presence-9cced","resources":{"hostingSite":"presence-9cced","storageBucket":"presence-9cced.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_a9df9a6e-81b8-48b1-9515-de559d3b6ddb"}
+[info] i  Using project presence-9cced (281-474-976-710-656) 
+[info] 
+=== Firestore Setup
+[debug] [2024-07-08T18:38:42.733Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/firestore.googleapis.com [none]
+[debug] [2024-07-08T18:38:42.733Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/firestore.googleapis.com x-goog-quota-user=projects/presence-9cced
+[debug] [2024-07-08T18:38:43.108Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/firestore.googleapis.com 200
+[debug] [2024-07-08T18:38:43.108Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/firestore.googleapis.com [omitted]
+[debug] [2024-07-08T18:38:43.109Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/presence-9cced/databases/(default) [none]
+[debug] [2024-07-08T18:38:43.423Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/presence-9cced/databases/(default) 200
+[debug] [2024-07-08T18:38:43.424Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/presence-9cced/databases/(default) {"name":"projects/presence-9cced/databases/(default)","uid":"7c663687-c9dc-4052-93b1-77bd15846216","createTime":"2023-10-25T18:08:14.639287Z","updateTime":"2023-10-25T18:08:14.639287Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2024-07-08T17:38:43.352008Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IM+fgMiLmIcDMOP5yOO94IUD"}
+[debug] [2024-07-08T18:38:43.424Z] database_type: FIRESTORE_NATIVE
+[debug] [2024-07-08T18:38:43.424Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-08T18:38:43.424Z] > authorizing via signed-in user (presence.exp@gmail.com)
+[debug] [2024-07-08T18:38:43.424Z] [iam] checking project presence-9cced for permissions ["firebase.projects.get"]
+[debug] [2024-07-08T18:38:43.424Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions [none]
+[debug] [2024-07-08T18:38:43.424Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions x-goog-quota-user=projects/presence-9cced
+[debug] [2024-07-08T18:38:43.424Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-07-08T18:38:43.598Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions 200
+[debug] [2024-07-08T18:38:43.598Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[info] 
+=== Functions Setup
+[debug] [2024-07-08T18:38:56.540Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-08T18:38:56.541Z] > authorizing via signed-in user (presence.exp@gmail.com)
+[debug] [2024-07-08T18:38:56.541Z] [iam] checking project presence-9cced for permissions ["firebase.projects.get"]
+[debug] [2024-07-08T18:38:56.541Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions [none]
+[debug] [2024-07-08T18:38:56.541Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions x-goog-quota-user=projects/presence-9cced
+[debug] [2024-07-08T18:38:56.541Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-07-08T18:38:56.720Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions 200
+[debug] [2024-07-08T18:38:56.720Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/presence-9cced:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-07-08T18:38:56.721Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-07-08T18:38:56.721Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/presence-9cced
+[debug] [2024-07-08T18:38:56.724Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-07-08T18:38:56.724Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/presence-9cced
+[debug] [2024-07-08T18:38:57.149Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/runtimeconfig.googleapis.com 200
+[debug] [2024-07-08T18:38:57.149Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-07-08T18:38:57.151Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/cloudfunctions.googleapis.com 200
+[debug] [2024-07-08T18:38:57.151Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/presence-9cced/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+

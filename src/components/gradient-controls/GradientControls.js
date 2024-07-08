@@ -65,35 +65,52 @@ export default function GradientControls({ additionalCtrls = false, readOnly=fal
                 <CustomizationLabel>
                     {displayedGradient === 'A' && 
                         <RgbDisplayContainer $additionalCtrls={additionalCtrls}>
-                            <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                           
                                 <RgbDisplay>
                                     <ColorValContainer>
-                                        <h4>R</h4>
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>R</h4>
+                                        </ElementWrapper>
                                         <h3>{gradientA[0][0]}</h3>
                                     </ColorValContainer>
                                     <ColorValContainer>
-                                        <h4>G</h4>
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>G</h4>
+                                        </ElementWrapper>
                                         <h3>{gradientA[0][1]}</h3>
                                     </ColorValContainer>
                                     <ColorValContainer>
-                                        <h4>B</h4>
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>B</h4>
+                                        </ElementWrapper>
                                         <h3>{gradientA[0][2]}</h3>
                                     </ColorValContainer>
                                     <RgbSquare $bgCol={gradientA[0]}/>
                                 </RgbDisplay>
-                            </ElementWrapper>
                             <ElementWrapper delay={0.4}>
                                 <RgbDisplay>
                                     <ColorValContainer>
-                                        <h4>R</h4>
+
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>R</h4>
+                                        </ElementWrapper>
+
                                         <h3>{gradientA[1][0]}</h3>
                                     </ColorValContainer>
                                     <ColorValContainer>
-                                        <h4>G</h4>
+                                        
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>G</h4>
+                                        </ElementWrapper>
+
                                         <h3>{gradientA[1][1]}</h3>
                                     </ColorValContainer>
                                     <ColorValContainer>
-                                        <h4>B</h4>
+
+                                        <ElementWrapper delay={additionalCtrls ? 0.3: 0.5}>
+                                            <h4>B</h4>
+                                        </ElementWrapper>
+                                    
                                         <h3>{gradientA[1][2]}</h3>
                                     </ColorValContainer>
                                     <RgbSquare $bgCol={gradientA[1]}/>
